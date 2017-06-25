@@ -1,0 +1,94 @@
+html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+    min-width: 1020px;
+    font-size: 14px;
+    line-height: 1.5;
+    /**height of all component of the form**/
+    color: #24292e;
+    margin: 0;
+    background: url(/img/backgraud.jpg)
+}
+
+dd {
+    margin-left: 0;
+    margin-right: 0;
+    /**margin between main form and dd tag**/
+    box-sizing: border-box;
+}
+
+#banner {
+    height: 50px;
+    /**Width of the banner**/
+}
+
+#div_main {
+    width: 400px;
+    margin: auto;
+    min-width: 400px;
+}
+
+#div_form {
+    padding-right: 24px;
+    padding-left: 24px;
+    padding-bottom: 32px;
+    /**Width of last div**/
+    padding-top: 24px;
+    /**Width of fist div**/
+    background: #fff;
+    border: 1px solid #ccc;
+    /**line of border**/
+    border-radius: 3px;
+}
+
+#logo {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: auto;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #24292e;
+}
+
+.textbox {
+    display: block;
+    width: 100%;
+    min-height: 40px;
+    min-height: 34px;
+    padding: 6px 8px;
+    font-size: 14px;
+    background-position: right 8px center;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.info {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #6a737d;
+}
+
+.button {
+    width: 100%;
+    /**Lengthen the boot**/
+    color: #fff;
+    background-image: linear-gradient(-180deg, #34d 0%, #28a745 90%);
+    padding: 6px 12px;
+    /**Button width and width**/
+    line-height: 20px;
+    border: 1px solid rgba(27, 31, 35, 0.2);
+    border-radius: 0.25em;
+}
+
+a {
+    color: blue;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html;  charset=UTF-8">
+    <title>Sign up or Sign in|R&B</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="banner"></div>
+    <!--contains all the extructure visible-->
+    <div id="div_main">
+        <img src="/img/logo.jpg" alt="" id="logo">
+        <div id="div_form">
+            <form id="form" accept-charset="UTF-8" action="/join" autocomplete="off" method="post">
+                
+                    <!--Dl tag create a block-->
+                    <dl class="form_login">
+                        <!--dd tag The <dd> tag comes from the terms "Definition description" and tells us that within it the definition will go.If we write several definition lists, they will be separated automatically between them to facilitate their differentiation.-->
+                        <dd>
+                            <label class="label" for="user[login]"> Username</label>
+                            <input class="textbox" type="text" placeholder="Enter your username"> </input>
+                        </dd>
+                    </dl>
+                    <dl class="form_password">
+                        <dd>
+                            <label class="label" for="user[password]"> Password</label>
+                            <input class="textbox" type="password" placeholder="Enter your password"> </input>
+                        </dd>
+                        <dd>
+                            <p class="info">Use at least one letter, one numeral, and seven characters.</p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <button class="button" type="submit"> Sign up</button>
+                        </dd>
+                    </dl>
+                    <dd>
+                        <p class="info"> By clicking "Sign up for R&B comany, you agree to our"
+                            <a href="http://facebook.com" target="_blank">terms of service</a> and 
+                            <a href="http://wainerrb.orgfree.com/" target="_blank"> privacy polity</a>.We’ll occasionally send you account related emails.
+                            <br>
+                            If you want to create a 
+                            <a href="http://facebook.com" target="_blank">personal</a> account or for a 
+                            <a href="http://facebook.com" target="_blank">company</a>?
+                            
+                        </p>
+                    </dd>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
