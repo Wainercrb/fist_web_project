@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+.header {
+    width: 100%;
+    background: rgba(0, 0, 0, .8);
+    height: 70px;
+    position: fixed;
+    z-index: 10;
+}
+
+.header {
+    width: 80%;
+    height: 70px;
+    /*background: red;*/
+    margin: auto;
+}
+
+#banner {
+    margin: auto;
+    height: 110px;
+    background: #fdfefe;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+#sub_banner {
+    margin: auto;
+    height: 110px;
+    ;
+    /* esto es para centrar pero hay que indicar un ancho obligatoriamente */
+    width: 80%;
+}
+
+.tr_lg_banner,
+.cont_banner {
+    width: 100px;
+    height: 100px;
+}
+
+.link_banner {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+#txt_banner {
+    border: 1px solid #DBE1EB;
+    font-size: 18px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    background: #FFFFFF;
+    background: linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #dfff url(images/bg-select.jpg) no-repeat right;
+    padding: 11px;
+    margin: 0;
+    width: 100%;
+    background: #fff;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    background: #FFFFFF;
+    background: linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+}
+
+#btn_banner {
+    margin-left: 0;
+    margin-right: 0;
+    /**margin between main form and dd tag**/
+    box-sizing: border-box;
+    overflow: hidden;
+    left: 0;
+    width: 100%;
+    /**Lengthen the boot**/
+    color: #fff;
+    background-image: linear-gradient(-180deg, #34d 0%, #28a745 90%);
+    padding: 9px 20px;
+    /**Button width and width**/
+    line-height: 20px;
+    border: 1px solid rgba(27, 31, 35, 0.2);
+    border-radius: 0.25em;
+    box-sizing: border-box;
+}
+
+#body_banner {
+    height: 50px;
+}
+
+#body_sub_banner {
+    margin: auto;
+    height: auto;
+    /* esto es para centrar pero hay que indicar un ancho obligatoriamente */
+    width: 25%;
+}
+#div_frm {
+    padding-right: 24px;
+    padding-left: 24px;
+    padding-bottom: 32px;
+    /**Width of last div**/
+    padding-top: 24px;
+    /**Width of fist div**/
+    background: #fff;
+    border: 1px solid #ccc;
+    /**line of border**/
+    border-radius: 3px;
+}
+dd {
+    margin-left: 0;
+    margin-right: 0;
+    /**margin between main form and dd tag**/
+    box-sizing: border-box;
+}
+
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #24292e;
+    box-sizing: border-box;
+}
+
+.textbox {
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    border: 1px solid #DBE1EB;
+    font-size: 14px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    background: #FFFFFF;
+    background: linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+}
