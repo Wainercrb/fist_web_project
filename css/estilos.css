@@ -1,1 +1,232 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+body {
+    /*font-family: 'Open Sans', 'sans-serif';*/
+    font-family: 'Arial';
+}
+
+#brand-image {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    max-height: 50px;
+}
+
+.navbar {
+    position: relative;
+    min-height: 30px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border: 1px solid;
+    border-radius: 0px;
+    background-color: #FFFF;
+    border-color: #D8D8D8 !important;
+}
+
+.navbar-inverse {
+    border: 1px solid;
+    border-radius: 0px;
+    margin-top: 0px;
+    background-color: #58FAF4;
+    border-color: #D8D8D8 !important;
+}
+
+.navbar-nav>li>a {
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+    line-height: 20px;
+}
+
+.navbar-inverse .navbar-nav>.open>a {
+    background: linear-gradient(to top, #58FAF4, #F2F500);
+    /**color of the tittle**/
+    color: #003896;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #190707;
+    /**inverse of the title**/
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #FFFF;
+    /**inverse of the tittle**/
+}
+
+.navbar-inverse .navbar-nav>li:hover {
+    background: linear-gradient(to top, #81DAF5, #81DAF5);
+}
+.mega-dropdown {
+    position: static !important;
+}
+
+.mega-dropdown-menu {
+    padding: 15px 0px;
+    width: 100%;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.mega-dropdown-menu>li>ul {
+    padding: 0;
+    margin: 0;
+}
+
+.mega-dropdown-menu>li>ul>li {
+    list-style: none;
+}
+
+.mega-dropdown-menu>li>ul>li>a {
+    display: block;
+    color: #222;
+    /**sub-category**/
+    padding: 3px 5px;
+}
+
+.mega-dropdown-menu>li ul>li>a:hover,
+.mega-dropdown-menu>li ul>li>a:focus {
+    text-decoration: none;
+}
+
+.mega-dropdown-menu .dropdown-header {
+    font-size: 14px;
+    color: #0000FF;
+    /**cotegory+*/
+    padding: 5px 60px 5px 5px;
+    line-height: 30px;
+}
+
+.carousel-control {
+    width: 30px;
+    height: 30px;
+    top: -35px;
+}
+
+.left.carousel-control {
+    right: 30px;
+    left: inherit;
+}
+
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right {
+    font-size: 12px;
+    background-color: #fff;
+    line-height: 30px;
+    text-shadow: none;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.profile-img {
+    margin-top: -5px;
+    margin-right: 5px;
+    float: left;
+    background: url(/img/file.jpg) 50% 50% no-repeat;
+    /* 50% 50% centers image in div */
+    background-size: auto 100%;
+    /* Interchange this value depending on prefering width vs. height */
+    width: 30px;
+    height: 30px;
+}
+#profile {
+    margin-left: 5%;
+}
+/**finish the banner**/
+
+
+body, html{
+     height: 100%;
+ 	background-repeat: no-repeat;
+ 	background-color: #d3d3d3;
+ 	font-family: 'Oxygen', sans-serif;
+}
+
+.main{
+ 	margin-top: 0px;
+}
+
+h1.title { 
+	font-size: 50px;
+	font-family: 'Passion One', cursive; 
+	font-weight: 400; 
+}
+
+hr{
+	width: 10%;
+	color: #fff;
+}
+
+.form-group{
+	margin-bottom: 15px;
+}
+
+label{
+	margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
+
+.main-login{
+ 	background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+
+.main-center{
+ 	margin-top: 10px;
+ 	margin: 0 auto;
+ 	max-width: 330px;
+    padding: 4px 40px;
+}
+
+.save-button{
+	margin-top: 5px;
+}
+#tittle-form{    
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    
+}
+
+#product{
+    margin-top: 0px;
+    text-align: center;
+}
+#select-form{
+    border: 1px solid;
+    border-radius: 3px;
+    background-color: #FFFF;
+    border-color: #D8D8D8 !important;
+    width: 280px;
+}
+#input-form{
+     border: 1px solid;
+    border-radius: 3px;
+    background-color: #FFFF;
+    border-color: #D8D8D8 !important;
+    width: 280px;
+}
+#text-area{
+    border: 1px solid;
+    border-radius: 3px;
+    background-color: #FFFF;
+    border-color: #D8D8D8 !important;
+    width: 280px;
+}
 
