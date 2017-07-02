@@ -1,61 +1,439 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es">
 <head>
-    <meta http-equiv="Content-type" content="text/html;  charset=UTF-8">
-    <title>Sign up or Sign in|R&B</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css"></link>
+    <meta charset="utf-8">
+    <title>shop R&B</title>
+    <meta name="viewport" content="widt=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" href="js/code.js">
 </head>
-
 <body>
-    <div id="banner"></div>
-    <!--contains all the extructure visible-->
-    <div id="div_main">
-        <img src="/img/logo.jpg" alt="" id="logo">
-        <div id="div_form">
-            <form id="form" accept-charset="UTF-8" action="/join" autocomplete="off" method="post">
+    <header>
+        <!-- Aca se agrega un nav para poder crear el menu de navegacion de la pagina -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar-headerr" id="navbar-header">
+            <!-- el inverse es para que cambien los colores y el static top es para que el menu se mantenga en la parte de arriba de la pagina -->
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Esto es para hacer el boton que se muestra cuando el dispositivo es mediano-->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion" aria-expended="false" aria-controls="navbar">
+                    <span class="sr-only">Ocultar</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-header" href="#"><img id="brand-image" src="img/logo.jpg"></a>
+                    <form action="" class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Buscar" size="40">
+                            <span>Category</span>
+                            <span class="select-group-button">                                
+                                  <select name="" id="" class="form-control" type="select">
+                                         <option value="0">All the category</option>
+                                         <option value="2">Opciones#1</option>
+                                         <option value="deporte">Opciones#2</option>
+                                         <option value="2">Ropa</option>
+                                         <option value="deporte">Opciones#3</option>
+                                         <option value="2">Opciones#4</option>
+                                         <option value="deporte">Opciones#5</option>
+                                         <option value="2">Opciones#1</option>
+                                         <option value="deporte">Opciones#2</option>                           
+                                </select>                           
+                            </span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                    <!-- Este es el titulo que va en el menu-->
+                </div>
+                <!-- Aqui se iniciara el menu-->
+                <div class="collapse navbar-collapse pull-left" id="navegacion">
+                    <ul class="nav navbar-nav pull-left">
+                        <!--<li><a href="#">Nosotros</a></li>-->
+                        <li>
+                            <ul class="nav navbar-nav pull-left" role="menu">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">
+                                        <!-- The Profile picture inserted via div class below, with shaping provided by Bootstrap -->
+                                        <div class="img-rounded profile-img"> </div>
+                                        User Name <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#">Settings</a>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li>
+                                            <a href="#">Log out</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--<li><a href="#">Contacto</a></li>-->
+                    </ul>
+                       <ul class="nav navbar-nav">
+                       <li>
+                       <ul class="nav navbar-nav pull-left" role="menu" >
+                        <!--<li><a href="#">Nosotros</a></li>-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Nuestros Servicios 
+                        <span class="caret"></span>
+                        </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Todos los servicios</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Outsourcing 1</a></li>
+                                <li><a href="#">Outsourcing 2</a></li>
+                                <li><a href="#">Outsourcing 3</a></li>
+                            </ul>
+                        </li>
+                        <!--<li><a href="#">Contacto</a></li>-->
+                 
+                    </ul>
+                           </li>
+                    </ul>
+                    
+                     <ul class="nav navbar-nav">
+                       <li>
+                       <ul class="nav navbar-nav pull-left" role="menu" >
+                        <!--<li><a href="#">Nosotros</a></li>-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Register 
+                        <span class="caret"></span>
+                        </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Todos los servicios</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Sing up</a></li>
+                                <li><a href="#">loun up</a></li>
+                            </ul>
+                        </li>
+                        <!--<li><a href="#">Contacto</a></li>-->
+                 
+                    </ul>
+                           </li>
+                    </ul>
+                    <!-- El id que se agrega aqui debe de llevar el mismo nombre que se ingreso en el data-target que va en el boton que se muestra en dispositivos medianos-->
+                    
+                    <ul class="nav navbar-nav pull-left">
+                        <!--<li><a href="#">Nosotros</a></li>-->
+                        <li>
+                            <ul class="nav navbar-nav pull-left" role="menu">
+                                
+                            </ul>
+                        </li>
+                        <!--<li><a href="#">Contacto</a></li>-->
+                    </ul>
+                
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
 
-                <!--Dl tag create a block-->
-                <dl class="form_login">
-                    <!--dd tag The <dd> tag comes from the terms "Definition description" and tells us that within it the definition will go.If we write several definition lists, they will be separated automatically between them to facilitate their differentiation.-->
-                    <dd>
-                        <label class="label" for="user[login]"> Username</label>
-                        <input class="textbox" type="text" placeholder="Enter your username">
-                        </input>
-                    </dd>
-                </dl>
-                <dl class="form_password">
-                    <dd>
-                        <label class="label" for="user[password]"> Password
-                        </label>
-                        <input class="textbox" type="password" placeholder="Enter your password"> 
-                        </input>
-                    </dd>
-                    <dd>
-                        <p class="info">Use at least one letter, one numeral, and seven characters.</p>
-                    </dd>
-                </dl>
-                <dl>
-                    <dd>
-                        <button class="button" type="submit"> Sign up</button>
-                    </dd>
-                </dl>
-                <dd>
-                    <p class="info"> By clicking "Sign up for R&B comany, you agree to our"
-                        <a href="http://facebook.com" target="_blank">terms of service</a> and
-                        <a href="http://wainerrb.orgfree.com/" target="_blank"> privacy polity</a>.We’ll occasionally send you account related emails.
-                        <br> If you want to create a
-                        <a href="http://facebook.com" target="_blank">personal</a> account or for a
-                        <a href="/pro.html" target="_blank">company</a>?.
-
-                    </p>
-                </dd>
+            </div>
+            <div class="collapse navbar-collapse js-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown mega-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ropa<span class="caret"></span></a>
+                        <ul class="dropdown-menu mega-dropdown-menu">
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header">Gallery</li>
+                                    <div id="menCollection" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="item active">
+                                                <a href="#"><img src="https://4.bp.blogspot.com/-DF0_xCxLP8Y/WBBeUyE3TqI/AAAAAAAANCI/GoWjLtqeAqUOao4L1iCeSuQnnMlXRyZswCLcB/s640/BEBE-VARON-ROPA-INFANTIL.jpg" class="img-responsive" alt="product 1"></a>
+                                                <h4><small>Ropa para niños:</small></h4>
+                                                <button class="btn btn-primary" type="button">15,000 c </button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382</button>
+                                            </div>
+                                            <!-- End Item -->
+                                            <div class="item">
+                                                <a href="#"><img src="http://www.modamarcas.com/wp-content/uploads/sites/7/2010/07/ropa-benetton-adultos.jpeg" class="img-responsive" alt="product 2"></a>
+                                                <h4><small>Ropa para adultos</small></h4>
+                                                <button class="btn btn-primary" type="button">10,00 ₴</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphonet"></span>61250382</button>
+                                            </div>
+                                            <!-- End Item -->
+                                            <div class="item">
+                                                <a href="#"><img src="http://meridia.mx/wp-content/uploads/2015/02/ropaasdultosmayores.jpg" class="img-responsive" alt="product 3"></a>
+                                                <h4><small>Ropa para adultos mayores</small></h4>
+                                                <button class="btn btn-primary" type="button">149,99 ₴</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span>61250382</button>
+                                            </div>
+                                            <!-- End Item -->
+                                        </div>
+                                        <!-- End Carousel Inner -->
+                                        <!-- Controls -->
+                                    </div>
+                                    <!-- /.carousel -->
+                                    <li class="divider"></li>
+                                    <li><a href="#">More information<span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header">sub category #1</li>
+                                    <li><a href="#">Type #1</a></li>
+                                    <li><a href="#">Type #2</a></li>
+                                    <li><a href="#">Type #3</a></li>
+                                    <li><a href="#">Type #4</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">sub category #2</li>
+                                    <li><a href="#">One</a></li>
+                                    <li><a href="#">Two</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header">sub category #3</li>
+                                    <li><a href="#">Type #1</a></li>
+                                    <li><a href="#">Type #2</a></li>
+                                    <li><a href="#">Type #3</a></li>
+                                    <li><a href="#">Type #4</a></li>
+                                    <li class="dropdown-header">sub category #4</li>
+                                    <li><a href="#">Type #1</a></li>
+                                    <li><a href="#">Type #2</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header">Much more</li>
+                                    <li><a href="#">Easy to Customize</a></li>
+                                    <li><a href="#">Calls to action</a></li>
+                                    <li><a href="#">Custom Fonts</a></li>
+                                    <li><a href="#">Slide down on Hover</a></li>
+                                    <li class="dropdown-header">sub category #1</li>
+                                    <li class="dropdown-header">sub category #2</li>
+                                    <li class="dropdown-header">sub category #3</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--second tab menu-->
+                    <li class="dropdown mega-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Choes <span class="caret"></span></a>
+                        <ul class="dropdown-menu mega-dropdown-menu">
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header">information</li>
+                                    <li><a href="#">information</a></li>
+                                    <li><a href="#">information</a></li>
+                                    <li><a href="#">information</a></li>
+                                    <li><a href="#">information</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Fonts</li>
+                                    <li><a href="#">information</a></li>
+                                    <li><a href="#">information</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header">information</li>
+                                    <li><a href="#">information</a></li>
+                                    <li><a href="#">information</a></li>
+                                    <li><a href="#">information</a></li>
+                                    <li><a href="#">information</a></li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header">information</li>
+                                    <li><a href="#">information</a></li>
+                                    <li><a href="#">information</a></li>
+                                    <li><a href="#">information</a></li>
+                                    <li><a href="#">information</a></li>
+                                    <li class="dropdown-header">More information</li>
+                                    <li class="dropdown-header">More information</li>
+                                    <li class="dropdown-header">More information</li>
+                                </ul>
+                            </li>
+                            <li class="col-sm-3">
+                                <ul>
+                                    <li class="dropdown-header">Women Collection</li>
+                                    <div id="womenCollection" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="item active">
+                                                <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp51vGoTJGj3dSaHbJwYX4UtU95eDZ9TAQ1v0xvnB3PffTzWS5" class="img-responsive" alt="product 1"></a>
+                                                <h4><small>Adidas</small></h4>
+                                                <button class="btn btn-primary" type="button">50, 000</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
+                                            </div>
+                                            <!-- End Item -->
+                                            <div class="item">
+                                                <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH52Na9dIURz_foeObBXORWZdbYpKl2IxM06ivz3qnM9auByBb1g" class="img-responsive" alt="product 2"></a>
+                                                <h4><small>NIke</small></h4>
+                                                <button class="btn btn-primary" type="button">45,000</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
+                                            </div>
+                                            <!-- End Item -->
+                                            <div class="item">
+                                                <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOmAgDd5avbWk1SvanDLgnjfAL0SJzJ9IvNyQD873TUaWsrUERRQ" class="img-responsive" alt="product 3"></a>
+                                                <h4><small>Puma</small></h4>
+                                                <button class="btn btn-primary" type="button">30,000</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>
+                                            </div>
+                                            <!-- End Item -->
+                                        </div>
+                                        <!-- End Carousel Inner -->
+                                        <!-- Controls -->
+                                        <a class="left carousel-control" href="#womenCollection" role="button" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="right carousel-control" href="#womenCollection" role="button" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                    <!-- /.carousel -->
+                                    <li class="divider"></li>
+                                    <li><a href="#">View all Collection <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">tab #3</a></li>
+                    <li><a href="#">tab #4</a></li>
+                    <li><a href="#">tab #5</a></li>
+                    <li><a href="#">tab #6</a></li>
+                    <li><a href="#">tab #7</a></li>
+                    <li><a href="#">tab #8</a></li>
+                </ul>
+            </div>
+            <!-- /.nav-collapse -->
+        </nav>
+    </div>
+    <!--finish the banner-->
+    <div class="container">
+        <div class="row main">
+            <div class="main-login main-center">
+                <h2 id="product">NEW PRODUCT</h2>
+                <form class="form-horizontal" method="post" action="#">
+                    <div class="form-group">
+                        <label  class="cols-sm-2 control-label">Name</label>
+                    <div class="cols-sm-10">
+                            <div class="input-group">
+                                <input id="input-form" type="text" class="form-control" name="name" id="txt" placeholder="Enter the product name"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="cols-sm-2 control-label">PRICE</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <input id="input-form" type="text" class="form-control" placeholder="Enter the product price"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">Category</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <select id="select-form" class="form-control" type="select">
+                                      <optgroup label="Picnic">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                      </optgroup>
+                                      <optgroup label="Camping">
+                                        <option>Tent</option>
+                                        <option>Flashlight</option>
+                                        <option>Toilet Paper</option>
+                                      </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="cols-sm-2 control-label">Sub-category</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                               <select id="select-form" class="form-control" type="select">
+                                     <optgroup label="Picnic">
+                                 <option>Mustard</option>
+                                 <option>Ketchup</option>
+                                 <option>Relish</option>
+                               </optgroup>
+                                     <optgroup label="Camping">
+                                 <option>Tent</option>
+                                 <option>Flashlight</option>
+                                 <option>Toilet Paper</option>
+                               </optgroup>
+                               </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="cols-sm-2 control-label">Details</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <textarea id="text-area" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary btn-lg btn-block save-button">save</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        </form>
     </div>
+    <!--finish the main-->
+    <footer id="footer-Section">
+  <div class="footer-top-layout">
+    <div class="container">
+      <div class="row">
+        <div class="OurBlog">
+          <h4>Our information</h4>
+          <p>We are here to serve you</p>
+          <div class="post-blog-date">-----/\-----</div>
+        </div>
+        <div class=" col-lg-8 col-lg-offset-2">
+          <div class="col-sm-4">
+            <div class="footer-col-item">
+              <h4>local addres</h4>
+              <address>
+              Barrio Maracana, San Carlos<br>
+              Quesado 200m sur regional, 
+              </address>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="footer-col-item">
+              <h4>local addres</h4>
+              <address>
+              Barrio Maracana, San Carlos<br>
+              Quesado 200m sur regional, 
+              </address>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="footer-col-item">
+              <h4>local addres</h4>
+              <address>
+              Barrio Maracana, San Carlos<br>
+              Quesado 200m sur regional, 
+              </address>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
+  <div class="footer-bottom-layout">
+    <div class="socialMedia-footer"> <a href="#"><img src="img/socialMedia_01.png"></a> <a href="#"><img src="img/file.jpg"></a> <a href="#"><img src="img/socialMedia_03.png"></a> <a href="#"><img src="img/socialMedia_04.png"></a> <a href="#"><img src="img/logo.jpg"></a> </div>
+    <div class="copyright-tag">create by Wainer Rodríguez Bonilla.</div>
+  </div>
+</footer>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

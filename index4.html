@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8">
     <title>shop R&B</title>
@@ -9,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link rel="stylesheet" href="js/code.js">
 </head>
-
 <body>
     <header>
         <!-- Aca se agrega un nav para poder crear el menu de navegacion de la pagina -->
@@ -25,7 +23,33 @@
                     <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-header" href="#"><img id="brand-image" src="img/logo.jpg"></a>
-                    <ul class="nav navbar-nav">
+                    <form action="" class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Buscar" size="40">
+                            <span>Category</span>
+                            <span class="select-group-button">                                
+                                  <select name="" id="" class="form-control" type="select">
+                                         <option value="0">All the category</option>
+                                         <option value="2">Opciones#1</option>
+                                         <option value="deporte">Opciones#2</option>
+                                         <option value="2">Ropa</option>
+                                         <option value="deporte">Opciones#3</option>
+                                         <option value="2">Opciones#4</option>
+                                         <option value="deporte">Opciones#5</option>
+                                         <option value="2">Opciones#1</option>
+                                         <option value="deporte">Opciones#2</option>                           
+                                </select>                           
+                            </span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                    <!-- Este es el titulo que va en el menu-->
+                </div>
+                <!-- Aqui se iniciara el menu-->
+                <div class="collapse navbar-collapse pull-left" id="navegacion">
+                    <ul class="nav navbar-nav pull-left">
                         <!--<li><a href="#">Nosotros</a></li>-->
                         <li>
                             <ul class="nav navbar-nav pull-left" role="menu">
@@ -49,7 +73,9 @@
                         </li>
                         <!--<li><a href="#">Contacto</a></li>-->
                     </ul>
-                    <ul class="nav navbar-nav pull-le" role="menu" id="">
+                       <ul class="nav navbar-nav">
+                       <li>
+                       <ul class="nav navbar-nav pull-left" role="menu" >
                         <!--<li><a href="#">Nosotros</a></li>-->
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Nuestros Servicios 
@@ -64,42 +90,43 @@
                             </ul>
                         </li>
                         <!--<li><a href="#">Contacto</a></li>-->
+                 
                     </ul>
-                    <form action="" class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Buscar" size="55">
-                            <span>Category</span>
-                            <span class="select-group-button">                                
-                                  <select name="" id="" class="form-control" type="select">
-                                         <option value="0">All the category</option>
-                                         <option value="2">Opciones#1</option>
-                                         <option value="deporte">Opciones#2</option>
-                                         <option value="2">Ropa</option>
-                                         <option value="deporte">Opciones#3</option>
-                                         <option value="2">Opciones#4</option>
-                                         <option value="deporte">Opciones#5</option>
-                                         <option value="2">Opciones#1</option>
-                                         <option value="deporte">Opciones#2</option>
-                                         <option value="2">Ropa</option>
-                                         <option value="deporte">Opciones#3</option>
-                                         <option value="2">Opciones#4</option>
-                                         <option value="deporte">Opciones#5</option>                            
-                                </select>                           
-                            </span>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </form>
-                    <!-- Este es el titulo que va en el menu-->
-                </div>
-                <!-- Aqui se iniciara el menu-->
-                <div class="collapse navbar-collapse" id="navegacion">
+                           </li>
+                    </ul>
+                    
+                     <ul class="nav navbar-nav">
+                       <li>
+                       <ul class="nav navbar-nav pull-left" role="menu" >
+                        <!--<li><a href="#">Nosotros</a></li>-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Register 
+                        <span class="caret"></span>
+                        </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Todos los servicios</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Sing up</a></li>
+                                <li><a href="#">loun up</a></li>
+                            </ul>
+                        </li>
+                        <!--<li><a href="#">Contacto</a></li>-->
+                 
+                    </ul>
+                           </li>
+                    </ul>
                     <!-- El id que se agrega aqui debe de llevar el mismo nombre que se ingreso en el data-target que va en el boton que se muestra en dispositivos medianos-->
-
-
-
-
+                    
+                    <ul class="nav navbar-nav pull-left">
+                        <!--<li><a href="#">Nosotros</a></li>-->
+                        <li>
+                            <ul class="nav navbar-nav pull-left" role="menu">
+                                
+                            </ul>
+                        </li>
+                        <!--<li><a href="#">Contacto</a></li>-->
+                    </ul>
+                
                 </div>
             </div>
         </nav>
@@ -278,106 +305,135 @@
                     <li><a href="#">tab #7</a></li>
                     <li><a href="#">tab #8</a></li>
                 </ul>
-
             </div>
             <!-- /.nav-collapse -->
         </nav>
     </div>
     <!--finish the banner-->
-
-
-
-
     <div class="container">
         <div class="row main">
             <div class="main-login main-center">
                 <h2 id="product">NEW PRODUCT</h2>
                 <form class="form-horizontal" method="post" action="#">
                     <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">Name</label>
-                        <div class="cols-sm-10">
+                        <label  class="cols-sm-2 control-label">Name</label>
+                    <div class="cols-sm-10">
                             <div class="input-group">
-
-                                <input id="input-form" type="text" class="form-control" name="name" id="txt" placeholder="Enter the product name" />
+                                <input id="input-form" type="text" class="form-control" name="name" id="txt" placeholder="Enter the product name"/>
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="price" class="cols-sm-2 control-label">PRICE</label>
+                        <label  class="cols-sm-2 control-label">PRICE</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-
-                                <input id="input-form" type="text" class="form-control" placeholder="Enter your Email" />
+                                <input id="input-form" type="text" class="form-control" placeholder="Enter the product price"/>
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="username" class="cols-sm-2 control-label">Category</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <select id="select-form" class="form-control" type="select">
-  <optgroup label="Picnic">
-    <option>Mustard</option>
-    <option>Ketchup</option>
-    <option>Relish</option>
-  </optgroup>
-  <optgroup label="Camping">
-    <option>Tent</option>
-    <option>Flashlight</option>
-    <option>Toilet Paper</option>
-  </optgroup>
-</select>
+                                      <optgroup label="Picnic">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                      </optgroup>
+                                      <optgroup label="Camping">
+                                        <option>Tent</option>
+                                        <option>Flashlight</option>
+                                        <option>Toilet Paper</option>
+                                      </optgroup>
+                                </select>
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Sub-category</label>
+                        <label class="cols-sm-2 control-label">Sub-category</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <select id="select-form" class="form-control" type="select">
-  <optgroup label="Picnic">
-    <option>Mustard</option>
-    <option>Ketchup</option>
-    <option>Relish</option>
-  </optgroup>
-  <optgroup label="Camping">
-    <option>Tent</option>
-    <option>Flashlight</option>
-    <option>Toilet Paper</option>
-  </optgroup>
-</select>
-
+                               <select id="select-form" class="form-control" type="select">
+                                     <optgroup label="Picnic">
+                                 <option>Mustard</option>
+                                 <option>Ketchup</option>
+                                 <option>Relish</option>
+                               </optgroup>
+                                     <optgroup label="Camping">
+                                 <option>Tent</option>
+                                 <option>Flashlight</option>
+                                 <option>Toilet Paper</option>
+                               </optgroup>
+                               </select>
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="confirm" class="cols-sm-2 control-label">Details</label>
+                        <label  class="cols-sm-2 control-label">Details</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-
                                 <textarea id="text-area" class="form-control" rows="3"></textarea>
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group ">
+                    <div class="form-group">
                         <button type="button" class="btn btn-primary btn-lg btn-block save-button">save</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-
+    <!--finish the main-->
+    <footer id="footer-Section">
+  <div class="footer-top-layout">
+    <div class="container">
+      <div class="row">
+        <div class="OurBlog">
+          <h4>Our information</h4>
+          <p>We are here to serve you</p>
+          <div class="post-blog-date">-----/\-----</div>
+        </div>
+        <div class=" col-lg-8 col-lg-offset-2">
+          <div class="col-sm-4">
+            <div class="footer-col-item">
+              <h4>local addres</h4>
+              <address>
+              Barrio Maracana, San Carlos<br>
+              Quesado 200m sur regional, 
+              </address>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="footer-col-item">
+              <h4>local addres</h4>
+              <address>
+              Barrio Maracana, San Carlos<br>
+              Quesado 200m sur regional, 
+              </address>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="footer-col-item">
+              <h4>local addres</h4>
+              <address>
+              Barrio Maracana, San Carlos<br>
+              Quesado 200m sur regional, 
+              </address>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom-layout">
+    <div class="socialMedia-footer"> <a href="#"><img src="img/socialMedia_01.png"></a> <a href="#"><img src="img/file.jpg"></a> <a href="#"><img src="img/socialMedia_03.png"></a> <a href="#"><img src="img/socialMedia_04.png"></a> <a href="#"><img src="img/logo.jpg"></a> </div>
+    <div class="copyright-tag">create by Wainer Rodríguez Bonilla.</div>
+  </div>
+</footer>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
-
-
 </body>
 
 </html>
