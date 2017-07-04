@@ -3,35 +3,36 @@
 
 <head>
     <meta charset="utf-8">
-    <title>us information</title>
+    <title>Nuestra información</title>
     <meta name="viewport" content="widt=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/usInformation.css">
     <link rel="stylesheet" href="js/code.js">
 </head>
-
 <body>
+    <!--Inicia la parte del banner-->
     <header>
-        <!-- Aca se agrega un nav para poder crear el menu de navegacion de la pagina -->
+        <!-- Aca se agrega un nav para poder crear el menu de navegacion de la pagina-->
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar-header">
             <!-- el inverse es para que cambien los colores y el static top es para que el menu se mantenga en la parte de arriba de la pagina -->
             <div class="container">
                 <div class="navbar-header">
-                    <!-- Esto es para hacer el boton que se muestra cuando el dispositivo es mediano-->
+                    <!-- Esto es para hacer el boton que se muestra cuando la pantalla del dispositivo es media o pequeña-->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion" aria-expended="false" aria-controls="navbar">
+                    <!--Estas etiquetas de span sirven para mostrar las lienas del boton-->
                     <span class="sr-only">Ocultar</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-header" href="#"><img id="brand-image" src="img/logo.jpg"></a>
+                    <a class="navbar-header" href="index4.html"><img id="brand-image" src="img/logo.jpg"></a>
                     <form action="" class="navbar-form navbar-left" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Buscar" size="25">
-                            <span>Category</span>
+                            <span>Categoría</span>
                             <span class="select-group-button">                                
                                   <select name="" id="" class="form-control" type="select">
-                                         <option value="0">All the category</option>
+                                         <option value="0">Todas</option>
                                          <option value="2">Opciones#1</option>
                                          <option value="deporte">Opciones#2</option>
                                          <option value="2">Ropa</option>
@@ -40,20 +41,23 @@
                                          <option value="deporte">Opciones#5</option>
                                          <option value="2">Opciones#1</option>
                                          <option value="deporte">Opciones#2</option>                           
-                                </select>                           
+                                 </select>               
                             </span>
-                            <span>Arround</span>
+                            <span>Alrededor de</span>
                             <span class="select-group-button">                                
                                   <select name="" id="" class="form-control" type="select">
-                                         <option value="0">1 km</option>
-                                         <option value="2">2 km</option>
-                                         <option value="deporte">3 km</option>
-                                         <option value="2">5 km</option>
-                                         <option value="deporte">10 km</option>
-                                         <option value="2">20 km</option>
-                                         <option value="deporte">30 km</option>
-                                         <option value="2">40 km</option>
-                                         <option value="deporte">+50 km</option>                           
+                                         <option><a href="">1 km</a></option>
+                                         <option><a href="">2 km</a></option>
+                                         <option><a href="">3 km</a></option>
+                                         <option><a href="">4 km</a></option>
+                                         <option><a href="">5 km</a></option>
+                                         <option><a href="">10 km</a></option>
+                                         <option><a href="">15 km</a></option>
+                                         <option><a href="">20 km</a></option>
+                                         <option><a href="">30 km</a></option>
+                                         <option><a href="">40 km</a></option>
+                                         <option><a href="">50 km</a></option>
+                                         <option><a href="">+ km</a></option>                           
                                 </select>                           
                             </span>
                         </div>
@@ -61,96 +65,75 @@
                         <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </form>
-                    <!-- Este es el titulo que va en el menu-->
                 </div>
-                <!-- Aqui se iniciara el menu-->
+                <!-- Aqui se iniciara el menu desplegable en el header-->
                 <div class="collapse navbar-collapse pull-left" id="navegacion">
-                    <ul class="nav navbar-nav pull-left">
-                        <!--<li><a href="#">Nosotros</a></li>-->
+                    <ul class="nav navbar-nav pull-left">                       
                         <li>
                             <ul class="nav navbar-nav pull-left" role="menu">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">
                                         <!-- The Profile picture inserted via div class below, with shaping provided by Bootstrap -->
-                                        <div class="img-rounded profile-img"> </div>
-                                        User Name <span class="caret"></span>
+                                        <div class="img-rounded profile-img"></div>
+                                        <!--Esa clase de booststrap hace que la foto se redimencione a modo de una foto pequeña y se adapte a el contenedor padre-->
+                                        Nombre <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="#">Settings</a>
+                                            <a href="#">Configuraciones</a>
                                         </li>
                                         <li role="separator" class="divider"></li>
                                         <li>
-                                            <a href="#">Log out</a>
+                                            <a href="#">Salir</a>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                        <!--<li><a href="#">Contacto</a></li>-->
+                    </ul>
+                    <ul class="nav navbar-nav">
+                       <li>
+                           <ul class="nav navbar-nav pull-left" role="menu">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Nosotros 
+                                    <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Seleccione una opción</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">¿Quienes somos?</a></li>
+                                        <li><a href="#">Clientes</a></li>
+                                        <li><a href="#">Usurios</a></li>
+                                    </ul>
+                                </li>
+                           </ul>
+                       </li>
                     </ul>
                     <ul class="nav navbar-nav">
                         <li>
                             <ul class="nav navbar-nav pull-left" role="menu">
-                                <!--<li><a href="#">Nosotros</a></li>-->
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Our Services 
-                        <span class="caret"></span>
-                        </a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Registro
+                                    <span class="caret"></span>
+                                    </a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Type of services</a></li>
+                                        <li><a href="#">Seleccione una opción</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a href="#">Outsourcing 1</a></li>
-                                        <li><a href="#">Outsourcing 2</a></li>
-                                        <li><a href="#">Outsourcing 3</a></li>
+                                        <li><a href="#">Ingresar como usuario</a></li>
+                                        <li><a href="#">Registrarse como usurio</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Ingresar como empresa</a></li>
                                     </ul>
                                 </li>
-                                <!--<li><a href="#">Contacto</a></li>-->
-
                             </ul>
                         </li>
                     </ul>
-
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <ul class="nav navbar-nav pull-left" role="menu">
-                                <!--<li><a href="#">Nosotros</a></li>-->
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Register 
-                        <span class="caret"></span>
-                        </a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Type of register</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">personal sing up</a></li>
-                                        <li><a href="#">personal loun up</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">company sing up</a></li>
-                                        <li><a href="#">company loun up</a></li>
-
-                                    </ul>
-                                </li>
-                                <!--<li><a href="#">Contacto</a></li>-->
-
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- El id que se agrega aqui debe de llevar el mismo nombre que se ingreso en el data-target que va en el boton que se muestra en dispositivos medianos-->
-
-                    <ul class="nav navbar-nav pull-left">
-                        <!--<li><a href="#">Nosotros</a></li>-->
-                        <li>
-                            <ul class="nav navbar-nav pull-left" role="menu">
-
-                            </ul>
-                        </li>
-                        <!--<li><a href="#">Contacto</a></li>-->
-                    </ul>
-
                 </div>
             </div>
         </nav>
     </header>
+    <!--Termina la parte del banner-->
+    <!--Inicia la parte del menú-->
     <div class="container">
         <nav class="navbar navbar-inverse">
             <div class="navbar-header">
@@ -160,6 +143,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
+            
 
             </div>
             <div class="collapse navbar-collapse js-navbar-collapse">
@@ -489,42 +473,43 @@
             <!-- /.nav-collapse -->
         </nav>
     </div>
-    <!--finish the banner-->
-    <section class="banner-section">
-    </section>
+    <!--Termina la parte del menú-->
+    <!--Inicia la parte del contenido-->
     <section class="post-content-section">
         <div class="container">
 
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 post-title-block">
 
-                    <h1 class="text-center">Information about us</h1>
+                    <h1 class="text-center">¿Quienes somos?</h1>
                     <ul class="list-inline text-center">
-                        <li>Wainer Rodriguez <Bonilla></Bonilla> |</li>
-                        <li>Shop online |</li>
+                        <li>Empresa R&B
+                            <Bonilla></Bonilla> |</li>
+                        <li>Tienda en línea |</li>
                         <li>3/07/2917</li>
                     </ul>
                 </div>
-                <div class="col-lg-8 col-md-8 col-sm-12">
-                    <p class="lead">we are a company private our pain object is meet the needs  of all the people arround the country.</p>
-                    <h3>HOW IT WORKS PAGE</h3>
-                    <p>This page done differents work for both costomers or people or campanies that sell any product or service, an example of our services are:</p>
-                    <li>Companies or people can publish your services or any object to sale</li>
-                    <li></li>
+                <div class="col-lg-8 col-md-8 col-sm-12"><!--hace que el contenedor div se adapte a las difententes pantallas    el col-lg-8 y col-md-8: Es para las pantallas pequeñas, ya la col-sm-12: Esta ya espantalla de pc -->
+                    <p class="lead">Somos una compañía nacional, con el principal objetivo satisfacer las necesidades de 
+                    todas las personas.
+                    </p>
+                    <h3>¿COMO TRABAJA ESTA PAGINA?</h3>
+                    <p>Esta página es el intermediario, funciona como un medio de comunicación entre las personas y cualquier entidad que desee vender un producto o servicio, para esto nos basamos en los tres principales puntos:</p>
+                    <li>Publicar:   Esta página podrá publicar un producto proveniente de una tienda, a una persona cualquiera, estos deberán estar registrados con sus respectivas cuentas, para verificar que sea un usuario real.<br><br> </li>
+                    <li>Ver publicaciones: Cualquier persona podrá ver los artículos publicados, pero este también tendrá una cuenta para mayor control por parte de nosotros, podrá registrarse con Facebook o Google, pero, en caso de que no tuviera una también podrá ver los anuncios, pero se le limitan las opciones. <br><br></li>
+                    <li>Enfoque: Nuestro principal enfoque es que las empresas en el área local, puedan publicar sus artículos en venta, empresas como Gollo, grupo Monge, Tiendas Arenas, 7 Estrellas, con el fin de que todos puedan ver los artículos en venta sin tener que moverse de sus hogares.<br><br></li>
                     <div class="well ">
                         <large>This is image</large>
                     </div>
-                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-                    <blockquote>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                    </blockquote>
-                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-                    <blockquote>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    <h1>¡Más información!</h1>
+                    <h3>Misión</h3>
+                    <p>La misión de nuestra empresa es la de aprovechar las tecnologias de informacion que internet pone a nuestro servicio en beneficio de nuestros clientes. Estamos ofreciendo atraves de internet beneficios importantes a nuestros clientes al ofrecer opciones para comprar productos mas economicas, mas sencillas y mas eficientes. Nuestra promesa de beneficios la fundamentamos, a través de los siguientes puntos</p>
+                    <h3>Visión</h3>
+                    <p>Nuestra empresa apuesta firmemente a la adopción e implementacion de las tecnologias modernas de informacion, que nos permiten avanzar de forma importante en la forma en la que vendemos productos en el mundo. Nosotros estamos convencidos que atraves de internet, podemos vender productos a precios mas bajos, de forma mas practica y sencilla, el cliente tiene acceso no solo a los precios de nuestros productos, sino a revisar la gran variedad de opciones que tiene a su disposicion, a comparar un producto con otro, a revisar comentarios que otros clientes han realizado sobre los mismos productos, y en general a comprar de una forma mas adecuada, optima, pensada y planeada. </p>
+                    <h3>Futuro</h3>
+                    <p>Sin olvidar que el objetivo primordial y la misión de la empresa es permitir a los consumidores nacionales acceder a ahorros importantes en sus compras online (en linea) por internet. Asimismo, en fomentar la cultura del comercio electronico por internet, como una gran opcion para comprar a precios mas bajos, de manera mas ordenada y eficiente, logrando ahorros importantes. Cada nuevo cliente que llega a Ahorranet.com, es apoyado con asesoría sobre lo que es el comercio electronico, sus ventajas, desventajas, fuerzas, debilidades y practicas de mercado mas comunes. Una gran parte del tiempo de nuestro personal de ventas y de dirección es aplicado en la capacitación de nuestros clientes para tal efecto.</p>
 
-                    </blockquote>
+                    
 
                     <div class="image-block">
                         <img src="https://static.pexels.com/photos/268455/pexels-photo-268455.jpeg" class="img-responsive">
@@ -535,44 +520,19 @@
                 </div>
                 <div class="col-lg-4  col-md-4 col-sm-12">
                     <div class="well">
-                        <h2>Subscription Box</h2>
-                        <p>Form Description Goes here</p>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-                        </div>
+                        <h2>¿Como surgió la idea ?</h2>
+                        <p>La idea surgió en el curso de desarrollo web en la Universidad Técnica Nacional, ya que debíamos buscar una idea o una necesidad y desarrollar una página como herramienta a solucionar dicho problema. </p>
                     </div>
                     <div class="well">
-                        <h2>Share love</h2>
-                        <ul class="list-inline">
-                            <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
-                            <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
-                            <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
-                            <li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
-
-                        </ul>
-                    </div>
-                    <div class="well">
-                        <h2>About Author</h2>
-                        <img src="" class="img-rounded" />
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
-                        <a href="#" class="btn btn-default">Read more</a>
-                    </div>
-                    <div class="list-group">
-                        <a class="list-group-item" href="#">
-                            <h4 class="list-group-item-heading">List group item heading</h4>
-                            <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                        </a>
-                        <a class="list-group-item" href="#">
-                            <h4 class="list-group-item-heading">List group item heading</h4>
-                            <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                        </a>
-                        <a class="list-group-item" href="#">
-                            <h4 class="list-group-item-heading">List group item heading</h4>
-                            <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                        </a>
+                       <!--well boostrap: esta clase asigna un borde a un backgraund a un contenedor-->
+                        <h2>Acerca de mí</h2>
+                        <img src="img/file.jpg" class=""/>
+                        <p>Nombre completo: Wainer Rodriguez Bonilla <br>
+                        Escule secundaria: C.T.P Los Chiles.<br>
+                        Univeridad: Universidad Técnica Nacional.<br>
+                        De: Caño Negro, Los Chiles, Alajuela
+                        </p>
+                        <a href="#" class="btn btn-default">Facebook</a>
                     </div>
                     <div class="well">
                         <div class="media">
@@ -604,7 +564,7 @@
         </div>
         <!-- /container -->
     </section>
-    <!--finish the main-->
+    <!--Termina la -->
     <footer id="footer-Section">
         <div class="footer-top-layout">
             <div class="container">
@@ -619,27 +579,27 @@
                             <div class="footer-col-item">
                                 <h4>local addres</h4>
                                 <address>
-              Barrio Maracana, San Carlos<br>
-              Quesado 200m sur regional, 
-              </address>
+                                        Barrio Maracana, San Carlos<br>
+                                        Quesado 200m sur regional, 
+                                </address>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="footer-col-item">
                                 <h4>local addres</h4>
                                 <address>
-              Barrio Maracana, San Carlos<br>
-              Quesado 200m sur regional, 
-              </address>
+                                         Barrio Maracana, San Carlos<br>
+                                         Quesado 200m sur regional, 
+                                </address>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="footer-col-item">
                                 <h4>local addres</h4>
                                 <address>
-              Barrio Maracana, San Carlos<br>
-              Quesado 200m sur regional, 
-              </address>
+                                        Barrio Maracana, San Carlos<br>
+                                        Quesado 200m sur regional, 
+                                </address>
                             </div>
                         </div>
                     </div>
@@ -657,9 +617,7 @@
             <div class="copyright-tag">create by Wainer Rodríguez Bonilla.</div>
         </div>
     </footer>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
-
 </html>
