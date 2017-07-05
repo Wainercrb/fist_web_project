@@ -1,51 +1,48 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
-body,
-html {
-    height: 100%;
-    background-repeat: no-repeat;
-    background-color: #d3d3d3;
-    font-family: 'Oxygen', sans-serif;
+body {
+    /*font-family: 'Open Sans', 'sans-serif';*/
+    font-family: 'Arial';
 }
 
 #brand-image {
-    /**Dimensiones del logo del banner**/
     margin-bottom: 0px;
     margin-top: 0px;
     max-height: 50px;
 }
-/**. navbar es el contenedor del banner**/
+
 .navbar {
     position: relative;
     min-height: 30px;
     margin-bottom: 20px;
+    border: 1px solid transparent;
     border-image-source: initial;
     border-image-slice: initial;
     border-image-width: initial;
     border-image-outset: initial;
     border-image-repeat: initial;
-    border-bottom: 1px solid #585858;
+    border: 1px solid;
+    border-radius: 0px;
+    background-color: #FFFF;
+    border-color: #D8D8D8 !important;
 }
 
-/**Menú de las categorías**/
 .navbar-inverse {
-    border: 1px solid #585858;
+    border: 1px solid;
+    border-radius: 0px;
     margin-top: 0px;
     background-color: #58FAF4;
-   
+    border-color: #D8D8D8 !important;
 }
 
 .navbar-nav>li>a {
     padding-top: 10px!important;
     padding-bottom: 10px!important;
-    /**Estos padding elimina el espacio del menú entre entre las letras y los bordes del menú, elimina el heigth**/
     line-height: 20px;
 }
 
 .navbar-inverse .navbar-nav>.open>a {
-    /**background es el color del tab del menú**/
     background: linear-gradient(to top, #58FAF4, #F2F500);
-    /**color del tab del men**/
+    /**color of the tittle**/
     color: #003896;
 }
 
@@ -126,13 +123,12 @@ html {
     border: 1px solid #ddd;
 }
 
-/**Edita las dimensiones de la foto de usuario**/
 .profile-img {
     margin-top: -5px;
     margin-right: 5px;
     float: left;
     background: url(/img/file.jpg) 50% 50% no-repeat;
-    /* 50% 50% centra la imagen */
+    /* 50% 50% centers image in div */
     background-size: auto 100%;
     /* Interchange this value depending on prefering width vs. height */
     width: 30px;
@@ -142,89 +138,103 @@ html {
 #profile {
     margin-left: 5%;
 }
-/**Finaliza el menu**/
-.components{
-    text-align: center;
+/**Termina el banner**/
+/**Inicia la parte del diseño del contenido**/
+body,
+html {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-color: #d3d3d3;
+    font-family: 'Oxygen', sans-serif;
 }
-.main{
-    background-color: #fff;
-    margin-top: 100px;
-    border-radius: 4px;
-    border: 1px solid #585858;
 
+.main {
+    margin-top: 0px;
 }
-#conte{
-   background-color:#FFF;
-   margin-right: 10px;
-    margin-left:10px;
-    margin-bottom: 10px;
+
+h1.title {
+    font-size: 50px;
+    font-family: 'Passion One', cursive;
+    font-weight: 400;
+}
+
+hr {
+    width: 10%;
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
+
+.main-login {
+    background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.main-center {
     margin-top: 10px;
- 
-   
-    
-}
- .main {
-    max-width: 320px;
     margin: 0 auto;
-    
-  }
-  .login-or {
-    position: relative;
-    font-size: 18px;
-    color: #aaa;
-    margin-top: 10px;
-            margin-bottom: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  .span-or {
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: -2px;
-    margin-left: -25px;
-    background-color: #fff;
-    width: 50px;
-    text-align: center;
-  }
-  .hr-or {
-    
-    height: 1px;
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
-  }
-  h3 {
-    text-align: center;
-    line-height: 300%;
-  }
-#login-conteint{
-    margin-top: 15px;
-    margin-bottom: 10px;
-    
+    max-width: 330px;
+    padding: 4px 40px;
 }
 
-/**Finaliza el contenido**/
-/**Inica el pie de página**/
-/*footer*/
-.footer-bottom-layout {
-    background: #222222 none repeat scroll 0 0;
-    padding: 20px 0;
+.save-button {
+    margin-top: 5px;
+}
+
+#tittle-form {
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+#product {
+    margin-top: 0px;
     text-align: center;
 }
 
-.socialMedia-footer {
-    margin-bottom: 20px;
+#select-form {
+    border: 1px solid;
+    border-radius: 3px;
+    background-color: #FFFF;
+    border-color: #D8D8D8 !important;
+    width: 280px;
 }
 
-.socialMedia-footer>a {
-    display: inline-block;
-    margin: 0 8px;
+#input-form {
+    border: 1px solid;
+    border-radius: 3px;
+    background-color: #FFFF;
+    border-color: #D8D8D8 !important;
+    width: 280px;
 }
 
-.footer-bottom-layout {
-    text-align: center;
+#text-area {
+    border: 1px solid;
+    border-radius: 3px;
+    background-color: #FFFF;
+    border-color: #D8D8D8 !important;
+    width: 280px;
 }
-
+/**Termina la parte del contenido**/
+/*Inicia la parte del pie de página"footer"*/
 .footer-top-layout {
     margin-top: 40px;
     background: #FFF none repeat scroll 0 0;
@@ -264,7 +274,11 @@ html {
     position: relative;
 }
 
-
+body {
+    color: #666666;
+    font-family: "Open Sans", sans-serif;
+    line-height: 24px;
+}
 
 .footer-top-layout [class*="col-sm-"]:first-child {
     padding: 0;
@@ -293,8 +307,13 @@ address {
 
 .footer-top-layout {
     color: #070B19;
-    border-top: 1px solid #585858;
 }
+
+body {
+    color: #666666;
+    font-family: "Open Sans", sans-serif;
+}
+
 .footer-top-layout h4 {
     color: #ffffff;
     font-size: 18px;
@@ -318,6 +337,12 @@ h6 {
     font-weight: 500;
     line-height: 1.1;
     margin-top: 0;
+}
+
+body {
+    color: #666666;
+    font-family: "Open Sans", sans-serif;
+    line-height: 24px;
 }
 
 .footer-col-item .item-contact a {
@@ -345,4 +370,56 @@ h6 {
     color: #070B19;
     font-size: 18px;
     margin-bottom: 21px;
+}
+
+.signUpNewsletter {
+    position: relative;
+}
+
+.signUpNewsletter .gt-email {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #666666;
+    border-radius: 0;
+    color: #070B19;
+    height: 52px;
+}
+
+.signUpNewsletter .btn-go {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-color: #666666;
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    bottom: 0;
+    color: #070B19;
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    top: 0;
+    width: 52px;
+}
+
+.footer-bottom-layout {
+    background: #222222 none repeat scroll 0 0;
+    padding: 20px 0;
+    text-align: center;
+}
+
+body {
+    color: #666666;
+    font-family: "Open Sans", sans-serif;
+    line-height: 24px;
+}
+
+.socialMedia-footer {
+    margin-bottom: 20px;
+}
+
+.socialMedia-footer>a {
+    display: inline-block;
+    margin: 0 8px;
+}
+
+.footer-bottom-layout {
+    text-align: center;
 }
