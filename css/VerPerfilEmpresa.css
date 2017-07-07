@@ -1,5 +1,4 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
 body,
 html {
     height: 100%;
@@ -14,7 +13,10 @@ html {
     margin-top: 0px;
     max-height: 50px;
 }
+
+
 /**. navbar es el contenedor del banner**/
+
 .navbar {
     position: relative;
     min-height: 30px;
@@ -24,17 +26,17 @@ html {
     border-image-width: initial;
     border-image-outset: initial;
     border-image-repeat: initial;
- 
 }
 
+
 /**Menú de las categorías**/
+
 .navbar-inverse {
     border: 1px solid;
     border-radius: 0px;
     border-color: #D8D8D8 !important;
     margin-top: 0px;
     background-color: #58FAF4;
-   
 }
 
 .navbar-nav>li>a {
@@ -128,7 +130,9 @@ html {
     border: 1px solid #ddd;
 }
 
+
 /**Edita las dimensiones de la foto de usuario**/
+
 .profile-img {
     margin-top: -5px;
     margin-right: 5px;
@@ -144,15 +148,39 @@ html {
 #profile {
     margin-left: 5%;
 }
+
 /**Termina el banner**/
 /**Inicia la parte del diseño del contenido**/
-.btn-product{
-    width: 60px;
-    margin-right: auto;
-    margin-left: auto;
+#login-conteint{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    
 }
+
+
+
+
+.main-login {
+    background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.main-center {
+    margin-top: 10px;
+    margin: 0 auto;
+    max-width: 330px;
+    padding: 4px 40px;
+}
+
 /**Termina la parte del contenido**/
 /*Inicia la parte del pie de página"footer"*/
+
 .footer-bottom-layout {
     background: #222222 none repeat scroll 0 0;
     padding: 20px 0;
@@ -211,8 +239,6 @@ html {
     position: relative;
 }
 
-
-
 .footer-top-layout [class*="col-sm-"]:first-child {
     padding: 0;
 }
@@ -242,6 +268,7 @@ address {
     color: #070B19;
     border-top: 1px solid #585858;
 }
+
 .footer-top-layout h4 {
     color: #ffffff;
     font-size: 18px;

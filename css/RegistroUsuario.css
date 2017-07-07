@@ -146,6 +146,11 @@ html {
 }
 /**Termina el banner**/
 /**Inicia la parte del diseño del contenido**/
+.img-circle{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
 
 #login-conteint{
     margin-top: 15px;

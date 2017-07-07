@@ -3,12 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Registro usuario</title>
+    <title>Mi perfil</title>
     <meta name="viewport" content="widt=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/RegistroUsuario.css">
+    <link rel="stylesheet" type="text/css" href="css/VerPerfil.css">
     <link rel="stylesheet" href="js/code.js">
 </head>
+
 <body>
     <!--Inicia la parte del banner-->
     <header>
@@ -68,7 +69,7 @@
                 </div>
                 <!-- Aqui se iniciara el menu desplegable en el header-->
                 <div class="collapse navbar-collapse pull-left" id="navegacion">
-                    <ul class="nav navbar-nav pull-left">                       
+                    <ul class="nav navbar-nav pull-left">
                         <li>
                             <ul class="nav navbar-nav pull-left" role="menu">
                                 <li class="dropdown">
@@ -92,8 +93,8 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav">
-                       <li>
-                           <ul class="nav navbar-nav pull-left" role="menu">
+                        <li>
+                            <ul class="nav navbar-nav pull-left" role="menu">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Nosotros 
                                     <span class="caret"></span>
@@ -106,8 +107,8 @@
                                         <li><a href="#">Usurios</a></li>
                                     </ul>
                                 </li>
-                           </ul>
-                       </li>
+                            </ul>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav">
                         <li>
@@ -137,12 +138,14 @@
     <div class="container">
         <nav class="navbar navbar-inverse">
             <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
 			<span class="sr-only">Toggle navigation</span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
-		    </button>
+		</button>
+
+
             </div>
             <div class="collapse navbar-collapse js-navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -214,7 +217,7 @@
                             <li class="col-sm-3">
                                 <ul>
                                     <li class="dropdown-header">Medias</li>
-                                     <li><a href="#">Medias para hombres</a></li>
+                                    <li><a href="#">Medias para hombres</a></li>
                                     <li><a href="#">Medias para mujeres</a></li>
                                     <li><a href="#">Medias para niños</a></li>
                                     <li><a href="#">Medias para niñas</a></li>
@@ -463,7 +466,7 @@
                                         <!-- End Carousel Inner -->
                                         <!-- Controls -->
                                         <a class="left carousel-control" href="#womenCollection" role="button" data-slide="prev">
-                                           <!--carusel, muestra las imagenes en forma de diapositivas-->
+                                            <!--carusel, muestra las imagenes en forma de diapositivas-->
                                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                                             <span class="sr-only">Previous</span>
                                         </a>
@@ -492,71 +495,49 @@
     </div>
     <!--Termina la parte del menú-->
     <!--Inicia la parte del contenido-->
-     <div class="container" id="login-conteint">
+    <div class="container" id="login-conteint">
         <div class="row main">
             <div class="main-login main-center">
-                <h2 id="product">USUARIO</h2>
-                <form class="form-horizontal" method="post" action="#">
-                    <div class="form-group">
-	                   <div class="cols-sm-10">
-                           <div class="profile-header-container">   
-    		                  <div class="profile-header-img">
-                                    <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
-                              </div>
-                          </div> 
-	                   </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="cols-sm-2 control-label">Nombre</label>
-                    <div class="cols-sm-10">
-                            <div class="input-group">
-                                <input id="input-form" type="text" class="form-control" name="name" id="txt" placeholder="Ingrese su nombre"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="cols-sm-2 control-label">Teléfono 1°</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <input id="input-form" type="text" class="form-control" placeholder="Ingrese su primer teléfono"/>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="form-group">
-                        <label  class="cols-sm-2 control-label">Teléfono 2°</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <input id="input-form" type="text" class="form-control" placeholder="Ingrese su segundo teléfono"/>
-                            </div>
-                        </div>
-                    </div>
-                   <div class="form-group">
-                        <label  class="cols-sm-2 control-label">Email</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <input id="input-form" type="text" class="form-control" placeholder="Ingrese su emil"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="cols-sm-2 control-label">Dirección</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <input id="input-form" type="text" class="form-control" placeholder="Ingrese el teléfono  #2"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button type="button" class="btn btn-primary btn-lg btn-block save-button">Guardar</button>
-                    </div>
-                </form>
-            </div>
+                <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+                <table class="table">
+                <tbody>
+                <tr>
+                <td>Nombre</td>
+                <td>Aja</td>
+                </tr>
+                <tr>
+                <td>Apellido Paterno</td>
+                <td>Apellido</td>
+                </tr>
+                 <tr>
+                <td>Apellido Materno</td>
+                <td>Apellido</td>
+                </tr>
+                 <tr>
+                <td>Usuario</td>
+                <td>Usuario</td>
+                </tr>
+                 <tr>
+                <td>Contraseña</td>
+                <td>Apellido</td>
+                </tr>
+                 <tr>
+                <td>Dirección</td>
+                <td>Apellido</td>
+                </tr>
+                 <tr>
+                <td>Apellido Paterno</td>
+                <td><img src="/img/file.jpg" alt=""></td>
+                </tr>
+                </tbody>
+                </table>
+            </div>          
         </div>
-    </div>
+     </div> 
     <!--Termina la parte del contenido -->
     <!--Inicia la parte del pie de página-->
     <footer id="footer-Section">
-       <!--footer es la etiqueta que indica el pie de página-->
+        <!--footer es la etiqueta que indica el pie de página-->
         <div class="footer-top-layout">
             <div class="container">
                 <div class="row">
@@ -611,4 +592,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>
