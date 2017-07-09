@@ -151,31 +151,108 @@ html {
 
 /**Termina el banner**/
 /**Inicia la parte del diseño del contenido**/
-#login-conteint{
-    margin-top: 15px;
-    margin-bottom: 10px;
+.midiv {
+    word-wrap: break-word;
+    width: auto;
+     border: 1px solid #585858;
+}
+.midiv-gallery{
+    word-wrap: break-word;
+    width: auto;
+     border: 1px solid #585858;
+    background-color: #fff;
+}
+#div-main-border{
+      border: 1px solid #585858;
+    background-color: #fff;
+}
+
+.card {
+    -moz-box-shadow: 0 0 2px #fff;
+    -webkit-box-shadow: 0 0 2px#fff;
+    box-shadow: 0 0 2px #fff;
+}
+
+.card img {
+     border: 1px solid #585858;
+    width: 80px;
+    height: 80px;
+    margin-top: 30px;
+}
+
+.nav-tabs>li>a {
+    border: none;
+}
+/* carousel */
+.media-carousel 
+{
+  margin-bottom: 0;
+  padding: 10px 60px 0px 25px;
+  margin-top: 10px;
+    margin-right: 0px;
+    margin-left: 0px;
+
     
 }
-
-
-
-
-.main-login {
-    background-color: #fff;
-    /* shadows and rounded borders */
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+/* Previous button  */
+.media-carousel .carousel-control.left 
+{
+  left: -12px;
+  background-image: none;
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #FFFFFF;
+  border-radius: 23px 23px 23px 23px;
+  height: 40px;
+  width : 40px;
+  margin-top: 80px;
+     
+}
+/* Next button  */
+.media-carousel .carousel-control.right 
+{
+  right: -12px !important;
+  background-image: none;
+  background: none repeat scroll 0 0 #222222;
+  border: 4px solid #FFFFFF;
+  border-radius: 23px 23px 23px 23px;
+  height: 40px;
+  width : 40px;
+  margin-top: 80px;
+   
+      
+}
+/* Changes the position of the indicators */
+.media-carousel .carousel-indicators 
+{
+  right: 50%;
+  top: auto;
+  bottom: 0px;
+  margin-right: -19px;
+   
+}
+/* Changes the colour of the indicators */
+.media-carousel .carousel-indicators li 
+{
+  background: #c0c0c0;
+     
+}
+.media-carousel .carousel-indicators .active 
+{
+  background: #333333;
+    
+}
+/**Tamaño de la imagen de la galeria**/
+.media-carousel img
+{
+     
+  width: 180px;
+  height: 100px;
 }
 
-.main-center {
-    margin-top: 10px;
-    margin: 0 auto;
-    max-width: 330px;
-    padding: 4px 40px;
+.carousel-inner{
+   margin-bottom: 0px;
+    margin-left: 15px;
+    
 }
 
 /**Termina la parte del contenido**/

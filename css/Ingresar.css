@@ -8,8 +8,8 @@ html {
     font-family: 'Oxygen', sans-serif;
 }
 
-#brand-image {
     /**Dimensiones del logo del banner**/
+#brand-image {
     margin-bottom: 0px;
     margin-top: 0px;
     max-height: 50px;
@@ -18,12 +18,7 @@ html {
 .navbar {
     position: relative;
     min-height: 30px;
-    margin-bottom: 20px;
-    border-image-source: initial;
-    border-image-slice: initial;
-    border-image-width: initial;
-    border-image-outset: initial;
-    border-image-repeat: initial;
+    margin-bottom: 20px; 
     border-bottom: 1px solid #A4A4A4;
 }
 
@@ -35,15 +30,15 @@ html {
    
 }
 
+    /**Estos padding elimina el espacio del menú entre entre las letras y los bordes del menú, elimina el heigth**/
 .navbar-nav>li>a {
     padding-top: 10px!important;
     padding-bottom: 10px!important;
-    /**Estos padding elimina el espacio del menú entre entre las letras y los bordes del menú, elimina el heigth**/
     line-height: 20px;
 }
 
 .navbar-inverse .navbar-nav>.open>a {
-    /**background es el color del tab del menú**/
+    /**background es el color del tab del menú de categorias**/
     background: linear-gradient(to top, #58FAF4, #F2F500);
     /**color del tab del men**/
     color: #003896;
@@ -51,7 +46,7 @@ html {
 
 .navbar-inverse .navbar-nav>li>a {
     color: #190707;
-    /**inverse of the title**/
+    /**color inverso del titulo**/
     font-size: 14px;
     text-transform: uppercase;
 }
@@ -239,6 +234,7 @@ html {
 }
 
 .footer-top-layout {
+       border-top: 1px solid #A4A4A4;
     margin-top: 40px;
     background: #FFF none repeat scroll 0 0;
     color: #ffffff;
