@@ -179,7 +179,12 @@ html {
 .nav-tabs>li>a {
     border: none;
 }
-
+.center-block {
+   
+    width:100%; left:0;
+    text-align:center;
+    margin:auto;
+}
 
 /**Termina la parte del contenido**/
 

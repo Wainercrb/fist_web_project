@@ -183,6 +183,12 @@ html {
 .nav-tabs>li>a {
     border: none;
 }
+.center-block {
+   
+    width:100%; left:0;
+    text-align:center;
+    margin:auto;
+}
 /* carousel */
 .media-carousel 
 {
@@ -191,8 +197,6 @@ html {
   margin-top: 10px;
     margin-right: 0px;
     margin-left: 0px;
-
-    
 }
 /* Previous button  */
 .media-carousel .carousel-control.left 
@@ -204,8 +208,7 @@ html {
   border-radius: 23px 23px 23px 23px;
   height: 40px;
   width : 40px;
-  margin-top: 80px;
-     
+  margin-top: 140px;
 }
 /* Next button  */
 .media-carousel .carousel-control.right 
@@ -217,44 +220,38 @@ html {
   border-radius: 23px 23px 23px 23px;
   height: 40px;
   width : 40px;
-  margin-top: 80px;
-   
+  margin-top: 140px;
       
 }
 /* Changes the position of the indicators */
 .media-carousel .carousel-indicators 
 {
-  right: 50%;
+  right: 500%;
   top: auto;
   bottom: 0px;
   margin-right: -19px;
-   
 }
 /* Changes the colour of the indicators */
 .media-carousel .carousel-indicators li 
 {
   background: #c0c0c0;
-     
 }
 .media-carousel .carousel-indicators .active 
 {
   background: #333333;
-    
 }
 /**Tamaño de la imagen de la galeria**/
 .media-carousel img
 {
-     
-  width: 180px;
-  height: 100px;
+  width: 200px;
+  height: 150px;
+    margin-bottom: 35px;
 }
 
 .carousel-inner{
    margin-bottom: 0px;
     margin-left: 15px;
-    
 }
-
 /**Termina la parte del contenido**/
 /*Inicia la parte del pie de página"footer"*/
 
