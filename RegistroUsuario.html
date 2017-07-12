@@ -680,16 +680,20 @@
     <div class="container" id="login-conteint">
         <div class="row main">
             <div class="main-login" id="conte">
-                <h3>Registrarse con</h3>
+                <h3 id="title-form">Registrarse con:</h3>
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <a href="/RegistroPersonal.html" class="btn btn-lg btn-primary btn-block">Facebook</a>
+                       <button type="submit" class=" btn btn-primary center-block" id="btn-ingresar"> 
+                        <a href="/RegistroPersonal.html"><img src="/img/facebook%20(2).png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64"></a>
+                        </button>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <a href="/RegistroEmpresa.html" class="btn btn-lg btn-primary btn-block">Google</a>
+                       <button type="submit" class=" btn btn-primary center-block" id="btn-ingresar">  <a href="/RegistroEmpresa.html" ><img src="/img/google-plus%20(1).png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64"></a>
+                       </button>
+
                     </div>
-                      <h3>Paso a paso</h3>
                 </div>
+                      <h3 id="title-form">Paso a paso</h3>
                 <form role="form">
                     <div class="form-group center-block" id="midiv">
                         <div class="group center-block">
@@ -762,7 +766,7 @@
                         </div>
                          <div class="form-group">
                     <div>
-		               <input id="searchInput" class="controls" type="text" placeholder=Ubiacación>
+		                    <input id="searchInput" class="controls" type="text" placeholder=Ubiacación>
                             <div id="map"></div>
                             <ul id="geoData" class="list-group">
                             <li class="list-group-item">Direccion completa: <span id="location" ></span></li>
