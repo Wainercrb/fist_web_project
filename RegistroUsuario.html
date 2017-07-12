@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/RegistroUsuario.css">
     <link rel="stylesheet" href="js/code.js">
+     <script type="text/javascript" src="js/VerPerfilEmpresa.js"></script>
 </head>
 <body>
     <!--Inicia la parte del banner-->
@@ -501,7 +502,7 @@
 	                   <div class="cols-sm-10">
                            <div class="profile-header-container">   
     		                  <div class="profile-header-img">
-                                    <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+                                    <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle">
                               </div>
                           </div> 
 	                   </div>
@@ -541,9 +542,20 @@
                     <div class="form-group">
                         <label  class="cols-sm-2 control-label">Dirección</label>
                         <div class="cols-sm-10">
-                            <div class="input-group">
-                                <input id="input-form" type="text" class="form-control" placeholder="Ingrese el teléfono  #2"/>
-                            </div>
+                                             <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
+         
+	<div class="row">
+		<input id="searchInput" class="controls" type="text" placeholder=Ubiacación>
+            <div id="map"></div>
+            <ul id="geoData" class="list-group">
+                <li class="list-group-item">Direccion completa: <span id="location" ></span></li>
+                <li class="list-group-item">Codigo postal: <span id="postal_code"></span></li>
+                <li class="list-group-item">País: <span id="country"></span></li>
+                <li class="list-group-item">Latitud: <span id="lat"></span></li>
+                <li class="list-group-item">Longitud: <span id="lon"></span></li>
+                
+            </ul>
+	</div>
                         </div>
                     </div>
                     <div class="form-group">
