@@ -321,18 +321,24 @@ h3
     margin-bottom: 10px;
     
 }
+/*form del combo de categorias*/
 #select-category-form{
     margin-bottom: 10%;
     
     
 }
+/*label del combo de categoria*/
 #select-cb{
       color:#999; 
       font-size:18px;
 }
+/*Opciones dentro del combo*/
 #option-select{
-     color:aqua; 
-      font-size:14px;
+     color:#999; 
+      font-size:16px;
+}
+.main-title{
+    margin-bottom: 10%;
 }
 /*Diseño del boton*/
 #btn-ingresar

@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/NuevoProducto.css">
     <link rel="stylesheet" href="js/code.js">
 </head>
+
 <body>
     <!--Inicia la parte del banner-->
     <header>
@@ -678,7 +679,7 @@
     <div class="container" id="login-conteint">
         <div class="row main">
             <div class="main-login" id="conte">
-                <h3>NUEVO PRODUCTO</h3>
+                <h3 class="main-title">NUEVO PRODUCTO</h3>
                 <form role="form">
                     <div class="form-group center-block" id="midiv">
                         <div class="group center-block">
@@ -700,7 +701,7 @@
                             <label>Marca</label>
                         </div>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <div class="group">
                             <input type="number" required/>
                             <span class="highlight"></span>
@@ -710,7 +711,7 @@
                             <label>Precio</label>
                         </div>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <div class="group">
                             <input type="number" required/>
                             <span class="highlight"></span>
@@ -720,22 +721,32 @@
                             <label>Cantidad</label>
                         </div>
                     </div>
-                     <div class="form-group" id="select-category-form">
-                            <span id="select-cb">Categoría</span>
-                            <span class="select-group-button">                                
+                    <div class="form-group" id="select-category-form">
+                        <span id="select-cb">Categoría</span>
+                        <span class="select-group-button">                                
                                   <select  id="radius" class="form-control" type="select">
                                          <option id="option-select" value="">Todas</option>
-                                         <option value="">Electrónica</option>
-                                         <option value="">Casa</option>
-                                         <option value="">Electrodomesticos</option>
-                                         <option value="">jardin</option>
-                                         <option value="">Hobbit</option>
-                                         <option value="">Mascotas</option>
-                                         <option value="">Comida</option>
-                                         <option value="">Deportes</option>   
-                                          <option value="">Otro</option>                            
+                                         <option id="option-select" value="">Electrónica</option>
+                                         <option id="option-select" value="">Casa</option>
+                                         <option id="option-select" value="">Electrodomesticos</option>
+                                         <option id="option-select" value="">jardin</option>
+                                         <option id="option-select" value="">Hobbit</option>
+                                         <option id="option-select" value="">Mascotas</option>
+                                         <option id="option-select" value="">Comida</option>
+                                         <option id="option-select" value="">Deportes</option>   
+                                         <option id="option-select" value="">Otro</option>                            
                                  </select>               
-                            </span>
+                         </span>
+                    </div>
+                    <div class="form-group" id="select-category-form">
+                        <span id="select-cb">Sub-categoría</span>
+                        <span class="select-group-button">                                
+                                  <select  id="radius" class="form-control" type="select">
+                                         <option id="option-select" value="">Rapa para niños</option>
+                                         <option id="option-select" value="">Calzodo</option>
+                                         <option id="option-select" value="">jugos play4</option>
+                                 </select>               
+                        </span>
                     </div>
                     <div class="form-group">
                         <div class="group">
