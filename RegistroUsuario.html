@@ -7,11 +7,11 @@
     <meta name="viewport" content="widt=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/RegistroUsuario.css">
-    <script type="text/javascript" src="js/VerPerfilEmpresa.js"></script>
+    <script type="text/javascript" src="js/RegistroUsuario.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
 </head>
 <body>
-    <!--Inicia la parte del banner-->
+ <!--Inicia la parte del banner-->
     <header>
         <!-- Aca se agrega un nav para poder crear el menu de navegacion de la pagina-->
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar-header">
@@ -28,10 +28,9 @@
                     </button>
                     <!--a = icono del banner-->
                     <a class="navbar-header" href="index4.html"><img id="brand-image" src="img/logo.jpg"></a>
-
                     <form action="" class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Buscar" size="25" id="radius">
+                            <input type="text" class="form-control" placeholder="Buscar" size="42" id="radius">
                             <span>Categoría</span>
                             <span class="select-group-button">                                
                                   <select  id="radius" class="form-control" type="select">
@@ -68,7 +67,7 @@
                         <!--boton de buscar-->
                         <button type="submit" class="btn btn-primary">
                         <!--Etiqueta que agrega una imagen al boton-->
-                        <span class="glyphicon glyphicon-search"></span>
+                        <span class="glyphicon glyphicon-search"><a href="/BuscarArticulo.html"></a></span>
                         </button>
                     </form>
                 </div>
@@ -87,8 +86,16 @@
                                     </a>
                                     <!--Luego los ul que seran las opciones del perfil de cada perna-->
                                     <ul class="dropdown-menu">
+                                         <li>
+                                            <a href="VerPerfil.html">Mi perfil</a>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
                                         <li>
-                                            <a href="/EditarPerfil.html">Configuraciones</a>
+                                            <a href="/VerPerfilEmpresa.html">Perfil empresa</a>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li>
+                                            <a href="/NuevoProducto.html">Nuevo produto</a>
                                         </li>
                                         <li role="separator" class="divider"></li>
                                         <li>
@@ -112,7 +119,7 @@
                                         <li><a>Seleccione una opción</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="/Nosotros.html">¿Quienes somos?</a></li>
-                                        <li><a href="#">Ustedes</a></li>
+                                        <li><a href="/TiposPerfil.html">Ustedes</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -146,15 +153,17 @@
     </header>
     <!--Termina la parte del banner-->
     <!--Inicia la parte del menú-->
+    <!--sub-banner del menu de gategorias-->
     <div class="container">
         <nav class="navbar navbar-inverse">
             <div class="navbar-header">
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
+			            <span class="sr-only">Toggle navigation</span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
 		       </button>
+           <!--Contenedor que guarda las diferentes opciones del menu-->
             </div>
             <div class="collapse navbar-collapse js-navbar-collapse ">
                 <ul class="nav navbar-nav">
@@ -170,23 +179,32 @@
                                             <div class="item active">
                                                 <a href="#"><img src="https://4.bp.blogspot.com/-DF0_xCxLP8Y/WBBeUyE3TqI/AAAAAAAANCI/GoWjLtqeAqUOao4L1iCeSuQnnMlXRyZswCLcB/s640/BEBE-VARON-ROPA-INFANTIL.jpg" class="img-responsive" alt="product 1"></a>
                                                 <h4><small>Ropa para niños:</small></h4>
-                                                <button class="btn btn-primary" type="button">₡10,000.00</button> <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382</button>
+                                                <button class="btn btn-primary" type="button">₡10,000.00
+                                                </button> 
+                                                <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
+                                                </button>
                                             </div>
                                             <!--Muesta la segunda imagen de la galeria con toda la información-->
                                             <div class="item">
                                                 <a href="#"><img src="http://www.modamarcas.com/wp-content/uploads/sites/7/2010/07/ropa-benetton-adultos.jpeg" class="img-responsive" alt="product 2"></a>
                                                 <h4><small>Ropa para adultos</small></h4>
-                                                <button class="btn btn-primary" type="button">₡5,000.00 </button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphonet"></span>61250382</button>
+                                                <button class="btn btn-primary" type="button">₡5,000.00 
+                                                </button> 
+                                                <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphonet"></span>61250382
+                                                </button>
                                             </div>
                                             <!--Muesta la tercera imagen de la galeria con toda la información-->
                                             <div class="item">
                                                 <a href="#"><img src="http://meridia.mx/wp-content/uploads/2015/02/ropaasdultosmayores.jpg" class="img-responsive" alt="product 3"></a>
                                                 <h4><small>Ropa para adultos mayores</small></h4>
-                                                <button class="btn btn-primary" type="button">₡20,000.00</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span>61250382</button>
+                                                <button class="btn btn-primary" type="button">₡20,000.00
+                                                </button> 
+                                                <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span>61250382
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- /.carousel -->
+                                     <!--Muestra una linea divisora-->
                                     <li class="divider"></li>
                                     <!--lleva a la tienda con la infomación de la galeria-->
                                     <li><a href="#">Más información<span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
@@ -299,23 +317,32 @@
                                                     <!--primara imagen de la galeria de fotos de electronica-->
                                                     <a href="#"><img src="http://img1.meristation.as.com/files/imagenes/general/playstation-5-ps5-console-sony-rumeurs-prix.jpg" class="img-responsive" alt="product 1"></a>
                                                     <h4><small>Play 5</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡10,000.00</button> <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡10,000.00
+                                                    </button> 
+                                                    <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
+                                                    </button>
                                                 </div>
                                                 <!--segunda imagen de la galeria de fotos de electronica-->
                                                 <div class="item">
                                                     <a href="#"><img src="http://cdn.images.dailystar.co.uk/dynamic/184/photos/106000/Xbox-360-Console-497106.jpg" class="img-responsive" alt="product 2"></a>
                                                     <h4><small>Xbox</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡20,000.00</button> <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡20,000.00
+                                                    </button> 
+                                                    <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
+                                                    </button>
                                                 </div>
                                                 <!--tercera imagen de la galeria de fotos de electronica-->
                                                 <div class="item">
                                                     <a href="#"><img src="https://fthmb.tqn.com/vPThtvnPxir7fahvXXW3GpCLHNo=/1280x960/filters:no_upscale():fill(FFCC00,1)/about/wii-game-console-56a6ac7d3df78cf7728fa8b9.jpg" class="img-responsive" alt="product 3"></a>
                                                     <h4><small>Wii</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡15,000.00</button><button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡15,000.00
+                                                    </button>
+                                                    <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
+                                                    </button>
                                                 </div>
-
                                             </div>
                                         </div>
+                                        <!--muestra una pequeña linea para dividir-->
                                         <li class="divider"></li>
                                         <!--lleva a la infación de la tienda de esos productos-->
                                         <li><a href="#">Más informacion <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
@@ -324,9 +351,8 @@
                             </ul>
                         </li>
                     </ul>
-                    <!--Tercer tab-->
-
-                    <ul class="nav navbar-nav">
+                    <!--Tercer tab del menú-->
+                   <ul class="nav navbar-nav">
                         <li class="dropdown mega-dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Moda<span class="caret"></span></a>
                             <ul class="dropdown-menu mega-dropdown-menu">
@@ -339,23 +365,32 @@
                                                 <div class="item active">
                                                     <a href="#"><img src="https://4.bp.blogspot.com/-DF0_xCxLP8Y/WBBeUyE3TqI/AAAAAAAANCI/GoWjLtqeAqUOao4L1iCeSuQnnMlXRyZswCLcB/s640/BEBE-VARON-ROPA-INFANTIL.jpg" class="img-responsive" alt="product 1"></a>
                                                     <h4><small>Ropa para niños:</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡10,000.00</button> <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡10,000.00
+                                                    </button> 
+                                                    <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
+                                                    </button>
                                                 </div>
                                                 <!--Muesta la segunda imagen de la galeria con toda la información-->
                                                 <div class="item">
                                                     <a href="#"><img src="http://www.modamarcas.com/wp-content/uploads/sites/7/2010/07/ropa-benetton-adultos.jpeg" class="img-responsive" alt="product 2"></a>
                                                     <h4><small>Ropa para adultos</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡5,000.00 </button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphonet"></span>61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡5,000.00 
+                                                    </button> 
+                                                    <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphonet"></span>61250382
+                                                    </button>
                                                 </div>
                                                 <!--Muesta la tercera imagen de la galeria con toda la información-->
                                                 <div class="item">
                                                     <a href="#"><img src="http://meridia.mx/wp-content/uploads/2015/02/ropaasdultosmayores.jpg" class="img-responsive" alt="product 3"></a>
                                                     <h4><small>Ropa para adultos mayores</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡20,000.00</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span>61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡20,000.00
+                                                    </button> 
+                                                    <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span>61250382
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- /.carousel -->
+                                        <!-- Muestra una quequeña linea divisora -->
                                         <li class="divider"></li>
                                         <!--lleva a la tienda con la infomación de la galeria-->
                                         <li><a href="#">Más información<span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
@@ -469,23 +504,33 @@
                                                     <!--primara imagen de la galeria de fotos de electronica-->
                                                     <a href="#"><img src="http://img1.meristation.as.com/files/imagenes/general/playstation-5-ps5-console-sony-rumeurs-prix.jpg" class="img-responsive" alt="product 1"></a>
                                                     <h4><small>Play 5</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡10,000.00</button> <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡10,000.00
+                                                    </button> 
+                                                    <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
+                                                    </button>
                                                 </div>
                                                 <!--segunda imagen de la galeria de fotos de electronica-->
                                                 <div class="item">
                                                     <a href="#"><img src="http://cdn.images.dailystar.co.uk/dynamic/184/photos/106000/Xbox-360-Console-497106.jpg" class="img-responsive" alt="product 2"></a>
                                                     <h4><small>Xbox</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡20,000.00</button> <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡20,000.00
+                                                    </button> 
+                                                    <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
+                                                    </button>
                                                 </div>
                                                 <!--tercera imagen de la galeria de fotos de electronica-->
                                                 <div class="item">
                                                     <a href="#"><img src="https://fthmb.tqn.com/vPThtvnPxir7fahvXXW3GpCLHNo=/1280x960/filters:no_upscale():fill(FFCC00,1)/about/wii-game-console-56a6ac7d3df78cf7728fa8b9.jpg" class="img-responsive" alt="product 3"></a>
                                                     <h4><small>Wii</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡15,000.00</button><button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡15,000.00
+                                                    </button>
+                                                    <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
+                                                    </button>
                                                 </div>
 
                                             </div>
                                         </div>
+                                        <!--Muestra una quequeña linea divisora-->
                                         <li class="divider"></li>
                                         <!--lleva a la infación de la tienda de esos productos-->
                                         <li><a href="#">Más informacion <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
@@ -508,23 +553,32 @@
                                                 <div class="item active">
                                                     <a href="#"><img src="https://4.bp.blogspot.com/-DF0_xCxLP8Y/WBBeUyE3TqI/AAAAAAAANCI/GoWjLtqeAqUOao4L1iCeSuQnnMlXRyZswCLcB/s640/BEBE-VARON-ROPA-INFANTIL.jpg" class="img-responsive" alt="product 1"></a>
                                                     <h4><small>Ropa para niños:</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡10,000.00</button> <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡10,000.00
+                                                    </button> 
+                                                    <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
+                                                    </button>
                                                 </div>
                                                 <!--Muesta la segunda imagen de la galeria con toda la información-->
                                                 <div class="item">
                                                     <a href="#"><img src="http://www.modamarcas.com/wp-content/uploads/sites/7/2010/07/ropa-benetton-adultos.jpeg" class="img-responsive" alt="product 2"></a>
                                                     <h4><small>Ropa para adultos</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡5,000.00 </button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphonet"></span>61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡5,000.00 
+                                                    </button> 
+                                                    <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphonet"></span>61250382
+                                                    </button>
                                                 </div>
                                                 <!--Muesta la tercera imagen de la galeria con toda la información-->
                                                 <div class="item">
                                                     <a href="#"><img src="http://meridia.mx/wp-content/uploads/2015/02/ropaasdultosmayores.jpg" class="img-responsive" alt="product 3"></a>
                                                     <h4><small>Ropa para adultos mayores</small></h4>
-                                                    <button class="btn btn-primary" type="button">₡20,000.00</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span>61250382</button>
+                                                    <button class="btn btn-primary" type="button">₡20,000.00
+                                                    </button> 
+                                                    <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span>61250382
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- /.carousel -->
+                                        <!-- Muestra una quepeña linea divisora -->
                                         <li class="divider"></li>
                                         <!--lleva a la tienda con la infomación de la galeria-->
                                         <li><a href="#">Más información<span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
@@ -670,16 +724,14 @@
                     <li><a href="#">tab #7</a></li>
                     <li><a href="#">tab #8</a></li>
                 </ul>
-
             </div>
-            <!-- /.nav-collapse -->
         </nav>
     </div>
     <!--Termina la parte del menú-->
     <!--Inicia la parte del contenido-->
-    <div class="container" id="login-conteint">
+    <div class="container" id="sub-conteint">
         <div class="row main">
-            <div class="main-login" id="conte">
+            <div class="sub-container">
                 <h3 id="title-form">Registrarse con:</h3>
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
@@ -766,12 +818,12 @@
                         </div>
                          <div class="form-group">
                     <div>
-		                    <input id="searchInput" class="controls" type="text" placeholder=Ubiacación>
-                            <div id="map"></div>
-                            <ul id="geoData" class="list-group">
-                            <li class="list-group-item">Direccion completa: <span id="location" ></span></li>
-                            <li class="list-group-item">País: <span id="country"></span></li>
-                            </ul>
+		                  <input id="searchInput" class="controls" type="text" placeholder=Ubiacación>
+                          <div id="map"></div>
+                          <ul id="geoData" class="list-group">
+                          <li class="list-group-item">Direccion completa: <span id="location" ></span></li>
+                          <li class="list-group-item">País: <span id="country"></span></li>
+                          </ul>
 	                </div>
                     </div>
                     </div>

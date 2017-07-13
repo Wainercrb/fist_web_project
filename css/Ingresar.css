@@ -142,7 +142,7 @@ html {
 }
 /*Finaliza el menu*/
 
-/*Inicia la parte del contenido
+/*Inicia la parte del contenido+/
 /*Inicia diseño del input*/
 .group 			  
 { 
@@ -276,19 +276,6 @@ to
 width:0; background:transparent; 
 }
 }
-/*Termine el diseño de los input*/
-/*Diseño del form del login*/
-.main
-{
-    background-color: #fff;
-    margin-top: 100px;
-    border-radius: 4px;
-    border-bottom: 1px solid #A4A4A4;
-     -moz-box-shadow: 0 0 3px 3px #888;
-    -webkit-box-shadow: 0 0 3px 3px #888;
-	box-shadow: 0 0 3px 3px #888;
-    border-radius:2px;
-}
 /*Direno del div dentro del form*/
 #conte
 {
@@ -301,6 +288,14 @@ width:0; background:transparent;
 /*Diselo del div principal del form*/
  .main 
 {
+     background-color: #fff;
+    margin-top: 10px;
+    border-radius: 4px;
+    border-bottom: 1px solid #A4A4A4;
+     -moz-box-shadow: 0 0 3px 3px #888;
+    -webkit-box-shadow: 0 0 3px 3px #888;
+	box-shadow: 0 0 3px 3px #888;
+    border-radius:2px;
     max-width: 320px;
     margin: 0 auto;
     
@@ -334,6 +329,7 @@ width:0; background:transparent;
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 }
+/*titulo del form*/
 h3 
 {
     text-align: center;
