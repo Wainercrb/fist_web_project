@@ -1,64 +1,59 @@
 @import url('https://fonts.googleapis.com/css?family=Amaranth');
 body,
 html {
- font-family: 'Amaranth', sans-serif;
-      background-color: #d3d3d3;
+    font-family: 'Amaranth', sans-serif;
+    background-color: #d3d3d3;
+    width: 100%;
 }
 
-    /**Dimensiones del logo del banner**/
-#brand-image {
-    margin-bottom: 0px;
-    margin-top: 0px;
-    max-height: 50px;
-}
-/**. navbar es el contenedor del banner**/
-.navbar{
-    position: relative;
-    min-height: 30px;
-    margin-bottom: 20px; 
-    border-bottom: 1px solid #A4A4A4;
+#h2 {
+    text-align: center;
 }
 
-.navbar-left
-{
-             border: none;/*elimina el borde del form del banner*/   
-}
-/**Menú de las categorías**/
-.navbar-inverse {
-    border: 1px solid #585858;
-    margin-top: 0px;
-    background-color: #58FAF4;
-   
+.navbar-brand {
+    width: 70px;
+    height: 50px;
+    background: url('http://www.sneaker-mission.com/uploads/3/1/2/7/31279819/5617441.png') no-repeat center center;
+    background-size: 50px;
 }
 
-    /**Estos padding elimina el espacio del menú entre entre las letras y los bordes del menú, elimina el heigth**/
-.navbar-nav>li>a {
-    padding-top: 10px!important;
-    padding-bottom: 10px!important;
-    line-height: 20px;
+.nav-tabs {
+    display: inline-block;
+    border-bottom: none;
+    padding-top: 15px;
+    font-weight: bold;
 }
 
-.navbar-inverse .navbar-nav>.open>a {
-    /**background es el color del tab del menú de categorias**/
-    background: linear-gradient(to top, #58FAF4, #F2F500);
-    /**color del tab del men**/
-    color: #003896;
+.nav-tabs>li>a,
+.nav-tabs>li>a:hover,
+.nav-tabs>li>a:focus,
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:hover,
+.nav-tabs>li.active>a:focus {
+    border: none;
+    border-radius: 0;
 }
 
-.navbar-inverse .navbar-nav>li>a {
-    color: #190707;
-    /**color inverso del titulo**/
-    font-size: 14px;
+.nav-list {
+    border-bottom: px solid #eee;
+}
+
+.nav-list>li {
+    padding: 20px 15px 15px;
+}
+
+.nav-list>li:last-child {
+    border-right: 0px solid #eee;
+}
+
+.nav-list>li>a:hover {
+    text-decoration: none;
+}
+
+.nav-list>li>a>span {
+    display: block;
+    font-weight: bold;
     text-transform: uppercase;
-}
-
-.navbar-inverse .navbar-nav>li>a:hover {
-    color: #FFFF;
-    /**inverse of the tittle**/
-}
-
-.navbar-inverse .navbar-nav>li:hover {
-    background: linear-gradient(to top, #81DAF5, #81DAF5);
 }
 
 .mega-dropdown {
@@ -66,52 +61,299 @@ html {
 }
 
 .mega-dropdown-menu {
+    padding: 20px 15px 15px;
+    text-align: center;
+    width: 100%;
+}
+
+#login-dp {
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+#login-dp .help-block {
+    font-size: 12px
+}
+
+#login-dp .bottom {
+    background-color: rgba(255, 255, 255, .8);
+    border-top: 1px solid #ddd;
+    clear: both;
+    padding: 14px;
+}
+
+#login-dp .social-buttons {
+    margin: 12px 0
+}
+
+#login-dp .social-buttons a {
+    width: 49%;
+}
+
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+
+.btn-fb {
+    color: #fff;
+    background-color: #3b5998;
+}
+
+.btn-fb:hover {
+    color: #fff;
+    background-color: #496ebc
+}
+
+.btn-tw {
+    color: #fff;
+    background-color: #55acee;
+}
+
+.btn-tw:hover {
+    color: black;
+    background-color: #59b5fa;
+}
+
+@media (max-width: 766px) and (min-width: 100px) {
+    .div-position {
+        width: 50%;
+        margin: 0 auto;<option value="">10km</option>
+                                        <option value="">20km</option>
+                                        <option value="">30km</option>
+    }
+    .second-div {
+        margin-left: 15% !important;
+        margin-right: 15% !important;
+    }
+    .navbar-form {
+        width: 102% !important;
+        padding-left: 1%;
+        padding-right: 0%;
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .input-group .input-group-btn div.btn {
+        padding-left: 10%;
+        padding: 0;
+        padding-top: 1px;
+    }
+    #btn-search {
+        height: 2em;
+    }
+    .input-group .input-group-btn div.btn .form-control {
+        border: none;
+        background-color: transparent;
+        height: 100%;
+        font-size: 12px !important;
+    }
+    #btn-search {
+        font-size: 100% !important;
+    }
+    .select {
+        width: 5em !important;
+        height: 2.3em !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .btn-default {
+        height: 1.6em !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .glyphicon-search {
+        margin-top: -10px !important;
+        padding-top: 0em !important;
+        height: 0em;
+    }
+    #btn-buscar {
+        margin-top: 0em !important;
+        margin-bottom: em !important;
+    }
+    #span-buscar {
+        display: block;
+    }
+}
+
+@media (max-width: 3000px) and (min-width: 767px) {
+    .div-position {
+        width: 50%;
+        margin: 0 auto;
+        text-decoration-color: aqua!important;
+    }
+    .second-div {
+        margin-left: 15% !important;
+        margin-right: 15% !important;
+    }
+    .navbar-form {
+        width: 59% !important;
+        padding-left: 0%;
+        padding-right: 0% !important;
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+        
+       
+    }
+    .input-group .input-group-btn div.btn {
+        padding-left: 10%;
+        padding: 0%;
+        padding-top: 1%;
+    
+    }
+    .input-group .input-group-btn div.btn .form-control {
+        border: none;
+        background-color: transparent;
+    }
+    .select {
+        width: 5em !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        
+    }
+  
+}
+
+
+}
+.navbar-login {
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+.navbar-login-session {
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+.icon-size {
+    font-size: 87px;
+}
+#navbar-nav {
+    padding-left: 15px;
+    font-size: 120%;
+    padding-top: 0.5%;
+}
+.navbar-brand {
+    width: 20%;
+    margin-bottom: 0;
+    height: 50px;
+    background: url('http://www.sneaker-mission.com/uploads/3/1/2/7/31279819/5617441.png') no-repeat center center;
+    background-size: 50px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+}
+.navbar-default .navbar-nav>li>a {
+    color: black;
+}
+
+/*--------------------------------------------------------*/
+
+/**Dimensiones del logo del banner**/
+#brand-image {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    max-height: 50px;
+}
+
+/**. navbar es el contenedor del banner**/
+.navbar {
+    position: relative;
+    min-height: 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #A4A4A4;
+}
+.navbar-left {
+    border: none;
+    /*elimina el borde del form del banner*/
+}
+
+/**Menú de las categorías**/
+.navbar-inverse {
+    border: 1px solid #585858;
+    margin-top: 0px;
+    background-color: #58FAF4;
+}
+
+/**Estos padding elimina el espacio del menú entre entre las letras y los bordes del menú, elimina el heigth++++++++++++++++++++++++++++++++++**/
+#navbar-nav>li>a {
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+    line-height: 20px;
+}
+.navbar-inverse .navbar-nav>.open>a {
+    /**background es el color del tab del menú de categorias**/
+    
+    background: linear-gradient(to top, #58FAF4, #F2F500);
+    /**color del tab del men**/
+    
+    color: #003896;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #190707;
+    /**color inverso del titulo**/
+    
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #FFFF;
+    /**inverse of the tittle**/
+}
+.navbar-inverse .navbar-nav>li:hover {
+    background: linear-gradient(to top, #81DAF5, #81DAF5);
+}
+.mega-dropdown {
+    position: static !important;
+}
+.mega-dropdown-menu {
     padding: 15px 0px;
     width: 100%;
     box-shadow: none;
     -webkit-box-shadow: none;
 }
-
 .mega-dropdown-menu>li>ul {
     padding: 0;
     margin: 0;
 }
-
 .mega-dropdown-menu>li>ul>li {
     list-style: none;
 }
-
 .mega-dropdown-menu>li>ul>li>a {
     display: block;
     color: #222;
     /**sub-category**/
+    
     padding: 3px 5px;
 }
-
 .mega-dropdown-menu>li ul>li>a:hover,
 .mega-dropdown-menu>li ul>li>a:focus {
     text-decoration: none;
 }
-
 .mega-dropdown-menu .dropdown-header {
     font-size: 14px;
     color: #0000FF;
     /**cotegory+*/
+    
     padding: 5px 60px 5px 5px;
     line-height: 30px;
 }
-
 .carousel-control {
     width: 30px;
     height: 30px;
     top: -35px;
 }
-
 .left.carousel-control {
     right: 30px;
     left: inherit;
 }
-
 .carousel-control .glyphicon-chevron-left,
 .carousel-control .glyphicon-chevron-right {
     font-size: 12px;
@@ -129,62 +371,69 @@ html {
     float: left;
     background: url(/img/file.jpg) 50% 50% no-repeat;
     /* 50% 50% centra la imagen */
+    
     background-size: auto 100%;
     /* Interchange this value depending on prefering width vs. height */
+    
     width: 30px;
     height: 30px;
 }
 #profile {
     margin-left: 5%;
 }
-#radius{
+#radius {
     border-radius: 0px;
 }
-/*Finaliza el menu*/
-/*Inicia la parte del contenido*/
-/*contedor de las images de promocion dentro del padre*/
-#shop-desing{
 
+/*Finaliza el menu*/
+
+/*Inicia la parte del contenido*/
+
+/*contedor de las images de promocion dentro del padre*/
+#shop-desing {
     background-color: #fff;
     margin-bottom: 15px;
     margin-top: 15px;
-    
 }
+
 /*Contenedores padre*/
-#shop-container{
-background-color: #fff;
+#shop-container {
+    background-color: #fff;
     margin-top: 100px;
     border-radius: 4px;
     border-bottom: 1px solid #A4A4A4;
-     -moz-box-shadow: 0 0 3px 3px #888;
+    -moz-box-shadow: 0 0 3px 3px #888;
     -webkit-box-shadow: 0 0 3px 3px #888;
-	box-shadow: 0 0 3px 3px #888;
-    border-radius:2px;
+    box-shadow: 0 0 3px 3px #888;
+    border-radius: 2px;
     margin-top: 100px;
     margin-bottom: 100px;
-    
 }
+
 /*contenedor del banner principal*/
-#container{
-   background-color: #fff;
+#container {
+    background-color: #fff;
     margin-top: 10px;
     border-radius: 4px;
     border-bottom: 1px solid #A4A4A4;
-     -moz-box-shadow: 0 0 3px 3px #888;
+    -moz-box-shadow: 0 0 3px 3px #888;
     -webkit-box-shadow: 0 0 3px 3px #888;
-	box-shadow: 0 0 3px 3px #888;
-    border-radius:2px; 
+    box-shadow: 0 0 3px 3px #888;
+    border-radius: 2px;
 }
+
 /*titulos de las promociones*/
-#shop-title{
+#shop-title {
     margin-top: 10px;
 }
+
 /*Imagenes de las promociones*/
-#img-view{
+#img-view {
     border: 1px solid #585858;
     max-width: 500px;
     max-height: 250px;
 }
+
 /*carousel del sub banner*/
 .carousel .item {
     width: 100%;
@@ -198,6 +447,7 @@ background-color: #fff;
     top: 50%;
     transform: translateY(-50%);
 }
+
 /*boton de siguiente de la galeria*/
 #carousel-rigth {
     position: absolute;
@@ -206,75 +456,81 @@ background-color: #fff;
     transform: translateY(-50%);
 }
 
-
 /*Trancisiones globales "efecto al mostrar los detalles del productos"*/
-.transition{
+.transition {
     transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
 }
+
 /*Dimenciones de la imagenes de promociones*/
-.img-responsive{
-    width:100%;
+.img-responsive {
+    width: 100%;
 }
 
 /**Efectos de zoom**/
-.product-div1{
-    position:relative;
-    overflow:hidden;
+.product-div1 {
+    position: relative;
+    overflow: hidden;
 }
-.product-div1:hover img{
+.product-div1:hover img {
     transform: scale(1.1);
 }
-img{
+img {
     transform: scale(1);
 }
+
 /*Ver texto al padar el mause*/
-.product-div2{
-    position:relative;
-    overflow:hidden;
+.product-div2 {
+    position: relative;
+    overflow: hidden;
 }
-.product-div2:hover .text-view{
-     top: 50%;
-     opacity:1;
+.product-div2:hover .text-view {
+    top: 50%;
+    opacity: 1;
 }
-.product-div2:hover img{
-    opacity:.8;
+.product-div2:hover img {
+    opacity: .8;
 }
+
 /*texto de las imagenes de promociones*/
-.text-view{
-    position:absolute;
+.text-view {
+    position: absolute;
     top: 80%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    opacity:0;
+    opacity: 0;
 }
+
 /*boton de ver detalles de las promociones*/
-.ver-button{
-    background-color:#fff;
-	-moz-border-radius:28px;
-	-webkit-border-radius:28px;
-	border-radius:28px;
-	border:1px solid black;
-	display:inline-block;
-	cursor:pointer;
-	color:black;
-	font-family:Arial;
-	font-size:17px;
-	padding:12px 31px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px black;
+.ver-button {
+    background-color: #fff;
+    -moz-border-radius: 28px;
+    -webkit-border-radius: 28px;
+    border-radius: 28px;
+    border: 1px solid black;
+    display: inline-block;
+    cursor: pointer;
+    color: black;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 12px 31px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px black;
 }
+
 /**Finaliza el contenido**/
+
 /**Inica el pie de página**/
+
 /*footer*/
+
 /*div de la imagenes de redes sociales*/
-.footer-bottom-layout 
-{
+.footer-bottom-layout {
     background: #222222 none repeat scroll 0 0;
     padding: 20px 0;
     text-align: center;
@@ -282,21 +538,18 @@ img{
 }
 
 /*caja que contiene las imagnes de las redes socales*/
-.socialMedia-footer
-{
+.socialMedia-footer {
     margin-bottom: 20px;
 }
 
 /*imgs*/
-.socialMedia-footer>a 
-{
+.socialMedia-footer>a {
     display: inline-block;
     margin: 0 8px;
 }
 
 /*margin-botton del footer*/
-.footer-top-layout
-{
+.footer-top-layout {
     border-top: 1px solid #A4A4A4;
     margin-top: 40px;
     background: #FFF none repeat scroll 0 0;
@@ -305,54 +558,49 @@ img{
 }
 
 /*Primer contenedor del footer"Nuestra infromacion"*/
-.mi-informacion 
-{
+.mi-informacion {
     margin-bottom: 32px;
     text-align: center;
 }
+
 /*titulos del la informacin del footer*/
-.footer-top-layout h4 
-{
-       color: #ffffff;
-       font-size: 18px;
-       margin-bottom: 21px;
+.footer-top-layout h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 21px;
 }
+
 /*sub-titulo del primer contenedor del footer"Nuestra infromacion"**/
-.mi-informacion>p 
-{
-       color: #888888;
+.mi-informacion>p {
+    color: #888888;
 }
+
 /*lineas del primer contenedor del footer "---"*/
-.post-blog-date 
-{
-       padding-bottom: 25px;
-       position: relative;
+.post-blog-date {
+    padding-bottom: 25px;
+    position: relative;
 }
 
 /*los tres contenedores de información*/
-.footer-top-layout [class*="col-sm-"]
-{
+.footer-top-layout [class*="col-sm-"] {
     border-right: 2px solid #333333;
     padding: 0 0 0 28px;
 }
 
-
 /*Ancho entre cada uno de los 3 div del footer*/
-.footer-col-item 
-{
-      min-height: 140px;
+.footer-col-item {
+    min-height: 140px;
 }
+
 /*color de las la información de los tres div del footer*/
-address 
-{
-       color: #545454;
+address {
+    color: #545454;
 }
 
 /*Elimina la tercer linea divisora de los tres div del footer*/
 .footer-top-layout [class*="col-sm-"]:last-child {
     border-right: medium none;
 }
-
 .h1,
 .h2,
 .h3,
@@ -364,17 +612,15 @@ h2,
 h3,
 h4,
 h5,
-h6 
-{
-
+h6 {
     font-weight: 500;
     line-height: 1.1;
     margin-top: 0;
 }
+
 /*titulos de los direccion local, telefono y correos*/
-.footer-top-layout h4 
-{
-         color: #070B19;
-         font-size: 18px;
-         margin-bottom: 21px;
+.footer-top-layout h4 {
+    color: #070B19;
+    font-size: 18px;
+    margin-bottom: 21px;
 }

@@ -1,154 +1,157 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <title>Página principal</title>
     <meta name="viewport" content="widt=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/PaginaPrincipal.css">
-    <link rel="stylesheet" href="js/code.js">
+    <link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
 </head>
+
 <body>
- <!--Inicia la parte del banner-->
-    <header>
-        <!-- Aca se agrega un nav para poder crear el menu de navegacion de la pagina-->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar-header">
-            <!-- el inverse es para que cambien los colores y el static top es para que el menu se mantenga en la parte de arriba de la pagina -->
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- Esto es para hacer el boton que se muestra cuando la pantalla del dispositivo es media o pequeña-->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion" aria-expended="false" aria-controls="navbar">
-                    <!--Estas etiquetas de span sirven para mostrar las lienas del boton-->
-                    <span class="sr-only">Ocultar</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <!--a = icono del banner-->
-                    <a class="navbar-header" href="index4.html"><img id="brand-image" src="img/logo.jpg"></a>
-                    <form action="" class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Buscar" size="42" id="radius">
-                            <span>Categoría</span>
-                            <span class="select-group-button">                                
-                                  <select  id="radius" class="form-control" type="select">
-                                         <option value="">Todas</option>
-                                         <option value="">Electrónica</option>
-                                         <option value="">Casa</option>
-                                         <option value="">Electrodomesticos</option>
-                                         <option value="">jardin</option>
-                                         <option value="">Hobbit</option>
-                                         <option value="">Mascotas</option>
-                                         <option value="">Comida</option>
-                                         <option value="">Deportes</option>   
-                                          <option value="">Otro</option>                            
-                                 </select>               
-                            </span>
-                            <span>Alrededor de</span>
-                            <span class="select-group-button">                                
-                                  <select id="radius" class="form-control" type="select" id="radius">
-                                         <option><a href="">1 km</a></option>
-                                         <option><a href="">2 km</a></option>
-                                         <option><a href="">3 km</a></option>
-                                         <option><a href="">4 km</a></option>
-                                         <option><a href="">5 km</a></option>
-                                         <option><a href="">10 km</a></option>
-                                         <option><a href="">15 km</a></option>
-                                         <option><a href="">20 km</a></option>
-                                         <option><a href="">30 km</a></option>
-                                         <option><a href="">40 km</a></option>
-                                         <option><a href="">50 km</a></option>
-                                         <option><a href="">+ km</a></option>                           
-                                </select>                           
-                            </span>
-                        </div>
-                        <!--boton de buscar-->
-                        <button type="submit" class="btn btn-primary">
-                        <!--Etiqueta que agrega una imagen al boton-->
-                        <span class="glyphicon glyphicon-search"><a href="/BuscarArticulo.html"></a></span>
-                        </button>
-                    </form>
-                </div>
-                <!-- Aqui se iniciara el menu desplegable en el header para el perfil-->
-                <div class="collapse navbar-collapse pull-left" id="navegacion">
-                    <ul class="nav navbar-nav pull-left">
-                        <li>
-                            <ul class="nav navbar-nav pull-left" role="menu">
-                                <li class="dropdown">
-                                    <!--cuando se pulsa desplegara las opciones de la lista siguiente-->
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">
-                                        <!-- dentro de este div va la foto de peril -->
-                                        <div class="img-rounded profile-img"></div>
-                                        <!--Esa clase de booststrap hace que la foto se redimencione a modo de una foto pequeña y se adapte a el contenedor padre-->
-                                        Nombre <span class="caret"></span>
-                                    </a>
-                                    <!--Luego los ul que seran las opciones del perfil de cada perna-->
-                                    <ul class="dropdown-menu">
-                                         <li>
-                                            <a href="VerPerfil.html">Mi perfil</a>
-                                        </li>
-                                        <li role="separator" class="divider"></li>
-                                        <li>
-                                            <a href="/VerPerfilEmpresa.html">Perfil empresa</a>
-                                        </li>
-                                        <li role="separator" class="divider"></li>
-                                        <li>
-                                            <a href="/NuevoProducto.html">Nuevo produto</a>
-                                        </li>
-                                        <li role="separator" class="divider"></li>
-                                        <li>
-                                            <a href="https://www.google.com">Salir</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <ul class="nav navbar-nav pull-left" role="menu">
-                                <li class="dropdown">
-                                    <!--cuando se pulsa desplegara las opciones de la lista siguiente-->
-                                    <a href="/Nosotros.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Nosotros 
-                                    <span class="caret"></span>
-                                    </a>
-                                    <!--se despleda en forma de lista para el siguiente simulacion de combobox-->
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a>Seleccione una opción</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="/Nosotros.html">¿Quienes somos?</a></li>
-                                        <li><a href="/TiposPerfil.html">Ustedes</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <ul class="nav navbar-nav pull-left" role="menu">
-                                <li class="dropdown">
-                                    <!--cuando se pulsa desplegara las opciones de la lista siguiente-->
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expended="false">Registro
-                                    <span class="caret"></span>
-                                    </a>
-                                    <!--se despleda en forma de lista para el siguiente simulacion de combobox-->
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Seleccione una opción</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="/Ingresar.html">Ingresar como usuario</a></li>
-                                        <li><a href="/RegistroUsuario.html">Registrarse como usurio</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="/Ingresar.html">Ingresar como empresa</a></li>
-                                        <li><a href="/RegistroVendedor.html">Registrar como empresa</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+    <!--Inicia la parte del banner-->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="#"><img src="/img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
             </div>
-        </nav>
-    </header>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse style= collapse in" id="bs-megadropdown-tabs" style="padding-left: 0px;">
+
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group div-search ">
+                        <div class="input-group input-group-lg input-group-full search">
+                            <input type="text" class="form-control" id="btn-search" aria-label="Search" size="100">
+                            <div class="input-group-btn">
+                                <div class="btn btn-default">
+                                    <select class="form-control select">
+                                        <option value="">Todas</option>
+                                        <option value="">Hombre</option>
+                                        <option value="">Mujeres</option>
+                                        <option value="">Niños</option>
+                                        <option value="">Casa</option>
+                                        <option value="">Jardin</option>
+                                        <option value="">Motores</option>
+                                        <option value="">Honits</option>
+                                        <option value="">Video Juegos</option>
+                                        <option value="">Otros</option>
+                                    </select>
+                                </div>
+                                <div class="btn btn-default">
+                                    <select class="form-control select">
+                                        <option value="">5km</option>
+                                        <option value="">10km</option>
+                                        <option value="">20km</option>
+                                        <option value="">30km</option>
+                                        <option value="">40km</option>
+                                        <option value="">50km</option>
+                                        <option value="">+km</option>
+                                    </select>
+                                </div>
+
+                                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true" id="span-buscar"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-right" id="navbar-nav">
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <strong>Usuario</strong>
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul style="background-color:white;" class="dropdown-menu">
+                            <li>
+                                <div class="navbar-login div-position">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p class="text-center">
+                                                <span class="glyphicon glyphicon-user icon-size"></span>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <p class="text-center"><strong>Nombre Apellido</strong></p>
+                                            <p class="text-center small">correoElectronico@email.com</p>
+                                            <p class="text-center">
+                                                <a href="#" class="btn btn-primary btn-block btn-sm">Actualizar Datos</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="navbar-login navbar-login-session div-position">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <p>
+                                                <a href="#" class="btn btn-danger btn-block">Cerrar Sesion</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ingresar<span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 second-div text-center">
+                                        Login via
+                                        <div class="social-buttons">
+                                            <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                            <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                        </div>
+                                        <h2 id="h2">Ingreso rápido</h2>
+                                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="exampleInputEmail2">Usuario</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Usuario" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
+                                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Contraseña" required="">
+                                                <div class="help-block text-center"><a href="">Olvido su contraseña?</a></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+											 <input type="checkbox"> Recordarme
+											 </label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="bottom text-center">
+                                        Eres nuevo ? <a href="#"><b>Registrar</b></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
     <!--Termina la parte del banner-->
     <!--Inicia la parte del menú-->
     <!--sub-banner del menu de gategorias-->
@@ -161,7 +164,7 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
 		       </button>
-           <!--Contenedor que guarda las diferentes opciones del menu-->
+                <!--Contenedor que guarda las diferentes opciones del menu-->
             </div>
             <div class="collapse navbar-collapse js-navbar-collapse ">
                 <ul class="nav navbar-nav">
@@ -178,7 +181,7 @@
                                                 <a href="#"><img src="https://4.bp.blogspot.com/-DF0_xCxLP8Y/WBBeUyE3TqI/AAAAAAAANCI/GoWjLtqeAqUOao4L1iCeSuQnnMlXRyZswCLcB/s640/BEBE-VARON-ROPA-INFANTIL.jpg" class="img-responsive" alt="product 1"></a>
                                                 <h4><small>Ropa para niños:</small></h4>
                                                 <button class="btn btn-primary" type="button">₡10,000.00
-                                                </button> 
+                                                </button>
                                                 <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
                                                 </button>
                                             </div>
@@ -187,7 +190,7 @@
                                                 <a href="#"><img src="http://www.modamarcas.com/wp-content/uploads/sites/7/2010/07/ropa-benetton-adultos.jpeg" class="img-responsive" alt="product 2"></a>
                                                 <h4><small>Ropa para adultos</small></h4>
                                                 <button class="btn btn-primary" type="button">₡5,000.00 
-                                                </button> 
+                                                </button>
                                                 <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphonet"></span>61250382
                                                 </button>
                                             </div>
@@ -196,13 +199,13 @@
                                                 <a href="#"><img src="http://meridia.mx/wp-content/uploads/2015/02/ropaasdultosmayores.jpg" class="img-responsive" alt="product 3"></a>
                                                 <h4><small>Ropa para adultos mayores</small></h4>
                                                 <button class="btn btn-primary" type="button">₡20,000.00
-                                                </button> 
+                                                </button>
                                                 <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span>61250382
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
-                                     <!--Muestra una linea divisora-->
+                                    <!--Muestra una linea divisora-->
                                     <li class="divider"></li>
                                     <!--lleva a la tienda con la infomación de la galeria-->
                                     <li><a href="#">Más información<span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
@@ -316,7 +319,7 @@
                                                     <a href="#"><img src="http://img1.meristation.as.com/files/imagenes/general/playstation-5-ps5-console-sony-rumeurs-prix.jpg" class="img-responsive" alt="product 1"></a>
                                                     <h4><small>Play 5</small></h4>
                                                     <button class="btn btn-primary" type="button">₡10,000.00
-                                                    </button> 
+                                                    </button>
                                                     <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
                                                     </button>
                                                 </div>
@@ -325,7 +328,7 @@
                                                     <a href="#"><img src="http://cdn.images.dailystar.co.uk/dynamic/184/photos/106000/Xbox-360-Console-497106.jpg" class="img-responsive" alt="product 2"></a>
                                                     <h4><small>Xbox</small></h4>
                                                     <button class="btn btn-primary" type="button">₡20,000.00
-                                                    </button> 
+                                                    </button>
                                                     <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
                                                     </button>
                                                 </div>
@@ -350,7 +353,7 @@
                         </li>
                     </ul>
                     <!--Tercer tab del menú-->
-                   <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
                         <li class="dropdown mega-dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Moda<span class="caret"></span></a>
                             <ul class="dropdown-menu mega-dropdown-menu">
@@ -364,7 +367,7 @@
                                                     <a href="#"><img src="https://4.bp.blogspot.com/-DF0_xCxLP8Y/WBBeUyE3TqI/AAAAAAAANCI/GoWjLtqeAqUOao4L1iCeSuQnnMlXRyZswCLcB/s640/BEBE-VARON-ROPA-INFANTIL.jpg" class="img-responsive" alt="product 1"></a>
                                                     <h4><small>Ropa para niños:</small></h4>
                                                     <button class="btn btn-primary" type="button">₡10,000.00
-                                                    </button> 
+                                                    </button>
                                                     <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
                                                     </button>
                                                 </div>
@@ -373,7 +376,7 @@
                                                     <a href="#"><img src="http://www.modamarcas.com/wp-content/uploads/sites/7/2010/07/ropa-benetton-adultos.jpeg" class="img-responsive" alt="product 2"></a>
                                                     <h4><small>Ropa para adultos</small></h4>
                                                     <button class="btn btn-primary" type="button">₡5,000.00 
-                                                    </button> 
+                                                    </button>
                                                     <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphonet"></span>61250382
                                                     </button>
                                                 </div>
@@ -382,7 +385,7 @@
                                                     <a href="#"><img src="http://meridia.mx/wp-content/uploads/2015/02/ropaasdultosmayores.jpg" class="img-responsive" alt="product 3"></a>
                                                     <h4><small>Ropa para adultos mayores</small></h4>
                                                     <button class="btn btn-primary" type="button">₡20,000.00
-                                                    </button> 
+                                                    </button>
                                                     <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span>61250382
                                                     </button>
                                                 </div>
@@ -503,7 +506,7 @@
                                                     <a href="#"><img src="http://img1.meristation.as.com/files/imagenes/general/playstation-5-ps5-console-sony-rumeurs-prix.jpg" class="img-responsive" alt="product 1"></a>
                                                     <h4><small>Play 5</small></h4>
                                                     <button class="btn btn-primary" type="button">₡10,000.00
-                                                    </button> 
+                                                    </button>
                                                     <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
                                                     </button>
                                                 </div>
@@ -512,7 +515,7 @@
                                                     <a href="#"><img src="http://cdn.images.dailystar.co.uk/dynamic/184/photos/106000/Xbox-360-Console-497106.jpg" class="img-responsive" alt="product 2"></a>
                                                     <h4><small>Xbox</small></h4>
                                                     <button class="btn btn-primary" type="button">₡20,000.00
-                                                    </button> 
+                                                    </button>
                                                     <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
                                                     </button>
                                                 </div>
@@ -552,7 +555,7 @@
                                                     <a href="#"><img src="https://4.bp.blogspot.com/-DF0_xCxLP8Y/WBBeUyE3TqI/AAAAAAAANCI/GoWjLtqeAqUOao4L1iCeSuQnnMlXRyZswCLcB/s640/BEBE-VARON-ROPA-INFANTIL.jpg" class="img-responsive" alt="product 1"></a>
                                                     <h4><small>Ropa para niños:</small></h4>
                                                     <button class="btn btn-primary" type="button">₡10,000.00
-                                                    </button> 
+                                                    </button>
                                                     <button href="" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> 61250382
                                                     </button>
                                                 </div>
@@ -561,7 +564,7 @@
                                                     <a href="#"><img src="http://www.modamarcas.com/wp-content/uploads/sites/7/2010/07/ropa-benetton-adultos.jpeg" class="img-responsive" alt="product 2"></a>
                                                     <h4><small>Ropa para adultos</small></h4>
                                                     <button class="btn btn-primary" type="button">₡5,000.00 
-                                                    </button> 
+                                                    </button>
                                                     <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphonet"></span>61250382
                                                     </button>
                                                 </div>
@@ -570,7 +573,7 @@
                                                     <a href="#"><img src="http://meridia.mx/wp-content/uploads/2015/02/ropaasdultosmayores.jpg" class="img-responsive" alt="product 3"></a>
                                                     <h4><small>Ropa para adultos mayores</small></h4>
                                                     <button class="btn btn-primary" type="button">₡20,000.00
-                                                    </button> 
+                                                    </button>
                                                     <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span>61250382
                                                     </button>
                                                 </div>
@@ -760,98 +763,98 @@
         </div>
     </div>
     <div class="container" id="shop-container">
-   <h1 id="shop-title">Promociónes en ropa</h1>
-   <button class="ver-button">ver todo</button>
-    <div class="row" id="shop-desing">
-        <div class="col-md-4">
-            <div class="product-div2">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg"  class="img-responsive transition" id="img-view">
-                <div class="text-view transition">
-                    <h2><a href="">Detalles</a></h2>
+        <h1 id="shop-title">Promociónes en ropa</h1>
+        <button class="ver-button">ver todo</button>
+        <div class="row" id="shop-desing">
+            <div class="col-md-4">
+                <div class="product-div2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg" class="img-responsive transition" id="img-view">
+                    <div class="text-view transition">
+                        <h2><a href="">Detalles</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-div2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg" class="img-responsive transition" id="img-view">
+                    <div class="text-view transition">
+                        <h2><a href="">Detalles</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-div2">
+                    <img src="https://s-media-cache-ak0.pinimg.com/736x/0c/9a/c2/0c9ac210b06840b6e336567731db3e09--sneakers-shoes-adidas-shoes.jpg" class="img-responsive transition" id="img-view">
+                    <div class="text-view transition">
+                        <h2><a href="title">Detalles</a></h2>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="product-div2">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg"  class="img-responsive transition" id="img-view">
-                <div class="text-view transition">
-                    <h2><a href="">Detalles</a></h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="product-div2">
-                <img src="https://s-media-cache-ak0.pinimg.com/736x/0c/9a/c2/0c9ac210b06840b6e336567731db3e09--sneakers-shoes-adidas-shoes.jpg" class="img-responsive transition" id="img-view">
-                <div class="text-view transition">
-                    <h2><a href="title">Detalles</a></h2>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    <div class="container" id="shop-container">
-    <h1 id="shop-title">Promociónes en ropa</h1>
-    <button class="ver-button">ver todo</button>
-    <div class="row" id="shop-desing">
-        <div class="col-md-4">
-            <div class="product-div2">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg"  class="img-responsive transition" id="img-view">
-                <div class="text-view transition">
-                    <h2><a href="">Detalles</a></h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="product-div2">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg"  class="img-responsive transition" id="img-view">
-                <div class="text-view transition">
-                    <h2><a href="">Detalles</a></h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="product-div2">
-                <img src="https://s-media-cache-ak0.pinimg.com/736x/0c/9a/c2/0c9ac210b06840b6e336567731db3e09--sneakers-shoes-adidas-shoes.jpg" class="img-responsive transition" id="img-view">
-                <div class="text-view transition">
-                    <h2><a href="title">Detalles</a></h2>
-                </div>
-            </div>
-        </div>
-    </div> 
     </div>
     <div class="container" id="shop-container">
-   <h1 id="shop-title">Promociónes en ropa</h1>
-   <button class="ver-button">ver todo</button>
-    <div class="row" id="shop-desing">
-        <div class="col-md-4">
-            <div class="product-div2">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg"  class="img-responsive transition" id="img-view">
-                <div class="text-view transition">
-                    <h2><a href="">Detalles</a></h2>
+        <h1 id="shop-title">Promociónes en ropa</h1>
+        <button class="ver-button">ver todo</button>
+        <div class="row" id="shop-desing">
+            <div class="col-md-4">
+                <div class="product-div2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg" class="img-responsive transition" id="img-view">
+                    <div class="text-view transition">
+                        <h2><a href="">Detalles</a></h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="product-div2">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg"  class="img-responsive transition" id="img-view">
-                <div class="text-view transition">
-                    <h2><a href="">Detalles</a></h2>
+            <div class="col-md-4">
+                <div class="product-div2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg" class="img-responsive transition" id="img-view">
+                    <div class="text-view transition">
+                        <h2><a href="">Detalles</a></h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="product-div2">
-                <img src="https://s-media-cache-ak0.pinimg.com/736x/0c/9a/c2/0c9ac210b06840b6e336567731db3e09--sneakers-shoes-adidas-shoes.jpg" class="img-responsive transition" id="img-view">
-                <div class="text-view transition">
-                    <h2><a href="title">Detalles</a></h2>
+            <div class="col-md-4">
+                <div class="product-div2">
+                    <img src="https://s-media-cache-ak0.pinimg.com/736x/0c/9a/c2/0c9ac210b06840b6e336567731db3e09--sneakers-shoes-adidas-shoes.jpg" class="img-responsive transition" id="img-view">
+                    <div class="text-view transition">
+                        <h2><a href="title">Detalles</a></h2>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="container" id="shop-container">
+        <h1 id="shop-title">Promociónes en ropa</h1>
+        <button class="ver-button">ver todo</button>
+        <div class="row" id="shop-desing">
+            <div class="col-md-4">
+                <div class="product-div2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg" class="img-responsive transition" id="img-view">
+                    <div class="text-view transition">
+                        <h2><a href="">Detalles</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-div2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinehXP9wl9tqUbg0QSso8H-ClvJMiz5OVgbIMwZI--4rmR27sCg" class="img-responsive transition" id="img-view">
+                    <div class="text-view transition">
+                        <h2><a href="">Detalles</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-div2">
+                    <img src="https://s-media-cache-ak0.pinimg.com/736x/0c/9a/c2/0c9ac210b06840b6e336567731db3e09--sneakers-shoes-adidas-shoes.jpg" class="img-responsive transition" id="img-view">
+                    <div class="text-view transition">
+                        <h2><a href="title">Detalles</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--Termina la parte del contenido -->
     <!--Inicia la parte del pie de página-->
-     <footer id="footer-Section">
+    <footer id="footer-Section">
         <!--footer es la etiqueta que indica el pie de página-->
         <div class="footer-top-layout">
             <div class="container">
@@ -908,5 +911,7 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/Index.js"></script>
 </body>
+
 </html>
