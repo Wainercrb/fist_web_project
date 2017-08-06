@@ -509,7 +509,8 @@ a {
 }
 input
 {
-      font-size:18px;
+    margin-top: 0px;
+      font-size:100%;
       padding:10px 10px 10px 5px;
       display:block;/*toma las dimenciones de su padre*/
       width: 100%;
@@ -531,7 +532,7 @@ input:focus
       position:absolute;
       pointer-events:none;
       left:5px;
-      top:10px;
+      top:0px;
       /*transicion cuando seleciono el input*/
        transition:0.2s ease all; 
        -moz-transition:0.9s ease all; 
@@ -657,6 +658,13 @@ width:0; background:transparent;
 	box-shadow: 0 0 3px 3px #888;
     border-radius:2px;
 }
+
+.form-group{
+   
+    margin-top: 0em !important;
+    padding-bottom 0em !important; 
+    padding-top: 0em;
+}
 /*Titulo del form*/
 h3 
 {
@@ -671,7 +679,7 @@ h3
     
 }
 /*Diseño del boton*/
-#btn-ingresar
+#btnIngresar, .btn-login-facebook, .btn-ingresar-google
 {
            display: block;
            width: 135px;
