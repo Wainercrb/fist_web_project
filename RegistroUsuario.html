@@ -760,7 +760,7 @@
                     </div>
                 </div>
                 <h3 id="title-form">Paso a paso</h3>
-                <form role="form">
+                <form role="form" id="prospects_form" method="post">
                     <div class="form-group center-block" id="midiv">
                         <div class="group center-block">
                             <input id="txtNombre" type="text" required>
@@ -768,7 +768,7 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Nombre</label>
+                            <label class="label" id="labelNombre">Nombre</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -778,7 +778,7 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Apellido Paterno</label>
+                            <label class="label" id="labelApellidoUno">Apellido Paterno</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -788,7 +788,7 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Apellido Materno</label>
+                            <label class="label" id="txtApellidoDos">Apellido Materno</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -798,7 +798,7 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Email</label>
+                            <label class="label" id="labelTxtEmal">Email</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -808,7 +808,7 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Edad</label>
+                            <label class="label" id="labelTxtEdad">Edad</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -818,7 +818,7 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Usuario</label>
+                            <label class="label"id="labelTxtUsuario">Usuario</label>
                         </div>
                     </div>
                     <div class="form-group" id="div-contrasennas">
@@ -828,7 +828,7 @@
                             <!--label-->
                             <span class="bar" id="a"></span>
                             <!--botton del input-->
-                            <label class="label" >Contraseña</label>
+                            <label class="label"  id="labelContrasena1">Contraseña</label>
                         </div>
                          <div class="group">
                                 <input id="txtContrasenna2" type="password" required/>
@@ -836,7 +836,7 @@
                                 <!--label-->
                                 <span class="bar"></span>
                                 <!--botton del input-->
-                                <label class="label">Introducto nuevamente la contraseña</label>
+                                <label class="label" id="labelContrasena2"> Introducto nuevamente la contraseña</label>
                             </div>
                     </div>
                 </form>
@@ -850,11 +850,11 @@
                         </ul>
                     </div>
                 </div>
-                <form role="form">
+                <form role="form" id="prospects_form" method="post">
                 <div class="control-group">
                     <h1 class="components">
-                        <button id="btnIngresar" type="submit" class=" btn btn-primary center-block"><img src="/img/check-symbol.png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64">
-                            </button>
+                        <button id="btnIngresar" type="button" class=" btn btn-primary center-block"><img src="/img/check-symbol.png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64">
+                        </button>
                     </h1>
                 </div>
                 </form>

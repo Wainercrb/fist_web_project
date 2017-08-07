@@ -10,6 +10,31 @@ function cargar() {
     contra.value = obtenerCookie("CONTRASEÑA");
 }
 
+function capturar() {
+
+    var usuario = document.querySelector('#txt-usuario').value,
+        contra = document.querySelector('#txt-contrasena').value;
+    
+        addUsuarios(usuario, contra);
+}
+function addUsuarios(pUsuario, pContrasena) {
+
+    var newUsuario = {
+        usuario: pUsuario,
+        contrase: pContrasena
+        
+    };
+
+    console.log(newUsuario);
+    Usuarios.push(newUsuario);
+    guardarLista(Usuarios);
+
+
+}
+
+function guardarLista(NuevoUsuario) {
+    sessionStorage.setItem('loginUsuarios', JSON.stringify(NuevoUsuario));
+}
 function verificarLogin() {
     cargarUsuarios();
     var usuario = document.querySelector('#txt-usuario').value;
@@ -22,6 +47,7 @@ function verificarLogin() {
                 crearCookieuSUARIO("USUARIO", usuario, 900);
                 crearCookieuSUARIO("CONTRASEÑA", contra, 900);
             }
+            capturar();
             window.location = "index.html?"+usuario;
         } else {
             alert("no son iguales");
