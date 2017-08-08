@@ -749,12 +749,12 @@
                 <h3 id="title-form">Registrarse con:</h3>
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <button type="submit" class="btn btn-primary center-block btn-login-facebook"> 
+                        <button type="submit" class="btn btn-primary center-block btn-login-facebook" id="btn-login-facebook"> 
                         <a href="/RegistroPersonal.html"><img src="/img/facebook%20(2).png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64"></a>
                         </button>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-                        <button type="submit" class=" btn btn-primary center-block btn-ingresar-google"> <a href="/RegistroEmpresa.html" ><img src="/img/google-plus%20(1).png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64"></a>
+                        <button type="submit" class=" btn btn-primary center-block btn-ingresar-google" id="btn-ingresar-google"> <a href="/RegistroEmpresa.html" ><img src="/img/google-plus%20(1).png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64"></a>
                        </button>
 
                     </div>
@@ -828,7 +828,7 @@
                             <!--label-->
                             <span class="bar" id="a"></span>
                             <!--botton del input-->
-                            <label class="label"  id="labelContrasena1">Contraseña</label>
+                            <label class="label"  id="lblTxtContrasena1">Contraseña</label>
                         </div>
                          <div class="group">
                                 <input id="txtContrasenna2" type="password" required/>
@@ -836,17 +836,17 @@
                                 <!--label-->
                                 <span class="bar"></span>
                                 <!--botton del input-->
-                                <label class="label" id="labelContrasena2"> Introducto nuevamente la contraseña</label>
+                                <label class="label" id="lblTxtContrasena2"> Verifique la contraseña</label>
                             </div>
                     </div>
                 </form>
-                <div class="form-group" >
+                <div class="form-group">
                     <div>
                         <input id="searchInput" class="controls" type="text" placeholder=Ubiacación>
                         <div id="map"></div>
                         <ul id="geoData" class="list-group">
-                            <li class="list-group-item">Direccion completa: <span id="location"></span></li>
-                            <li class="list-group-item">País: <span id="country"></span></li>
+                            <li class="list-group-item" id="listLocation">Direccion completa: <span id="location"></span></li>
+                            <li class="list-group-item" id="listPais">País: <span id="country"></span></li>
                         </ul>
                     </div>
                 </div>
@@ -927,6 +927,6 @@
     <script src="js/bootstrap-hover-dropdown.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/front.js"></script>
-    <script type="text/javascript" src="js/RegistroUsuario.js"></script>pt>
+    <script type="text/javascript" src="js/RegistroUsuario.js"></script>
 </body>
 </html>

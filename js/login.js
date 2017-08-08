@@ -1,4 +1,5 @@
 var Usuarios = [];
+var usuarioActual;
 document.querySelector('#btn-ingresar').addEventListener('click', verificarLogin);
 
 window.addEventListener('load', cargar, false);
@@ -10,31 +11,11 @@ function cargar() {
     contra.value = obtenerCookie("CONTRASEÑA");
 }
 
-function capturar() {
-
-    var usuario = document.querySelector('#txt-usuario').value,
-        contra = document.querySelector('#txt-contrasena').value;
-    
-        addUsuarios(usuario, contra);
-}
-function addUsuarios(pUsuario, pContrasena) {
-
-    var newUsuario = {
-        usuario: pUsuario,
-        contrase: pContrasena
-        
-    };
-
-    console.log(newUsuario);
-    Usuarios.push(newUsuario);
-    guardarLista(Usuarios);
-
-
+function capturar(pUsuarioActual) {
+   
+    sessionStorage.setItem('loginUsuarios', JSON.stringify(pUsuarioActual)); 
 }
 
-function guardarLista(NuevoUsuario) {
-    sessionStorage.setItem('loginUsuarios', JSON.stringify(NuevoUsuario));
-}
 function verificarLogin() {
     cargarUsuarios();
     var usuario = document.querySelector('#txt-usuario').value;
@@ -47,13 +28,12 @@ function verificarLogin() {
                 crearCookieuSUARIO("USUARIO", usuario, 900);
                 crearCookieuSUARIO("CONTRASEÑA", contra, 900);
             }
-            capturar();
-            window.location = "index.html?"+usuario;
-        } else {
-            alert("no son iguales");
+            capturar(Usuarios[i].usuario);
+            window.location = "index.html";
+            return;
         }
-
     }
+    alert("No se encontro el usuario");
 }
 
 function crearCookieuSUARIO(clave, valor, diasexpiracion) {
@@ -75,7 +55,7 @@ function obtenerCookie(clave) {
 }
 
 function cargarUsuarios() {
-    var listaUsuarios = localStorage.getItem('usuarios');
+    var listaUsuarios = localStorage.getItem('AllUsers');
     if (listaUsuarios != null) {
 
         Usuarios = JSON.parse(listaUsuarios);
@@ -83,7 +63,6 @@ function cargarUsuarios() {
         Usuarios = [];
         alert("No hay registros en el local storange");
     }
-    alert(listaUsuarios.length);
     if (listaUsuarios.length === 2) {
         alert("No hay registros en el local storange");
     }
