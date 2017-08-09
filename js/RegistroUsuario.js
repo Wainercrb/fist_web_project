@@ -3,9 +3,27 @@ var plongitud = "";
 var Usuarios = [];
 
 document.querySelector('#btnIngresar').addEventListener('click', capturar);
+document.querySelector('#blah').addEventListener('click', inputProfilePicture);
+
+function inputProfilePicture() {
+
+    var obj = document.getElementById("imgInp");
+    if (obj) {
+        obj.click();
+    }
+
+}
 
 function capturar() {
     Usuarios = [];
+    /*Obtine la foto de la etiqueta img blah*/
+
+
+    bannerImage = document.getElementById('blah');
+     var imgData = getBase64Image(bannerImage);
+
+
+
     var nombre = document.querySelector('#txtNombre').value,
         apellidoPaterno = document.querySelector('#txtApellidoPaterno').value,
         apellidoMaterno = document.querySelector('#txtApellidoMaterno').value,
@@ -15,14 +33,15 @@ function capturar() {
         longitud = plongitud,
         usuario = document.querySelector('#txtUsuario').value,
         contrasenna1 = document.querySelector('#txtContrasenna1').value,
-        contrasenna2 = document.querySelector('#txtContrasenna2').value;
+        contrasenna2 = document.querySelector('#txtContrasenna2').value,
+        fotoPerfil = imgData;
     if (validarPasswords(nombre, apellidoPaterno, apellidoMaterno, contrasenna1, contrasenna2, email, edad, usuario) == true) {
-        addUsuarios(nombre, apellidoPaterno, apellidoMaterno, email, edad, latitud, longitud, usuario, contrasenna1);
+        addUsuarios(nombre, apellidoPaterno, apellidoMaterno, email, edad, latitud, longitud, usuario, contrasenna1, fotoPerfil);
     }
 }
 
 
-function addUsuarios(pNombre, pApellidoPaterno, pApellidoMaterno, pEmil, pEdad, pLatitud, pLongitud, pUsuario, pContrasenna) {
+function addUsuarios(pNombre, pApellidoPaterno, pApellidoMaterno, pEmil, pEdad, pLatitud, pLongitud, pUsuario, pContrasenna, pFoto) {
 
     var nuevoUsuario = {
         nombre: pNombre,
@@ -33,7 +52,8 @@ function addUsuarios(pNombre, pApellidoPaterno, pApellidoMaterno, pEmil, pEdad, 
         latitud: pLatitud,
         longitud: pLongitud,
         usuario: pUsuario,
-        contrasenna: pContrasenna
+        contrasenna: pContrasenna,
+        fotoU: pFoto
     };
 
     Usuarios.push(nuevoUsuario);
@@ -53,21 +73,19 @@ function cargarUsuarios() {
         Usuarios = JSON.parse(listaUsuarios);
     } else {
         Usuarios = [];
-        alert("No hay registros en el local storange");
-    }
-    if (listaUsuarios.length == 2) {
-        alert("No hay registros en el local storange");
     }
     return Usuarios;
 }
 
 function verfificarLogin(pusuario) {
     cargarUsuarios();
-    for (i = 0; i < Usuarios.length; i++) {
-        if (Usuarios[i].usuario == pusuario) {
-            return false;
-        }
+    if (Usuarios != null || Usuarios != "") {
+        for (i = 0; i < Usuarios.length; i++) {
+            if (Usuarios[i].usuario == pusuario) {
+                return false;
+            }
 
+        }
     }
     return true;
 }
@@ -258,4 +276,31 @@ function VerError2(label, dato) {
 function datoCorrecto(componente) {
     var x = document.getElementById(componente).style;
     x.color = "green";
+}
+
+
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById('blah').src = e.target.result;
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }

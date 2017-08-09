@@ -22,12 +22,30 @@ html {
     padding-right: 0px!important;
     margin-right: -30px !important;
 }
+#blah {
+   
+    background: url(example.jpg) 50% 50% no-repeat; /* 50% 50% centers image in div */
+    background-size: auto 110%; /* Interchange this value depending on prefering width vs. height */
+    width: 115px;
+    height: 9em !important;
+}
+#imgInp{
+    background: url(example.jpg) 50% 50% no-repeat; /* 50% 50% centers image in div */
+    background-size: auto 110%; /* Interchange this value depending on prefering width vs. height */
+    width: 115px;
+    height: 2.5em !important;
+    font-size: 10px;
+    cursor: pointer !important;
+}
 
 .nav-tabs {
     display: inline-block;
     border-bottom: none;
     padding-top: 15px;
     font-weight: bold;
+}
+input[type="file"] {
+    display: none;
 }
 
 .nav-tabs>li>a,
