@@ -2,7 +2,9 @@ var platitud = "";
 var plongitud = "";
 var Usuarios = [];
 
+window.addEventListener('load', cargarComponentesUsu, false);
 document.querySelector('#btnIngresar').addEventListener('click', capturar);
+document.querySelector('#btn-ingresar-navbar').addEventListener('click', verfificarLogin);
 document.querySelector('#blah').addEventListener('click', inputProfilePicture);
 
 function inputProfilePicture() {
@@ -14,13 +16,16 @@ function inputProfilePicture() {
 
 }
 
+function hola(){
+    alert("hola");
+}
 function capturar() {
     Usuarios = [];
     /*Obtine la foto de la etiqueta img blah*/
 
 
     bannerImage = document.getElementById('blah');
-     var imgData = getBase64Image(bannerImage);
+    var imgData = getBase64Image(bannerImage);
 
 
 
@@ -294,8 +299,8 @@ function readURL(input) {
 
 function getBase64Image(img) {
     var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
+    canvas.width = 100;
+    canvas.height = 90;
 
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
@@ -303,4 +308,71 @@ function getBase64Image(img) {
     var dataURL = canvas.toDataURL("image/png");
 
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
+
+
+
+
+function cargarComponentesUsu() {
+
+    var usu = document.getElementById('txt-usuario');
+    var contra = document.getElementById('txt-contrasena');
+    usu.value = obtenerCookie("USUARIO");
+    contra.value = obtenerCookie("CONTRASEÑA");
+    document.getElementById('input-checkbox-loginc').click();
+
+}
+
+function crearCookieuSUARIO(clave, valor, diasexpiracion) {
+    var d = new Date();
+    d.setTime(d.getTime() + (diasexpiracion * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = clave + "=" + valor + "; " + expires;
+}
+
+function obtenerCookie(clave) {
+    var name = clave + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+
+function verificarLogin() {
+    alert("entro");
+    cargarUsuarios();
+    var usuario = document.querySelector('#txt-usuario').value;
+    var contra = document.querySelector('#txt-contrasena').value;
+
+
+    if (Usuarios == [] || Usuarios == null || Usuarios.length <= 0) {
+        alert("No hay registros en el local storange");
+        return;
+    }
+    for (i = 0; i < Usuarios.length; i++) {
+        if (Usuarios[i].usuario == usuario && Usuarios[i].contrasenna == contra) {
+            if (check == true) {
+                crearCookieuSUARIO("USUARIO", usuario, 900);
+                crearCookieuSUARIO("CONTRASEÑA", contra, 900);
+            } else {
+                /*borra el sección store*/
+            }
+            document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
+            document.getElementById("headerName").innerHTML = Usuarios[i].nombre + " " + Usuarios[i].apellidoPaterno + " " + Usuarios[i].apellidoMaterno;
+            bannerImg = document.getElementById('profile-img');
+            bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
+            capturar(Usuarios[i].usuario);
+            return;
+        }
+    }
+    alert("No se encontro el usuario");
+}
+function capturar(pUsuarioActual) {
+
+    sessionStorage.setItem('loginUsuarios', JSON.stringify(pUsuarioActual));
 }

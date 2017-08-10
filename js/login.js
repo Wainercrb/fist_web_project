@@ -9,11 +9,14 @@ function cargar() {
     var contra = document.getElementById('txt-contrasena');
     usu.value = obtenerCookie("USUARIO");
     contra.value = obtenerCookie("CONTRASEÑA");
+    alert(contra.value+" valor");
+    var check = document.getElementById('input-checkbox-loginc').checked;
+    check = true;
 }
 
 function capturar(pUsuarioActual) {
-   
-    sessionStorage.setItem('loginUsuarios', JSON.stringify(pUsuarioActual)); 
+
+    sessionStorage.setItem('loginUsuarios', JSON.stringify(pUsuarioActual));
 }
 
 function verificarLogin() {
@@ -22,6 +25,10 @@ function verificarLogin() {
     var contra = document.querySelector('#txt-contrasena').value;
     var check = document.getElementById('input-checkbox-loginc').checked;
 
+    if (Usuarios == [] || Usuarios == null || Usuarios.length <= 0) {
+        alert("No hay registros en el local storange");
+        return;
+    }
     for (i = 0; i < Usuarios.length; i++) {
         if (Usuarios[i].usuario == usuario && Usuarios[i].contrasenna == contra) {
             if (check == true) {
@@ -61,10 +68,8 @@ function cargarUsuarios() {
         Usuarios = JSON.parse(listaUsuarios);
     } else {
         Usuarios = [];
-        alert("No hay registros en el local storange");
+        return;
     }
-    if (listaUsuarios.length === 2) {
-        alert("No hay registros en el local storange");
-    }
+
     return Usuarios;
 }

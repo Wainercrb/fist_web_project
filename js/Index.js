@@ -23,6 +23,11 @@ function cargarTodo(pUsuario) {
                 document.getElementById("headerName").innerHTML = usuario[i].nombre + " " + usuario[i].apellidoPaterno + " " + usuario[i].apellidoMaterno;
                 bannerImg = document.getElementById('profile-img');
                 bannerImg.src = "data:image/png;base64," + usuario[i].fotoU;
+                var imgProfile = bannerImage;
+       
+                alert("width= " + imgProfile.width + "hei " + imgProfile.height+ imgProfile.namespaceURI)
+
+
                 return;
             }
         }
@@ -32,6 +37,3 @@ function cargarTodo(pUsuario) {
     }
     return usuario;
 }
-
-
-

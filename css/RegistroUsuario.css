@@ -28,6 +28,8 @@ html {
     background-size: auto 110%; /* Interchange this value depending on prefering width vs. height */
     width: 115px;
     height: 9em !important;
+    cursor: pointer !important;
+     border: 1px solid black;
 }
 #imgInp{
     background: url(example.jpg) 50% 50% no-repeat; /* 50% 50% centers image in div */
@@ -35,8 +37,16 @@ html {
     width: 115px;
     height: 2.5em !important;
     font-size: 10px;
-    cursor: pointer !important;
+    
 }
+#profile-img{
+
+    background: url(example.jpg) 50% 50% no-repeat; /* 50% 50% centers image in div */
+    background-size: auto 110%; /* Interchange this value depending on prefering width vs. height */
+    width: 90px;
+    height: 6.1em !important;
+}
+
 
 .nav-tabs {
     display: inline-block;
@@ -417,15 +427,7 @@ input[type="file"] {
 /**Edita las dimensiones de la foto de usuario**/
 
 .profile-img {
-    margin-top: -5px;
-    margin-right: 5px;
-    float: left;
-    background: url(/img/file.jpg) 50% 50% no-repeat;
-    /* 50% 50% centra la imagen */
-    background-size: auto 100%;
-    /* Interchange this value depending on prefering width vs. height */
-    width: 30px;
-    height: 30px;
+ ;
 }
 
 #profile {
