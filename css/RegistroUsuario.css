@@ -542,16 +542,6 @@ a {
     /*anco del div grup hacia su padre*/
 }
 
-input {
-    margin-top: 0px;
-    font-size: 100%;
-    padding: 10px 10px 10px 5px;
-    display: block;
-    /*toma las dimenciones de su padre*/
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #757575;
-}
 
 
 /*Quita el borde leccionado del div del input solo queda la animacion de la linea del button*/
@@ -559,8 +549,6 @@ input {
 input:focus {
     outline: none;
 }
-
-
 /*label del input */
 
 .label {
