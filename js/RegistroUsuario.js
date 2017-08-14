@@ -2,6 +2,7 @@ var platitud = "";
 var plongitud = "";
 var selFoto = false;
 var Usuarios = [];
+var Vendedores = [];
 
 /*Eventos de clicks en los botones*/
 window.addEventListener('load', cargarComponentesUsu, false);
@@ -19,7 +20,6 @@ function inputProfilePicture() {
 
 /*Captura los datos de las etiquedas del index*/
 function capturar() {
-    alert("hola");
     Usuarios = [];
     /*Obtine la foto de la etiqueta img blah*/
     bannerImage = document.getElementById('blah');
@@ -66,6 +66,16 @@ function guardarLista(NuevoUsuario) {
 /*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
 function cargarUsuarios() {
     var listaUsuarios = localStorage.getItem('AllUsers');
+    if (listaUsuarios != null) {
+        Usuarios = JSON.parse(listaUsuarios);
+    } else {
+        Usuarios = [];
+    }
+    return Usuarios;
+}
+/*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
+function cargarVendedores() {
+    var listaUsuarios = localStorage.getItem('vendedores');
     if (listaUsuarios != null) {
         Usuarios = JSON.parse(listaUsuarios);
     } else {
@@ -222,8 +232,8 @@ function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-        document.getElementById('blah').src = e.target.result;
-        selFoto = true;
+            document.getElementById('blah').src = e.target.result;
+            selFoto = true;
         }
         reader.readAsDataURL(input.files[0]);
     }
@@ -242,12 +252,15 @@ function getBase64Image(img) {
 /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
 function cargarComponentesUsu() {
     cargarSessionStore();
-    var usu = document.getElementById('txt-usuario');
-    var contra = document.getElementById('txt-contrasena');
-    usu.value = obtenerCookie("USUARIO");
-    contra.value = obtenerCookie("CONTRASEÑA");
-    document.getElementById('input-checkbox-loginc').click();
-    cargarUsuarios();
+    if (obtenerCookie("USUARIO") == "" || obtenerCookie("USUARIO") == null) {
+        document.getElementById('input-checkbox-loginc').checked = false;
+    } else {
+        document.getElementById('input-checkbox-loginc').click();
+        var usu = document.getElementById('txt-usuario');
+        var contra = document.getElementById('txt-contrasena');
+        usu.value = obtenerCookie("USUARIO");;
+        contra.value = obtenerCookie("CONTRASEÑA");
+    }
 }
 /*crea un cooki, clave nombre del cookie, valor del cookie, y expiracíon del mismo*/
 function crearCookieuSUARIO(clave, valor, diasexpiracion) {
@@ -268,11 +281,12 @@ function obtenerCookie(clave) {
     }
     return "";
 }
+
 function cargarSessionStore() {
 
     var nombreUsuario = sessionStorage.getItem('loginUsuarios');
     if (nombreUsuario != "" || nombreUsuario != null) {
-     preLoad(nombreUsuario);
+        preLoad(nombreUsuario);
     }
 }
 
@@ -280,14 +294,21 @@ function cargarSessionStore() {
 que no quiera recordar la contraseña elimina el cookie*/
 function preLoad(pUsuario) {
     cargarUsuarios();
-    if (Usuarios == [] || Usuarios == null || Usuarios.length <= 0) {
-        alert("No hay registros en el local storange");
-        return;
-    }
     for (i = 0; i < Usuarios.length; i++) {
-        if ('"'+Usuarios[i].usuario+'"' == pUsuario) {
+        if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
             document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
             document.getElementById("headerName").innerHTML = Usuarios[i].nombre + " " + Usuarios[i].apellidoPaterno + " " + Usuarios[i].apellidoMaterno;
+            bannerImg = document.getElementById('profile-img');
+            bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
+            capturarLoginUsuario(Usuarios[i].usuario);
+            return;
+        }
+    }
+    cargarVendedores();
+    for (i = 0; i < Usuarios.length; i++) {
+        if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
+            document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
+            document.getElementById("headerName").innerHTML = Usuarios[i].nombre;
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
@@ -306,10 +327,6 @@ function Ingresar() {
     var usuario = document.querySelector('#txt-usuario').value;
     var contra = document.querySelector('#txt-contrasena').value;
     var check = document.getElementById('input-checkbox-loginc').checked;
-    if (Usuarios == [] || Usuarios == null || Usuarios.length <= 0) {
-        alert("No hay registros en el local storange");
-        return;
-    }
     for (i = 0; i < Usuarios.length; i++) {
         if (Usuarios[i].usuario == usuario && Usuarios[i].contrasenna == contra) {
             if (check == true) {
@@ -319,14 +336,36 @@ function Ingresar() {
                 eliminarCookie("USUARIO");
                 eliminarCookie("CONTRASEÑA");
             }
-             alert(document.getElementById("headerEmail").innerHTML = Usuarios[i].email);
+            alert(document.getElementById("headerEmail").innerHTML = Usuarios[i].email);
 
             document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
             document.getElementById("headerName").innerHTML = Usuarios[i].nombre + " " + Usuarios[i].apellidoPaterno + " " + Usuarios[i].apellidoMaterno;
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            window.location = "RegistroUsuario.html";            
+            window.location = "RegistroUsuario.html";
+            return;
+        }
+    }
+    Usuarios = [];
+    cargarSessionStore();
+    for (i = 0; i < Usuarios.length; i++) {
+        if (Usuarios[i].usuario == usuario && Usuarios[i].contrasenna == contra) {
+            if (check == true) {
+                crearCookieuSUARIO("USUARIO", usuario, 900);
+                crearCookieuSUARIO("CONTRASEÑA", contra, 900);
+            } else {
+                eliminarCookie("USUARIO");
+                eliminarCookie("CONTRASEÑA");
+            }
+            alert(document.getElementById("headerEmail").innerHTML = Usuarios[i].email);
+
+            document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
+            document.getElementById("headerName").innerHTML = Usuarios[i].nombre;
+            bannerImg = document.getElementById('profile-img');
+            bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
+            capturarLoginUsuario(Usuarios[i].usuario);
+            window.location = "RegistroUsuario.html";
             return;
         }
     }

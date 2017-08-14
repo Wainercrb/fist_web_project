@@ -1,6 +1,7 @@
 var platitud = "";
 var plongitud = "";
 var selFoto = false;
+var editar = false;
 var Usuarios = [];
 
 /*Eventos de clicks en los botones*/
@@ -19,53 +20,69 @@ function inputProfilePicture() {
 
 /*Captura los datos de las etiquedas del index*/
 function capturar() {
+    if (sessionStorage.getItem("posicion") != null) {
+        var lcStorange = JSON.parse(localStorage.getItem('vendedores'));
+        lcStorange.splice(parseInt('posicion'), 1);
+        localStorage.setItem('vendedores', JSON.stringify(lcStorange));
+    }
+
     Usuarios = [];
     var e = document.getElementById("radius");
+    var value = e.options[e.selectedIndex].value;
+    var text = e.options[e.selectedIndex].text;
     /*Obtine la foto de la etiqueta img blah*/
     bannerImage = document.getElementById('blah');
     var imgData = getBase64Image(bannerImage);
-    var nombre = document.querySelector('#txtNombre').value,
+    var tipoUsuario = "vendedor",
+        nombre = document.querySelector('#txtNombre').value,
         email = document.querySelector('#txtEmail').value,
         usuario = document.querySelector('#txtUsuario').value,
         contrasenna1 = document.querySelector('#txtContrasenna1').value,
         contrasenna2 = document.querySelector('#txtContrasenna2').value,
-        tipoServicio = e.options[e.selectedIndex].value,
+        tipoServicio = text,
         latitud = platitud,
         longitud = plongitud,
         fotoPerfil = imgData;
-    if (validarUsuario(nombre, email, edad, usuario) == true) {
-        addUsuarios(nombre, email, usuario, contrasenna1, tipoServicio, longitud, latitud, fotoPerfil);
+    if (validarUsuario(nombre, email, usuario, contrasenna1, contrasenna2) == true) {
+        addUsuarios(tipoUsuario, nombre, email, usuario, contrasenna1, tipoServicio, longitud, latitud, fotoPerfil);
     }
 }
 
 /*Crea el objeto con los parametos para añdiarlos a la lista pot el push*/
-function addUsuarios(pNombre, pEmil, pUsuario, pContrasenna, pTipoServicio, pLongitud, pLatutud, pFoto) {
+function addUsuarios(pTipoUsuario, pNombre, pEmil, pUsuario, pContrasenna, pTipoServicio, pLong, pLati, pFoto) {
     var nuevoUsuario = {
+        tipoUsuario: pTipoUsuario,
         nombre: pNombre,
         email: pEmil,
         usuario: pUsuario,
         contrasenna: pContrasenna,
         tipoServicio: pTipoServicio,
-        latitud: pLatitud,
-        longitud: pLongitud,
+        latitud: pLati,
+        longitud: pLong,
         fotoU: pFoto
     };
     Usuarios.push(nuevoUsuario);
     guardarLista(Usuarios);
+
 }
 /*Guarda la el objeto que recibe por para metro al local storange*/
 function guardarLista(NuevoUsuario) {
     localStorage.setItem('vendedores', JSON.stringify(NuevoUsuario));
+    sessionStorage.removeItem('latitud');
+    sessionStorage.removeItem('longitud');
+    sessionStorage.removeItem('posicion');
     window.location = "RegistroVendedor.html";
 }
 
 /*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
 function cargarUsuarios() {
+    Usuarios = [];
     var listaUsuarios = localStorage.getItem('vendedores');
     if (listaUsuarios != null) {
         Usuarios = JSON.parse(listaUsuarios);
     } else {
         Usuarios = [];
+        alert(Usuarios.length);
     }
     return Usuarios;
 }
@@ -86,7 +103,7 @@ function verfificarLogin(pusuario) {
 
 
 /*Validacion de los datos de la interfaz*/
-function validarUsuario(nombre, apellidoUno, apellidoDos, p1, p2, valor, pEdad, usu) {
+function validarUsuario(nombre, valor, usu, p1, p2) {
     var espacios = false;
     var cont = 0;
     if (selFoto == false) {
@@ -101,26 +118,6 @@ function validarUsuario(nombre, apellidoUno, apellidoDos, p1, p2, valor, pEdad, 
         return false;
     } else {
         VerError2("labelNombre", "Nombre");
-    }
-    if (apellidoUno.length <= 3) {
-
-        VerError("labelApellidoUno", "Apellido Paterno (verifique este dato)");
-        return false;
-    } else {
-        VerError2("labelApellidoUno", "Apellido Paterno");
-    }
-    if (apellidoDos.length <= 3) {
-
-        VerError("txtApellidoDos", "Apellido Materno (verifique este dato)");
-        return false;
-    } else {
-        VerError2("txtApellidoDos", "Apellido Materno");
-    }
-    if (pEdad <= 0 || pEdad == "") {
-        VerError("labelTxtEdad", "Edad (ingresa una edad correcta)");
-        return false;
-    } else {
-        VerError2("labelTxtEdad", "Edad");
     }
     if (!/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(valor)) {
         VerError("labelTxtEmal", "Email (Verifique la dirección de email)");
@@ -162,12 +159,10 @@ function validarUsuario(nombre, apellidoUno, apellidoDos, p1, p2, valor, pEdad, 
         VerError("location", "Ingrese una ubicación correcata");
         VerError("country", "Ingrese una ubicación correcata");
         return false;
-    } else {
-        datoCorrecto("location");
-        datoCorrecto("country");
     }
     return true;
 }
+
 
 /*Evita que la pagina se carge cuando le doy enter a algun input*/
 $(document).ready(function () {
@@ -235,14 +230,79 @@ function getBase64Image(img) {
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
 
+/*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
+function cargarUsuariosDos() {
+    var listaUsuarios = localStorage.getItem('AllUsers');
+    if (listaUsuarios != null) {
+        Usuarios = JSON.parse(listaUsuarios);
+    } else {
+        Usuarios = [];
+    }
+    return Usuarios;
+}
 /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
 function cargarComponentesUsu() {
-    var usu = document.getElementById('txt-usuario');
-    var contra = document.getElementById('txt-contrasena');
-    usu.value = obtenerCookie("USUARIO");
-    contra.value = obtenerCookie("CONTRASEÑA");
-    document.getElementById('input-checkbox-loginc').click();
+
+    if (sessionStorage.getItem('latitud') != null) {
+        editar = true;
+        GetAddress(sessionStorage.getItem('latitud'), sessionStorage.getItem('longitud'));
+    }
+    cargarSessionStore();
+    if (obtenerCookie("USUARIO") == "" || obtenerCookie("USUARIO") == null) {
+        document.getElementById('input-checkbox-loginc').checked = false;
+    } else {
+        document.getElementById('input-checkbox-loginc').click();
+        var usu = document.getElementById('txt-usuario');
+        var contra = document.getElementById('txt-contrasena');
+        usu.value = obtenerCookie("USUARIO");;
+        contra.value = obtenerCookie("CONTRASEÑA");
+    }
+
+}
+/*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
+que no quiera recordar la contraseña elimina el cookie*/
+function preLoad(pUsuario) {
     cargarUsuarios();
+    if (Usuarios == [] || Usuarios == null || Usuarios.length <= 0) {
+        alert("No hay registros en el local storange");
+
+    }
+    for (i = 0; i < Usuarios.length; i++) {
+        if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
+            document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
+            document.getElementById("headerName").innerHTML = Usuarios[i].nombre;
+            bannerImg = document.getElementById('profile-img');
+            bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
+            if (editar == true) {
+                bannerImg = document.getElementById('blah');
+                bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
+                document.getElementById("txtNombre").value = Usuarios[i].nombre;
+                document.getElementById("txtEmail").value = Usuarios[i].email;
+                document.getElementById("txtUsuario").value = Usuarios[i].usuario;
+                document.getElementById("txtContrasenna1").value = Usuarios[i].contrasenna;
+                document.getElementById("txtContrasenna2").value = Usuarios[i].contrasenna;
+            }
+            capturarLoginUsuario(Usuarios[i].usuario);
+            return;
+        }
+    }
+    /*busca cliente*/
+    cargarUsuariosDos();
+    if (Usuarios == [] || Usuarios == null || Usuarios.length <= 0) {
+        alert("No hay registros en el local storange");
+    }
+    for (i = 0; i < Usuarios.length; i++) {
+        if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
+            document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
+            document.getElementById("headerName").innerHTML = Usuarios[i].nombre + " " + Usuarios[i].apellidoPaterno + " " + Usuarios[i].apellidoMaterno;
+            bannerImg = document.getElementById('profile-img');
+            bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
+
+
+            capturarLoginUsuario(Usuarios[i].usuario);
+            return;
+        }
+    }
 }
 /*crea un cooki, clave nombre del cookie, valor del cookie, y expiracíon del mismo*/
 function crearCookieuSUARIO(clave, valor, diasexpiracion) {
@@ -264,6 +324,13 @@ function obtenerCookie(clave) {
     return "";
 }
 
+function cargarSessionStore() {
+
+    var nombreUsuario = sessionStorage.getItem('loginUsuarios');
+    if (nombreUsuario != "" || nombreUsuario != null) {
+        preLoad(nombreUsuario);
+    }
+}
 /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
 que no quiera recordar la contraseña elimina el cookie*/
 function Ingresar() {
@@ -285,10 +352,26 @@ function Ingresar() {
                 eliminarCookie("CONTRASEÑA");
             }
 
-            document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
-            document.getElementById("headerName").innerHTML = Usuarios[i].nombre + " " + Usuarios[i].apellidoPaterno + " " + Usuarios[i].apellidoMaterno;
-            bannerImg = document.getElementById('profile-img');
-            bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
+            capturarLoginUsuario(Usuarios[i].usuario);
+            window.location = "RegistroVendedor.html";
+            return;
+        }
+    }
+    Usuarios = [];
+    cargarUsuariosDos();
+    if (Usuarios == [] || Usuarios == null || Usuarios.length <= 0) {
+        alert("No hay registros en el local storange");
+
+    }
+    for (i = 0; i < Usuarios.length; i++) {
+        if (Usuarios[i].usuario == usuario && Usuarios[i].contrasenna == contra) {
+            if (check == true) {
+                crearCookieuSUARIO("USUARIO", usuario, 900);
+                crearCookieuSUARIO("CONTRASEÑA", contra, 900);
+            } else {
+                eliminarCookie("USUARIO");
+                eliminarCookie("CONTRASEÑA");
+            }
             capturarLoginUsuario(Usuarios[i].usuario);
             window.location = "RegistroUsuario.html";
             return;
@@ -310,12 +393,22 @@ function eliminarCookie(name) {
 /*Carga los componentes del mapa, ubicación, tipo satelita o relieve
 posición y input para buscar x lugar*/
 function initMap() {
+    var la = parseFloat(sessionStorage.getItem('latitud'));
+    var lo = parseFloat(sessionStorage.getItem('longitud'));
+    if (sessionStorage.getItem('latitud') != null) {
+        editar = true;
+        var rLatitud = la;
+        var rLongitud = lo;
+    } else {
+        var rLatitud = 10.0000000;
+        var rLongitud = -84.0000000;
+    }
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {
-            lat: 10.0000000,
-            lng: -84.0000000
+            lat: rLatitud,
+            lng: rLongitud
         },
-        zoom: 9
+        zoom: 15
     });
     var input = document.getElementById('searchInput');
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -381,5 +474,26 @@ function initMap() {
         datoCorrecto("location");
         datoCorrecto("country");
         document.getElementById('location').innerHTML = place.formatted_address;
+    });
+
+}
+
+function GetAddress(zLT, zLO) {
+    var lat = parseFloat(zLT);
+    var lng = parseFloat(zLO);
+    var latlng = new google.maps.LatLng(lat, lng);
+    var geocoder = geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+        'latLng': latlng
+    }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            if (results[1]) {
+               
+                latitud = zLT;
+                longitud = zLO;
+                document.getElementById('location').innerHTML = results[1].formatted_address;
+                document.getElementById('country').innerHTML = results[3].formatted_address;
+            }
+        }
     });
 }

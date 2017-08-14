@@ -1,15 +1,56 @@
-var latitud = 0;
-var longitud = 0;
+var productos = [];
+document.querySelector('#btnIngresar').addEventListener('click', capturar);
 window.addEventListener('load', cargarDatosUsuario, false);
-document.addEventListener('DOMContentLoaded', function () {
-document.querySelector('#btnEditar').addEventListener('click', editar);
 document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
-});
 var Usuarios = [];
 var Vendedores = [];
 var usuarioActua;
-var direccionLocal;
 
+function capturar() {
+    if (usuarioActua.tipoUsuario == "vendedor") {
+        var CaT = document.getElementById("categoria");
+        var value = CaT.options[CaT.selectedIndex].value;
+        var text = CaT.options[CaT.selectedIndex].text;
+        var sCaT = document.getElementById("subCategoria");
+        var value = sCaT.options[sCaT.selectedIndex].value;
+        var finaSCategoria = sCaT.options[sCaT.selectedIndex].text;
+        var codigo = document.querySelector('#txtCodigo').value,
+            nombre = document.querySelector('#txtNombre').value,
+            marca = document.querySelector('#txtMarca').value,
+            precio = document.querySelector('#txtPrecio').value,
+            cantidad = document.querySelector('#txtCantidad').value,
+            categoria = text,
+            subCategoira = finaSCategoria,
+            descripcion = document.querySelector('#txtDescripcion').value;
+
+        addProductos(codigo, nombre, marca, precio, cantidad, categoria, subCategoira, descripcion);
+    } else {
+        alert("No tienes permisos para esta acción");
+    }
+
+}
+
+function addProductos(pCodigo, pNombre, pMarca, pPrecio, pCantidad, pCategoria, pSubCategoria, pDescripcion) {
+
+    var nuevoProducto = {
+        codigo: pCodigo,
+        nombre: pNombre,
+        marca: pMarca,
+        precio: pPrecio,
+        cantidad: pCantidad,
+        categoria: pCategoria,
+        subCategoria: pSubCategoria,
+        descripcion: pDescripcion
+    };
+    productos.push(nuevoProducto);
+    guardarLista(productos);
+}
+
+
+
+function guardarLista(peopleList) {
+    localStorage.setItem('Producto', JSON.stringify(productos));
+}
 
 /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
 function cargarDatosUsuario() {
@@ -20,7 +61,7 @@ function cargarDatosUsuario() {
         document.getElementById('input-checkbox-loginc').click();
         var usu = document.getElementById('txt-usuario');
         var contra = document.getElementById('txt-contrasena');
-        usu.value = obtenerCookie("USUARIO");
+        usu.value = obtenerCookie("USUARIO");;
         contra.value = obtenerCookie("CONTRASEÑA");
     }
 }
@@ -43,51 +84,29 @@ function preLoad(pUsuario) {
             document.getElementById("headerName").innerHTML = Usuarios[i].nombre + " " + Usuarios[i].apellidoPaterno + " " + Usuarios[i].apellidoMaterno;
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
-            bannerImg = document.getElementById('imgUsuarioActual');
-            bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            document.getElementById('nombreVendedor').innerHTML = Usuarios[i].nombre;
-            sessionStorage.setItem('posicion', JSON.stringify(i));
             usuarioActua = {
                 nombre: Usuarios[i].nombre,
                 tipoUsuario: "comprador",
                 usuario: Usuarios[i].usuario
             };
-            alert("aler");
             return;
         }
     }
-    Usuarios = [];
     cargarVendedores();
-    alert(Usuarios.length);
     for (i = 0; i < Usuarios.length; i++) {
-        alert('"'+Usuarios[i].usuario +'"'+" --" + pUsuario);
         if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
-            alert(Usuarios[i].email + Usuarios.length + "entro");
             document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
             document.getElementById("headerName").innerHTML = Usuarios[i].nombre;
-            document.getElementById("EmailVendedor").innerHTML = Usuarios[i].email;
-            document.getElementById("usuarioVendedor").innerHTML = Usuarios[i].usuario;
-            document.getElementById("contrasenaVendedor").innerHTML = Usuarios[i].contrasenna;
-            document.getElementById("servicioVendedor").innerHTML = Usuarios[i].tipoServicio;
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            bannerImg = document.getElementById('imgUsuarioActual');
-            bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
-            capturarLoginUsuario(Usuarios[i].usuario);
-            document.getElementById('nombreVendedor').innerHTML = Usuarios[i].nombre;
-            latitud = Usuarios[i].latitud;
-            longitud = Usuarios[i].longitud;            
-            GetAddress();
-            myMap();
-            sessionStorage.setItem('posicion', JSON.stringify(i));
             usuarioActua = {
                 nombre: Usuarios[i].nombre,
                 tipoUsuario: "vendedor",
                 usuario: Usuarios[i].usuario
             };
-        return;
+            return;
         }
     }
     alert("No se encontro el usuario");
@@ -152,13 +171,17 @@ function Ingresar() {
                 eliminarCookie("USUARIO");
                 eliminarCookie("CONTRASEÑA");
             }
+            document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
+            document.getElementById("headerName").innerHTML = Usuarios[i].nombre + " " + Usuarios[i].apellidoPaterno + " " + Usuarios[i].apellidoMaterno;
+            bannerImg = document.getElementById('profile-img');
+            bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            window.location = "VerPerfilEmpresa.html";
+            window.location = "NuevoProducto.html";
             return;
         }
     }
     Usuarios = [];
-    cargarVendedores();
+    cargarSessionStore();
     for (i = 0; i < Usuarios.length; i++) {
         if (Usuarios[i].usuario == usuario && Usuarios[i].contrasenna == contra) {
             if (check == true) {
@@ -168,49 +191,14 @@ function Ingresar() {
                 eliminarCookie("USUARIO");
                 eliminarCookie("CONTRASEÑA");
             }
-            
+            document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
+            document.getElementById("headerName").innerHTML = Usuarios[i].nombre;
+            bannerImg = document.getElementById('profile-img');
+            bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            window.location = "VerPerfilEmpresa.html";
+            window.location = "NuevoProducto.html";
             return;
         }
     }
     alert("No se encontro el usuario");
-}
-
-function initMap() {
-   var x = document.getElementById('searchInput').style;
-    x.display = "none";
-}
-function GetAddress() {
-    var lat = parseFloat(latitud);
-    var lng = parseFloat(longitud);
-    var latlng = new google.maps.LatLng(lat, lng);
-    var geocoder = geocoder = new google.maps.Geocoder();
-    geocoder.geocode({
-        'latLng': latlng
-    }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            if (results[1]) {
-               
-                document.getElementById('location').innerHTML = results[1].formatted_address;
-                document.getElementById('country').innerHTML = results[3].formatted_address;
-            }
-        }
-    });
-}
-function myMap() {
-var mapProp= {
-    center:new google.maps.LatLng(latitud,longitud),
-    zoom: 15,
-};
-var map=new google.maps.Map(document.getElementById("map"),mapProp);
-}
-
-
-function editar(){
-    
-    sessionStorage.setItem('latitud', JSON.stringify(latitud));
-    sessionStorage.setItem('longitud', JSON.stringify(longitud));
-    window.location = "RegistroVendedor.html";
-    
 }
