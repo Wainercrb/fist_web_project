@@ -1,6 +1,5 @@
 var platitud = "";
 var plongitud = "";
-var selFoto = false;
 var editar = false;
 var Usuarios = [];
 
@@ -9,6 +8,9 @@ window.addEventListener('load', cargarComponentesUsu, false);
 document.querySelector('#btnIngresar').addEventListener('click', capturar);
 document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
 document.querySelector('#blah').addEventListener('click', inputProfilePicture);
+document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
+document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
+
 
 /*Evento de click para la etiqueta img del registro usuario*/
 function inputProfilePicture() {
@@ -20,12 +22,6 @@ function inputProfilePicture() {
 
 /*Captura los datos de las etiquedas del index*/
 function capturar() {
-    if (sessionStorage.getItem("posicion") != null) {
-        var lcStorange = JSON.parse(localStorage.getItem('vendedores'));
-        lcStorange.splice(parseInt('posicion'), 1);
-        localStorage.setItem('vendedores', JSON.stringify(lcStorange));
-    }
-
     Usuarios = [];
     var e = document.getElementById("radius");
     var value = e.options[e.selectedIndex].value;
@@ -44,10 +40,18 @@ function capturar() {
         longitud = plongitud,
         fotoPerfil = imgData;
     if (validarUsuario(nombre, email, usuario, contrasenna1, contrasenna2) == true) {
+        editarNuevoVendedor();
         addUsuarios(tipoUsuario, nombre, email, usuario, contrasenna1, tipoServicio, longitud, latitud, fotoPerfil);
     }
 }
 
+function editarNuevoVendedor() {
+    if (editar == true) {
+        var lcStorange = JSON.parse(localStorage.getItem('vendedores'));
+        lcStorange.splice(parseInt(sessionStorage.getItem("posicion")), 1);
+        localStorage.setItem('vendedores', JSON.stringify(lcStorange));
+    }
+}
 /*Crea el objeto con los parametos para añdiarlos a la lista pot el push*/
 function addUsuarios(pTipoUsuario, pNombre, pEmil, pUsuario, pContrasenna, pTipoServicio, pLong, pLati, pFoto) {
     var nuevoUsuario = {
@@ -61,10 +65,20 @@ function addUsuarios(pTipoUsuario, pNombre, pEmil, pUsuario, pContrasenna, pTipo
         longitud: pLong,
         fotoU: pFoto
     };
-    Usuarios.push(nuevoUsuario);
-    guardarLista(Usuarios);
-
+    var temUsuarios = JSON.parse(localStorage.getItem('vendedores'));
+    if (editar == true) {
+        for (i = 0; i < temUsuarios.length; i++) {
+            Usuarios.push(temUsuarios[i]);
+        }
+        Usuarios.push(nuevoUsuario);
+        guardarLista(Usuarios);
+    } else {
+        Usuarios.push(nuevoUsuario);
+        guardarLista(Usuarios);
+    }
 }
+
+
 /*Guarda la el objeto que recibe por para metro al local storange*/
 function guardarLista(NuevoUsuario) {
     localStorage.setItem('vendedores', JSON.stringify(NuevoUsuario));
@@ -106,13 +120,6 @@ function verfificarLogin(pusuario) {
 function validarUsuario(nombre, valor, usu, p1, p2) {
     var espacios = false;
     var cont = 0;
-    if (selFoto == false) {
-        errorFoto("blah");
-        alert("Error, Ingrese una foto");
-        return false;
-    } else {
-        verdaderaFoto("blah");
-    }
     if (nombre.length <= 3) {
         VerError("labelNombre", "Nombre (verifique este dato)");
         return false;
@@ -126,11 +133,13 @@ function validarUsuario(nombre, valor, usu, p1, p2) {
     } else {
         VerError2("labelTxtEmal", "Email");
     }
-    if (usu.length <= 3 || verfificarLogin(usu) == false) {
-        VerError("labelTxtUsuario", "Usuario (verifique este dato)");
-        return false;
-    } else {
-        VerError2("labelTxtUsuario", "Usuario");
+    if (editar == false) {
+        if (usu.length <= 3 || verfificarLogin(usu) == false) {
+            VerError("labelTxtUsuario", "Usuario (verifique este dato)");
+            return false;
+        } else {
+            VerError2("labelTxtUsuario", "Usuario");
+        }
     }
     if (p1.length <= 0 || p2.length <= 0 || p1 != p2 || p1.length <= 6 || p2.length <= 6) {
         VerError("lblTxtContrasena1", "Contraseña debe tener mas de caracteres o que sean iguales");
@@ -146,6 +155,7 @@ function validarUsuario(nombre, valor, usu, p1, p2) {
             espacios = true;
         cont++;
     }
+
     if (espacios) {
         VerError("lblTxtContrasena1", "Contraseña debe tener mas de caracteres o que sean iguales");
         VerError("lblTxtContrasena2", "Verificación de contraseña debe tener mas de caracteres o que sean iguales");
@@ -214,7 +224,6 @@ function readURL(input) {
         var reader = new FileReader();
         reader.onload = function (e) {
             document.getElementById('blah').src = e.target.result;
-            selFoto = true;
         }
         reader.readAsDataURL(input.files[0]);
     }
@@ -263,10 +272,6 @@ function cargarComponentesUsu() {
 que no quiera recordar la contraseña elimina el cookie*/
 function preLoad(pUsuario) {
     cargarUsuarios();
-    if (Usuarios == [] || Usuarios == null || Usuarios.length <= 0) {
-        alert("No hay registros en el local storange");
-
-    }
     for (i = 0; i < Usuarios.length; i++) {
         if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
             document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
@@ -276,11 +281,16 @@ function preLoad(pUsuario) {
             if (editar == true) {
                 bannerImg = document.getElementById('blah');
                 bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
-                document.getElementById("txtNombre").value = Usuarios[i].nombre;
-                document.getElementById("txtEmail").value = Usuarios[i].email;
-                document.getElementById("txtUsuario").value = Usuarios[i].usuario;
-                document.getElementById("txtContrasenna1").value = Usuarios[i].contrasenna;
-                document.getElementById("txtContrasenna2").value = Usuarios[i].contrasenna;
+                if (editar == true) {
+                    document.getElementById("txtNombre").value = Usuarios[i].nombre;
+                    document.getElementById("txtEmail").value = Usuarios[i].email;
+                    document.getElementById("txtUsuario").value = Usuarios[i].usuario;
+                    document.getElementById("txtContrasenna1").value = Usuarios[i].contrasenna;
+                    document.getElementById("txtContrasenna2").value = Usuarios[i].contrasenna;
+                    platitud = parseInt(sessionStorage.getItem('latitud'));
+                    plongitud = parseInt(sessionStorage.getItem('longitud'));
+                    GetAddress();
+                }
             }
             capturarLoginUsuario(Usuarios[i].usuario);
             return;
@@ -288,9 +298,6 @@ function preLoad(pUsuario) {
     }
     /*busca cliente*/
     cargarUsuariosDos();
-    if (Usuarios == [] || Usuarios == null || Usuarios.length <= 0) {
-        alert("No hay registros en el local storange");
-    }
     for (i = 0; i < Usuarios.length; i++) {
         if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
             document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
@@ -338,10 +345,6 @@ function Ingresar() {
     var usuario = document.querySelector('#txt-usuario').value;
     var contra = document.querySelector('#txt-contrasena').value;
     var check = document.getElementById('input-checkbox-loginc').checked;
-    if (Usuarios == [] || Usuarios == null || Usuarios.length <= 0) {
-        alert("No hay registros en el local storange");
-        return;
-    }
     for (i = 0; i < Usuarios.length; i++) {
         if (Usuarios[i].usuario == usuario && Usuarios[i].contrasenna == contra) {
             if (check == true) {
@@ -359,10 +362,6 @@ function Ingresar() {
     }
     Usuarios = [];
     cargarUsuariosDos();
-    if (Usuarios == [] || Usuarios == null || Usuarios.length <= 0) {
-        alert("No hay registros en el local storange");
-
-    }
     for (i = 0; i < Usuarios.length; i++) {
         if (Usuarios[i].usuario == usuario && Usuarios[i].contrasenna == contra) {
             if (check == true) {
@@ -478,9 +477,9 @@ function initMap() {
 
 }
 
-function GetAddress(zLT, zLO) {
-    var lat = parseFloat(zLT);
-    var lng = parseFloat(zLO);
+function GetAddress() {
+    var lat = parseFloat(sessionStorage.getItem('latitud'));
+    var lng = parseFloat(sessionStorage.getItem('longitud'));
     var latlng = new google.maps.LatLng(lat, lng);
     var geocoder = geocoder = new google.maps.Geocoder();
     geocoder.geocode({
@@ -488,12 +487,28 @@ function GetAddress(zLT, zLO) {
     }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             if (results[1]) {
-               
-                latitud = zLT;
-                longitud = zLO;
+
                 document.getElementById('location').innerHTML = results[1].formatted_address;
                 document.getElementById('country').innerHTML = results[3].formatted_address;
             }
         }
     });
+}
+
+
+
+function verPerfiles() {
+    if (usuarioActual.tipoUsuario == "comprador") {
+        window.location = "VerPerfil.html";
+    } else {
+
+        window.location = "VerPerfilEmpresa.html";
+    }
+}
+
+function cerrarSesion(){
+    
+    localStorage.clear();
+    sessionStorage.clear();
+    window.location = "index.html";
 }

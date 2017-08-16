@@ -37,7 +37,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-                <a class="navbar-brand" href="#"><img src="/img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
+                <a class="navbar-brand" href="#"><img src="img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse style= collapse in" id="bs-megadropdown-tabs" style="padding-left: 0px;">
@@ -758,7 +758,7 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Codigo</label>
+                            <label id="labelCodigo" class="label">Codigo</label>
                         </div>
                     </div>
                         <div class="group center-block">
@@ -767,7 +767,7 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Nombre del producto</label>
+                            <label id="labelNombre" class="label">Nombre del producto</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -777,7 +777,7 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Marca</label>
+                            <label  id="labelMarca" class="label">Marca</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -787,7 +787,7 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Precio</label>
+                            <label id="labelPrecio" class="label">Precio</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -797,11 +797,11 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Cantidad</label>
+                            <label id="labelCatidad" class="label">Cantidad</label>
                         </div>
                     </div>
                     <div class="form-group" id="select-category-form">
-                        <span id="select-cb">Categoría</span>
+                        <span id="select-cb"><span id="labelCategoria">Categoría</span></span>
                         <span class="select-group-button">                                
                                   <select  id="categoria" class="form-control selectCategorias" type="select">
                                          <option id="option-select" value="">Todas</option>
@@ -818,7 +818,7 @@
                          </span>
                     </div>
                     <div class="form-group" id="select-category-form">
-                        <span id="select-cb">Sub-categoría</span>
+                        <span id="select-cb"><span id="labelSubCategora">Sub-categoría</span></span>
                         <span class="select-group-button">  
                                  <!--radius id-->                              
                                   <select  id="subCategoria" class="form-control" type="select">
@@ -835,7 +835,7 @@
                             <!--label-->
                             <span class="bar"></span>
                             <!--botton del input-->
-                            <label class="label">Descripción</label>
+                            <label id="labelDescripcion" class="label">Descripción</label>
                         </div>
                     </div>
                      <!--div de la galeria-->
@@ -886,11 +886,10 @@
                         </div>
                       </div>
                     <div class="form-group block-center" >
-                     <div class="form-group pull-left btn-save">
+                      <div class="form-group">
                         <h1 class="components">
-                            <button type="button" class=" btn btn-primary center-block" id="btnIngresar"><img src="/img/check-symbol.png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;">
-                            </button>
-                            
+                            <button id="btnIngresar" type="button" class=" btn btn-primary center-block"><img src="img/check-symbol.png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64">
+                        </button>
                         </h1>
                     </div>
                 </div>            
@@ -946,11 +945,11 @@
         </div>
         <div class="footer-bottom-layout">
             <div class="socialMedia-footer">
-                <a href="https://youtube.com"><img src="/img/youtube.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
-                <a href="https://www.facebook.com/wainer.rodriguez"><img src="/img/facebook.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
-                <a href="https://www.twitter.com"><img src="/img/twitter.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
-                <a href="https://www.whatsapp.com"><img src="/img/whatsapp.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
-                <a href="https://www.pinteres.com"><img src="/img/pinterest.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
+                <a href="https://youtube.com"><img src="img/youtube.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
+                <a href="https://www.facebook.com/wainer.rodriguez"><img src="img/facebook.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
+                <a href="https://www.twitter.com"><img src="img/twitter.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
+                <a href="https://www.whatsapp.com"><img src="img/whatsapp.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
+                <a href="https://www.pinteres.com"><img src="img/pinterest.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
             </div>
             <div class="copyright-tag">create by Wainer Rodríguez Bonilla.</div>
         </div>

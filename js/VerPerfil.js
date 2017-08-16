@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#btnEditar').addEventListener('click', editar);
     document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
     document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
-    document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
-    document.querySelector('#btnEliminarClienta').addEventListener('click', eliminarCuenta);
 });
 var Usuarios = [];
 var Vendedores = [];
@@ -44,12 +42,20 @@ function preLoad(pUsuario) {
         if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
             document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
             document.getElementById("headerName").innerHTML = Usuarios[i].nombre + " " + Usuarios[i].apellidoPaterno + " " + Usuarios[i].apellidoMaterno;
+            document.getElementById("nombreUsuario").innerHTML =  Usuarios[i].nombre + " " + Usuarios[i].apellidoPaterno + " " + Usuarios[i].apellidoMaterno;
+            document.getElementById("emailUsuario").innerHTML = Usuarios[i].email;
+            document.getElementById("edadUsuario").innerHTML = Usuarios[i].edad;
+            document.getElementById("usuarioUsuario").innerHTML = Usuarios[i].usuario;
+            document.getElementById("contrasenaUsuario").innerHTML = Usuarios[i].contrasenna;
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
-            bannerImg = document.getElementById('imgUsuarioActual');
+            bannerImg = document.getElementById('fotoUsuario');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            document.getElementById('nombreVendedor').innerHTML = Usuarios[i].nombre;
+            latitud = Usuarios[i].latitud;
+            longitud = Usuarios[i].longitud;
+            GetAddress();
+            myMap();
             sessionStorage.setItem('posicion', JSON.stringify(i));
             usuarioActual = {
                 nombre: Usuarios[i].nombre,
@@ -63,25 +69,14 @@ function preLoad(pUsuario) {
     cargarVendedores();
     alert(Usuarios.length);
     for (i = 0; i < Usuarios.length; i++) {
+        alert('"' + Usuarios[i].usuario + '"' + " --" + pUsuario);
         if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
+            alert(Usuarios[i].email + Usuarios.length + "entro");
             document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
             document.getElementById("headerName").innerHTML = Usuarios[i].nombre;
-            document.getElementById("EmailVendedor").innerHTML = Usuarios[i].email;
-            document.getElementById("usuarioVendedor").innerHTML = Usuarios[i].usuario;
-            document.getElementById("contrasenaVendedor").innerHTML = Usuarios[i].contrasenna;
-            document.getElementById("servicioVendedor").innerHTML = Usuarios[i].tipoServicio;
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            bannerImg = document.getElementById('imgUsuarioActual');
-            bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
-            capturarLoginUsuario(Usuarios[i].usuario);
-            document.getElementById('nombreVendedor').innerHTML = Usuarios[i].nombre;
-            latitud = Usuarios[i].latitud;
-            longitud = Usuarios[i].longitud;
-            GetAddress();
-            myMap();
-            sessionStorage.setItem('posicion', JSON.stringify(i));
             usuarioActual = {
                 nombre: Usuarios[i].nombre,
                 tipoUsuario: "vendedor",
@@ -112,6 +107,7 @@ function cargarVendedores() {
     }
     return Usuarios;
 }
+
 /*Obtine y retorna el cookie por medio de la clave*/
 function obtenerCookie(clave) {
     var name = clave + "=";
@@ -129,10 +125,6 @@ function crearCookieuSUARIO(clave, valor, diasexpiracion) {
     d.setTime(d.getTime() + (diasexpiracion * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toUTCString();
     document.cookie = clave + "=" + valor + "; " + expires;
-}
-/*Elimina el cookie por medo del nombre*/
-function eliminarCookie(name) {
-    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 /*Captura el usuario logeado guardandolo en el session storange*/
 function capturarLoginUsuario(pUsuarioActual) {
@@ -156,7 +148,7 @@ function Ingresar() {
                 eliminarCookie("CONTRASEÑA");
             }
             capturarLoginUsuario(Usuarios[i].usuario);
-            window.location = "VerPerfilEmpresa.html";
+            window.location = "VerPerfil.html";
             return;
         }
     }
@@ -171,9 +163,8 @@ function Ingresar() {
                 eliminarCookie("USUARIO");
                 eliminarCookie("CONTRASEÑA");
             }
-
             capturarLoginUsuario(Usuarios[i].usuario);
-            window.location = "VerPerfilEmpresa.html";
+            window.location = "VerPerfil.html";
             return;
         }
     }
@@ -197,7 +188,7 @@ function GetAddress() {
             if (results[1]) {
 
                 document.getElementById('location').innerHTML = results[1].formatted_address;
-                document.getElementById('country').innerHTML = results[3].formatted_address;
+                document.getElementById('country').innerHTML = results[6].formatted_address;
             }
         }
     });
@@ -213,29 +204,20 @@ function myMap() {
 
 
 function editar() {
+
     sessionStorage.setItem('latitud', JSON.stringify(latitud));
     sessionStorage.setItem('longitud', JSON.stringify(longitud));
-    window.location = "RegistroVendedor.html";
+    window.location = "RegistroUsuario.html";
 
 }
-
-function verPerfiles() {
-    if (usuarioActual.tipoUsuario == "comprador") {
-        window.location = "VerPerfil.html";
-    } else {
-
+function eliminarCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+function verPerfiles(){
+    if(usuarioActual.tipoUsuario == "comprador"){
+        window.location ="VerPerfil.html";
+    }else{
+        
         window.location = "VerPerfilEmpresa.html";
     }
-}
-
-function cerrarSesion() {
-    sessionStorage.clear();
-    window.location = "index.html";
-}
-
-function eliminarCuenta() {
-    var lcStorange = JSON.parse(localStorage.getItem('vendedores'));
-    lcStorange.splice(parseInt(sessionStorage.getItem("posicion")), 1);
-    localStorage.setItem('vendedores', JSON.stringify(lcStorange));
-    window.location = "index.html";
 }
