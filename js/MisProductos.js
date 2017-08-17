@@ -29,6 +29,7 @@
 
    function cargarSessionStore() {
 
+       cargarProducosTabla();
        var nombreUsuario = sessionStorage.getItem('loginUsuarios');
        if (nombreUsuario != "") {
            preLoad(nombreUsuario);
@@ -90,6 +91,7 @@
        }
        return Usuarios;
    }
+
    function cargarProductos() {
        var listaProductos = localStorage.getItem('Producto');
        if (listaProductos != null) {
@@ -175,28 +177,34 @@
 
 
 
-
-
    function cargarProducosTabla() {
-   cargarProductos();
-       alert(productos.length);
+       cargarProductos();
+       alert(productos.length + "largo");
 
        for (i = 0; i < productos.length; i++) {
-    
-               $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input name='codigo" + i + "' type='text' placeholder='codigo' value=" + productos[i].codigo + " class='form-control input-md'  /> </td><td><input name='nombre" + i + "' type='text' placeholder='nombre' value=" + productos[i].nombre + " class='form-control input-md'  /> </td><td><input name='marca" + i + "' type='text' placeholder='marca' value=" + productos[i].marca + " class='form-control input-md'  /> </td><td><input name='precio" + i + "' type='text' placeholder='precio' value=" + productos[i].precio + " class='form-control input-md'  /> </td><td><input name='cantidad" + i + "' type='text' placeholder='cantidad' value=" + productos[i].cantidad + " class='form-control input-md'  /> </td><td><input name='categoria" + i + "' type='text' placeholder='Categoria' value=" + productos[i].categoria + " class='form-control input-md'  /> </td><td><input  name='sub-categoria" + i + "' type='text' placeholder='sub-categoria' value=" + productos[i].subCategoria + " class='form-control input-md'></td><td><input  name='descripcion" + i + "' type='text' placeholder='Descripción' value=" + productos[i].descripcion + "  class='form-control input-md'></td>");
 
-               $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
-             
-         
+           alert(productos[i].nombre);
+           cargarProductosRegistrados(i, productos[i].nombre, productos[i].descripcion, productos[i].precio, productos[i].categoria, productos[i].subCategoria);
        }
 
    }
 
+   function cargarProductosRegistrados(i, nombreProducto, DetallesProducto, PrecioProducto, categoriaProducto, subCategoriaProduct) {
+       $("#content").append("<div id='wainerdiv' class='col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe'><img src='img/productSerach.png' alt='' class='img-responsive rounded'/><label>Nombre: " + nombreProducto + ", Precio: "+PrecioProducto+"</label><div><label class='wainerrb'>Categoria: " + categoriaProducto + ", sub-categoria: "+subCategoriaProduct+"</label></div><div><label>"+DetallesProducto+"</label></div><button class='btn btn-primary btn-block btn-sm' value='" + i + "' onclick='VerProducto(this.value)'>Editar</button><button class='btn btn-primary btn-block btn-sm' value='" + i + "' onclick='eliminarProducto(this.value)'>Eliminar</button><div><label><br></label></div></div>");
+
+   }
+
+
+   function VerProducto(id) {
+
+       sessionStorage.setItem('verProducto', id);
+       window.location = "NuevoProducto.html";
+   }
 
    $(document).ready(function () {
        var i = 1;
        $("#add_row").click(function () {
-          cargarProducosTabla();
+           cargarProducosTabla();
        });
        $("#delete_row").click(function () {
            if (i > 1) {
@@ -206,3 +214,14 @@
        });
 
    });
+
+function eliminarProducto(id) {
+    var x = id;
+    var lcStorange = JSON.parse(localStorage.getItem('Producto'));
+    lcStorange.splice(x, 1);
+    localStorage.setItem('Producto', JSON.stringify(lcStorange));
+    sessionStorage.setItem('verProducto', '-1');
+    window.location = "MisProductos.html";
+}
+
+

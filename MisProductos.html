@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/MisProductos.css">
     <link href="css/animate.min.css" rel="stylesheet">
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
 </head>
 
 <body>
@@ -94,7 +93,7 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <p class="text-center">
-                                                <img id="profile-img" class="center-block" src="/img/img-profile.jpg" />
+                                                <img id="profile-img" class="center-block" src="img/img-profile.jpg"/>
                                             </p>
 
                                         </div>
@@ -131,8 +130,8 @@
                                     <div class="col-lg-12 second-div text-center">
                                         Registrar como
                                         <div class="social-buttons">
-                                            <a href="VerPerfil.html" class="btn btn-primary">Usuario</a>
-                                            <a href="VerPerfilEmpresa.html" class="btn btn-primary">Empresa</a>
+                                            <a href="RegistroUsuario.html" class="btn btn-primary">Usuario</a>
+                                            <a href="RegistroVendedor.html" class="btn btn-primary">Empresa</a>
                                         </div>
                                         <h2 id="h2">Ingreso rápido</h2>
                                         <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
@@ -744,78 +743,12 @@
             </div>
         </nav>
     </div>
-    <div class="container">
-    <div class="row clearfix">
-		<div class="col-md-12 column">
-			<table class="table table-bordered table-hover" id="tab_logic">
-				<thead>
-					<tr >
-						<th class="text-center">
-							#
-						</th>
-						<th class="text-center">
-							Codigo
-						</th>
-						<th class="text-center">
-							Nombre
-						</th>
-						<th class="text-center">
-							Marca
-						</th>
-						<th class="text-center">
-							Precio
-						</th>
-						<th class="text-center">
-							Cantidad
-						</th>
-						<th class="text-center">
-							Categoria
-						</th>
-						<th class="text-center">
-							Sub-Categoria
-						</th>
-						<th class="text-center">
-							Descripción
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr id='addr0'>
-						<td>
-						1
-						</td>
-						<td>
-						<input type="text" name='codigo0'  placeholder='codigo' class="form-control"/>
-						</td>
-						<td>
-						<input type="text" name='nombre0' placeholder='nombre' class="form-control"/>
-						</td>
-						<td>
-						<input type="text" name='marca0' placeholder='marca' class="form-control"/>
-						</td>
-						<td>
-						<input type="text" name='precio0' placeholder='precio' class="form-control"/>
-						</td>
-						<td>
-						<input type="text" name='cantidad0' placeholder='cantidad' class="form-control"/>
-						</td>
-						<td>
-						<input type="text" name='categoria' placeholder='categoria' class="form-control"/>
-						</td>
-						<td>
-						<input type="text" name='sub-categoria0' placeholder='sub-categoria' class="form-control"/>
-						</td>
-						<td>
-						<input type="text" name='descripcion0' placeholder='Descripción' class="form-control"/>
-						</td>
-					</tr>
-                    <tr id='addr1'></tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<a id="add_row" class="btn btn-default pull-left">Add Row</a><a id='delete_row' class="pull-right btn btn-default">Delete Row</a>
-</div>
+   <div class="container">
+            
+               <div class="row" id="content">
+                             
+            </div>
+        </div>
     <!--Termina la parte del contenido -->
     <footer id="footer-Section">
         <!--footer es la etiqueta que indica el pie de página-->

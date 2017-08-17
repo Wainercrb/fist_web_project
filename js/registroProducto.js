@@ -2,12 +2,18 @@ var productos = [];
 document.querySelector('#btnIngresar').addEventListener('click', capturar);
 window.addEventListener('load', cargarDatosUsuario, false);
 document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
+document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
 var Usuarios = [];
 var Vendedores = [];
-var usuarioActual;
+var usuarioActual = {
+    nombre: "",
+    tipoUsuario: "",
+    usuario: ""
+};
 var editar = false;
 
 function capturar() {
+    productos = [];
     if (usuarioActual.tipoUsuario == "vendedor") {
         var CaT = document.getElementById("categoria");
         var value = CaT.options[CaT.selectedIndex].value;
@@ -24,6 +30,9 @@ function capturar() {
             subCategoira = finaSCategoria,
             descripcion = document.querySelector('#txtDescripcion').value;
         if (verificarDatos(codigo, nombre, marca, precio, cantidad, categoria, subCategoira, descripcion) == true) {
+            if (editar == true) {
+                eliminarProducto();
+            }
             addProductos(codigo, nombre, marca, precio, cantidad, categoria, subCategoira, descripcion);
         }
     } else {
@@ -33,6 +42,7 @@ function capturar() {
 
 function addProductos(pCodigo, pNombre, pMarca, pPrecio, pCantidad, pCategoria, pSubCategoria, pDescripcion) {
 
+
     var nuevoProducto = {
         codigo: pCodigo,
         nombre: pNombre,
@@ -41,21 +51,30 @@ function addProductos(pCodigo, pNombre, pMarca, pPrecio, pCantidad, pCategoria, 
         cantidad: pCantidad,
         categoria: pCategoria,
         subCategoria: pSubCategoria,
-        descripcion: pDescripcion
+        descripcion: pDescripcion,
+        vendedor: usuarioActual.usuario
     };
+    cargarTodosProductos();
     productos.push(nuevoProducto);
     guardarLista(productos);
 }
 
 
 
-function guardarLista(peopleList) {
-    localStorage.setItem('Producto', JSON.stringify(productos));
-    window.location = "NuevoProducto.html";
+function guardarLista(listaFinalProductos) {
+    localStorage.setItem('Producto', JSON.stringify(listaFinalProductos));
+    if (editar == true) {
+        window.location = "MisProductos.html";
+    } else {
+        window.location = "NuevoProducto.html";
+    }
 }
 
 /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
 function cargarDatosUsuario() {
+    if (parseInt(sessionStorage.getItem('verProducto')) >= 0) {
+        editar = true;
+    }
     cargarSessionStore();
     if (obtenerCookie("USUARIO") == "" || obtenerCookie("USUARIO") == null) {
         document.getElementById('input-checkbox-loginc').checked = false;
@@ -79,47 +98,53 @@ function cargarSessionStore() {
 /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
 que no quiera recordar la contraseña elimina el cookie*/
 function preLoad(pUsuario) {
-    alert("pre");
     Usuarios = [];
     cargarUsuarios();
-    alert(Usuarios.length);
     for (i = 0; i < Usuarios.length; i++) {
-        alert("if");
         if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
             document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
             document.getElementById("headerName").innerHTML = Usuarios[i].nombre + " " + Usuarios[i].apellidoPaterno + " " + Usuarios[i].apellidoMaterno;
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            usuarioActual = {
-                nombre: Usuarios[i].nombre,
-                tipoUsuario: "comprador",
-                usuario: Usuarios[i].usuario
-            };
+            usuarioActua.nombre = Usuarios[i].nombre;
+            usuarioActual.tipoUsuario = "comprador";
+            usuarioActual.usuario = Usuarios[i].usuario;
             return;
         }
     }
+
     Usuarios = [];
     cargarVendedores();
-    alert("vendedores" + Usuarios.length);
     for (i = 0; i < Usuarios.length; i++) {
-
-        alert('"' + Usuarios[i].usuario + '"' + pUsuario);
         if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
             document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
             document.getElementById("headerName").innerHTML = Usuarios[i].nombre;
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            usuarioActual = {
-                nombre: Usuarios[i].nombre,
-                tipoUsuario: "vendedor",
-                usuario: Usuarios[i].usuario
-            };
+            usuarioActual.nombre = Usuarios[i].nombre;
+            usuarioActual.tipoUsuario = "vendedor";
+            usuarioActual.usuario = Usuarios[i].usuario;
+            if (editar === true) {
+                editarProductos();
+            }
             return;
         }
     }
-    alert("No se encontro el usuario");
+}
+
+
+
+function editarProductos() {
+    cargarTodosProductos();
+    var x = parseInt(sessionStorage.getItem('verProducto'));
+    document.getElementById('txtCodigo').value = productos[x].codigo;
+    document.getElementById('txtNombre').value = productos[x].nombre;
+    document.getElementById('txtMarca').value = productos[x].marca;
+    document.getElementById('txtPrecio').value = productos[x].precio;
+    document.getElementById('txtCantidad').value = productos[x].cantidad;
+    document.getElementById('txtDescripcion').value = productos[x].descripcion;
 }
 /*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
 function cargarUsuarios() {
@@ -130,6 +155,16 @@ function cargarUsuarios() {
         Usuarios = [];
     }
     return Usuarios;
+}
+
+function cargarTodosProductos() {
+    var listaUsuarios = localStorage.getItem('Producto');
+    if (listaUsuarios != null) {
+        productos = JSON.parse(listaUsuarios);
+    } else {
+        productos = [];
+    }
+    return productos;
 }
 /*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
 function cargarVendedores() {
@@ -163,6 +198,10 @@ function crearCookieuSUARIO(clave, valor, diasexpiracion) {
 /*Captura el usuario logeado guardandolo en el session storange*/
 function capturarLoginUsuario(pUsuarioActual) {
     sessionStorage.setItem('loginUsuarios', JSON.stringify(pUsuarioActual));
+}
+/*Elimina el cookie por medo del nombre*/
+function eliminarCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
@@ -273,4 +312,21 @@ function VerError2(label, dato) {
     var x = document.getElementById(label).style;
     x.color = "green";
     document.getElementById(label).innerHTML = dato;
+}
+
+function verPerfiles() {
+    if (usuarioActual.tipoUsuario == "comprador") {
+        window.location = "VerPerfil.html";
+    } else {
+
+        window.location = "VerPerfilEmpresa.html";
+    }
+}
+
+function eliminarProducto() {
+    var x = parseInt(sessionStorage.getItem('verProducto'));
+    var lcStorange = JSON.parse(localStorage.getItem('Producto'));
+    lcStorange.splice(x, 1);
+    localStorage.setItem('Producto', JSON.stringify(lcStorange));
+    sessionStorage.setItem('verProducto', '-1');
 }
