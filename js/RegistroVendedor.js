@@ -10,6 +10,7 @@ document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresa
 document.querySelector('#blah').addEventListener('click', inputProfilePicture);
 document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
 document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
+document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
 
 
 /*Evento de click para la etiqueta img del registro usuario*/
@@ -511,4 +512,21 @@ function cerrarSesion(){
     localStorage.clear();
     sessionStorage.clear();
     window.location = "index.html";
+}
+function buscar(){
+  var CaT = document.getElementById("selectCategoriaBuscar");
+        var value = CaT.options[CaT.selectedIndex].value;
+        var text = CaT.options[CaT.selectedIndex].text;
+        var sCaT = document.getElementById("selectDistancia");
+        var value = sCaT.options[sCaT.selectedIndex].value;
+        var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
+        if(document.getElementById("btn-search").value == ""){
+           sessionStorage.setItem('valorBuscar', "-");
+        }else{
+          sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
+        }
+        sessionStorage.setItem('categoria', text);
+        sessionStorage.setItem('distancia', finaSCategoria);
+        window.location = "BuscarArticulo.html";
+
 }

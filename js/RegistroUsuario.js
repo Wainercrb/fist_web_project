@@ -10,6 +10,7 @@ document.querySelector('#btnIngresar').addEventListener('click', capturar);
 document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
 document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
 document.querySelector('#blah').addEventListener('click', inputProfilePicture);
+document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
 
 /*Evento de click para la etiqueta img del registro usuario*/
 function inputProfilePicture() {
@@ -314,6 +315,7 @@ function cargarSessionStore() {
 /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
 que no quiera recordar la contraseña elimina el cookie*/
 function preLoad(pUsuario) {
+    Usuarios = [];
     cargarUsuarios();
     for (i = 0; i < Usuarios.length; i++) {
         if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
@@ -345,6 +347,7 @@ function preLoad(pUsuario) {
             return;
         }
     }
+    Usuarios = [];
     cargarVendedores();
     for (i = 0; i < Usuarios.length; i++) {
         if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
@@ -362,7 +365,6 @@ function preLoad(pUsuario) {
             return;
         }
     }
-    alert("No se encontro el usuario");
 }
 
 
@@ -389,7 +391,7 @@ function Ingresar() {
         }
     }
     Usuarios = [];
-    cargarSessionStore();
+    cargarVendedores();
     for (i = 0; i < Usuarios.length; i++) {
         if (Usuarios[i].usuario == usuario && Usuarios[i].contrasenna == contra) {
             if (check == true) {
@@ -531,4 +533,21 @@ function verPerfiles(){
         
         window.location = "VerPerfilEmpresa.html";
     }
+}
+function buscar(){
+  var CaT = document.getElementById("selectCategoriaBuscar");
+        var value = CaT.options[CaT.selectedIndex].value;
+        var text = CaT.options[CaT.selectedIndex].text;
+        var sCaT = document.getElementById("selectDistancia");
+        var value = sCaT.options[sCaT.selectedIndex].value;
+        var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
+        if(document.getElementById("btn-search").value == ""){
+           sessionStorage.setItem('valorBuscar', "-");
+        }else{
+          sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
+        }
+        sessionStorage.setItem('categoria', text);
+        sessionStorage.setItem('distancia', finaSCategoria);
+        window.location = "BuscarArticulo.html";
+
 }

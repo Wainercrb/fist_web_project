@@ -615,6 +615,9 @@ input:focus ~ .bar:before, input:focus ~ .bar:after
           pointer-events:none;
           opacity:0.5;
 }
+.components{
+    text-align: center;
+}
 
 /*animacion de color en la parte el input*/
 input:focus ~ .highlight 
@@ -701,9 +704,9 @@ h3
     
 }
 /*Diseño del boton*/
-#btnEditar
+#btnEditar, #btnMisProductos
 {
-           display: block;
+           display: inline-block;
            width: 135px;
            height: 70px;
            background: none;

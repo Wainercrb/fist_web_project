@@ -1,22 +1,21 @@
    var productos = [];
    window.addEventListener('load', cargarDatosUsuario, false);
    document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
+   document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
    document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
    var Usuarios = [];
    var Vendedores = [];
+   var vLatitud;
+   var vLongitud;
+   var distancia;
    var editar = false;
    var usuarioActual = {
        nombre: "",
        tipoUsuario: "",
-       usuario: ""
+       usuario: "",
+       latitud: 0,
+       longitud: 0
    };
-
-
-
-   function guardarLista(peopleList) {
-       localStorage.setItem('Producto', JSON.stringify(productos));
-       window.location = "NuevoProducto.html";
-   }
 
    /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
    function cargarDatosUsuario() {
@@ -34,10 +33,11 @@
 
    function cargarSessionStore() {
 
-       cargarProducosTabla();
+       
        var nombreUsuario = sessionStorage.getItem('loginUsuarios');
        if (nombreUsuario != "") {
            preLoad(nombreUsuario);
+           cargarProducosTabla();
        }
    }
 
@@ -56,6 +56,8 @@
                usuarioActual.nombre = Usuarios[i].nombre;
                usuarioActual.tipoUsuario = "comprador";
                usuarioActual.usuario = Usuarios[i].usuario;
+               usuarioActual.latitud = Usuarios[i].latitud;
+               usuarioActual.longitud = Usuarios[i].longitud;
                return;
            }
        }
@@ -71,11 +73,16 @@
                usuarioActual.nombre = Usuarios[i].nombre;
                usuarioActual.tipoUsuario = "vendedor";
                usuarioActual.usuario = Usuarios[i].usuario;
+               usuarioActual.latitud = Usuarios[i].latitud;
+               usuarioActual.longitud = Usuarios[i].longitud;
                return;
            }
        }
        alert("No se encontro el usuario");
    }
+
+
+
    /*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
    function cargarUsuarios() {
        var listaUsuarios = localStorage.getItem('AllUsers');
@@ -133,6 +140,7 @@
    /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
    que no quiera recordar la contraseña elimina el cookie*/
    function Ingresar() {
+       Usuarios = [];
        cargarUsuarios();
        var usuario = document.querySelector('#txt-usuario').value;
        var contra = document.querySelector('#txt-contrasena').value;
@@ -147,12 +155,12 @@
                    eliminarCookie("CONTRASEÑA");
                }
                capturarLoginUsuario(Usuarios[i].usuario);
-               window.location = "NuevoProducto.html";
+               window.location = "TiposPerfil.html";
                return;
            }
        }
        Usuarios = [];
-       cargarSessionStore();
+       cargarVendedores();
        for (i = 0; i < Usuarios.length; i++) {
            if (Usuarios[i].usuario == usuario && Usuarios[i].contrasenna == contra) {
                if (check == true) {
@@ -163,64 +171,36 @@
                    eliminarCookie("CONTRASEÑA");
                }
                capturarLoginUsuario(Usuarios[i].usuario);
-               window.location = "NuevoProducto.html";
+               window.location = "TiposPerfil.html";
                return;
            }
        }
        alert("No se encontro el usuario");
    }
 
-   function cargarProducosTabla() {
-       cargarProductos();
-       for (i = 0; i < productos.length; i++) {
-           if ('"' + productos[i].vendedor + '"' == sessionStorage.getItem('loginUsuarios')) {
-               cargarProductosRegistrados(i, productos[i].nombre, productos[i].descripcion, productos[i].precio, productos[i].categoria, productos[i].subCategoria);
-           }
+      function cargarSessionStore() {
+
+       
+       var nombreUsuario = sessionStorage.getItem('loginUsuarios');
+       if (nombreUsuario != "") {
+           preLoad(nombreUsuario);
        }
-
+   }
+   function eliminarCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
    }
 
-   function cargarProductosRegistrados(i, nombreProducto, DetallesProducto, PrecioProducto, categoriaProducto, subCategoriaProduct) {
-       $("#content").append("<div id='wainerdiv' class='col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe'><img src='img/productSerach.png' alt='' class='img-responsive rounded'/><label>Nombre: " + nombreProducto + ", Precio: " + PrecioProducto + "</label><div><label class='wainerrb'>Categoria: " + categoriaProducto + ", sub-categoria: " + subCategoriaProduct + "</label></div><div><label>" + DetallesProducto + "</label></div><button class='btn btn-primary btn-block btn-sm' value='" + i + "' onclick='VerProducto(this.value)'>Editar</button><button class='btn btn-primary btn-block btn-sm' value='" + i + "' onclick='eliminarProducto(this.value)'>Eliminar</button><button class='btn btn-primary btn-block btn-sm' value='" + i + "' onclick='VerDetallesProducto(this.value)'>Ver</button><div><label><br></label></div></div>");
+   
+function verPerfiles(){
+    if(usuarioActual.tipoUsuario == "comprador"){
+        window.location ="VerPerfil.html";
+    }else{
+        
+        window.location = "VerPerfilEmpresa.html";
+    }
+}
 
-   }
-
-   function VerDetallesProducto(id) {
-
-       sessionStorage.setItem('verProducto', id);
-       window.location = "DetallesArticulo.html";
-   }
-
-   function VerProducto(id) {
-
-       sessionStorage.setItem('verProducto', id);
-       window.location = "NuevoProducto.html";
-   }
-
-   $(document).ready(function () {
-       var i = 1;
-       $("#add_row").click(function () {
-           cargarProducosTabla();
-       });
-       $("#delete_row").click(function () {
-           if (i > 1) {
-               $("#addr" + (i - 1)).html('');
-               i--;
-           }
-       });
-
-   });
-
-   function eliminarProducto(id) {
-       var x = id;
-       var lcStorange = JSON.parse(localStorage.getItem('Producto'));
-       lcStorange.splice(x, 1);
-       localStorage.setItem('Producto', JSON.stringify(lcStorange));
-       sessionStorage.setItem('verProducto', '-1');
-       window.location = "MisProductos.html";
-   }
-
- function buscar(){
+function buscar(){
   var CaT = document.getElementById("selectCategoriaBuscar");
         var value = CaT.options[CaT.selectedIndex].value;
         var text = CaT.options[CaT.selectedIndex].text;
@@ -236,13 +216,4 @@
         sessionStorage.setItem('distancia', finaSCategoria);
         window.location = "BuscarArticulo.html";
 
-}
-
-function verPerfiles(){
-    if(usuarioActual.tipoUsuario == "comprador"){
-        window.location ="VerPerfil.html";
-    }else{
-        
-        window.location = "VerPerfilEmpresa.html";
-    }
 }

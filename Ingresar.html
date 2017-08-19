@@ -7,15 +7,10 @@
     <meta name="viewport" content="widt=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/Ingresar.css">
-     <link href="css/animate.min.css" rel="stylesheet">
-      <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.css" rel="stylesheet">
-    <script src="js/respond.min.js"></script>
+    <link href="css/animate.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <!--Inicia la parte del banner-->
     <div id="top">
         <div class="container">
             <div class="col-md-6 offer" data-animate="fadeInDown">
@@ -42,7 +37,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-                <a class="navbar-brand" href="#"><img src="/img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
+                <a class="navbar-brand" href="#"><img src="img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse style= collapse in" id="bs-megadropdown-tabs" style="padding-left: 0px;">
@@ -50,10 +45,10 @@
                 <form class="navbar-form navbar-left" role="search" height="10px">
                     <div class="form-group div-search ">
                         <div class="input-group input-group-lg input-group-full search">
-                            <input type="text" class="form-control" id="btn-search" aria-label="Search" size="100">
+                            <input type="text" class="form-control" id="btn-search"  value = "" aria-label="Search" size="100">
                             <div class="input-group-btn">
                                 <div class="btn btn-default">
-                                    <select class="form-control select">
+                                    <select id="selectCategoriaBuscar" class="form-control select">
                                         <option value="">Todas</option>
                                         <option value="">Hombre</option>
                                         <option value="">Mujeres</option>
@@ -67,18 +62,18 @@
                                     </select>
                                 </div>
                                 <div class="btn btn-default second-select">
-                                    <select class="form-control select second-select">
-                                        <option value="">5km</option>
-                                        <option value="">10km</option>
-                                        <option value="">20km</option>
-                                        <option value="">30km</option>
-                                        <option value="">40km</option>
-                                        <option value="">50km</option>
-                                        <option value="">+km</option>
+                                    <select  id="selectDistancia" class="form-control select second-select">
+                                        <option value="5">5km</option>
+                                        <option value="10">10km</option>
+                                        <option value="20">20km</option>
+                                        <option value="30">30km</option>
+                                        <option value="40">40km</option>
+                                        <option value="50">50km</option>
+                                        <option value="60">+km</option>
                                     </select>
                                 </div>
 
-                                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true" id="span-buscar"></span></button>
+                                <button id="btnNavBuscar" type="button" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true" id="span-buscar"></span></button>
                             </div>
                         </div>
                     </div>
@@ -97,17 +92,16 @@
                                 <div class="navbar-login div-position">
                                     <div class="row">
                                         <div class="col-lg-4">
-                                            
-                                                <p class="text-center">
-                                                    <img id="profile-img" class="center-block" src="/img/img-profile.jpg" />
-                                                </p>
-                                            
+                                            <p class="text-center">
+                                                <img id="profile-img" class="center-block" src="img/img-profile.jpg" />
+                                            </p>
+
                                         </div>
                                         <div class="col-lg-8">
-                                            <p class="text-center" id="headerName"><strong>Nombre Apellido</strong></p>
+                                            <p class="text-center"><strong id="headerName">Nombre Apellido</strong></p>
                                             <p class="text-center small" id="headerEmail">correoElectronico@email.com</p>
                                             <p class="text-center">
-                                                <a href="#" class="btn btn-primary btn-block btn-sm">Actualizar Datos</a>
+                                                <a id="btnIngresarPerfil" class="btn btn-primary btn-block btn-sm">ver mi perfil</a>
                                             </p>
                                         </div>
                                     </div>
@@ -119,7 +113,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <p>
-                                                <a href="#" class="btn btn-danger btn-block btn-sm">Cerrar Sesion</a>
+                                                <a id="btnCerrarCesion" class="btn btn-danger btn-block btn-sm">Cerrar Sesion</a>
                                             </p>
                                         </div>
                                     </div>
@@ -134,34 +128,34 @@
                             <li>
                                 <div class="row">
                                     <div class="col-lg-12 second-div text-center">
-                                        Login via
+                                        Registrar como
                                         <div class="social-buttons">
-                                            <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                            <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                            <a href="RegistroUsuario.html" class="btn btn-primary">Usuario</a>
+                                            <a href="RegistroVendedor.html" class="btn btn-primary">Empresa</a>
                                         </div>
                                         <h2 id="h2">Ingreso rápido</h2>
                                         <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
                                             <div class="form-group">
                                                 <label class="sr-only" for="exampleInputEmail2">Usuario</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Usuario" required="">
+                                                <input type="text" class="form-control" id="txt-usuario" placeholder="Usuario" required="">
                                             </div>
                                             <div class="form-group">
                                                 <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Contraseña" required="">
+                                                <input type="password" class="form-control" id="txt-contrasena" placeholder="Contraseña" required="">
                                                 <div class="help-block text-center"><a href="">Olvido su contraseña?</a></div>
                                             </div>
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                                                <button type="button" id="btn-ingresar-navbar" class="btn btn-primary btn-block">Ingresar</button>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-											 <input type="checkbox"> Recordarme
-											 </label>
+                                             <input type="checkbox" id="input-checkbox-loginc"> Recordarme!
+                                             </label>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="bottom text-center">
-                                        Eres nuevo ? <a href="#"><b>Registrar</b></a>
+                                        ¿No sabes como que usuario registrar? <a href="#"><b>ver</b></a>
                                     </div>
                                 </div>
                             </li>
@@ -775,7 +769,7 @@
                   
                     <div class="form-group center-block" id="midiv">
                         <div class="group center-block">
-                            <input type="text" required id="txt-usuario"/>
+                            <input type="text" required id="txt-usuarioIP"/>
                             <span class="highlight"></span>
                             <!--label-->
                             <span class="bar"></span>
@@ -785,7 +779,7 @@
                     </div>
                     <div class="form-group">
                         <div class="group">
-                            <input type="password" required id="txt-contrasena"/>
+                            <input type="password" required id="txt-contrasenaIP"/>
                             <span class="highlight"></span>
                             <!--label-->
                             <span class="bar"></span>
@@ -803,7 +797,7 @@
                     </div>                                            
                     <div class="form-group">                       
                         <h1 class="components">
-                            <button type="submit" class=" btn btn-primary center-block" id="btn-ingresar"><img src="/img/check-symbol.png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64">
+                            <button type="button" class=" btn btn-primary center-block" id="btn-ingresarIP"><img src="img/check-symbol.png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64">
                             </button>
                         </h1>
                     </div>
@@ -860,25 +854,17 @@
         </div>
         <div class="footer-bottom-layout">
             <div class="socialMedia-footer">
-                <a href="https://youtube.com"><img src="/img/youtube.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
-                <a href="https://www.facebook.com/wainer.rodriguez"><img src="/img/facebook.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
-                <a href="https://www.twitter.com"><img src="/img/twitter.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
-                <a href="https://www.whatsapp.com"><img src="/img/whatsapp.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
-                <a href="https://www.pinteres.com"><img src="/img/pinterest.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
+                <a href="https://youtube.com"><img src="img/youtube.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
+                <a href="https://www.facebook.com/wainer.rodriguez"><img src="img/facebook.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
+                <a href="https://www.twitter.com"><img src="img/twitter.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
+                <a href="https://www.whatsapp.com"><img src="img/whatsapp.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
+                <a href="https://www.pinteres.com"><img src="img/pinterest.png" onmouseover="this.width=150;this.height=150;" onmouseout="this.width=128;this.height=128;" width="128" height="128"></a>
             </div>
             <div class="copyright-tag">create by Wainer Rodríguez Bonilla.</div>
         </div>
     </footer>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/Index.js"></script>
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/jquery.cookie.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/modernizr.js"></script>
-    <script src="js/bootstrap-hover-dropdown.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/front.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>

@@ -1,14 +1,20 @@
    var productos = [];
    window.addEventListener('load', cargarDatosUsuario, false);
    document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
+   document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
    document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
    var Usuarios = [];
    var Vendedores = [];
+   var vLatitud;
+   var vLongitud;
+   var distancia;
    var editar = false;
    var usuarioActual = {
        nombre: "",
        tipoUsuario: "",
-       usuario: ""
+       usuario: "",
+       latitud: 0,
+       longitud: 0
    };
 
 
@@ -34,10 +40,11 @@
 
    function cargarSessionStore() {
 
-       cargarProducosTabla();
+       
        var nombreUsuario = sessionStorage.getItem('loginUsuarios');
        if (nombreUsuario != "") {
            preLoad(nombreUsuario);
+           cargarProducosTabla();
        }
    }
 
@@ -56,6 +63,8 @@
                usuarioActual.nombre = Usuarios[i].nombre;
                usuarioActual.tipoUsuario = "comprador";
                usuarioActual.usuario = Usuarios[i].usuario;
+               usuarioActual.latitud = Usuarios[i].latitud;
+               usuarioActual.longitud = Usuarios[i].longitud;
                return;
            }
        }
@@ -71,11 +80,16 @@
                usuarioActual.nombre = Usuarios[i].nombre;
                usuarioActual.tipoUsuario = "vendedor";
                usuarioActual.usuario = Usuarios[i].usuario;
+               usuarioActual.latitud = Usuarios[i].latitud;
+               usuarioActual.longitud = Usuarios[i].longitud;
                return;
            }
        }
        alert("No se encontro el usuario");
    }
+
+
+
    /*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
    function cargarUsuarios() {
        var listaUsuarios = localStorage.getItem('AllUsers');
@@ -133,6 +147,7 @@
    /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
    que no quiera recordar la contraseña elimina el cookie*/
    function Ingresar() {
+       Usuarios = [];
        cargarUsuarios();
        var usuario = document.querySelector('#txt-usuario').value;
        var contra = document.querySelector('#txt-contrasena').value;
@@ -147,12 +162,12 @@
                    eliminarCookie("CONTRASEÑA");
                }
                capturarLoginUsuario(Usuarios[i].usuario);
-               window.location = "NuevoProducto.html";
+               window.location = "BuscarArticulo.html";
                return;
            }
        }
        Usuarios = [];
-       cargarSessionStore();
+       cargarVendedores();
        for (i = 0; i < Usuarios.length; i++) {
            if (Usuarios[i].usuario == usuario && Usuarios[i].contrasenna == contra) {
                if (check == true) {
@@ -163,27 +178,97 @@
                    eliminarCookie("CONTRASEÑA");
                }
                capturarLoginUsuario(Usuarios[i].usuario);
-               window.location = "NuevoProducto.html";
+               window.location = "BuscarArticulo.html";
                return;
            }
        }
        alert("No se encontro el usuario");
    }
 
-   function cargarProducosTabla() {
-       cargarProductos();
-       for (i = 0; i < productos.length; i++) {
-           if ('"' + productos[i].vendedor + '"' == sessionStorage.getItem('loginUsuarios')) {
-               cargarProductosRegistrados(i, productos[i].nombre, productos[i].descripcion, productos[i].precio, productos[i].categoria, productos[i].subCategoria);
-           }
+         function cargarProducosTabla() {    
+          if(sessionStorage.getItem('categoria') != null){
+          buscarIndex("selectCategoriaBuscar", sessionStorage.getItem('categoria'));
+          } if (sessionStorage.getItem('distancia') != null) {
+           buscarIndex("selectDistancia", ""+sessionStorage.getItem('distancia')+"km");
+
+           };
+
+             cargarProductos();
+             for (i = 0; i < productos.length; i++) {
+                getUbicacionVendedor(productos[i].vendedor);
+                if(vLatitud != "" || vLongitud != "" || usuarioActual.latitud != "" || usuarioActual.longitud){
+                getDistanceFromLatLonInKm(vLatitud, vLongitud, usuarioActual.latitud, usuarioActual.longitud);
+              }else{
+                distancia = "error en al obtnener la distancia";
+              }
+              if(sessionStorage.getItem('valorBuscar') == "-"){
+                if (productos[i].categoria == sessionStorage.getItem('categoria') && distancia <= parseInt(sessionStorage.getItem('distancia')) ) {
+                   cargarProductosRegistrados(i, productos[i].nombre, productos[i].descripcion, productos[i].precio, productos[i].categoria, productos[i].subCategoria);
+                }else if (parseInt(sessionStorage.getItem('distancia')) == 60 && sessionStorage.getItem('categoria') == "Todas") {
+                  cargarProductosRegistrados(i, productos[i].nombre, productos[i].descripcion, productos[i].precio, productos[i].categoria, productos[i].subCategoria);
+               }else if (distancia <= parseInt(sessionStorage.getItem('distancia')) && sessionStorage.getItem('categoria') == "Todas") {
+                  cargarProductosRegistrados(i, productos[i].nombre, productos[i].descripcion, productos[i].precio, productos[i].categoria, productos[i].subCategoria);
+                }else if (parseInt(sessionStorage.getItem('distancia')) == 60  &&  productos[i].categoria == sessionStorage.getItem('categoria')) {
+                   cargarProductosRegistrados(i, productos[i].nombre, productos[i].descripcion, productos[i].precio, productos[i].categoria, productos[i].subCategoria);
+                }
+              }
+              else if(distancia <= parseInt(sessionStorage.getItem('distancia')) && sessionStorage.getItem('categoria') == productos[i].categoria && productos[i].nombre == sessionStorage.getItem('valorBuscar')){
+                cargarProductosRegistrados(i, productos[i].nombre, productos[i].descripcion, productos[i].precio, productos[i].categoria, productos[i].subCategoria);
+              }
+          } 
+          if(parseInt(sessionStorage.getItem('distancia')) == 60 ){
+          document.getElementById("hResultado").innerHTML = "Resultados para:  '"+ sessionStorage.getItem('valorBuscar')+"', categoria : "+sessionStorage.getItem('categoria')+" alrededor de: " + parseInt(sessionStorage.getItem('distancia')) + " km en adelante";
+          }else{
+          document.getElementById("hResultado").innerHTML = "Resultados para:  '"+ sessionStorage.getItem('valorBuscar')+"', categoria : "+sessionStorage.getItem('categoria')+" alrededor de: " + parseInt(sessionStorage.getItem('distancia')) + " km";
+          }
+          sessionStorage.removeItem('categoria');
+          sessionStorage.removeItem('distancia');
+          sessionStorage.removeItem('valorBuscar');
        }
 
-   }
-
    function cargarProductosRegistrados(i, nombreProducto, DetallesProducto, PrecioProducto, categoriaProducto, subCategoriaProduct) {
-       $("#content").append("<div id='wainerdiv' class='col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe'><img src='img/productSerach.png' alt='' class='img-responsive rounded'/><label>Nombre: " + nombreProducto + ", Precio: " + PrecioProducto + "</label><div><label class='wainerrb'>Categoria: " + categoriaProducto + ", sub-categoria: " + subCategoriaProduct + "</label></div><div><label>" + DetallesProducto + "</label></div><button class='btn btn-primary btn-block btn-sm' value='" + i + "' onclick='VerProducto(this.value)'>Editar</button><button class='btn btn-primary btn-block btn-sm' value='" + i + "' onclick='eliminarProducto(this.value)'>Eliminar</button><button class='btn btn-primary btn-block btn-sm' value='" + i + "' onclick='VerDetallesProducto(this.value)'>Ver</button><div><label><br></label></div></div>");
+       $("#appendConteint").append("<div class='col-sm-4 col-lg-3 col-md-4'><div class='thumbnail'><img src='http://www.buylevard.com/img/su/545-large.jpg'><div class='caption' ><h4 class='pull-right'>" + PrecioProducto + "</h4><h4><a href=''>" + nombreProducto + "</a></h4><p>Distancia aproximada: " + distancia + " km</p><button class='btn btn-primary'>ver</button></div></div></div>");
 
    }
+
+
+function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  var dLon = deg2rad(lon2-lon1); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  
+distancia = d;
+distancia = distancia.toFixed(2);
+  return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
+}
+   function getUbicacionVendedor(pVendedor) {
+
+       var temVendedores = [];
+       var listaVededores = localStorage.getItem('vendedores');
+       if (listaVededores != null) {
+           temVendedores = JSON.parse(listaVededores);
+           for (var i = 0; i < temVendedores.length; i++) {
+            if (temVendedores[i].usuario == pVendedor) {
+            vLatitud = temVendedores[i].latitud;
+            vLongitud= temVendedores[i].longitud;
+            }
+        }
+     }
+   }
+   function eliminarCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
 
    function VerDetallesProducto(id) {
 
@@ -219,8 +304,16 @@
        sessionStorage.setItem('verProducto', '-1');
        window.location = "MisProductos.html";
    }
+function verPerfiles(){
+    if(usuarioActual.tipoUsuario == "comprador"){
+        window.location ="VerPerfil.html";
+    }else{
+        
+        window.location = "VerPerfilEmpresa.html";
+    }
+}
 
- function buscar(){
+function buscar(){
   var CaT = document.getElementById("selectCategoriaBuscar");
         var value = CaT.options[CaT.selectedIndex].value;
         var text = CaT.options[CaT.selectedIndex].text;
@@ -238,11 +331,13 @@
 
 }
 
-function verPerfiles(){
-    if(usuarioActual.tipoUsuario == "comprador"){
-        window.location ="VerPerfil.html";
-    }else{
-        
-        window.location = "VerPerfilEmpresa.html";
-    }
+function buscarIndex(lmnt, etxt){
+  var x = document.getElementById(lmnt);
+
+for(var i=0; i < x.options.length; i++)
+{
+ if (x.options[i].text === etxt){
+          x.options[i].selected = true
+  }
+}
 }

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#btnEditar').addEventListener('click', editar);
     document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
     document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
+    document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
 });
 var Usuarios = [];
 var Vendedores = [];
@@ -220,4 +221,22 @@ function verPerfiles(){
         
         window.location = "VerPerfilEmpresa.html";
     }
+}
+
+function buscar(){
+  var CaT = document.getElementById("selectCategoriaBuscar");
+        var value = CaT.options[CaT.selectedIndex].value;
+        var text = CaT.options[CaT.selectedIndex].text;
+        var sCaT = document.getElementById("selectDistancia");
+        var value = sCaT.options[sCaT.selectedIndex].value;
+        var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
+        if(document.getElementById("btn-search").value == ""){
+           sessionStorage.setItem('valorBuscar', "-");
+        }else{
+          sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
+        }
+        sessionStorage.setItem('categoria', text);
+        sessionStorage.setItem('distancia', finaSCategoria);
+        window.location = "BuscarArticulo.html";
+
 }

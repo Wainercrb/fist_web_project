@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
     document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
     document.querySelector('#btnEliminarClienta').addEventListener('click', eliminarCuenta);
+    document.querySelector('#btnMisProductos').addEventListener('click', verMisProductos);
+    document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
 });
 var Usuarios = [];
 var Vendedores = [];
@@ -61,7 +63,6 @@ function preLoad(pUsuario) {
     }
     Usuarios = [];
     cargarVendedores();
-    alert(Usuarios.length);
     for (i = 0; i < Usuarios.length; i++) {
         if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
             document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
@@ -238,4 +239,26 @@ function eliminarCuenta() {
     lcStorange.splice(parseInt(sessionStorage.getItem("posicion")), 1);
     localStorage.setItem('vendedores', JSON.stringify(lcStorange));
     window.location = "index.html";
+}
+
+function verMisProductos(){
+
+    window.location = "MisProductos.html";
+}
+function buscar(){
+  var CaT = document.getElementById("selectCategoriaBuscar");
+        var value = CaT.options[CaT.selectedIndex].value;
+        var text = CaT.options[CaT.selectedIndex].text;
+        var sCaT = document.getElementById("selectDistancia");
+        var value = sCaT.options[sCaT.selectedIndex].value;
+        var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
+        if(document.getElementById("btn-search").value == ""){
+           sessionStorage.setItem('valorBuscar', "-");
+        }else{
+          sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
+        }
+        sessionStorage.setItem('categoria', text);
+        sessionStorage.setItem('distancia', finaSCategoria);
+        window.location = "BuscarArticulo.html";
+
 }

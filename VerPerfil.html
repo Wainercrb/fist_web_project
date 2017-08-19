@@ -47,9 +47,9 @@
                     <div class="form-group div-search ">
                         <div class="input-group input-group-lg input-group-full search">
                             <input type="text" class="form-control" id="btn-search" aria-label="Search" size="100">
-                            <div class="input-group-btn">
+                           <div class="input-group-btn">
                                 <div class="btn btn-default">
-                                    <select class="form-control select">
+                                    <select id="selectCategoriaBuscar" class="form-control select">
                                         <option value="">Todas</option>
                                         <option value="">Hombre</option>
                                         <option value="">Mujeres</option>
@@ -63,18 +63,18 @@
                                     </select>
                                 </div>
                                 <div class="btn btn-default second-select">
-                                    <select class="form-control select second-select">
-                                        <option value="">5km</option>
-                                        <option value="">10km</option>
-                                        <option value="">20km</option>
-                                        <option value="">30km</option>
-                                        <option value="">40km</option>
-                                        <option value="">50km</option>
-                                        <option value="">+km</option>
+                                    <select  id="selectDistancia" class="form-control select second-select">
+                                        <option value="5">5km</option>
+                                        <option value="10">10km</option>
+                                        <option value="20">20km</option>
+                                        <option value="30">30km</option>
+                                        <option value="40">40km</option>
+                                        <option value="50">50km</option>
+                                        <option value="60">+km</option>
                                     </select>
                                 </div>
 
-                                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true" id="span-buscar"></span></button>
+                                <button id="btnNavBuscar" type="button" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true" id="span-buscar"></span></button>
                             </div>
                         </div>
                     </div>
