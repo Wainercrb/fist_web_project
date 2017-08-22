@@ -3,13 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Detalles</title>
-    <meta name="viewport" content="widt=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Buscar articulo</title>
+      <meta name="viewport" content="widt=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/DetallesArticulo.css">
+    <link rel="stylesheet" type="text/css" href="css/BuscarArticulo.css">
     <link href="css/animate.min.css" rel="stylesheet">
 </head>
-
 <body>
     <div id="top">
         <div class="container">
@@ -45,7 +44,7 @@
                 <form class="navbar-form navbar-left" role="search" height="10px">
                     <div class="form-group div-search ">
                         <div class="input-group input-group-lg input-group-full search">
-                            <input type="text" class="form-control" id="btn-search" aria-label="Search" size="100">
+                            <input type="text" class="form-control" id="btn-search"  value = "" aria-label="Search" size="100">
                             <div class="input-group-btn">
                                 <div class="btn btn-default">
                                     <select id="selectCategoriaBuscar" class="form-control select">
@@ -93,7 +92,7 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <p class="text-center">
-                                                <img id="profile-img" class="center-block" src="img/img-profile.jpg"/>
+                                                <img id="profile-img" class="center-block" src="img/img-profile.jpg" />
                                             </p>
 
                                         </div>
@@ -169,7 +168,6 @@
     </nav>
     <!--Termina la parte del banner-->
     <!--Inicia la parte del menú-->
-    <!--sub-banner del menu de gategorias-->
     <!--sub-banner del menu de gategorias-->
     <div class="container">
         <nav class="navbar navbar-inverse">
@@ -745,90 +743,16 @@
         </nav>
     </div>
     <!--Termina la parte del menú-->
-    <!--Inicia la parte del contenido-->
-    <div class="container">
-        <div class="card">
-            <div class="container-fliud">
-                <div class="wrapper row">
-                    <div class="preview col-md-6">
-
-                        <div class="preview-pic tab-content">
-                            <div class="tab-pane" id="pic-1"><img src="https://www.tventas.com/img/p/3/0/4/9/5/30495-thickbox_default.jpg" /></div>
-                            <div class="tab-pane" id="pic-2"><img src="https://f4.bcbits.com/img/a0372139383_10.jpg" /></div>
-                            <div class="tab-pane" id="pic-3"><img src="http://img.webdelamoda.com.s3.amazonaws.com/wp-content/uploads/2017/05/look-terciopelo04-150x150.jpg"/></div>
-                            <div class="tab-pane" id="pic-4"><img src="http://img.webdelamoda.com.s3.amazonaws.com/wp-content/uploads/2015/04/blu-gr.jpg"></div>
-                            <div class="tab-pane" id="pic-5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoWPtBsj1MTXos50wxd5xKvzG3CX3xNc0CXTwx6L4jkgcT4-tM"/></div>
-                        </div>
-                        <ul class="preview-thumbnail nav nav-tabs">
-                           <li>
-                                <a data-target="#pic-1" data-toggle="tab"><img src="https://www.tventas.com/img/p/3/0/4/9/5/30495-thickbox_default.jpg" class="second-img"/></a>
-                            </li>
-                            <li>
-                                <a data-target="#pic-2" data-toggle="tab"><img src="https://f4.bcbits.com/img/a0372139383_10.jpg" class="second-img"/></a>
-                            </li>
-                            <li>
-                                <a data-target="#pic-3" data-toggle="tab"><img src="http://img.webdelamoda.com.s3.amazonaws.com/wp-content/uploads/2017/05/look-terciopelo04-150x150.jpg" class="second-img"/></a>
-                            </li>
-                            <li>
-                                <a data-target="#pic-4" data-toggle="tab"><img src="http://img.webdelamoda.com.s3.amazonaws.com/wp-content/uploads/2015/04/blu-gr.jpg" class="second-img"/></a>
-                            </li>
-                            <li>
-                                <a data-target="#pic-5" data-toggle="tab"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoWPtBsj1MTXos50wxd5xKvzG3CX3xNc0CXTwx6L4jkgcT4-tM" class="second-img"/></a>
-                            </li>
-                        </ul>
-
-                    </div>
-                    <div class="details col-md-6">
-                        <h3 class="product-title" id="hNombreProducto">Nombre del producto</h3>
-                        <p class="product-description" id="pDescripcion">Descripción.</p>
-                        <h4 class="price">Precio: <span id="sPrecio">₡20,000,00</span></h4>
-                        <h5 class="sizes">Tallas:
-                            <span class="size" data-toggle="tooltip" title="small">s</span>
-                            <span class="size" data-toggle="tooltip" title="medium">m</span>
-                            <span class="size" data-toggle="tooltip" title="large">l</span>
-                            <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
-                        </h5>
-                        <h5 class="colors">colores:
-                            <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
-                            <span class="color green"></span>
-                            <span class="color blue"></span>
-                        <div class="action" id="div-btn-comprar">
-                        <div class="action">
-                        <label for="acciones">Acciones para comprar</label>
-                            </div>
-                             <div class="form-group" id="select-category-form">
-                        <span id="select-cb">Talla</span>
-                        <span class="select-group-button">                                
-                                  <select  id="radius" class="form-control" type="select">
-                                         <option id="option-select" value="">X</option>
-                                         <option id="option-select" value="">S</option>
-                                         <option id="option-select" value="">XS</option>
-                                         <option id="option-select" value="">XL</option>
-                                         <option id="option-select" value="">M</option>
-                                         <option id="option-select" value="">MS</option>
-                                 </select>               
-                         </span>
-                    </div>
-                     <div id="select-category-form">
-                        <span id="select-cb">Color</span>
-                        <span class="select-group-button">                                
-                                  <select  id="radius" class="form-control" type="select">
-                                         <option id="option-select" value="">rojo</option>
-                                         <option id="option-select" value="">Azul</option>
-                                         <option id="option-select" value="">Amarillo</option> 
-                                 </select>               
-                         </span>
-                      </div>
-							<button class="add-to-cart btn btn-default" type="button">Comprar</button>
-						</div>
-                        </h5>
-                    </div>
+    <!--Inicia la parte del contenido--> 
+    <div class="container" id="container">
+             <div class="col-md-12"> 
+               <h1 id="hResultado"></h1>          
+                <div class="row" id="appendConteint">
+                    
                 </div>
             </div>
         </div>
-    </div>
     <!--Termina la parte del contenido -->
-    <!--Inicia la parte del pie de página-->
     <footer id="footer-Section">
         <!--footer es la etiqueta que indica el pie de página-->
         <div class="footer-top-layout">
@@ -886,6 +810,6 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/DetallesProductos.js"></script>
+    <script type="text/javascript" src="js/BuscarArticulos.js"></script>
 </body>
 </html>

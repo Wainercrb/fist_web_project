@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
     document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
     document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
-    document.querySelector('#btnEliminarClienta').addEventListener('click', eliminarCuenta);
+    document.querySelector('#btnEliminarClienta').addEventListener('click', cerrarSesion);
     document.querySelector('#btnMisProductos').addEventListener('click', verMisProductos);
     document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
 });
@@ -220,25 +220,38 @@ function editar() {
 
 }
 
-function verPerfiles() {
-    if (usuarioActual.tipoUsuario == "comprador") {
-        window.location = "VerPerfil.html";
-    } else {
 
+function verPerfiles(){
+    if(usuarioActual.tipoUsuario == "comprador"){
+        window.location ="VerPerfil.html";
+    }else if(usuarioActual.tipoUsuario == "vendedor"){
         window.location = "VerPerfilEmpresa.html";
+    }else{
+        alert("No puedes acceder a esta información por que no estas registrado");
     }
 }
 
-function cerrarSesion() {
-    sessionStorage.clear();
-    window.location = "index.html";
+function cerrarSesion(){
+  sessionStorage.clear();
+  window.location = "index.html";
 }
 
-function eliminarCuenta() {
-    var lcStorange = JSON.parse(localStorage.getItem('vendedores'));
-    lcStorange.splice(parseInt(sessionStorage.getItem("posicion")), 1);
-    localStorage.setItem('vendedores', JSON.stringify(lcStorange));
-    window.location = "index.html";
+function buscar(){
+  var CaT = document.getElementById("selectCategoriaBuscar");
+        var value = CaT.options[CaT.selectedIndex].value;
+        var text = CaT.options[CaT.selectedIndex].text;
+        var sCaT = document.getElementById("selectDistancia");
+        var value = sCaT.options[sCaT.selectedIndex].value;
+        var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
+        if(document.getElementById("btn-search").value == ""){
+           sessionStorage.setItem('valorBuscar', "-");
+        }else{
+          sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
+        }
+        sessionStorage.setItem('categoria', text);
+        sessionStorage.setItem('distancia', finaSCategoria);
+        window.location = "BuscarArticulo.html";
+
 }
 
 function verMisProductos(){

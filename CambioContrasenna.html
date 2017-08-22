@@ -3,12 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Perfil usuario</title>
+    <title>Ingresar</title>
     <meta name="viewport" content="widt=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/VerPerfil.css">
+    <link rel="stylesheet" type="text/css" href="css/CambioContrasena.css">
     <link href="css/animate.min.css" rel="stylesheet">
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
 </head>
 
 <body>
@@ -46,8 +45,8 @@
                 <form class="navbar-form navbar-left" role="search" height="10px">
                     <div class="form-group div-search ">
                         <div class="input-group input-group-lg input-group-full search">
-                            <input type="text" class="form-control" id="btn-search" aria-label="Search" size="100">
-                           <div class="input-group-btn">
+                            <input type="text" class="form-control" id="btn-search"  value = "" aria-label="Search" size="100">
+                            <div class="input-group-btn">
                                 <div class="btn btn-default">
                                     <select id="selectCategoriaBuscar" class="form-control select">
                                         <option value="">Todas</option>
@@ -83,7 +82,7 @@
 
 
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-user"></span>
                             <strong>Usuario</strong>
                             <span class="glyphicon glyphicon-chevron-down"></span>
@@ -114,7 +113,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <p>
-                                                <a href="" id="btnCerrarCesion" class="btn btn-danger btn-block btn-sm">Cerrar Sesion</a>
+                                                <a id="btnCerrarCesion" class="btn btn-danger btn-block btn-sm">Cerrar Sesion</a>
                                             </p>
                                         </div>
                                     </div>
@@ -150,8 +149,8 @@
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-											 <input type="checkbox" id="input-checkbox-loginc"> Recordarme!
-											 </label>
+                                             <input type="checkbox" id="input-checkbox-loginc"> Recordarme!
+                                             </label>
                                             </div>
                                         </form>
                                     </div>
@@ -746,50 +745,68 @@
     </div>
     <!--Termina la parte del menú-->
     <!--Inicia la parte del contenido-->
-    <div class="container">
+    <div class="container" id="login-conteint">
         <div class="row main">
-            <div class="main-container">
-                <form role="form">
+            <div class="main-login" id="conte">
+                <h3>Registrarse como</h3>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <a href="/RegistroPersonal.html" class="btn btn-lg btn-primary btn-block">Usuario</a>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <a href="/RegistroEmpresa.html" class="btn btn-lg btn-primary btn-block">Vendedor</a>
+                    </div>
+                </div>
+                <!--login-or centra el contenido del login-->
+                <div class="login-or">
+                    <hr class="hr-or">
+                    <span class="span-or">Su</span>
+                </div>
+                <div class="login-or">
+                    <hr class="hr-or">
+                    <span class="span-or">Cuenta</span>
+                </div>
+                  
+                    <div class="form-group center-block" id="midiv">
+                        <div class="group center-block">
+                            <input type="text" required id="txtUsuarioEmail"/>
+                            <span class="highlight"></span>
+                            <!--label-->
+                            <span class="bar"></span>
+                            <!--botton del input-->
+                            <label class="label-login">Usuario o correo</label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="divContrasena1">
+                        <div class="group">
+                            <input type="password" required id="txt-contrasena1"/>
+                            <span class="highlight"></span>
+                            <!--label-->
+                            <span class="bar"></span>
+                            <!--botton del input-->
+                            <label class=label-login>Contraseña</label>
+                        </div>
+                    </div>
                     <div class="form-group">
-                        <div class="text-center">
-                            <img src="img/user.png" class="img-circle" id="fotoUsuario" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64">
+                        <div class="group">
+                            <input type="password" required id="txt-contrasena2"/>
+                            <span class="highlight"></span>
+                            <!--label-->
+                            <span class="bar"></span>
+                            <!--botton del input-->
+                            <label class=label-login>Verificación</label>
                         </div>
-                        <h4 class="text-center" id="nombreUsuario"></h4>
-                        <div class="alert alert-success class midiv">
-                            <span class="label label-primary">Correo</span>
-                            <p id="emailUsuario"></p>
-                        </div>
-                        <div class="alert alert-success class midiv">
-                            <span class="label label-primary">Edad</span>
-                            <p id="edadUsuario"></p>
-                        </div>
-                        <div class="alert alert-success class midiv">
-                            <span class="label label-primary">Usuario
-                            </span>
-                            <p id="usuarioUsuario"></p>
-                        </div>
-                        <div class="alert alert-success class midiv">
-                            <span class="label label-primary">Contraseña</span>
-                            <p id="contrasenaUsuario"></p>
-                        </div>
-                        <div id="mapMain">
-		                    <input id="searchInput" class="controls" type="text" placeholder=Ubiacación>
-                            <div id="map"></div>
-                            <ul id="geoData" class="list-group">
-                            <li class="list-group-item">Direccion completa: <span id="location" ></span></li>
-                            <li class="list-group-item">País: <span id="country"></span></li>
-                            </ul>
-	                     </div>
+                    </div>
+                    </div>                                            
+                    <div class="form-group">                       
                         <h1 class="components">
-                            <button type="button" class=" btn btn-primary center-block" id="btnEditar"><img src="img/edit.png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64">
+                            <button type="button" class=" btn btn-primary center-block" id="btn-ingresarIP"><img src="img/check-symbol.png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64">
                             </button>
                         </h1>
-                    </div>
-                </form>
+                    </div>            
             </div>
         </div>
     </div>
-    
     <!--Termina la parte del contenido -->
     <footer id="footer-Section">
         <!--footer es la etiqueta que indica el pie de página-->
@@ -846,9 +863,8 @@
             <div class="copyright-tag">create by Wainer Rodríguez Bonilla.</div>
         </div>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/VerPerfil.js"></script>
+    <script type="text/javascript" src="js/CambioContrasena.js"></script>
 </body>
-
 </html>

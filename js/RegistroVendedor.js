@@ -2,6 +2,11 @@ var platitud = "";
 var plongitud = "";
 var editar = false;
 var Usuarios = [];
+var usuarioActual = {
+     nombre: "",
+     tipoUsuario: "",
+     usuario: ""
+ };
 
 /*Eventos de clicks en los botones*/
 window.addEventListener('load', cargarComponentesUsu, false);
@@ -93,11 +98,11 @@ function guardarLista(NuevoUsuario) {
 function cargarUsuarios() {
     Usuarios = [];
     var listaUsuarios = localStorage.getItem('vendedores');
+
     if (listaUsuarios != null) {
         Usuarios = JSON.parse(listaUsuarios);
     } else {
         Usuarios = [];
-        alert(Usuarios.length);
     }
     return Usuarios;
 }
@@ -252,7 +257,7 @@ function cargarUsuariosDos() {
 }
 /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
 function cargarComponentesUsu() {
-
+    initMap();
     if (sessionStorage.getItem('latitud') != null) {
         editar = true;
         GetAddress(sessionStorage.getItem('latitud'), sessionStorage.getItem('longitud'));
@@ -292,6 +297,9 @@ function preLoad(pUsuario) {
                     plongitud = parseInt(sessionStorage.getItem('longitud'));
                     GetAddress();
                 }
+                usuarioActual.nombreUsuario = Usuarios[i].nombre;
+                usuarioActual.tipoUsuario = "vendedor";
+                usuarioActual.usuario = Usuarios[i].usuario;
             }
             capturarLoginUsuario(Usuarios[i].usuario);
             return;
@@ -305,9 +313,10 @@ function preLoad(pUsuario) {
             document.getElementById("headerName").innerHTML = Usuarios[i].nombre + " " + Usuarios[i].apellidoPaterno + " " + Usuarios[i].apellidoMaterno;
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
-
-
             capturarLoginUsuario(Usuarios[i].usuario);
+             usuarioActual.nombreUsuario = Usuarios[i].nombre;
+                usuarioActual.tipoUsuario = "comprador";
+                usuarioActual.usuario = Usuarios[i].usuario;
             return;
         }
     }
@@ -462,9 +471,6 @@ function initMap() {
 
         //Location details
         for (var i = 0; i < place.address_components.length; i++) {
-            if (place.address_components[i].types[0] == 'postal_code') {
-                document.getElementById('postal_code').innerHTML = place.address_components[i].long_name;
-            }
             if (place.address_components[i].types[0] == 'country') {
                 document.getElementById('country').innerHTML = place.address_components[i].long_name;
             }
@@ -498,18 +504,17 @@ function GetAddress() {
 
 
 
-function verPerfiles() {
-    if (usuarioActual.tipoUsuario == "comprador") {
-        window.location = "VerPerfil.html";
-    } else {
-
+function verPerfiles(){
+    if(usuarioActual.tipoUsuario == "comprador"){
+        window.location ="VerPerfil.html";
+    }else if(usuarieoActual.tipoUsuario == "vendedor"){
         window.location = "VerPerfilEmpresa.html";
+    }else{
+        alert("No puedes acceder a esta información por que no estas registrado");
     }
 }
 
 function cerrarSesion(){
-    
-    localStorage.clear();
     sessionStorage.clear();
     window.location = "index.html";
 }

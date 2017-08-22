@@ -3,7 +3,11 @@ var plongitud;
 var editar = false;
 var Usuarios = [];
 var Vendedores = [];
-var usuarioActual;
+var usuarioActual = {
+                nombre: "",
+                tipoUsuario: "",
+                usuario: ""
+            };
 /*Eventos de clicks en los botones*/
 window.addEventListener('load', cargarComponentesUsu, false);
 document.querySelector('#btnIngresar').addEventListener('click', capturar);
@@ -11,7 +15,7 @@ document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresa
 document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
 document.querySelector('#blah').addEventListener('click', inputProfilePicture);
 document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
-
+document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
 /*Evento de click para la etiqueta img del registro usuario*/
 function inputProfilePicture() {
     var obj = document.getElementById("imgInp");
@@ -45,7 +49,6 @@ function capturar() {
 }
 
 
-/*Crea el objeto con los parametos para añdiarlos a la lista pot el push*/
 function addUsuarios(pNombre, pApellidoPaterno, pApellidoMaterno, pEmil, pEdad, pLatitud, pLongitud, pUsuario, pContrasenna, pFoto) {
     var nuevoUsuario = {
         nombre: pNombre,
@@ -74,9 +77,11 @@ function addUsuarios(pNombre, pApellidoPaterno, pApellidoMaterno, pEmil, pEdad, 
 }
 
 function editarNuevoUsuario() {
+    if(editar ===  true){
     var lcStorange = JSON.parse(localStorage.getItem('AllUsers'));
     lcStorange.splice(parseInt(sessionStorage.getItem("posicion")), 1);
     localStorage.setItem('AllUsers', JSON.stringify(lcStorange));
+}
 }
 /*Guarda la el objeto que recibe por para metro al local storange*/
 function guardarLista(NuevoUsuario) {
@@ -270,8 +275,11 @@ function getBase64Image(img) {
 
 /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
 function cargarComponentesUsu() {
+    initMap();
     if (sessionStorage.getItem('latitud') != null) {
         editar = true;
+    }else{
+        
     }
     cargarSessionStore();
     if (obtenerCookie("USUARIO") == "" || obtenerCookie("USUARIO") == null) {
@@ -339,12 +347,10 @@ function preLoad(pUsuario) {
                 plongitud = parseInt(sessionStorage.getItem('longitud'));
                 GetAddress();
             }
-            usuarioActual = {
-                nombre: Usuarios[i].nombre,
-                tipoUsuario: "comprador",
-                usuario: Usuarios[i].usuario
-            };
-            return;
+                usuarioActual.nombre = Usuarios[i].nombre;
+                usuarioActual.tipoUsuario = "comprador";
+                usuarioActual.usuario = Usuarios[i].usuario;
+                return;
         }
     }
     Usuarios = [];
@@ -356,12 +362,9 @@ function preLoad(pUsuario) {
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            usuarioActual = {
-                nombre: Usuarios[i].nombre,
-                tipoUsuario: "vendedor",
-                usuario: Usuarios[i].usuario
-            };
-
+            usuarioActual.nombre = Usuarios[i].nombre;
+            usuarioActual.tipoUsuario = "vendedor";
+            usuarioActual.usuario = Usuarios[i].usuario;
             return;
         }
     }
@@ -491,9 +494,6 @@ function initMap() {
 
         //Location details
         for (var i = 0; i < place.address_components.length; i++) {
-            if (place.address_components[i].types[0] == 'postal_code') {
-                document.getElementById('postal_code').innerHTML = place.address_components[i].long_name;
-            }
             if (place.address_components[i].types[0] == 'country') {
                 document.getElementById('country').innerHTML = place.address_components[i].long_name;
             }
@@ -529,11 +529,18 @@ function GetAddress() {
 function verPerfiles(){
     if(usuarioActual.tipoUsuario == "comprador"){
         window.location ="VerPerfil.html";
-    }else{
-        
+    }else if(usuarioActual.tipoUsuario == "vendedor"){
         window.location = "VerPerfilEmpresa.html";
+    }else{
+        alert("No puedes acceder a esta información por que no estas registrado");
     }
 }
+
+function cerrarSesion(){
+  sessionStorage.clear();
+  window.location = "index.html";
+}
+document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
 function buscar(){
   var CaT = document.getElementById("selectCategoriaBuscar");
         var value = CaT.options[CaT.selectedIndex].value;

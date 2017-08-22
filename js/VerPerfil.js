@@ -6,11 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
     document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
     document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
+    document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
 });
 var Usuarios = [];
 var Vendedores = [];
 var usuarioActual;
-var direccionLocal;
+ var usuarioActual = {
+     nombre: "",
+     tipoUsuario: "",
+     usuario: ""
+ };
 
 
 /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
@@ -58,11 +63,9 @@ function preLoad(pUsuario) {
             GetAddress();
             myMap();
             sessionStorage.setItem('posicion', JSON.stringify(i));
-            usuarioActual = {
-                nombre: Usuarios[i].nombre,
-                tipoUsuario: "comprador",
-                usuario: Usuarios[i].usuario
-            };
+            usuarioActual.nombre  =  Usuarios[i].nombre;
+            usuarioActual.tipoUsuario = "comprador";
+            usuarioActual.usuario = Usuarios[i].usuario;
             return;
         }
     }
@@ -78,11 +81,9 @@ function preLoad(pUsuario) {
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            usuarioActual = {
-                nombre: Usuarios[i].nombre,
-                tipoUsuario: "vendedor",
-                usuario: Usuarios[i].usuario
-            };
+            usuarioActual.nombre = Usuarios[i].nombre;
+            usuarioActual.tipoUsuario ="vendedor";
+            usuarioActual.usuario = Usuarios[i].usuario;
             return;
         }
     }
@@ -214,29 +215,35 @@ function editar() {
 function eliminarCookie(name) {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
+function buscar(){
+var CaT = document.getElementById("selectCategoriaBuscar");
+      var value = CaT.options[CaT.selectedIndex].value;
+      var text = CaT.options[CaT.selectedIndex].text;
+      var sCaT = document.getElementById("selectDistancia");
+      var value = sCaT.options[sCaT.selectedIndex].value;
+      var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
+      if(document.getElementById("btn-search").value == ""){
+         sessionStorage.setItem('valorBuscar', "-");
+      }else{
+        sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
+      }
+      sessionStorage.setItem('categoria', text);
+      sessionStorage.setItem('distancia', finaSCategoria);
+      window.location = "BuscarArticulo.html";
+
+}
+
 function verPerfiles(){
     if(usuarioActual.tipoUsuario == "comprador"){
         window.location ="VerPerfil.html";
-    }else{
-        
+    }else if(usuarioActual.tipoUsuario == "vendedor"){
         window.location = "VerPerfilEmpresa.html";
+    }else{
+        alert("No puedes acceder a esta información por que no estas registrado");
     }
 }
 
-function buscar(){
-  var CaT = document.getElementById("selectCategoriaBuscar");
-        var value = CaT.options[CaT.selectedIndex].value;
-        var text = CaT.options[CaT.selectedIndex].text;
-        var sCaT = document.getElementById("selectDistancia");
-        var value = sCaT.options[sCaT.selectedIndex].value;
-        var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
-        if(document.getElementById("btn-search").value == ""){
-           sessionStorage.setItem('valorBuscar', "-");
-        }else{
-          sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
-        }
-        sessionStorage.setItem('categoria', text);
-        sessionStorage.setItem('distancia', finaSCategoria);
-        window.location = "BuscarArticulo.html";
-
+function cerrarSesion(){
+  sessionStorage.clear();
+  window.location = "index.html";
 }

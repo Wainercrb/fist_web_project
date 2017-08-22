@@ -2,6 +2,8 @@ var productos = [];
 document.querySelector('#btnIngresar').addEventListener('click', capturar);
 window.addEventListener('load', cargarDatosUsuario, false);
 document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
+document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
+document.querySelector('#addProduct').addEventListener('click', addProducto);
 document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
 var Usuarios = [];
 var Vendedores = [];
@@ -14,7 +16,6 @@ var editar = false;
 
 function capturar() {
     productos = [];
-    if (usuarioActual.tipoUsuario == "vendedor") {
         var CaT = document.getElementById("categoria");
         var value = CaT.options[CaT.selectedIndex].value;
         var text = CaT.options[CaT.selectedIndex].text;
@@ -35,9 +36,6 @@ function capturar() {
             }
             addProductos(codigo, nombre, marca, precio, cantidad, categoria, subCategoira, descripcion);
         }
-    } else {
-        alert("No tienes permisos para esta acción");
-    }
 }
 
 function addProductos(pCodigo, pNombre, pMarca, pPrecio, pCantidad, pCategoria, pSubCategoria, pDescripcion) {
@@ -314,13 +312,28 @@ function VerError2(label, dato) {
     document.getElementById(label).innerHTML = dato;
 }
 
-function verPerfiles() {
-    if (usuarioActual.tipoUsuario == "comprador") {
-        window.location = "VerPerfil.html";
-    } else {
-
+function verPerfiles(){
+    if(usuarioActual.tipoUsuario == "comprador"){
+        window.location ="VerPerfil.html";
+    }else if(usuarioActual.tipoUsuario == "vendedor"){
         window.location = "VerPerfilEmpresa.html";
+    }else{
+        alert("No puedes acceder a esta información por que no estas registrado");
     }
+}
+
+function cerrarSesion(){
+  sessionStorage.clear();
+  window.location = "index.html";
+}
+
+
+function addProducto(){
+if (usuarioActual.tipoUsuario === "vendedor") {
+  window.location = "NuevoProducto.html";
+}else{
+  alert("No tienes permisos para esta acción");
+}
 }
 
 function eliminarProducto() {
