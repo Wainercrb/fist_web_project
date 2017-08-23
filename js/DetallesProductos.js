@@ -125,13 +125,12 @@ function preLoad(pUsuario) {
             return;
         }
     }
-    alert("No se encontro el usuario");
 }
 
 function verProductos() {
     cargarTodosProductos();
     var x = parseInt(sessionStorage.getItem('verProducto'));
-    document.getElementById('hNombreProducto').innerHTML = "Nombre: "+productos[x].codigo;
+    document.getElementById('hNombreProducto').innerHTML = "Nombre: "+productos[x].nombre;
     document.getElementById('pDescripcion').innerHTML = "Descripción:" +productos[x].descripcion;
     document.getElementById('sPrecio').innerHTML = "₡ " +productos[x].precio;
 }

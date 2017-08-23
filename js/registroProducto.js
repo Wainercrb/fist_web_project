@@ -6,6 +6,7 @@ document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesio
 document.querySelector('#addProduct').addEventListener('click', addProducto);
 document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
 document.querySelector('#btnOlvidoContrasena').addEventListener('click', olvidoContrasena);
+document.querySelector('#btnEliminarClienta').addEventListener('click', eliminarCuenta);
 var Usuarios = [];
 var Vendedores = [];
 var editar = false;
@@ -368,4 +369,11 @@ function eliminarProducto() {
     lcStorange.splice(x, 1);
     localStorage.setItem('Producto', JSON.stringify(lcStorange));
     sessionStorage.setItem('verProducto', '-1');
+}
+/*funcion elimina mi perfil del localStorange*/
+function eliminarCuenta() {
+    var lcStorange = JSON.parse(localStorage.getItem('vendedores'));
+    lcStorange.splice(parseInt(sessionStorage.getItem("posicion")), 1);
+    localStorage.setItem('vendedores', JSON.stringify(lcStorange));
+    window.location = "index.html";
 }

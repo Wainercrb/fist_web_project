@@ -6,6 +6,7 @@
    document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
    document.querySelector('#btnOlvidoContrasena').addEventListener('click', olvidoContrasena);
    document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
+   document.querySelector('#btnEliminarClienta').addEventListener('click', eliminarCuenta);
    var Usuarios = [];
    var Vendedores = [];
    var vLatitud;
@@ -223,4 +224,11 @@ function verPerfiles(){
     }else{
         alert("No puedes acceder a esta información por que no estas registrado");
     }
+}
+/*funcion elimina mi perfil del localStorange*/
+function eliminarCuenta() {
+    var lcStorange = JSON.parse(localStorage.getItem('vendedores'));
+    lcStorange.splice(parseInt(sessionStorage.getItem("posicion")), 1);
+    localStorage.setItem('vendedores', JSON.stringify(lcStorange));
+    window.location = "index.html";
 }

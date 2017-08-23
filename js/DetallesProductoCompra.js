@@ -14,9 +14,10 @@ var usuarioActual = {
 window.addEventListener('load', cargarComponentesUsu, false);
 document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
 document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
-   document.querySelector('#addProduct').addEventListener('click', addProducto);
-   document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
-   document.querySelector('#btnOlvidoContrasena').addEventListener('click', olvidoContrasena);
+document.querySelector('#addProduct').addEventListener('click', addProducto);
+document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
+document.querySelector('#btnOlvidoContrasena').addEventListener('click', olvidoContrasena);
+document.querySelector('#btnEliminarClienta').addEventListener('click', eliminarCuenta);
 
 /*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
 function cargarUsuarios() {
@@ -103,9 +104,12 @@ function preLoad(pUsuario) {
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             capturarLoginUsuario(Usuarios[i].usuario);
-            usuarioActua.nombre = Usuarios[i].nombre;
+            usuarioActual.nombre = Usuarios[i].nombre;
             usuarioActual.tipoUsuario = "comprador";
             usuarioActual.usuario = Usuarios[i].usuario;
+             if (editar === true) {
+                verProductos();
+            }
             return;
         }
     }
@@ -136,6 +140,7 @@ function verProductos() {
     document.getElementById('pDescripcion').innerHTML = "Descripción:" +productos[x].descripcion;
     document.getElementById('sPrecio').innerHTML = "₡ " +productos[x].precio;
     detallesVendedor(productos[x].vendedor);
+
 }
 /*funcon carga los productos del localStorange y los agrega a la lista*/
 function cargarTodosProductos() {
@@ -291,4 +296,11 @@ function verPerfiles(){
     }else{
         alert("No puedes acceder a esta información por que no estas registrado");
     }
+}
+/*funcion elimina mi perfil del localStorange*/
+function eliminarCuenta() {
+    var lcStorange = JSON.parse(localStorage.getItem('vendedores'));
+    lcStorange.splice(parseInt(sessionStorage.getItem("posicion")), 1);
+    localStorage.setItem('vendedores', JSON.stringify(lcStorange));
+    window.location = "index.html";
 }

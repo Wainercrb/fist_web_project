@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
     document.querySelector('#addProduct').addEventListener('click', addProducto);
     document.querySelector('#btnOlvidoContrasena').addEventListener('click', olvidoContrasena);
+    document.querySelector('#btnEliminarClienta').addEventListener('click', eliminarCuenta);
 });
 var Usuarios = [];
 var Vendedores = [];
@@ -278,3 +279,9 @@ $(".glyphicon-eye-open").mousedown(function(){
 }).mouseout(function(){
     $("#contrasenaVendedor").attr('type','password');
 });
+function eliminarCuenta() {
+    var lcStorange = JSON.parse(localStorage.getItem('vendedores'));
+    lcStorange.splice(parseInt(sessionStorage.getItem("posicion")), 1);
+    localStorage.setItem('vendedores', JSON.stringify(lcStorange));
+    window.location = "index.html";
+}
