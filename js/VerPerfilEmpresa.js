@@ -5,17 +5,16 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#btnEditar').addEventListener('click', editar);
     document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
     document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
-    document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
-    document.querySelector('#btnEliminarClienta').addEventListener('click', cerrarSesion);
     document.querySelector('#btnMisProductos').addEventListener('click', verMisProductos);
     document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
+    document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
+    document.querySelector('#addProduct').addEventListener('click', addProducto);
+    document.querySelector('#btnOlvidoContrasena').addEventListener('click', olvidoContrasena);
 });
 var Usuarios = [];
 var Vendedores = [];
 var usuarioActual;
 var direccionLocal;
-
-
 /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
 function cargarDatosUsuario() {
     cargarSessionStore();
@@ -29,15 +28,13 @@ function cargarDatosUsuario() {
         contra.value = obtenerCookie("CONTRASEÑA");
     }
 }
-
+/*función verifica si hay usuarios logeados, y si lo hay que cargue los datos*/
 function cargarSessionStore() {
-
     var nombreUsuario = sessionStorage.getItem('loginUsuarios');
     if (nombreUsuario != "") {
         preLoad(nombreUsuario);
     }
 }
-
 /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
 que no quiera recordar la contraseña elimina el cookie*/
 function preLoad(pUsuario) {
@@ -69,7 +66,7 @@ function preLoad(pUsuario) {
             document.getElementById("headerName").innerHTML = Usuarios[i].nombre;
             document.getElementById("EmailVendedor").innerHTML = Usuarios[i].email;
             document.getElementById("usuarioVendedor").innerHTML = Usuarios[i].usuario;
-            document.getElementById("contrasenaVendedor").innerHTML = Usuarios[i].contrasenna;
+            document.getElementById("contrasenaVendedor").value = Usuarios[i].contrasenna;
             document.getElementById("servicioVendedor").innerHTML = Usuarios[i].tipoServicio;
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
@@ -180,12 +177,7 @@ function Ingresar() {
     }
     alert("No se encontro el usuario");
 }
-
-function initMap() {
-    var x = document.getElementById('searchInput').style;
-    x.display = "none";
-}
-
+/*función carga la dirección en string de una latitud y longitud*/
 function GetAddress() {
     var lat = parseFloat(latitud);
     var lng = parseFloat(longitud);
@@ -212,15 +204,35 @@ function myMap() {
     var map = new google.maps.Map(document.getElementById("map"), mapProp);
 }
 
-
+/*función carga la pagina de editar y guarda la logitud y latitud en localStorange*/
 function editar() {
     sessionStorage.setItem('latitud', JSON.stringify(latitud));
     sessionStorage.setItem('longitud', JSON.stringify(longitud));
     window.location = "RegistroVendedor.html";
-
 }
+/*función carga la pagina de los mis productos*/
+function verMisProductos(){
 
-
+    window.location = "MisProductos.html";
+}
+/*funcion busca un articulo, guarda en sessionStorange y carga ese dato en la pagina de buscar*/
+function buscar(){
+    var CaT = document.getElementById("selectCategoriaBuscar");
+    var value = CaT.options[CaT.selectedIndex].value;
+    var text = CaT.options[CaT.selectedIndex].text;
+    var sCaT = document.getElementById("selectDistancia");
+    var value = sCaT.options[sCaT.selectedIndex].value;
+    var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
+    if(document.getElementById("btn-search").value == ""){
+       sessionStorage.setItem('valorBuscar', "-");
+   }else{
+    sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
+}
+sessionStorage.setItem('categoria', text);
+sessionStorage.setItem('distancia', finaSCategoria);
+window.location = "BuscarArticulo.html";
+}
+/*funcion carga la pagina del perfil dependiendo del usuario*/
 function verPerfiles(){
     if(usuarioActual.tipoUsuario == "comprador"){
         window.location ="VerPerfil.html";
@@ -230,48 +242,39 @@ function verPerfiles(){
         alert("No puedes acceder a esta información por que no estas registrado");
     }
 }
-
+/*funcion elimina el sessionStorange y carga la pagina principal*/
 function cerrarSesion(){
   sessionStorage.clear();
   window.location = "index.html";
+  return;
 }
-
-function buscar(){
-  var CaT = document.getElementById("selectCategoriaBuscar");
-        var value = CaT.options[CaT.selectedIndex].value;
-        var text = CaT.options[CaT.selectedIndex].text;
-        var sCaT = document.getElementById("selectDistancia");
-        var value = sCaT.options[sCaT.selectedIndex].value;
-        var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
-        if(document.getElementById("btn-search").value == ""){
-           sessionStorage.setItem('valorBuscar', "-");
-        }else{
-          sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
-        }
-        sessionStorage.setItem('categoria', text);
-        sessionStorage.setItem('distancia', finaSCategoria);
-        window.location = "BuscarArticulo.html";
-
+/*funcion verifica que el usuario sea vendedor y si lo es carga la pagina para que agrege un nuevo producto*/
+function addProducto(){
+  if (usuarioActual.tipoUsuario === "vendedor") {
+    window.location = "NuevoProducto.html";
+}else{
+    alert("No tienes permisos para esta acción");
 }
-
-function verMisProductos(){
-
-    window.location = "MisProductos.html";
 }
-function buscar(){
-  var CaT = document.getElementById("selectCategoriaBuscar");
-        var value = CaT.options[CaT.selectedIndex].value;
-        var text = CaT.options[CaT.selectedIndex].text;
-        var sCaT = document.getElementById("selectDistancia");
-        var value = sCaT.options[sCaT.selectedIndex].value;
-        var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
-        if(document.getElementById("btn-search").value == ""){
-           sessionStorage.setItem('valorBuscar', "-");
-        }else{
-          sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
-        }
-        sessionStorage.setItem('categoria', text);
-        sessionStorage.setItem('distancia', finaSCategoria);
-        window.location = "BuscarArticulo.html";
-
+/*funcion vefica que este un usurio logeado y si lo esta cagar la pagina para cambiar contraseña*/
+function olvidoContrasena(){
+  if(usuarioActual.tipoUsuario =="" || usuarioActual.tipoUsuario == ""){
+      window.location = "CambioContrasenna.html";
+  }else{
+      alert("Actualmente estas registrado");
+  }
 }
+/*jquery cambia el tipo de dato del inpus a texto y contraseña esto para mostrar la contrasenña*/
+$("#contrasenaVendedor").on("keyup",function(){
+    if($(this).val())
+        $(".glyphicon-eye-open").show();
+    else
+        $(".glyphicon-eye-open").hide();
+});
+$(".glyphicon-eye-open").mousedown(function(){
+    $("#contrasenaVendedor").attr('type','text');
+}).mouseup(function(){
+    $("#contrasenaVendedor").attr('type','password');
+}).mouseout(function(){
+    $("#contrasenaVendedor").attr('type','password');
+});

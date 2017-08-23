@@ -514,26 +514,26 @@ a {
     position: relative;
 }
 #label-ckeckbox-recordame{
- position: absolute;   
+   position: absolute;   
 }
 .group 			  
 { 
-      position:relative; /*posición del grupo sin afectar los demas*/
-      margin-bottom:45px;/*anco del div grup hacia su padre*/ 
+  position:relative; /*posición del grupo sin afectar los demas*/
+  margin-bottom:45px;/*anco del div grup hacia su padre*/ 
 }
 input
 {
-      font-size:18px;
-      padding:10px 10px 10px 5px;
-      display:block;/*toma las dimenciones de su padre*/
-      width: 100%;
-      border:none;
-      border-bottom:1px solid #757575;
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;/*toma las dimenciones de su padre*/
+  width: 100%;
+  border:none;
+  border-bottom:1px solid #757575;
 }
 /*Quita el borde leccionado del div del input solo queda la animacion de la linea del button*/
 input:focus 
 {
-           outline:none; 
+ outline:none; 
 }
 #div-check-recordame{
     margin-top: 0% !important;
@@ -555,21 +555,21 @@ input:focus
     height: 90% !important;
     margin-top: 0.2%;
     margin-left: -2%;
-       }
+}
 /*label del input */
 .label-login				 
 {
-      color:#999; 
-      font-size:18px;
-      font-weight:normal;
-      position:absolute;
-      pointer-events:none;
-      left:5px;
-      top:10px;
-      /*transicion cuando seleciono el input*/
-       transition:0.2s ease all; 
-       -moz-transition:0.9s ease all; 
-      -webkit-transition:0.2s ease all;
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  /*transicion cuando seleciono el input*/
+  transition:0.2s ease all; 
+  -moz-transition:0.9s ease all; 
+  -webkit-transition:0.2s ease all;
 }
 
 /*Cambia de color el label, tambien  el tamaño cuando seleciona el input*/
@@ -589,26 +589,26 @@ input:focus ~ label, input:valid ~ label
 /*border-botton antes y despues de seleccionar*/
 .bar:before, .bar:after 	
 {
-          content:'';
-          height:2px; 
-          width:0;
-          bottom:1px; 
-          position:absolute;
-          background:#5264AE; 
-          /*animación al seleccionar*/
-          transition:0.2s ease all; 
-          -moz-transition:0.2s ease all; 
-          -webkit-transition:0.2s ease all;
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  /*animación al seleccionar*/
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
 }
 
 /*bar(margin-button) antes y despues del seleccionar*/
 .bar:before 
 {
-          left:50%;
+  left:50%;
 }
 .bar:after 
 {
-          right:50%; 
+  right:50%; 
 }
 /* animacion en la linea del input */
 input:focus ~ .bar:before, input:focus ~ .bar:after 
@@ -618,55 +618,55 @@ input:focus ~ .bar:before, input:focus ~ .bar:after
 /* label */
 .highlight 
 {
-          position:absolute;
-          height:60%; 
-          width:100%; 
-          top:25%; 
-          left:0;
-          pointer-events:none;
-          opacity:0.5;
+  position:absolute;
+  height:60%; 
+  width:100%; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
 }
 
 /*animacion de color en la parte el input*/
 input:focus ~ .highlight 
 {
-      -webkit-animation:inputHighlighter 0.3s ease;
-      -moz-animation:inputHighlighter 0.3s ease;
-      animation:inputHighlighter 0.3s ease;
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
 }
 
 /* animaciones */
 /*ontrolar los pasos intermedios en una secuencia de animación "desde hasta"*/
 @-webkit-keyframes inputHighlighter {
-from 
-{ 
-    background:#5264AE; 
-}
-to 	
-{ 
-    width:0;
-    background:transparent; 
-}
+    from 
+    { 
+        background:#5264AE; 
+    }
+    to 	
+    { 
+        width:0;
+        background:transparent; 
+    }
 }
 @-moz-keyframes inputHighlighter {
-from 
-{ 
-    background:#5264AE; 
-}
-to 	
-{ 
-    width:0; background:transparent; 
-}
+    from 
+    { 
+        background:#5264AE; 
+    }
+    to 	
+    { 
+        width:0; background:transparent; 
+    }
 }
 @keyframes inputHighlighter {
-from 
-{
-    background:#5264AE; 
-}
-to
-{
-width:0; background:transparent; 
-}
+    from 
+    {
+        background:#5264AE; 
+    }
+    to
+    {
+        width:0; background:transparent; 
+    }
 }
 /*Direno del div dentro del form*/
 #conte
@@ -678,22 +678,22 @@ width:0; background:transparent;
     margin-top: 10px;
 }
 /*Diselo del div principal del form*/
- .main 
+.main 
 {
-     background-color: #fff;
-    margin-top: 10px;
-    border-radius: 4px;
-    border-bottom: 1px solid #A4A4A4;
-     -moz-box-shadow: 0 0 3px 3px #888;
-    -webkit-box-shadow: 0 0 3px 3px #888;
-	box-shadow: 0 0 3px 3px #888;
-    border-radius:2px;
-    max-width: 320px;
-    margin: 0 auto;
-    
+   background-color: #fff;
+   margin-top: 10px;
+   border-radius: 4px;
+   border-bottom: 1px solid #A4A4A4;
+   -moz-box-shadow: 0 0 3px 3px #888;
+   -webkit-box-shadow: 0 0 3px 3px #888;
+   box-shadow: 0 0 3px 3px #888;
+   border-radius:2px;
+   max-width: 320px;
+   margin: 0 auto;
+   
 }
 /*Diseño de las lineas del form "su cuenta"*/
-  .login-or 
+.login-or 
 {
     position: relative;
     font-size: 18px;
@@ -704,7 +704,7 @@ width:0; background:transparent;
     padding-bottom: 10px;
 }
 /*Diseño de las letras "su cuenta"*/
-  .span-or {
+.span-or {
     display: block;
     position: absolute;
     left: 50%;
@@ -737,11 +737,11 @@ h3
 /*Diseño del boton*/
 #btn-ingresarIP
 {
-           display: block;
-           width: 135px;
-           height: 70px;
-           background: none;
-           border: none;
+ display: block;
+ width: 135px;
+ height: 70px;
+ background: none;
+ border: none;
 }
 
 /**Finaliza el contenido**/
@@ -788,20 +788,20 @@ h3
 /*titulos del la informacin del footer*/
 .footer-top-layout h4 
 {
-       color: #ffffff;
-       font-size: 18px;
-       margin-bottom: 21px;
+ color: #ffffff;
+ font-size: 18px;
+ margin-bottom: 21px;
 }
 /*sub-titulo del primer contenedor del footer"Nuestra infromacion"**/
 .mi-informacion>p 
 {
-       color: #888888;
+ color: #888888;
 }
 /*lineas del primer contenedor del footer "---"*/
 .post-blog-date 
 {
-       padding-bottom: 25px;
-       position: relative;
+ padding-bottom: 25px;
+ position: relative;
 }
 
 /*los tres contenedores de información*/
@@ -815,12 +815,12 @@ h3
 /*Ancho entre cada uno de los 3 div del footer*/
 .footer-col-item 
 {
-      min-height: 140px;
+  min-height: 140px;
 }
 /*color de las la información de los tres div del footer*/
 address 
 {
-       color: #545454;
+ color: #545454;
 }
 
 /*Elimina la tercer linea divisora de los tres div del footer*/
@@ -849,7 +849,7 @@ h6
 /*titulos de los direccion local, telefono y correos*/
 .footer-top-layout h4 
 {
-         color: #070B19;
-         font-size: 18px;
-         margin-bottom: 21px;
+   color: #070B19;
+   font-size: 18px;
+   margin-bottom: 21px;
 }

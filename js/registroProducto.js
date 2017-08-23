@@ -5,42 +5,41 @@ document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresa
 document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
 document.querySelector('#addProduct').addEventListener('click', addProducto);
 document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
+document.querySelector('#btnOlvidoContrasena').addEventListener('click', olvidoContrasena);
 var Usuarios = [];
 var Vendedores = [];
+var editar = false;
 var usuarioActual = {
     nombre: "",
     tipoUsuario: "",
     usuario: ""
 };
-var editar = false;
-
+/*funcion captura los catos  que ingresan por interfaz*/
 function capturar() {
     productos = [];
-        var CaT = document.getElementById("categoria");
-        var value = CaT.options[CaT.selectedIndex].value;
-        var text = CaT.options[CaT.selectedIndex].text;
-        var sCaT = document.getElementById("subCategoria");
-        var value = sCaT.options[sCaT.selectedIndex].value;
-        var finaSCategoria = sCaT.options[sCaT.selectedIndex].text;
-        var codigo = document.querySelector('#txtCodigo').value,
-            nombre = document.querySelector('#txtNombre').value,
-            marca = document.querySelector('#txtMarca').value,
-            precio = document.querySelector('#txtPrecio').value,
-            cantidad = document.querySelector('#txtCantidad').value,
-            categoria = text,
-            subCategoira = finaSCategoria,
-            descripcion = document.querySelector('#txtDescripcion').value;
-        if (verificarDatos(codigo, nombre, marca, precio, cantidad, categoria, subCategoira, descripcion) == true) {
-            if (editar == true) {
-                eliminarProducto();
-            }
-            addProductos(codigo, nombre, marca, precio, cantidad, categoria, subCategoira, descripcion);
+    var CaT = document.getElementById("categoria");
+    var value = CaT.options[CaT.selectedIndex].value;
+    var text = CaT.options[CaT.selectedIndex].text;
+    var sCaT = document.getElementById("subCategoria");
+    var value = sCaT.options[sCaT.selectedIndex].value;
+    var finaSCategoria = sCaT.options[sCaT.selectedIndex].text;
+    var codigo = document.querySelector('#txtCodigo').value,
+    nombre = document.querySelector('#txtNombre').value,
+    marca = document.querySelector('#txtMarca').value,
+    precio = document.querySelector('#txtPrecio').value,
+    cantidad = document.querySelector('#txtCantidad').value,
+    categoria = text,
+    subCategoira = finaSCategoria,
+    descripcion = document.querySelector('#txtDescripcion').value;
+    if (verificarDatos(codigo, nombre, marca, precio, cantidad, categoria, subCategoira, descripcion) == true) {
+        if (editar == true) {
+            eliminarProducto();
         }
+        addProductos(codigo, nombre, marca, precio, cantidad, categoria, subCategoira, descripcion);
+    }
 }
-
+/*funcion crea un objeto de los datos que ingresan por parametros*/
 function addProductos(pCodigo, pNombre, pMarca, pPrecio, pCantidad, pCategoria, pSubCategoria, pDescripcion) {
-
-
     var nuevoProducto = {
         codigo: pCodigo,
         nombre: pNombre,
@@ -56,9 +55,7 @@ function addProductos(pCodigo, pNombre, pMarca, pPrecio, pCantidad, pCategoria, 
     productos.push(nuevoProducto);
     guardarLista(productos);
 }
-
-
-
+/*funcion gurda el objeto y si era tipo editar carga las paginas donde se muestran los productos, si no carga esta misma*/
 function guardarLista(listaFinalProductos) {
     localStorage.setItem('Producto', JSON.stringify(listaFinalProductos));
     if (editar == true) {
@@ -67,7 +64,6 @@ function guardarLista(listaFinalProductos) {
         window.location = "NuevoProducto.html";
     }
 }
-
 /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
 function cargarDatosUsuario() {
     if (parseInt(sessionStorage.getItem('verProducto')) >= 0) {
@@ -84,15 +80,13 @@ function cargarDatosUsuario() {
         contra.value = obtenerCookie("CONTRASEÑA");
     }
 }
-
+/*funcion verifica si hay un usuario registrado y si hay carga los datos del mismo a interfaz*/
 function cargarSessionStore() {
-
-    var nombreUsuario = sessionStorage.getItem('loginUsuarios');
+   var nombreUsuario = sessionStorage.getItem('loginUsuarios');
     if (nombreUsuario != "") {
         preLoad(nombreUsuario);
     }
 }
-
 /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
 que no quiera recordar la contraseña elimina el cookie*/
 function preLoad(pUsuario) {
@@ -111,7 +105,6 @@ function preLoad(pUsuario) {
             return;
         }
     }
-
     Usuarios = [];
     cargarVendedores();
     for (i = 0; i < Usuarios.length; i++) {
@@ -131,9 +124,7 @@ function preLoad(pUsuario) {
         }
     }
 }
-
-
-
+/*funcion carga los elementos del arreglo producto a la interfaz*/
 function editarProductos() {
     cargarTodosProductos();
     var x = parseInt(sessionStorage.getItem('verProducto'));
@@ -143,6 +134,8 @@ function editarProductos() {
     document.getElementById('txtPrecio').value = productos[x].precio;
     document.getElementById('txtCantidad').value = productos[x].cantidad;
     document.getElementById('txtDescripcion').value = productos[x].descripcion;
+    buscarIndex("categoria", productos[x].categoria);
+    buscarIndex("subCategoria", productos[x].subCategoria);
 }
 /*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
 function cargarUsuarios() {
@@ -154,7 +147,7 @@ function cargarUsuarios() {
     }
     return Usuarios;
 }
-
+/*Carga todos los productos de local Storange y los agrega al arreglo*/
 function cargarTodosProductos() {
     var listaUsuarios = localStorage.getItem('Producto');
     if (listaUsuarios != null) {
@@ -174,7 +167,6 @@ function cargarVendedores() {
     }
     return Usuarios;
 }
-
 /*Obtine y retorna el cookie por medio de la clave*/
 function obtenerCookie(clave) {
     var name = clave + "=";
@@ -194,6 +186,8 @@ function crearCookieuSUARIO(clave, valor, diasexpiracion) {
     document.cookie = clave + "=" + valor + "; " + expires;
 }
 /*Captura el usuario logeado guardandolo en el session storange*/
+
+
 function capturarLoginUsuario(pUsuarioActual) {
     sessionStorage.setItem('loginUsuarios', JSON.stringify(pUsuarioActual));
 }
@@ -201,7 +195,6 @@ function capturarLoginUsuario(pUsuarioActual) {
 function eliminarCookie(name) {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
-
 /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
 que no quiera recordar la contraseña elimina el cookie*/
 function Ingresar() {
@@ -243,8 +236,7 @@ function Ingresar() {
 }
 
 function verificarDatos(codigo, nombre, marca, precio, cantidad, categoria, subCategoira, descripcion) {
-
-    if (editar == false) {
+ if (editar == false) {
         if (codigo.length <= 0 || codigo == "") {
             VerError("labelCodigo", "codigo producto (verifique este dato)");
             return false;
@@ -302,16 +294,14 @@ function VerError(label, dato) {
     var x = document.getElementById(label).style;
     x.color = "red";
     document.getElementById(label).innerHTML = dato;
-
 }
-
 /*Pinta de verde el elemento que ingresa por parametro y le agrega un dato*/
 function VerError2(label, dato) {
     var x = document.getElementById(label).style;
     x.color = "green";
     document.getElementById(label).innerHTML = dato;
 }
-
+/*funcion carga la pagina del perfil dependiendo del usuario*/
 function verPerfiles(){
     if(usuarioActual.tipoUsuario == "comprador"){
         window.location ="VerPerfil.html";
@@ -321,21 +311,57 @@ function verPerfiles(){
         alert("No puedes acceder a esta información por que no estas registrado");
     }
 }
-
+/*funcion elimina el sessionStorange y carga la pagina principal*/
 function cerrarSesion(){
   sessionStorage.clear();
   window.location = "index.html";
+  return;
 }
-
-
+/*funcion verifica que el usuario sea vendedor y si lo es carga la pagina para que agrege un nuevo producto*/
 function addProducto(){
-if (usuarioActual.tipoUsuario === "vendedor") {
-  window.location = "NuevoProducto.html";
+  if (usuarioActual.tipoUsuario === "vendedor") {
+    window.location = "NuevoProducto.html";
 }else{
-  alert("No tienes permisos para esta acción");
+    alert("No tienes permisos para esta acción");
 }
 }
+/*funcion vefica que este un usurio logeado y si lo esta cagar la pagina para cambiar contraseña*/
+function olvidoContrasena(){
+  if(usuarioActual.tipoUsuario =="" || usuarioActual.tipoUsuario == ""){
+      window.location = "CambioContrasenna.html";
+  }else{
+      alert("Actualmente estas registrado");
+  }
+}
+/*Funcion guarda un un valor en sessionStorange para cargar la pagina de buscar y cargar ese elemento*/
+function buscar(){
+  var CaT = document.getElementById("selectCategoriaBuscar");
+  var value = CaT.options[CaT.selectedIndex].value;
+  var text = CaT.options[CaT.selectedIndex].text;
+  var sCaT = document.getElementById("selectDistancia");
+  var value = sCaT.options[sCaT.selectedIndex].value;
+  var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
+  if(document.getElementById("btn-search").value == ""){
+   sessionStorage.setItem('valorBuscar', "-");
+}else{
+  sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
+}
+sessionStorage.setItem('categoria', text);
+sessionStorage.setItem('distancia', finaSCategoria);
+window.location = "BuscarArticulo.html";
 
+}
+/*carga  el tipo de servicio al select por medio del index del select*/
+function buscarIndex(lmnt, etxt){
+  var x = document.getElementById(lmnt);
+  for(var i=0; i < x.options.length; i++){
+     if (x.options[i].text === etxt){
+        x.options[i].selected = true;
+
+    }
+}
+}
+/*funcion elimina del localStorange*/
 function eliminarProducto() {
     var x = parseInt(sessionStorage.getItem('verProducto'));
     var lcStorange = JSON.parse(localStorage.getItem('Producto'));

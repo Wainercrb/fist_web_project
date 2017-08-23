@@ -541,6 +541,14 @@ a {
 
 /*Inicia la parte del contenido
 /*Inicia diseño del input*/
+#contrasenaVendedor{
+
+       background-color:rgba(0,0,0,0) !important;
+       border:none !important;
+}
+#eye{
+  top: 0.2em !important;
+}
 .group 			  
 { 
       position:relative; /*posición del grupo sin afectar los demas*/

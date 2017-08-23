@@ -6,8 +6,8 @@
     <meta name="viewport" content="widt=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/VerPerfilEmpresa.css">
-    <script type="text/javascript" src="js/VerPerfilEmpresa.js"></script>
-     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
+    <link href="css/animate.min.css" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places" async defer></script>
 </head>
 <body>
     <div id="top">
@@ -20,6 +20,8 @@
                     <li><a href="/Nosotros.html">Nosotros</a>
                     </li>
                     <li><a href="TiposPerfil.html">Tipos de perfil</a>
+                    </li>
+                    <li><a id="addProduct" class="btn btn-success btn-sm" data-animate-hover="shake">Nuevo producto</a>
                     </li>
                 </ul>
             </div>
@@ -36,7 +38,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-                <a class="navbar-brand" href="#"><img src="img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
+                <a class="navbar-brand" href="index.html"><img src="img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse style= collapse in" id="bs-megadropdown-tabs" style="padding-left: 0px;">
@@ -92,7 +94,7 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <p class="text-center">
-                                                <img id="profile-img" class="center-block" src="/img/img-profile.jpg" />
+                                                <img id="profile-img" class="center-block" src="img/img-profile.jpg" />
                                             </p>
 
                                         </div>
@@ -141,7 +143,7 @@
                                             <div class="form-group">
                                                 <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
                                                 <input type="password" class="form-control" id="txt-contrasena" placeholder="Contraseña" required="">
-                                                <div class="help-block text-center"><a href="">Olvido su contraseña?</a></div>
+                                                <div id="btnOlvidoContrasena" class="help-block text-center"><a href="#">Olvido su contraseña?</a></div>
                                             </div>
                                             <div class="form-group">
                                                 <button type="button" id="btn-ingresar-navbar" class="btn btn-primary btn-block">Ingresar</button>
@@ -176,7 +178,7 @@
                 <form role="form">
                     <div class="form-group">
                       <div class="text-center">
-                          <img  id="imgUsuarioActual" src="/img/user.png" class="img-circle" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64" paddin-top = "2%">
+                          <img  id="imgUsuarioActual" src="img/user.png" class="img-circle" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64" paddin-top = "2%">
                       </div>
                           <h4 class="text-center" id="nombreVendedor"></h4>
                       <div class="alert alert-success class midiv">
@@ -189,14 +191,14 @@
                       </div>
                       <div class="alert alert-success class midiv">
                             <span class="label label-primary">Contraseña</span>
-                            <p id="contrasenaVendedor"></p>
+                             <span class="glyphicon glyphicon-eye-open" id="eye"></span>
+                        <input id="contrasenaVendedor" type="password" class="transparent-input"></input>
                       </div>
                       <div class="alert alert-success class midiv">
                             <span class="label label-primary">Tipo Servicio</span>
                             <p id="servicioVendedor"></p>
                       </div>
                         <div id="mapMain">
-		                    <input id="searchInput" class="controls" type="text" placeholder=Ubiacación>
                             <div id="map"></div>
                             <ul id="geoData" class="list-group">
                             <li class="list-group-item">Direccion completa: <span id="location" ></span></li>
@@ -316,7 +318,8 @@
             <div class="copyright-tag">create by Wainer Rodríguez Bonilla.</div>
         </div>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="js/VerPerfilEmpresa.js"></script>
 </body>
 </html>

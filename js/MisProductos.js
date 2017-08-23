@@ -1,6 +1,10 @@
    var productos = [];
    window.addEventListener('load', cargarDatosUsuario, false);
    document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
+   document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
+   document.querySelector('#addProduct').addEventListener('click', addProducto);
+   document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
+   document.querySelector('#btnOlvidoContrasena').addEventListener('click', olvidoContrasena);
    document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
    var Usuarios = [];
    var Vendedores = [];
@@ -244,5 +248,56 @@ function verPerfiles(){
     }else{
         
         window.location = "VerPerfilEmpresa.html";
+    }
+}
+
+  /*funcion elimina el sessionStorange y carga la pagina principal*/
+  function cerrarSesion(){
+    sessionStorage.clear();
+    window.location = "index.html";
+    return;
+  }
+  /*funcion verifica que el usuario sea vendedor y si lo es carga la pagina para que agrege un nuevo producto*/
+  function addProducto(){
+    if (usuarioActual.tipoUsuario === "vendedor") {
+      window.location = "NuevoProducto.html";
+    }else{
+      alert("No tienes permisos para esta acción");
+    }
+  }
+  /*funcion vefica que este un usurio logeado y si lo esta cagar la pagina para cambiar contraseña*/
+  function olvidoContrasena(){
+    if(usuarioActual.tipoUsuario =="" || usuarioActual.tipoUsuario == ""){
+      window.location = "CambioContrasenna.html";
+    }else{
+      alert("Actualmente estas registrado");
+    }
+  }
+  /*Funcion guarda un un valor en sessionStorange para cargar la pagina de buscar y cargar ese elemento*/
+  function buscar(){
+    var CaT = document.getElementById("selectCategoriaBuscar");
+    var value = CaT.options[CaT.selectedIndex].value;
+    var text = CaT.options[CaT.selectedIndex].text;
+    var sCaT = document.getElementById("selectDistancia");
+    var value = sCaT.options[sCaT.selectedIndex].value;
+    var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
+    if(document.getElementById("btn-search").value == ""){
+     sessionStorage.setItem('valorBuscar', "-");
+   }else{
+    sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
+  }
+  sessionStorage.setItem('categoria', text);
+  sessionStorage.setItem('distancia', finaSCategoria);
+  window.location = "BuscarArticulo.html";
+
+}
+/*funcion carga la pagina del perfil dependiendo del usuario*/
+function verPerfiles(){
+    if(usuarioActual.tipoUsuario == "comprador"){
+        window.location ="VerPerfil.html";
+    }else if(usuarioActual.tipoUsuario == "vendedor"){
+        window.location = "VerPerfilEmpresa.html";
+    }else{
+        alert("No puedes acceder a esta información por que no estas registrado");
     }
 }

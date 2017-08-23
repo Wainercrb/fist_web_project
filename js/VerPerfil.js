@@ -1,23 +1,24 @@
-var latitud = 0;
-var longitud = 0;
+/*Eventos de click en los en elemtos de verPerfil.html*/
 window.addEventListener('load', cargarDatosUsuario, false);
-document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#btnEditar').addEventListener('click', editar);
     document.querySelector('#btn-ingresar-navbar').addEventListener('click', Ingresar);
     document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
     document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
     document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
+    document.querySelector('#addProduct').addEventListener('click', addProducto);
+    document.querySelector('#btnOlvidoContrasena').addEventListener('click', olvidoContrasena);
 });
+var latitud = 0;
+var longitud = 0;
 var Usuarios = [];
 var Vendedores = [];
 var usuarioActual;
- var usuarioActual = {
-     nombre: "",
-     tipoUsuario: "",
-     usuario: ""
- };
-
-
+var usuarioActual = {
+   nombre: "",
+   tipoUsuario: "",
+   usuario: ""
+};
 /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
 function cargarDatosUsuario() {
     cargarSessionStore();
@@ -31,7 +32,7 @@ function cargarDatosUsuario() {
         contra.value = obtenerCookie("CONTRASEÑA");
     }
 }
-
+/*funcion carga un usario del sessionStorange*/
 function cargarSessionStore() {
 
     var nombreUsuario = sessionStorage.getItem('loginUsuarios');
@@ -39,7 +40,6 @@ function cargarSessionStore() {
         preLoad(nombreUsuario);
     }
 }
-
 /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
 que no quiera recordar la contraseña elimina el cookie*/
 function preLoad(pUsuario) {
@@ -52,7 +52,7 @@ function preLoad(pUsuario) {
             document.getElementById("emailUsuario").innerHTML = Usuarios[i].email;
             document.getElementById("edadUsuario").innerHTML = Usuarios[i].edad;
             document.getElementById("usuarioUsuario").innerHTML = Usuarios[i].usuario;
-            document.getElementById("contrasenaUsuario").innerHTML = Usuarios[i].contrasenna;
+            document.getElementById("contrasenaUsuario").value = Usuarios[i].contrasenna;
             bannerImg = document.getElementById('profile-img');
             bannerImg.src = "data:image/png;base64," + Usuarios[i].fotoU;
             bannerImg = document.getElementById('fotoUsuario');
@@ -71,11 +71,8 @@ function preLoad(pUsuario) {
     }
     Usuarios = [];
     cargarVendedores();
-    alert(Usuarios.length);
     for (i = 0; i < Usuarios.length; i++) {
-        alert('"' + Usuarios[i].usuario + '"' + " --" + pUsuario);
         if ('"' + Usuarios[i].usuario + '"' == pUsuario) {
-            alert(Usuarios[i].email + Usuarios.length + "entro");
             document.getElementById("headerEmail").innerHTML = Usuarios[i].email;
             document.getElementById("headerName").innerHTML = Usuarios[i].nombre;
             bannerImg = document.getElementById('profile-img');
@@ -87,7 +84,6 @@ function preLoad(pUsuario) {
             return;
         }
     }
-    alert("No se encontro el usuario");
 }
 /*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
 function cargarUsuarios() {
@@ -132,7 +128,6 @@ function crearCookieuSUARIO(clave, valor, diasexpiracion) {
 function capturarLoginUsuario(pUsuarioActual) {
     sessionStorage.setItem('loginUsuarios', JSON.stringify(pUsuarioActual));
 }
-
 /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
 que no quiera recordar la contraseña elimina el cookie*/
 function Ingresar() {
@@ -172,12 +167,7 @@ function Ingresar() {
     }
     alert("No se encontro el usuario");
 }
-
-function initMap() {
-    var x = document.getElementById('searchInput').style;
-    x.display = "none";
-}
-
+/*funcion obtine la dirección en formatio string de una latitud y longitud*/
 function GetAddress() {
     var lat = parseFloat(latitud);
     var lng = parseFloat(longitud);
@@ -195,7 +185,7 @@ function GetAddress() {
         }
     });
 }
-
+/*Funcion caga al mapa una direccion por medio de la latitud y longitud*/
 function myMap() {
     var mapProp = {
         center: new google.maps.LatLng(latitud, longitud),
@@ -203,36 +193,34 @@ function myMap() {
     };
     var map = new google.maps.Map(document.getElementById("map"), mapProp);
 }
-
-
+/*funcion guarda en el sessionStorange la latitud y longitud para que la pagina de agregar carge esa posición*/
 function editar() {
-
     sessionStorage.setItem('latitud', JSON.stringify(latitud));
     sessionStorage.setItem('longitud', JSON.stringify(longitud));
     window.location = "RegistroUsuario.html";
-
 }
+/*funcion elimina un cookie por id*/
 function eliminarCookie(name) {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
+/*funcion busca un articulo, guarda en sessionStorange y carga ese dato en la pagina de buscar*/
 function buscar(){
-var CaT = document.getElementById("selectCategoriaBuscar");
-      var value = CaT.options[CaT.selectedIndex].value;
-      var text = CaT.options[CaT.selectedIndex].text;
-      var sCaT = document.getElementById("selectDistancia");
-      var value = sCaT.options[sCaT.selectedIndex].value;
-      var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
-      if(document.getElementById("btn-search").value == ""){
-         sessionStorage.setItem('valorBuscar', "-");
-      }else{
-        sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
-      }
-      sessionStorage.setItem('categoria', text);
-      sessionStorage.setItem('distancia', finaSCategoria);
-      window.location = "BuscarArticulo.html";
-
+    var CaT = document.getElementById("selectCategoriaBuscar");
+    var value = CaT.options[CaT.selectedIndex].value;
+    var text = CaT.options[CaT.selectedIndex].text;
+    var sCaT = document.getElementById("selectDistancia");
+    var value = sCaT.options[sCaT.selectedIndex].value;
+    var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
+    if(document.getElementById("btn-search").value == ""){
+       sessionStorage.setItem('valorBuscar', "-");
+   }else{
+    sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
 }
-
+sessionStorage.setItem('categoria', text);
+sessionStorage.setItem('distancia', finaSCategoria);
+window.location = "BuscarArticulo.html";
+}
+/*funcion carga la pagina del perfil dependiendo del usuario*/
 function verPerfiles(){
     if(usuarioActual.tipoUsuario == "comprador"){
         window.location ="VerPerfil.html";
@@ -242,8 +230,39 @@ function verPerfiles(){
         alert("No puedes acceder a esta información por que no estas registrado");
     }
 }
-
+/*funcion elimina el sessionStorange y carga la pagina principal*/
 function cerrarSesion(){
   sessionStorage.clear();
   window.location = "index.html";
+  return;
 }
+/*funcion verifica que el usuario sea vendedor y si lo es carga la pagina para que agrege un nuevo producto*/
+function addProducto(){
+  if (usuarioActual.tipoUsuario === "vendedor") {
+    window.location = "NuevoProducto.html";
+}else{
+    alert("No tienes permisos para esta acción");
+}
+}
+/*funcion vefica que este un usurio logeado y si lo esta cagar la pagina para cambiar contraseña*/
+function olvidoContrasena(){
+  if(usuarioActual.tipoUsuario =="" || usuarioActual.tipoUsuario == ""){
+      window.location = "CambioContrasenna.html";
+  }else{
+      alert("Actualmente estas registrado");
+  }
+}
+/*jquery cambia el tipo de dato del inpus a texto y contraseña esto para mostrar la contrasenña*/
+$("#contrasenaUsuario").on("keyup",function(){
+    if($(this).val())
+        $(".glyphicon-eye-open").show();
+    else
+        $(".glyphicon-eye-open").hide();
+});
+$(".glyphicon-eye-open").mousedown(function(){
+    $("#contrasenaUsuario").attr('type','text');
+}).mouseup(function(){
+    $("#contrasenaUsuario").attr('type','password');
+}).mouseout(function(){
+    $("#contrasenaUsuario").attr('type','password');
+})1;

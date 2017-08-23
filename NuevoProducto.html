@@ -10,8 +10,7 @@
 </head>
 
 <body>
- <!--Inicia la parte del banner-->
-   <div id="top">
+    <div id="top">
         <div class="container">
             <div class="col-md-6 offer" data-animate="fadeInDown">
                 <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Oferta del día</a> <a href="#">Aprovecha el 35% de rebaja en ropa de niño</a>
@@ -22,14 +21,14 @@
                     </li>
                     <li><a href="TiposPerfil.html">Tipos de perfil</a>
                     </li>
-                    <li><a id="addProduct" class="btn btn-success btn-sm" data-animate-hover="shake">Nuev producto</a>
+                    <li><a id="addProduct" class="btn btn-success btn-sm" data-animate-hover="shake">Nuevo producto</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
     <!--Inicia la parte del banner-->
-   <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -39,7 +38,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-                <a class="navbar-brand" href="#"><img src="img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
+                <a class="navbar-brand" href="index.html"><img src="img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse style= collapse in" id="bs-megadropdown-tabs" style="padding-left: 0px;">
@@ -48,7 +47,7 @@
                     <div class="form-group div-search ">
                         <div class="input-group input-group-lg input-group-full search">
                             <input type="text" class="form-control" id="btn-search" aria-label="Search" size="100">
-                           <div class="input-group-btn">
+                            <div class="input-group-btn">
                                 <div class="btn btn-default">
                                     <select id="selectCategoriaBuscar" class="form-control select">
                                         <option value="">Todas</option>
@@ -94,16 +93,16 @@
                                 <div class="navbar-login div-position">
                                     <div class="row">
                                         <div class="col-lg-4">
-                                                <p class="text-center">
-                                                    <img id="profile-img" class="center-block" src="img/img-profile.jpg" />
-                                                </p>
-                                            
+                                            <p class="text-center">
+                                                <img id="profile-img" class="center-block" src="img/img-profile.jpg" />
+                                            </p>
+
                                         </div>
                                         <div class="col-lg-8">
-                                            <p class="text-center" ><strong id="headerName">Nombre Apellido</strong></p>
+                                            <p class="text-center"><strong id="headerName">Nombre Apellido</strong></p>
                                             <p class="text-center small" id="headerEmail">correoElectronico@email.com</p>
                                             <p class="text-center">
-                                                <a id="btnIngresarPerfil" class="btn btn-primary btn-block btn-sm">Actualizar Datos</a>
+                                                <a id="btnIngresarPerfil" class="btn btn-primary btn-block btn-sm">ver mi perfil</a>
                                             </p>
                                         </div>
                                     </div>
@@ -115,7 +114,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <p>
-                                                <a id="btnCerrarCesion"  class="btn btn-danger btn-block btn-sm">Cerrar Sesion</a>
+                                                <a id="btnCerrarCesion" class="btn btn-danger btn-block btn-sm">Cerrar Sesion</a>
                                             </p>
                                         </div>
                                     </div>
@@ -132,8 +131,8 @@
                                     <div class="col-lg-12 second-div text-center">
                                         Registrar como
                                         <div class="social-buttons">
-                                            <a href="RegistroUsuario.html" class="btn btn-primary">Usuario</a>
-                                            <a href="RegistroVendedor.html" class="btn btn-primary">Empresa</a>
+                                            <a  class="btn btn-primary">Usuario</a>
+                                            <a href="#" class="btn btn-primary">Empresa</a>
                                         </div>
                                         <h2 id="h2">Ingreso rápido</h2>
                                         <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
@@ -144,20 +143,20 @@
                                             <div class="form-group">
                                                 <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
                                                 <input type="password" class="form-control" id="txt-contrasena" placeholder="Contraseña" required="">
-                                                <div class="help-block text-center"><a href="">Olvido su contraseña?</a></div>
+                                                <div id="btnOlvidoContrasena" class="help-block text-center"><a href="#">Olvido su contraseña?</a></div>
                                             </div>
                                             <div class="form-group">
                                                 <button type="button" id="btn-ingresar-navbar" class="btn btn-primary btn-block">Ingresar</button>
                                             </div>
-                                                <div class="checkbox">
+                                            <div class="checkbox">
                                                 <label>
-											 <input type="checkbox" id="input-checkbox-loginc"> Recordarme!
-											 </label>
+                                             <input type="checkbox" id="input-checkbox-loginc"> Recordarme!
+                                             </label>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="bottom text-center">
-                                        ¿No sabes como que usuario registrar? <a href="#"><b>ver</b></a>
+                                        ¿eliminar tu cuenta? <a><b id="btnEliminarClienta">click</b></a>
                                     </div>
                                 </div>
                             </li>
@@ -805,17 +804,17 @@
                     <div class="form-group" id="select-category-form">
                         <span id="select-cb"><span id="labelCategoria">Categoría</span></span>
                         <span class="select-group-button">                                
-                                  <select  id="categoria" class="form-control selectCategorias" type="select">
-                                         <option id="option-select" value="">Todas</option>
-                                         <option id="option-select" value="">Electrónica</option>
-                                         <option id="option-select" value="">Casa</option>
-                                         <option id="option-select" value="">Electrodomesticos</option>
-                                         <option id="option-select" value="">jardin</option>
-                                         <option id="option-select" value="">Hobbit</option>
-                                         <option id="option-select" value="">Mascotas</option>
-                                         <option id="option-select" value="">Comida</option>
-                                         <option id="option-select" value="">Deportes</option>   
-                                         <option id="option-select" value="">Otro</option>                            
+                                  <select  id="categoria" class="form-control selectCtFrom" type="select">
+                                         <option id="option-select" value="Todas">Todas</option>
+                                         <option id="option-select" value="Electrónica">Electrónica</option>
+                                         <option id="option-select" value="Casa">Casa</option>
+                                         <option id="option-select" value="Electrodomesticos">Electrodomesticos</option>
+                                         <option id="option-select" value="jardin">jardin</option>
+                                         <option id="option-select" value="Hobbit">Hobbit</option>
+                                         <option id="option-select" value="Mascotas">Mascotas</option>
+                                         <option id="option-select" value="Comida">Comida</option>
+                                         <option id="option-select" value="Deportes">Deportes</option>   
+                                         <option id="option-select" value="Otro">Otro</option>                            
                                  </select>               
                          </span>
                     </div>
@@ -823,10 +822,15 @@
                         <span id="select-cb"><span id="labelSubCategora">Sub-categoría</span></span>
                         <span class="select-group-button">  
                                  <!--radius id-->                              
-                                  <select  id="subCategoria" class="form-control" type="select">
-                                         <option id="option-select" value="">Rapa para niños</option>
-                                         <option id="option-select" value="">Calzodo</option>
-                                         <option id="option-select" value="">jugos play4</option>
+                                  <select  id="subCategoria" class="form-control selectCtFrom" type="select">
+                                         <option id="option-select" value="Rapa para niños">Articulos solo para niños</option>
+                                         <option id="option-select" value="Calzodo">Articulos solo para jovenes</option>
+                                         <option id="option-select" value="juegos play4">Articulo solo para adultos</option>
+                                         <option id="option-select" value="juegos play4">Articulo solo para adultos mayores</option>
+                                         <option id="option-select" value="juegos play4">Disponibles para todos</option>
+                                         <option id="option-select" value="juegos play4">Articulo solo menores de 15</option>
+                                         <option id="option-select" value="juegos play4">Articulo solo mayores de 16 a 30</option>
+                                         <option id="option-select" value="juegos play4">Articulo solo para mayores de 30 en adelante</option>
                                  </select>               
                         </span>
                     </div>

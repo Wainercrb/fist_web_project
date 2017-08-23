@@ -10,7 +10,7 @@
     <link href="css/animate.min.css" rel="stylesheet">
 </head>
 <body>
-    <div id="top">
+<div id="top">
         <div class="container">
             <div class="col-md-6 offer" data-animate="fadeInDown">
                 <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Oferta del día</a> <a href="#">Aprovecha el 35% de rebaja en ropa de niño</a>
@@ -20,6 +20,8 @@
                     <li><a href="/Nosotros.html">Nosotros</a>
                     </li>
                     <li><a href="TiposPerfil.html">Tipos de perfil</a>
+                    </li>
+                    <li><a id="addProduct" class="btn btn-success btn-sm" data-animate-hover="shake">Nuevo producto</a>
                     </li>
                 </ul>
             </div>
@@ -31,12 +33,12 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-                <a class="navbar-brand" href="#"><img src="img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse style= collapse in" id="bs-megadropdown-tabs" style="padding-left: 0px;">
@@ -44,7 +46,7 @@
                 <form class="navbar-form navbar-left" role="search" height="10px">
                     <div class="form-group div-search ">
                         <div class="input-group input-group-lg input-group-full search">
-                            <input type="text" class="form-control" id="btn-search"  value = "" aria-label="Search" size="100">
+                            <input type="text" class="form-control" id="btn-search" aria-label="Search" size="100">
                             <div class="input-group-btn">
                                 <div class="btn btn-default">
                                     <select id="selectCategoriaBuscar" class="form-control select">
@@ -129,8 +131,8 @@
                                     <div class="col-lg-12 second-div text-center">
                                         Registrar como
                                         <div class="social-buttons">
-                                            <a href="RegistroUsuario.html" class="btn btn-primary">Usuario</a>
-                                            <a href="RegistroVendedor.html" class="btn btn-primary">Empresa</a>
+                                            <a href="VerPerfil.html" class="btn btn-primary">Usuario</a>
+                                            <a href="VerPerfilEmpresa.html" class="btn btn-primary">Empresa</a>
                                         </div>
                                         <h2 id="h2">Ingreso rápido</h2>
                                         <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
@@ -141,15 +143,15 @@
                                             <div class="form-group">
                                                 <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
                                                 <input type="password" class="form-control" id="txt-contrasena" placeholder="Contraseña" required="">
-                                                <div class="help-block text-center"><a href="">Olvido su contraseña?</a></div>
+                                                <div id="btnOlvidoContrasena"  class="help-block text-center"><a href="#">Olvido su contraseña?</a></div>
                                             </div>
                                             <div class="form-group">
                                                 <button type="button" id="btn-ingresar-navbar" class="btn btn-primary btn-block">Ingresar</button>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-											 <input type="checkbox" id="input-checkbox-loginc"> Recordarme!
-											 </label>
+                                                    <input type="checkbox" id="input-checkbox-loginc"> Recordarme!
+                                                </label>
                                             </div>
                                         </form>
                                     </div>

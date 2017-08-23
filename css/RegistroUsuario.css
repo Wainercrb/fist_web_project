@@ -22,6 +22,9 @@ html {
     padding-right: 0px!important;
     margin-right: -30px !important;
 }
+#eye{
+  top: -2.2em !important;
+}
 
 #blah {
     background: url(example.jpg) 50% 50% no-repeat;
@@ -764,9 +767,8 @@ width:0; background:transparent;
     background-color: #fff;
     font-size: 10px;
     margin-left: auto;
-    padding: 0 11px 0 0px;
     text-overflow: ellipsis;
-    width:50%;
+    width:60%;
 }
 /* boton de atras de la galeria */
 .media-carousel .carousel-control.left 

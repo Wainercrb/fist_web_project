@@ -4,10 +4,10 @@ var editar = false;
 var Usuarios = [];
 var Vendedores = [];
 var usuarioActual = {
-                nombre: "",
-                tipoUsuario: "",
-                usuario: ""
-            };
+    nombre: "",
+    tipoUsuario: "",
+    usuario: ""
+};
 /*Eventos de clicks en los botones*/
 window.addEventListener('load', cargarComponentesUsu, false);
 document.querySelector('#btnIngresar').addEventListener('click', capturar);
@@ -16,6 +16,9 @@ document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfil
 document.querySelector('#blah').addEventListener('click', inputProfilePicture);
 document.querySelector('#btnNavBuscar').addEventListener('click', buscar);
 document.querySelector('#btnCerrarCesion').addEventListener('click', cerrarSesion);
+document.querySelector('#addProduct').addEventListener('click', addProducto);
+document.querySelector('#btnOlvidoContrasena').addEventListener('click', olvidoContrasena);
+document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
 /*Evento de click para la etiqueta img del registro usuario*/
 function inputProfilePicture() {
     var obj = document.getElementById("imgInp");
@@ -23,8 +26,6 @@ function inputProfilePicture() {
         obj.click();
     }
 }
-
-
 /*Captura los datos de las etiquedas del index*/
 function capturar() {
     Usuarios = [];
@@ -32,23 +33,22 @@ function capturar() {
     bannerImage = document.getElementById('blah');
     var imgData = getBase64Image(bannerImage);
     var nombre = document.querySelector('#txtNombre').value,
-        apellidoPaterno = document.querySelector('#txtApellidoPaterno').value,
-        apellidoMaterno = document.querySelector('#txtApellidoMaterno').value,
-        email = document.querySelector('#txtEmail').value,
-        edad = document.querySelector('#txtEdad').value,
-        latitud = platitud,
-        longitud = plongitud,
-        usuario = document.querySelector('#txtUsuario').value,
-        contrasenna1 = document.querySelector('#txtContrasenna1').value,
-        contrasenna2 = document.querySelector('#txtContrasenna2').value,
-        fotoPerfil = imgData;
+    apellidoPaterno = document.querySelector('#txtApellidoPaterno').value,
+    apellidoMaterno = document.querySelector('#txtApellidoMaterno').value,
+    email = document.querySelector('#txtEmail').value,
+    edad = document.querySelector('#txtEdad').value,
+    latitud = platitud,
+    longitud = plongitud,
+    usuario = document.querySelector('#txtUsuario').value,
+    contrasenna1 = document.querySelector('#txtContrasenna1').value,
+    contrasenna2 = document.querySelector('#txtContrasenna2').value,
+    fotoPerfil = imgData;
     if (validarUsuario(nombre, apellidoPaterno, apellidoMaterno, contrasenna1, contrasenna2, email, edad, usuario) == true) {
         editarNuevoUsuario();
         addUsuarios(nombre, apellidoPaterno, apellidoMaterno, email, edad, latitud, longitud, usuario, contrasenna1, fotoPerfil);
     }
 }
-
-
+/*funcion crea un objeto con los parametros que recibe para enviarlos al metodo de guardar*/
 function addUsuarios(pNombre, pApellidoPaterno, pApellidoMaterno, pEmil, pEdad, pLatitud, pLongitud, pUsuario, pContrasenna, pFoto) {
     var nuevoUsuario = {
         nombre: pNombre,
@@ -75,13 +75,13 @@ function addUsuarios(pNombre, pApellidoPaterno, pApellidoMaterno, pEmil, pEdad, 
         guardarLista(Usuarios);
     }
 }
-
+/*función elimina un usuario en la posicion guardada en el sesionStorange*/
 function editarNuevoUsuario() {
     if(editar ===  true){
-    var lcStorange = JSON.parse(localStorage.getItem('AllUsers'));
-    lcStorange.splice(parseInt(sessionStorage.getItem("posicion")), 1);
-    localStorage.setItem('AllUsers', JSON.stringify(lcStorange));
-}
+        var lcStorange = JSON.parse(localStorage.getItem('AllUsers'));
+        lcStorange.splice(parseInt(sessionStorage.getItem("posicion")), 1);
+        localStorage.setItem('AllUsers', JSON.stringify(lcStorange));
+    }
 }
 /*Guarda la el objeto que recibe por para metro al local storange*/
 function guardarLista(NuevoUsuario) {
@@ -91,7 +91,6 @@ function guardarLista(NuevoUsuario) {
     sessionStorage.removeItem('posicion');
     window.location = "RegistroUsuario.html";
 }
-
 /*Obtiene el arreglo del local storange, lo parsea y lo agrega a la lista*/
 function cargarUsuarios() {
     var listaUsuarios = localStorage.getItem('AllUsers');
@@ -112,7 +111,6 @@ function cargarVendedores() {
     }
     return Usuarios;
 }
-
 /*Verifica que no hay un usuario con los mismos datos*/
 /*retorna true si no hay coincidencias*/
 function verfificarLogin(pusuario) {
@@ -126,8 +124,6 @@ function verfificarLogin(pusuario) {
     }
     return true;
 }
-
-
 /*Validacion de los datos de la interfaz*/
 function validarUsuario(nombre, apellidoUno, apellidoDos, p1, p2, valor, pEdad, usu) {
     var espacios = false;
@@ -175,8 +171,8 @@ function validarUsuario(nombre, apellidoUno, apellidoDos, p1, p2, valor, pEdad, 
         }
     }
     if (p1.length <= 0 || p2.length <= 0 || p1 != p2 || p1.length <= 6 || p2.length <= 6) {
-        VerError("lblTxtContrasena1", "Contraseña debe tener mas de caracteres o que sean iguales");
-        VerError("lblTxtContrasena2", "Verificación de contraseña debe tener mas de caracteres o que sean iguales");
+        VerError("lblTxtContrasena1", "La contraseña sea igual a la verficación y tenga más de 5 caracteres");
+        VerError("lblTxtContrasena2", "La contraseña sea igual a la verficación y tenga más de 5 caracteres");
         return false;
     } else {
         VerError2("lblTxtContrasena1", "Contraseña");
@@ -189,8 +185,8 @@ function validarUsuario(nombre, apellidoUno, apellidoDos, p1, p2, valor, pEdad, 
         cont++;
     }
     if (espacios) {
-        VerError("lblTxtContrasena1", "Contraseña debe tener mas de caracteres o que sean iguales");
-        VerError("lblTxtContrasena2", "Verificación de contraseña debe tener mas de caracteres o que sean iguales");
+        VerError("lblTxtContrasena1", "Estos campos no pueden tener esapacios en blanco");
+        VerError("lblTxtContrasena2", "Estos campos no pueden tener esapacios en blanco");
 
         return false;
     } else {
@@ -207,7 +203,6 @@ function validarUsuario(nombre, apellidoUno, apellidoDos, p1, p2, valor, pEdad, 
     }
     return true;
 }
-
 /*Evita que la pagina se carge cuando le doy enter a algun input*/
 $(document).ready(function () {
 
@@ -224,7 +219,6 @@ $(document).ready(function () {
     });
 
 });
-
 /*Pinta de rojo el elemto que ingresa por parametro y agrega un nuevo label*/
 function VerError(label, dato) {
     var x = document.getElementById(label).style;
@@ -232,7 +226,6 @@ function VerError(label, dato) {
     document.getElementById(label).innerHTML = dato;
 
 }
-
 /*Pinta de verde el elemento que ingresa por parametro y le agrega un dato*/
 function VerError2(label, dato) {
     var x = document.getElementById(label).style;
@@ -244,11 +237,11 @@ function datoCorrecto(componente) {
     var x = document.getElementById(componente).style;
     x.color = "green";
 }
-
+/*funcion cambia el borde a verde que recibe por  parametro*/
 function verdaderaFoto(componente) {
     document.getElementById(componente).style.borderColor = "green";
 }
-
+/*funcion cambia el borde del elemto que recibe por parametro*/
 function errorFoto(componente) {
     document.getElementById(componente).style.borderColor = "red";
 }
@@ -272,14 +265,13 @@ function getBase64Image(img) {
     var dataURL = canvas.toDataURL("image/png");
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
-
 /*Carga los camponetes cuando el usuario le dio recordar contraseña*/
 function cargarComponentesUsu() {
     initMap();
     if (sessionStorage.getItem('latitud') != null) {
         editar = true;
     }else{
-        
+
     }
     cargarSessionStore();
     if (obtenerCookie("USUARIO") == "" || obtenerCookie("USUARIO") == null) {
@@ -299,7 +291,6 @@ function crearCookieuSUARIO(clave, valor, diasexpiracion) {
     var expires = "expires=" + d.toUTCString();
     document.cookie = clave + "=" + valor + "; " + expires;
 }
-
 /*Obtine y retorna el cookie por medio de la clave*/
 function obtenerCookie(clave) {
     var name = clave + "=";
@@ -311,7 +302,7 @@ function obtenerCookie(clave) {
     }
     return "";
 }
-
+/*funcicn verifica si hay un usuario en el sessionStorange y si hay cargar sus datos a interfaz*/
 function cargarSessionStore() {
 
     var nombreUsuario = sessionStorage.getItem('loginUsuarios');
@@ -319,7 +310,6 @@ function cargarSessionStore() {
         preLoad(nombreUsuario);
     }
 }
-
 /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
 que no quiera recordar la contraseña elimina el cookie*/
 function preLoad(pUsuario) {
@@ -347,10 +337,10 @@ function preLoad(pUsuario) {
                 plongitud = parseInt(sessionStorage.getItem('longitud'));
                 GetAddress();
             }
-                usuarioActual.nombre = Usuarios[i].nombre;
-                usuarioActual.tipoUsuario = "comprador";
-                usuarioActual.usuario = Usuarios[i].usuario;
-                return;
+            usuarioActual.nombre = Usuarios[i].nombre;
+            usuarioActual.tipoUsuario = "comprador";
+            usuarioActual.usuario = Usuarios[i].usuario;
+            return;
         }
     }
     Usuarios = [];
@@ -369,9 +359,6 @@ function preLoad(pUsuario) {
         }
     }
 }
-
-
-
 /*Verifica el usuario y carga la foto  correo y nombre del usuario, encaso de 
 que no quiera recordar la contraseña elimina el cookie*/
 function Ingresar() {
@@ -411,7 +398,6 @@ function Ingresar() {
     }
     alert("No se encontro el usuario");
 }
-
 /*Captura el usuario logeado guardandolo en el session storange*/
 function capturarLoginUsuario(pUsuarioActual) {
     sessionStorage.setItem('loginUsuarios', JSON.stringify(pUsuarioActual));
@@ -483,9 +469,9 @@ function initMap() {
         var address = '';
         if (place.address_components) {
             address = [
-                (place.address_components[0] && place.address_components[0].short_name || ''),
-                (place.address_components[1] && place.address_components[1].short_name || ''),
-                (place.address_components[2] && place.address_components[2].short_name || '')
+            (place.address_components[0] && place.address_components[0].short_name || ''),
+            (place.address_components[1] && place.address_components[1].short_name || ''),
+            (place.address_components[2] && place.address_components[2].short_name || '')
             ].join(' ');
         }
 
@@ -506,6 +492,7 @@ function initMap() {
     });
 
 }
+/*funcion obtine el valor de una dirección en string por medio de la latitud y la longitud*/
 function GetAddress() {
     var lat = parseFloat(sessionStorage.getItem('latitud'));
     var lng = parseFloat(sessionStorage.getItem('longitud'));
@@ -516,7 +503,7 @@ function GetAddress() {
     }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             if (results[1]) {
-               
+
                 document.getElementById('location').innerHTML = results[1].formatted_address;
                 document.getElementById('country').innerHTML = results[6].formatted_address;
             }
@@ -524,8 +511,7 @@ function GetAddress() {
     });
 }
 
-
-
+/*funcion carga la pagina del perfil dependiendo del usuario*/
 function verPerfiles(){
     if(usuarioActual.tipoUsuario == "comprador"){
         window.location ="VerPerfil.html";
@@ -535,26 +521,72 @@ function verPerfiles(){
         alert("No puedes acceder a esta información por que no estas registrado");
     }
 }
-
+/*funcion elimina el sessionStorange y carga la pagina principal*/
 function cerrarSesion(){
   sessionStorage.clear();
   window.location = "index.html";
+  return;
 }
-document.querySelector('#btnIngresarPerfil').addEventListener('click', verPerfiles);
+/*funcion verifica que el usuario sea vendedor y si lo es carga la pagina para que agrege un nuevo producto*/
+function addProducto(){
+  if (usuarioActual.tipoUsuario === "vendedor") {
+    window.location = "NuevoProducto.html";
+}else{
+    alert("No tienes permisos para esta acción");
+}
+}
+/*funcion vefica que este un usurio logeado y si lo esta cagar la pagina para cambiar contraseña*/
+function olvidoContrasena(){
+  if(usuarioActual.tipoUsuario =="" || usuarioActual.tipoUsuario == ""){
+      window.location = "CambioContrasenna.html";
+  }else{
+      alert("Actualmente estas registrado");
+  }
+}
+/*jquery cambia el tipo de dato del inpus a texto y contraseña esto para mostrar la contrasenña*/
+$("#txtContrasenna1").on("keyup",function(){
+    if($(this).val())
+        $(".glyphicon-eye-open").show();
+    else
+        $(".glyphicon-eye-open").hide();
+});
+$(".glyphicon-eye-open").mousedown(function(){
+    $("#txtContrasenna1").attr('type','text');
+}).mouseup(function(){
+    $("#txtContrasenna1").attr('type','password');
+}).mouseout(function(){
+    $("#txtContrasenna1").attr('type','password');
+});
+
+/*jquery cambia el tipo de dato del inpus a texto y contraseña esto para mostrar la contrasenña*/
+$("#txtContrasenna2").on("keyup",function(){
+    if($(this).val())
+        $(".glyphicon-eye-open").show();
+    else
+        $(".glyphicon-eye-open").hide();
+});
+$(".glyphicon-eye-open").mousedown(function(){
+    $("#txtContrasenna2").attr('type','text');
+}).mouseup(function(){
+    $("#txtContrasenna2").attr('type','password');
+}).mouseout(function(){
+    $("#txtContrasenna2").attr('type','password');
+});
+/*Funcion guarda un un valor en sessionStorange para cargar la pagina de buscar y cargar ese elemento*/
 function buscar(){
   var CaT = document.getElementById("selectCategoriaBuscar");
-        var value = CaT.options[CaT.selectedIndex].value;
-        var text = CaT.options[CaT.selectedIndex].text;
-        var sCaT = document.getElementById("selectDistancia");
-        var value = sCaT.options[sCaT.selectedIndex].value;
-        var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
-        if(document.getElementById("btn-search").value == ""){
-           sessionStorage.setItem('valorBuscar', "-");
-        }else{
-          sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
-        }
-        sessionStorage.setItem('categoria', text);
-        sessionStorage.setItem('distancia', finaSCategoria);
-        window.location = "BuscarArticulo.html";
+  var value = CaT.options[CaT.selectedIndex].value;
+  var text = CaT.options[CaT.selectedIndex].text;
+  var sCaT = document.getElementById("selectDistancia");
+  var value = sCaT.options[sCaT.selectedIndex].value;
+  var finaSCategoria = sCaT.options[sCaT.selectedIndex].value;
+  if(document.getElementById("btn-search").value == ""){
+   sessionStorage.setItem('valorBuscar', "-");
+}else{
+  sessionStorage.setItem('valorBuscar', document.getElementById("btn-search").value);
+}
+sessionStorage.setItem('categoria', text);
+sessionStorage.setItem('distancia', finaSCategoria);
+window.location = "BuscarArticulo.html";
 
 }

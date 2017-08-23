@@ -444,7 +444,10 @@ input[type="file"] {
     margin-left: 5%;
 }
 
-#radius {
+#radius{
+    border-radius: 0px;
+}
+#radiusFrom{
     border-radius: 0px;
 }
 
@@ -546,7 +549,9 @@ a {
 /*Inicia diseño del input*/
 
 
-
+#eye{
+  top: -2.2em !important;
+}
 .group 			  
 { 
       position:relative; /*posición del grupo sin afectar los demas*/
@@ -766,7 +771,7 @@ width:0; background:transparent;
     margin-left: auto;
     padding: 0 11px 0 0px;
     text-overflow: ellipsis;
-    width:50%;
+    width:60%;
 }
 /* boton de atras de la galeria */
 .media-carousel .carousel-control.left 
