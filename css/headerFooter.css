@@ -1,3 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Amaranth');
+body,
+html {
+font-family: 'Amaranth', sans-serif;
+background-color: #d3d3d3;
+line-height: 1.42857143;
+color: #333333;
+width: 100%;
+}
+a,
+button {
+-webkit-transition: all 0.2s ease-out;
+-moz-transition: all 0.2s ease-out;
+transition: all 0.2s ease-out;
+}
+a i.fa,
+button i.fa {
+margin: 0 5px;
+}
+.clickable {
+cursor: pointer;
+}
+p.lead {
+font-weight: 300;
+}
+h1 {
+font-weight: 700;
+font-size: 40px;
+}
+#top {
+background: #555555;
+padding: 10px 0;
+}
+#top .offer {
+color: #fff;
+}
+#top .offer .btn {
+text-transform: uppercase;
+}
+@media (max-width: 991px) {
+#top .offer {
+margin-bottom: 10px;
+}
+}
+@media (max-width: 991px) {
+#top {
+font-size: 12px;
+text-align: center;
+}
+}
+#top a {
+color: #fff;
+}
+#top ul.menu {
+padding-top: 5px;
+margin: 0;
+text-align: right;
+font-size: 12px;
+list-style: none;
+}
+@media (max-width: 991px) {
+#top ul.menu {
+text-align: center;
+}
+}
+#top ul.menu>li {
+display: inline-block;
+}
+#top ul.menu>li a {
+color: #eeeeee;
+}
+#top ul.menu>li+li:before {
+content: "|\00a0";
+padding: 0 5px;
+color: #f7f7f7;
+}
+#top ul.menu>.active {
+color: #999999;
+}
+#top #login-modal .modal-header {
+background: #4fbfa8;
+}
+#top #login-modal .modal-header h4 {
+color: #fff;
+}
+#top #login-modal a {
+color: #4fbfa8;
+}
+#top #login-modal p {
+font-weight: 300;
+margin-bottom: 20px;
+}
+/*Diseño para las el header y el menú de las categorias*/
 #h2 {
 text-align: center;
 }
@@ -10,41 +103,17 @@ background-size: 50px;
 padding-right: 0px!important;
 margin-right: -30px !important;
 }
-#blah {
-background: url(example.jpg) 50% 50% no-repeat;
-/* 50% 50% centers image in div */
-background-size: auto 110%;
-/* Interchange this value depending on prefering width vs. height */
-width: 115px;
-height: 9em !important;
-cursor: pointer !important;
-border: 1px solid black;
-}
-#imgInp {
-background: url(example.jpg) 50% 50% no-repeat;
-/* 50% 50% centers image in div */
-background-size: auto 110%;
-/* Interchange this value depending on prefering width vs. height */
-width: 115px;
-height: 2.5em !important;
-font-size: 10px;
-}
-#profile-img {
-background: url(example.jpg) 50% 50% no-repeat;
-/* 50% 50% centers image in div */
-background-size: auto 110%;
-/* Interchange this value depending on prefering width vs. height */
-width: 90px;
-height: 6.1em !important;
-}
 .nav-tabs {
 display: inline-block;
 border-bottom: none;
 padding-top: 15px;
 font-weight: bold;
 }
-input[type="file"] {
-display: none;
+#profile-img{
+background: url(example.jpg) 50% 50% no-repeat; /* 50% 50% centers image in div */
+background-size: auto 110%; /* Interchange this value depending on prefering width vs. height */
+width: 90px;
+height: 6.3em !important;
 }
 .nav-tabs>li>a,
 .nav-tabs>li>a:hover,
@@ -86,7 +155,6 @@ padding: 14px 14px 0;
 overflow: hidden;
 background-color: rgba(255, 255, 255, .8);
 }
-#login-dp .help-block {
 font-size: 12px
 }
 #login-dp .bottom {
@@ -179,9 +247,6 @@ margin-bottom: em !important;
 #span-buscar {
 display: block;
 }
-input[type="checkbox"] {
-width: 5%;
-}
 }
 @media (max-width: 3000px) and (min-width: 767px) {
 .navbar-form {
@@ -223,10 +288,6 @@ height: 28px !important;
 }
 #span-buscar {
 display: block;
-}
-input[type="checkbox"] {
-margin-top: 2%;
-width: 5%;
 }
 }
 .navbar-login {
@@ -365,155 +426,81 @@ color: #333;
 border: 1px solid #ddd;
 }
 /**Edita las dimensiones de la foto de usuario**/
+.profile-img {
+margin-top: -5px;
+margin-right: 5px;
+float: left;
+background: url(/img/file.jpg) 50% 50% no-repeat;
+/* 50% 50% centra la imagen */
+background-size: auto 100%;
+/* Interchange this value depending on prefering width vs. height */
+width: 30px;
+height: 30px;
+}
 #profile {
 margin-left: 5%;
 }
 #radius {
 border-radius: 0px;
 }
-#top {
-background: #555555;
-padding: 10px 0;
-}
-#top .offer {
-color: #fff;
-}
-#top .offer .btn {
-text-transform: uppercase;
-}
-@media (max-width: 991px) {
-#top .offer {
-margin-bottom: 10px;
-}
-}
-@media (max-width: 991px) {
-#top {
-font-size: 12px;
-text-align: center;
-}
-}
-#top a {
-color: #fff;
-}
-#top ul.menu {
-padding-top: 5px;
-margin: 0;
-text-align: right;
-font-size: 12px;
-list-style: none;
-}
-@media (max-width: 991px) {
-#top ul.menu {
-text-align: center;
-}
-}
-#top ul.menu>li {
-display: inline-block;
-}
-#top ul.menu>li a {
-color: #eeeeee;
-}
-#top ul.menu>li+li:before {
-content: "|\00a0";
-padding: 0 5px;
-color: #f7f7f7;
-}
-#top ul.menu>.active {
-color: #999999;
-}
-#top #login-modal .modal-header {
-background: #4fbfa8;
-}
-#top #login-modal .modal-header h4 {
-color: #fff;
-}
-#top #login-modal a {
-color: #4fbfa8;
-}
-#top #login-modal p {
-font-weight: 300;
-margin-bottom: 20px;
-}
-.btn-primary {
-color: #ffffff;
-background-color: #4fbfa8;
-border-color: #41b39c;
-}
-a {
-color: #4fbfa8;
-text-decoration: none;
-}
 /*Finaliza el menu*/
-/*Inicia la parte del contenido+/
-/**Finaliza el contenido**/
 /**Inica el pie de página**/
 /*footer*/
 /*div de la imagenes de redes sociales*/
-.footer-bottom-layout
-{
+.footer-bottom-layout {
 background: #222222 none repeat scroll 0 0;
 padding: 20px 0;
 text-align: center;
 text-align: center;
 }
 /*caja que contiene las imagnes de las redes socales*/
-.socialMedia-footer
-{
+.socialMedia-footer {
 margin-bottom: 20px;
 }
 /*imgs*/
-.socialMedia-footer>a
-{
+.socialMedia-footer>a {
 display: inline-block;
 margin: 0 8px;
 }
 /*margin-botton del footer*/
-.footer-top-layout
-{
+.footer-top-layout {
 border-top: 1px solid #A4A4A4;
-margin-top: 40px;
+margin-top: 0%;
 background: #FFF none repeat scroll 0 0;
 color: #ffffff;
 padding: 40px 0;
 }
 /*Primer contenedor del footer"Nuestra infromacion"*/
-.mi-informacion
-{
+.mi-informacion {
 margin-bottom: 32px;
 text-align: center;
 }
 /*titulos del la informacin del footer*/
-.footer-top-layout h4
-{
+.footer-top-layout h4 {
 color: #ffffff;
 font-size: 18px;
 margin-bottom: 21px;
 }
 /*sub-titulo del primer contenedor del footer"Nuestra infromacion"**/
-.mi-informacion>p
-{
+.mi-informacion>p {
 color: #888888;
 }
 /*lineas del primer contenedor del footer "---"*/
-.post-blog-date
-{
+.post-blog-date {
 padding-bottom: 25px;
 position: relative;
 }
 /*los tres contenedores de información*/
-.footer-top-layout [class*="col-sm-"]
-{
+.footer-top-layout [class*="col-sm-"] {
 border-right: 2px solid #333333;
 padding: 0 0 0 28px;
 }
 /*Ancho entre cada uno de los 3 div del footer*/
-.footer-col-item
-{
+.footer-col-item {
 min-height: 140px;
 }
 /*color de las la información de los tres div del footer*/
-address
-{
+address {
 color: #545454;
 }
 /*Elimina la tercer linea divisora de los tres div del footer*/
@@ -531,15 +518,13 @@ h2,
 h3,
 h4,
 h5,
-h6
-{
+h6 {
 font-weight: 500;
 line-height: 1.1;
 margin-top: 0;
 }
 /*titulos de los direccion local, telefono y correos*/
-.footer-top-layout h4
-{
+.footer-top-layout h4 {
 color: #070B19;
 font-size: 18px;
 margin-bottom: 21px;

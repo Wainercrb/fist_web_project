@@ -1,0 +1,228 @@
+#input-chek{
+position: relative;
+}
+#label-ckeckbox-recordame{
+position: absolute;
+}
+.group
+{
+position:relative; /*posición del grupo sin afectar los demas*/
+margin-bottom:45px;/*anco del div grup hacia su padre*/
+}
+input
+{
+font-size:18px;
+padding:10px 10px 10px 5px;
+display:block;/*toma las dimenciones de su padre*/
+width: 100%;
+border:none;
+border-bottom:1px solid #757575;
+}
+/*Quita el borde leccionado del div del input solo queda la animacion de la linea del button*/
+input:focus
+{
+outline:none;
+}
+#div-check-recordame{
+margin-top: 0% !important;
+padding-top: 0% !important;
+}
+#div-checkbox{
+padding-left: 30%;
+display: flex;
+
+}
+#label-checkbox{
+padding-top: 0%;
+margin-right: 20% !important;
+padding-bottom: 0%;
+
+}
+#input-checkbox-loginc{
+width: 7% !important;
+height: 90% !important;
+margin-top: 0.2%;
+margin-left: -2%;
+}
+/*label del input */
+.label-login
+{
+color:#999;
+font-size:18px;
+font-weight:normal;
+position:absolute;
+pointer-events:none;
+left:5px;
+top:10px;
+/*transicion cuando seleciono el input*/
+transition:0.2s ease all;
+-moz-transition:0.9s ease all;
+-webkit-transition:0.2s ease all;
+}
+/*Cambia de color el label, tambien  el tamaño cuando seleciona el input*/
+input:focus ~ label, input:valid ~ label
+{
+top:-20px;
+font-size:14px;
+color:#5264AE;
+}
+/* margin-botton del input */
+.bar
+{   position:relative; /*posición del grupo sin     afectar los demas*/
+display:block;/*toma las dimenciones de su padre*/
+width:100%;
+}
+/*border-botton antes y despues de seleccionar*/
+.bar:before, .bar:after
+{
+content:'';
+height:2px;
+width:0;
+bottom:1px;
+position:absolute;
+background:#5264AE;
+/*animación al seleccionar*/
+transition:0.2s ease all;
+-moz-transition:0.2s ease all;
+-webkit-transition:0.2s ease all;
+}
+/*bar(margin-button) antes y despues del seleccionar*/
+.bar:before
+{
+left:50%;
+}
+.bar:after
+{
+right:50%;
+}
+/* animacion en la linea del input */
+input:focus ~ .bar:before, input:focus ~ .bar:after
+{
+width:50%;
+}
+/* label */
+.highlight
+{
+position:absolute;
+height:60%;
+width:100%;
+top:25%;
+left:0;
+pointer-events:none;
+opacity:0.5;
+}
+/*animacion de color en la parte el input*/
+input:focus ~ .highlight
+{
+-webkit-animation:inputHighlighter 0.3s ease;
+-moz-animation:inputHighlighter 0.3s ease;
+animation:inputHighlighter 0.3s ease;
+}
+/* animaciones */
+/*ontrolar los pasos intermedios en una secuencia de animación "desde hasta"*/
+@-webkit-keyframes inputHighlighter {
+from
+{
+background:#5264AE;
+}
+to
+{
+width:0;
+background:transparent;
+}
+}
+@-moz-keyframes inputHighlighter {
+from
+{
+background:#5264AE;
+}
+to
+{
+width:0; background:transparent;
+}
+}
+@keyframes inputHighlighter {
+from
+{
+background:#5264AE;
+}
+to
+{
+width:0; background:transparent;
+}
+}
+/*Direno del div dentro del form*/
+#conte
+{
+background-color:#FFF;
+margin-right: 10px;
+margin-left:10px;
+margin-bottom: 10px;
+margin-top: 10px;
+}
+/*Diselo del div principal del form*/
+.main
+{
+background-color: #fff;
+margin-top: 10px;
+border-radius: 4px;
+border-bottom: 1px solid #A4A4A4;
+-moz-box-shadow: 0 0 3px 3px #888;
+-webkit-box-shadow: 0 0 3px 3px #888;
+box-shadow: 0 0 3px 3px #888;
+border-radius:2px;
+max-width: 320px;
+margin: 0 auto;
+
+}
+/*Diseño de las lineas del form "su cuenta"*/
+.login-or
+{
+position: relative;
+font-size: 18px;
+color: #aaa;
+margin-top: 10px;
+margin-bottom: 10px;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+/*Diseño de las letras "su cuenta"*/
+.span-or {
+display: block;
+position: absolute;
+left: 50%;
+top: -2px;
+margin-left: -25px;
+background-color: #fff;
+width: 50px;
+text-align: center;
+}
+/*Diseño de las lineas del form, que se centren "su cuenta"*/
+.hr-or
+{
+height: 1px;
+margin-top: 0px !important;
+margin-bottom: 0px !important;
+}
+/*titulo del form*/
+h3
+{
+text-align: center;
+line-height: 300%;
+}
+/*Diseño del banner de todo el contenido*/
+#login-conteint
+{
+margin-top: 15px;
+margin-bottom: 10px;
+
+}
+/*Diseño del boton*/
+#btn-ingresarIP
+{
+display: block;
+width: 135px;
+height: 70px;
+background: none;
+border: none;
+}
