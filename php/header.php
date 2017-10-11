@@ -29,10 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['btnLogin'])) {
 					}
 				}
 				$con->close();
+				$a = $_POST[archiveName];
 				if ($user_id == null) {
 					print"<script>alert(\"Usuario incorrecto, verifique sus datos.\");window.location='../';</script>";
 				} else {
-					print"<script>window.location='../registroUsuario.php?id=$user_id.&tipo=$tipo';</script>";
+					print"<script>window.location='../registroUsuario?id=$user_id.&tipo=$tipo';</script>";
 				}
 			}
 		}

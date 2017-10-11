@@ -23,10 +23,10 @@ if (!empty($_POST)) {
 			$data2 = mysql_real_escape_string($data2);
 			$data3 = file_get_contents($_FILES['image3']['tmp_name']);
 			$data3 = mysql_real_escape_string($data3);
-			$sql   = "insert into tienda(nombre, telefono, tarifa_apartado, usuario, contrasenna, email, foto, foto1, foto2, foto3, latitud, longitud) value (\"$_POST[txtName]\",\"$_POST[txtTel]\",\"$_POST[txtTr]\",\"$_POST[txtUser]\",\"$_POST[txtPass]\",\"$_POST[txtEmail]\",'$data','$data1','$data2','$data3',\"$_POST[txtLatitud]\",\"$_POST[txtLongitud]\")";
+			$sql   = "insert into tienda(nombre, telefono, tarifa_apartado, servicio, usuario, contrasenna, email, foto, foto1, foto2, foto3, latitud, longitud) value (\"$_POST[txtName]\",\"$_POST[txtTel]\",\"$_POST[txtTr]\",\"$_POST[selectService]\",\"$_POST[txtUser]\",\"$_POST[txtPass]\",\"$_POST[txtEmail]\",'$data','$data1','$data2','$data3',\"$_POST[txtLatitud]\",\"$_POST[txtLongitud]\")";
 			$query = $con->query($sql);
 			if ($query != null) {
-				print"<script>alert(\"Registro exitoso. Puede ingresar ingresar su usuario desde la barra de de accesos\");window.location='../registroUsuario.php';</script>";
+				print"<script>alert(\"Registro exitoso. Puede ingresar ingresar su usuario desde la barra de de accesos\");window.location='../$tmpName';</script>";
 
 			}
 			$con->close();

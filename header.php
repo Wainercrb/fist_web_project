@@ -3,29 +3,32 @@ $id     = 0;
 $foto   = "";
 $email  = "email@gmail.com";
 $nombre = "nombre apellido uno apellido dos";
+$tipoU = "";
 if ($_GET) {
-	$id   = $_GET["id"];
-	$tipo = $_GET["tipo"];
-	$sql1 = "";
-	if ($tipo === "u") {
-		$sql1 = "select * from usuario where id_usuario = '$id'";
-	} else {
-		$sql1 = "select * from tienda where id_tienda = '$id'";
-	}
-	include "php/conexion.php";
-	$query = $con->query($sql1);
-	while ($r = $query->fetch_array()) {
-		if ($tipo === "u") {
-			$id     = $r["id_usuario"];
-			$nombre = $r["nombre"]." ".$r["apellidoUno"]." ".$r["apellidoDos"];
-		} else {
-			$id     = $r["id_tienda"];
-			$nombre = $r["nombre"];
-		}
-		$email = $r["email"];
-		$foto  = $r["foto"];
-	}
-	$con->close();
+    $id   = $_GET["id"];
+    $tipo = $_GET["tipo"];
+    $sql1 = "";
+    if ($tipo === "u") {
+        $sql1 = "select * from usuario where id_usuario = '$id'";
+$tipoU = "usuario";
+    } else {
+        $sql1 = "select * from tienda where id_tienda = '$id'";
+$tipoU = "empresa";
+    }
+    include "php/conexion.php";
+    $query = $con->query($sql1);
+    while ($r = $query->fetch_array()) {
+        if ($tipo === "u") {
+            $id     = $r["id_usuario"];
+            $nombre = $r["nombre"]." ".$r["apellidoUno"]." ".$r["apellidoDos"];
+        } else {
+            $id     = $r["id_tienda"];
+            $nombre = $r["nombre"];
+        }
+        $email = $r["email"];
+        $foto  = $r["foto"];
+    }
+    $con->close();
 }
 ?>
 <div id="top">
@@ -110,17 +113,17 @@ if ($_GET) {
                 <div class="row">
                     <div class="col-lg-4">
                         <p class="text-center">
-<?php
-if ($id > 0) {
-	?>
-	                            <img id="profile-img" class="center-block" src="data:image/jpeg;base64,<?php echo base64_encode($foto);?>" />
-	<?php
-} else {
-	?>
-	<img id="profile-img" class="center-block" src="img/user.png" />
-	<?php
-}
-?>
+                            <?php
+                            if ($id > 0) {
+                            ?>
+                            <img id="profile-img" class="center-block" src="data:image/jpeg;base64,<?php echo base64_encode($foto);?>" />
+                            <?php
+                            } else {
+                            ?>
+                            <img id="profile-img" class="center-block" src="img/user.png" />
+                            <?php
+                            }
+                            ?>
                         </p>
                     </div>
                     <div class="col-lg-8">

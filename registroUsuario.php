@@ -1,4 +1,6 @@
-<?php session_start(); 
+<?php
+session_start();
+$tmpName = "registroUsuario.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -11,7 +13,10 @@
         <link rel="stylesheet" type="text/css" href="css/registroUsuario.css">
     </head>
     <body>
-        <?php include "header.php" ?>
+        <?php
+        $siteName = "registroUsuario.php";
+        include "header.php"
+        ?>
         <?php include "navbar.php" ?>
         <div class="container" id="main-conteint">
             <div class="row main">
@@ -115,6 +120,8 @@
                                 <span class="glyphicon glyphicon-eye-open pull-right" id="eye"></span>
                             </div>
                         </div>
+                         <input type="text" id="txtId" name="txtId" value="<? echo  htmlentities($id); ?>"/>
+                        <input type="text" id="pageName" name="pageName" value="<? echo htmlentities($siteName); ?>"/>
                         <div class="form-group">
                             <?php
                             include "php/map.php";

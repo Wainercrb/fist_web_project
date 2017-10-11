@@ -91,8 +91,8 @@ top:-20px;
 font-size:14px;
 color:#5264AE;
 }
-#txtLatitud, #txtLongitud{
-	display: none !important;
+#txtLatitud, #txtLongitud, #archiveName{
+display: none !important;
 }
 /* margin-botton del input */
 .bar

@@ -12,9 +12,9 @@ session_start();
         <link rel="stylesheet" type="text/css" href="css/registroVendedor.css">
     </head>
     <body>
-<?php include "header.php"?>
-        <?php include "navbar.php"?>
-<div class="container" id="main-conteint">
+        <?php include "header.php" ?>
+        <?php include "navbar.php" ?>
+        <div class="container" id="main-conteint">
             <div class="row main">
                 <div class="sub-containt">
                     <h3 align="center">Registro empresa</h3>
@@ -97,7 +97,7 @@ session_start();
                         <div class="form-group" id="select-category-form">
                             <span id="select-cb" name="select-cb">Categoría</span>
                             <span class="select-group-button">
-                                <select  id="radiusFrom" class="form-control selectCtFrom" type="select">
+                                <select  id="radiusFrom" name="selectService" class="form-control selectCtFrom" type="select">
                                     <option id="option-select" value="Todas">Todas</option>
                                     <option id="option-select" value="Electrónica">Electrónica</option>
                                     <option id="option-select" value="Casa">Casa</option>
@@ -112,14 +112,15 @@ session_start();
                         </div>
                         <!--div del mapa-->
                         <div class="form-group">
-<?php
-include "php/map.php";
-?>
-<button type="button" class="center-block" onclick="getLocation()">Cargar mi ubicación</button>
+                            <?php
+                            include "php/map.php";
+                            ?>
+                            <button type="button" class="center-block" onclick="getLocation()">Cargar mi ubicación</button>
                             <br>
                             <div id="map"></div>
                             <input id="txtLatitud" name="txtLatitud" ></input>
                             <input id="txtLongitud" name = "txtLongitud"></input>
+                            <input id="archiveName" name = "archiveName">registroEmpresa.php</input>
                         </div>
                         <!--div de la galeria-->
                         <div class="form-group">
@@ -166,7 +167,7 @@ include "php/map.php";
                 </div>
             </div>
         </div>
-<?php include "footer.php";?>
+        <?php include "footer.php";?>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/registroEmpresa.js"></script>

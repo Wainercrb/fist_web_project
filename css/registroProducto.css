@@ -91,6 +91,9 @@ input:focus ~ .highlight
 -moz-animation:inputHighlighter 0.3s ease;
 animation:inputHighlighter 0.3s ease;
 }
+input[type="file"],  #txtId, #txtTipo, #pageName{
+display: none;
+}
 /* animaciones */
 /*ontrolar los pasos intermedios en una secuencia de animación "desde hasta"*/
 @-webkit-keyframes inputHighlighter {
