@@ -1,5 +1,5 @@
 #blah {
-background: url(example.jpg) 50% 50% no-repeat;
+
 /* 50% 50% centers image in div */
 background-size: auto 110%;
 /* Interchange this value depending on prefering width vs. height */
