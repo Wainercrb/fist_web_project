@@ -14,14 +14,34 @@ $tmpName = "registroUsuario.php";
     </head>
     <body>
         <?php
-        $siteName = "registroUsuario.php";
-        include "header.php"
+        $siteName = "verPerfilUsuario.php";
+        include "header.php";
+        include "php/registroUsuario.php";
         ?>
+        <script>
+            var ltt =  parseFloat('<?php echo $latitud; ?>');
+                            var lgg =  parseFloat('<?php echo $longitud; ?>');
+                            function initMap() {
+                                var myLatLng = {lat: ltt, lng: lgg };
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 14,
+                                    center: myLatLng
+                                });
+                                var marker = new google.maps.Marker({
+                                    position: myLatLng,
+                                    map: map,
+                                    title: 'Ubicación'
+                                });
+                            }
+        </script>
+        <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQFJdLinZ94oC6GJD3s_IuxhBJuPRgtjM&callback=initMap">
+                    </script>
         <?php include "navbar.php" ?>
         <div class="container" id="main-conteint">
             <div class="row main">
                 <div class="sub-containt">
-                    <h3 id="title-form" align="center">Registrarse con:</h3>
+                    <legend><center><h2><b id="title-form">Registro con</b></h2></center></legend><br>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <button type="submit" class="btn btn-primary center-block btn-login-facebook" id="btn-login-facebook">
@@ -33,16 +53,16 @@ $tmpName = "registroUsuario.php";
                             </button>
                         </div>
                     </div>
-                    <h3 id="title-form" align="center">Paso a paso</h3>
+                    <legend><center><h2><b id="title-form">Paso a paso</b></h2></center></legend><br>
                     <form role="form" action="php/registroUsuario.php" name="registroUsuario"  id="prospects_form" method="post" enctype="multipart/form-data">
                         <div class="group center-block">
-                            <img id="blah" name="blah" class="center-block" src="" alt="" />
-                            <input type="file" name="image" id="image" onchange="readURL(this);"/>
+                            <img id="blah" name="blah" class="center-block" src="data:image/jpeg;base64,<?php echo base64_encode($foto);?>"  alt="" />
+                            <input type="file" name="image" id="image" onchange="readURL(this);">
                             
                         </div>
                         <div class="form-group center-block" id="midiv">
                             <div class="group center-block">
-                                <input id="txtName" type="text" name="txtName" required>
+                                <input id="txtName" type="text" name="txtName" value="<?php echo $nombre ?>" required>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -52,7 +72,7 @@ $tmpName = "registroUsuario.php";
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtSurnameOne" type="text" name="txtSurnameOne" required/>
+                                <input id="txtSurnameOne" type="text" name="txtSurnameOne" value="<?php echo $apellidoPaterno ?>" required/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -62,17 +82,17 @@ $tmpName = "registroUsuario.php";
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtSurnameTwo" type="text" name="txtSurnameTwo" required/>
+                                <input id="txtSurnameTwo" type="text" name="txtSurnameTwo" value="<?php echo $apellidoMaterno ?>"  required/>
                                 <span class="highlight"></span>
                                 <!--label-->
-                                <span class="bar"></span>
+                              <span class="bar"></span>
                                 <!--botton del input-->
                                 <label class="label" id="txtApellidoDos">Apellido Materno</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtEmail" type="eamil" name="txtEmail" required/>
+                                <input id="txtEmail" type="eamil" name="txtEmail" value="<?php echo $email ?>" required/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -82,7 +102,7 @@ $tmpName = "registroUsuario.php";
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtAge" type="number" name="txtAge" required/>
+                                <input id="txtAge" type="number" name="txtAge" value="<?php echo $edad ?>" required/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -92,7 +112,7 @@ $tmpName = "registroUsuario.php";
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtUser" type="text"  name="txtUser" required/>
+                                <input id="txtUser" type="text"  name="txtUser" value="<?php echo $usuario ?>" required/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -102,7 +122,7 @@ $tmpName = "registroUsuario.php";
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtPass" type="password" name="txtPass" required/>
+                                <input id="txtPass" type="password" name="txtPass" value="<?php echo $pass ?>" required/>
                                 <span class="highlight" id="a"></span>
                                 <!--label-->
                                 <span class="bar" id="a"></span>
@@ -111,7 +131,7 @@ $tmpName = "registroUsuario.php";
                                 <span class="glyphicon glyphicon-eye-open pull-right" id="eye"></span>
                             </div>
                             <div class="group">
-                                <input id="txtConfPass" type="password" name="txtConfPass" required/>
+                                <input id="txtConfPass" type="password" name="txtConfPass" value="<?php echo $pass ?>" required/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -142,7 +162,7 @@ $tmpName = "registroUsuario.php";
                 </div>
             </div>
         </div>
-        <?php include "footer.php"; ?>
+        <?php include "footer.php" ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/registroUsuario.js"></script>
