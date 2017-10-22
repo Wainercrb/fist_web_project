@@ -7,6 +7,7 @@ function fotoPerfil() {
 }
 function readURL(input) {
     if (input.files && input.files[0]) {
+    	alert(input.files[0].src);
         var reader = new FileReader();
         reader.onload = function (e) {
             document.getElementById('blah').src = e.target.result;
@@ -18,7 +19,7 @@ with(document.registroUsuario){
 	onsubmit = function(e){
 		e.preventDefault();
 		ok = true;
-		if(ok && image.value == ""){
+		if(ok && image.files == ""){
 			ok=false;
 			alert("Debe seleccionar una foto de perfil");
 			txtConfPass.focus();

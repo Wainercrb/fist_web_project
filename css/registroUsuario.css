@@ -9,8 +9,6 @@ cursor: pointer !important;
 border: 1px solid black;
 }
 #imgInp {
-background: url(example.jpg) 50% 50% no-repeat;
-/* 50% 50% centers image in div */
 background-size: auto 110%;
 /* Interchange this value depending on prefering width vs. height */
 width: 115px;
@@ -18,14 +16,10 @@ height: 2.5em !important;
 font-size: 10px;
 }
 #profile-img {
-background: url(example.jpg) 50% 50% no-repeat;
-/* 50% 50% centers image in div */
 background-size: auto 110%;
-/* Interchange this value depending on prefering width vs. height */
 width: 90px;
 height: 6.1em !important;
 }
-
 .nav-tabs>li>a,
 .nav-tabs>li>a:hover,
 .nav-tabs>li>a:focus,
@@ -293,4 +287,6 @@ font-size:16px;
 .main-title{
 margin-bottom: 10%;
 }
-s
+#txtId, #pageName{
+	display: none;
+}
