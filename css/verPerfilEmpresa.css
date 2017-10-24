@@ -1,231 +1,121 @@
 /*Inicia la parte del contenido
 /*Inicia diseño del input*/
 #contrasenaVendedor{
-background-color:rgba(0,0,0,0) !important;
-border:none !important;
+	background-color:rgba(0,0,0,0) !important;
+	border:none !important;
 }
 #eye{
-top: 0.2em !important;
+	top: 0.2em !important;
 }
 .group
 {
-position:relative; /*posición del grupo sin afectar los demas*/
-margin-bottom:45px;/*anco del div grup hacia su padre*/
+	position:relative; /*posición del grupo sin afectar los demas*/
+	margin-bottom:45px;/*anco del div grup hacia su padre*/
 }
 input
 {
-font-size:18px;
-padding:10px 10px 10px 5px;
-display:block;/*toma las dimenciones de su padre*/
-width: 100%;
-border:none;
-border-bottom:1px solid #757575;
+	font-size:18px;
+	padding:10px 10px 10px 5px;
+	display:block;/*toma las dimenciones de su padre*/
+	width: 100%;
+	border:none;
+	border-bottom:1px solid #757575;
 }
-/*Quita el borde leccionado del div del input solo queda la animacion de la linea del button*/
-input:focus
-{
-outline:none;
-}
-/*Cambia de color el label, tambien  el tamaño cuando seleciona el input*/
-input:focus ~ label, input:valid ~ label
-{
-top:-20px;
-font-size:14px;
-color:#5264AE;
-}
-/* margin-botton del input */
 .bar
 {   position:relative; /*posición del grupo sin     afectar los demas*/
-display:block;/*toma las dimenciones de su padre*/
-width:100%;
+	display:block;/*toma las dimenciones de su padre*/
+	width:100%;
 }
-/*border-botton antes y despues de seleccionar*/
-.bar:before, .bar:after
-{
-content:'';
-height:2px;
-width:0;
-bottom:1px;
-position:absolute;
-background:#5264AE;
-/*animación al seleccionar*/
-transition:0.2s ease all;
--moz-transition:0.2s ease all;
--webkit-transition:0.2s ease all;
-}
-/*bar(margin-button) antes y despues del seleccionar*/
-.bar:before
-{
-left:50%;
-}
-.bar:after
-{
-right:50%;
-}
-/* animacion en la linea del input */
-input:focus ~ .bar:before, input:focus ~ .bar:after
-{
-width:50%;
-}
-/* label */
 .highlight
 {
-position:absolute;
-height:60%;
-width:100%;
-top:25%;
-left:0;
-pointer-events:none;
-opacity:0.5;
+	position:absolute;
+	height:60%;
+	width:100%;
+	top:25%;
+	left:0;
+	pointer-events:none;
+	opacity:0.5;
 }
 .components{
-text-align: center;
+	text-align: center;
 }
-/*animacion de color en la parte el input*/
-input:focus ~ .highlight
-{
--webkit-animation:inputHighlighter 0.3s ease;
--moz-animation:inputHighlighter 0.3s ease;
-animation:inputHighlighter 0.3s ease;
-}
-/* animaciones */
-/*ontrolar los pasos intermedios en una secuencia de animación "desde hasta"*/
-@-webkit-keyframes inputHighlighter {
-from
-{
-background:#5264AE;
-}
-to
-{
-width:0;
-background:transparent;
-}
-}
-@-moz-keyframes inputHighlighter {
-from
-{
-background:#5264AE;
-}
-to
-{
-width:0; background:transparent;
-}
-}
-@keyframes inputHighlighter {
-from
-{
-background:#5264AE;
-}
-to
-{
-width:0; background:transparent;
-}
-}
-/*Termine el diseño de los input*/
-/*Diseño del form del login*/
 .main
 {
-background-color: #fff;
-margin-top: 100px;
-border-radius: 4px;
-border-bottom: 1px solid #A4A4A4;
--moz-box-shadow: 0 0 3px 3px #888;
--webkit-box-shadow: 0 0 3px 3px #888;
-box-shadow: 0 0 3px 3px #888;
-border-radius:2px;
+	background-color: #fff;
+	margin-top: 100px;
+	border-radius: 4px;
+	border-bottom: 1px solid #A4A4A4;
+	-moz-box-shadow: 0 0 3px 3px #888;
+	-webkit-box-shadow: 0 0 3px 3px #888;
+	box-shadow: 0 0 3px 3px #888;
+	border-radius:2px;
 }
 /*Da el margin del div de afueroc con form*/
 .sub-container
 {
-
-margin-right: 10px;
-margin-left:10px;
-margin-bottom: 0px;
-margin-top: 0px;
+	margin-right: 10px;
+	margin-left:10px;
+	margin-bottom: 0px;
+	margin-top: 0px;
 }
 /*Diselo del div principal del form*/
 .main
 {
-max-width: 450px;
-margin: 0 auto;
-
+	max-width: 450px;
+	margin: 0 auto;
 }
 /*titulo del contenido*/
 h3
 {
-text-align: center;
-line-height: 300%;
+	text-align: center;
+	line-height: 300%;
 }
 /*Diseño del banner de todo el contenido*/
 #main-conteint
 {
-margin-top: 15px;
-margin-bottom: 10px;
-
+	margin-top: 15px;
+	margin-bottom: 10px;
 }
 /*Diseño del boton*/
 #btnEditar, #btnMisProductos
 {
-display: inline-block;
-width: 135px;
-height: 70px;
-background: none;
-border: none;
+	display: inline-block;
+	width: 135px;
+	height: 70px;
+	background: none;
+	border: none;
 }
 /*dimensiones del mapa*/
 #map {
-margin-left: 0px;
-width: 100%;
-height: 200px;
-}
-/*controles de las opciones del map"relieve, buscar etc"*/
-.controls {
-margin-top: 10px;
-border: 1px solid transparent;
-border-radius: 2px 0 0 2px;
-box-sizing: border-box;
--moz-box-sizing: border-box;
-height: 35px;
-outline: none;
-width: auto;
-/*efecto de sombra*/
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-
-}
-/*Buscardor del map*/
-#searchInput {
-background-color: #fff;
-font-size: 10px;
-margin-left: auto;
-padding: 0 11px 0 0px;
-text-overflow: ellipsis;
-width:50%;
+	margin-left: 0px;
+	width: 100%;
+	height: 200px;
 }
 /*Tamaño de la los contenedored de form*/
 .midiv{
-font-size: 18px;
+	font-size: 22px;
 }
 /* Previous button  */
 .media-carousel .carousel-control.left
 {
-left: -12px;
-background-image: none;
-background: none repeat scroll 0 0 #222222;
-border: 4px solid #FFFFFF;
-border-radius: 23px 23px 23px 23px;
-height: 40px;
-width : 40px;
-margin-top: 100px;
+	left: -12px;
+	background-image: none;
+	background: none repeat scroll 0 0 #222222;
+	border: 4px solid #FFFFFF;
+	border-radius: 23px 23px 23px 23px;
+	height: 40px;
+	width : 40px;
+	margin-top: 100px;
 }
 /* Siguiente boton*/
 .media-carousel .carousel-control.right
 {
-right: -12px !important;
-background-image: none;
-background: none repeat scroll 0 0 #222222;
-border: 4px solid #FFFFFF;
-border-radius: 23px 23px 23px 23px;
-height: 40px;
-width : 40px;
-margin-top: 100px;
+	right: -12px !important;
+	background-image: none;
+	background: none repeat scroll 0 0 #222222;
+	border: 4px solid #FFFFFF;
+	border-radius: 23px 23px 23px 23px;
+	height: 40px;
+	width : 40px;
+	margin-top: 100px;
 }

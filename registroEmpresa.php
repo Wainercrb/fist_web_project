@@ -20,7 +20,7 @@ session_start();
                     <h3 align="center">Registro empresa</h3>
                     <form role="form" action="php/registroEmpresa.php" name="registroUsuario"  id="prospects_form" method="post" enctype="multipart/form-data">
                         <div class="group center-block">
-                            <img id="blah" name="blah" class="center-block" src="" alt="" />
+                            <img id="blah" name="blah" class="center-block" src="data:image/jpeg;base64,<?php echo base64_encode($store->getPicture());?>"  alt="" />
                             <input type="file" name="image" id="image" onchange="readURL(this);"/>
                         </div>
                         <div class="form-group">

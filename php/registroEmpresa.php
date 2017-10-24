@@ -1,36 +1,57 @@
 <?php
+include "/opt/lampp/htdocs/bl/fist_web_project/clases/store.php";
+$store = new store();
+if(isset($_SESSION))
+{
+	if ($_SESSION["EDIT"] === "TRUE")
+	{
+		$store->etId_shop($_SESSION["ID"]);
+		$store->setPicture($_SESSION["PICTURE"]);
+		$store->setUser($_SESSION["EMAIL"]);
+		$store->setName($_SESSION["NAME"]);
+		$store->setUser($_SESSION["USER"]);
+		$store->setPassword($_SESSION["PASSWORD"]);
+		$store->setLatitud($_SESSION["LATITUD"]);
+		$store->setLongitud($_SESSION["LONGITUD"]);
+		$store->setPictureOne($_SESSION["PICTUREONE"]);
+		$store->setPictureTwo($_SESSION["PICTURETWO"]);
+		$store->setPictureThere($_SESSION["PICTURETHERE"]);
+	}
+}
 if (!empty($_POST)) {
 	if (isset($_POST["txtName"]) && isset($_POST["txtEmail"]) && isset($_POST["txtPass"]) && isset($_POST["txtLatitud"]) && isset($_POST["txtLongitud"]) && isset($_POST["txtPass"]) && isset($_POST["txtConfPass"])) {
-		if ($_POST["txtName"] != "" && $_POST["txtEmail"] != "" && $_POST["txtUser"] != "" && $_POST["txtLatitud"] != "" && $_POST["txtLongitud"] != "" && $_POST["txtPass"] == $_POST["txtConfPass"]) {
-			include "conexion.php";
-			$found = false;
-			$sql1  = "select * from tienda where usuario=\"$_POST[txtUser]\" or email=\"$_POST[txtEmail]\"";
-			$query = $con->query($sql1);
-			while ($r = $query->fetch_array()) {
-				$found = true;
-				break;
-			}
-			if ($found) {
-				print"<script>alert(\"Nombre de usuario o email ya estan registrados.\");</script>";
-
+		
+		session_start();
+		$store->setName($_REQUEST['txtName']);
+		$store->setEmail($_REQUEST['txtEmail']);
+		$store->setPhone($_REQUEST['txtPhone']);
+		$store->setRate($_REQUEST['txtRate']);
+		$store->setPicture($_FILES['image']);
+		$store->setAge($_REQUEST['txtAge']);
+		$store->setUser($_REQUEST['txtUser']);
+		$store->setPassword($_REQUEST['txtPass']);
+		$store->setLatitud($_REQUEST['txtLatitud']);
+		$store->setLongitud($_REQUEST['txtLongitud']);
+		$store->setPictureOne($_FILES['foto1']);
+		$store->setPictureTwo($_FILES['foto2']);
+		$store->setPictureThere($_FILES['foto3']);
+		if (isset($_SESSION) || $_SESSION["ID"] <= 0)
+		{
+			$store->editStore($_SESSION["ID"]);
+		}else
+		{
+			if($_SESSION["ID"] > 0)
+			{
+				print "<script>alert(\"Error. Actualmente estas logeado, debes cerrar session para poder registrate\");window.location='/opt/lampp/htdocs/bl/fist_web_project/registroUsuario.php';</script>";
 				return;
 			}
-			$data  = file_get_contents($_FILES['image']['tmp_name']);
-			$data  = mysql_real_escape_string($data);
-			$data1 = file_get_contents($_FILES['image1']['tmp_name']);
-			$data1 = mysql_real_escape_string($data1);
-			$data2 = file_get_contents($_FILES['image2']['tmp_name']);
-			$data2 = mysql_real_escape_string($data2);
-			$data3 = file_get_contents($_FILES['image3']['tmp_name']);
-			$data3 = mysql_real_escape_string($data3);
-			$sql   = "insert into tienda(nombre, telefono, tarifa_apartado, servicio, usuario, contrasenna, email, foto, foto1, foto2, foto3, latitud, longitud) value (\"$_POST[txtName]\",\"$_POST[txtTel]\",\"$_POST[txtTr]\",\"$_POST[selectService]\",\"$_POST[txtUser]\",\"$_POST[txtPass]\",\"$_POST[txtEmail]\",'$data','$data1','$data2','$data3',\"$_POST[txtLatitud]\",\"$_POST[txtLongitud]\")";
-			$query = $con->query($sql);
-			if ($query != null) {
-				print"<script>alert(\"Registro exitoso. Puede ingresar ingresar su usuario desde la barra de de accesos\");window.location='../$tmpName';</script>";
-
+			if($store->checkUser($_REQUEST['txtUser'], $_REQUEST['txtEmail']))
+			{
+				print "<script>alert(\"Error. Este usuario y contraseña ya estan registrados :_(\");window.location='../registroUsuario.php';</script>";
 			}
-			$con->close();
+			$store->saveStore();
 		}
+
 	}
 }
 ?>

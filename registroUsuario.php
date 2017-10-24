@@ -1,7 +1,3 @@
-<?php
-session_start();
-$tmpName = "registroUsuario.php";
-?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -14,11 +10,10 @@ $tmpName = "registroUsuario.php";
     </head>
     <body>
         <?php
-        $siteName = "verPerfilUsuario.php";
         include "header.php";
         include "php/registroUsuario.php";
+        include "navbar.php";
         ?>
-        <?php include "navbar.php" ?>
         <div class="container" id="main-conteint">
             <div class="row main">
                 <div class="sub-containt">
@@ -37,12 +32,12 @@ $tmpName = "registroUsuario.php";
                     <legend><center><h2><b id="title-form">Paso a paso</b></h2></center></legend><br>
                     <form role="form" action="php/registroUsuario.php" name="registroUsuario"  id="prospects_form" method="post" enctype="multipart/form-data">
                         <div class="group center-block">
-                            <img id="blah" name="blah" class="center-block" src="data:image/jpeg;base64,<?php echo base64_encode($foto);?>"  alt="" />
+                            <img id="blah" name="blah" class="center-block" src="data:image/jpeg;base64,<?php echo base64_encode($user->getPicture());?>"  alt="" />
                             <input type="file" name="image" id="image" accept="image/*" onchange="readURL(this);">
                         </div>
                         <div class="form-group center-block" id="midiv">
                             <div class="group center-block">
-                                <input id="txtName" type="text" name="txtName" value="<?php echo $nombre ?>" required>
+                                <input id="txtName" type="text" name="txtName" value="<?php echo $user->getName() ?>" required>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -52,7 +47,7 @@ $tmpName = "registroUsuario.php";
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtSurnameOne" type="text" name="txtSurnameOne" value="<?php echo $apellidoPaterno ?>" required/>
+                                <input id="txtSurnameOne" type="text" name="txtSurnameOne" value="<?php echo $user->getSurnameOne() ?>" required/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -62,7 +57,7 @@ $tmpName = "registroUsuario.php";
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtSurnameTwo" type="text" name="txtSurnameTwo" value="<?php echo $apellidoMaterno ?>"  required/>
+                                <input id="txtSurnameTwo" type="text" name="txtSurnameTwo" value="<?php echo $user->getSurnameTwo() ?>"  required/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -72,7 +67,7 @@ $tmpName = "registroUsuario.php";
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtEmail" type="eamil" name="txtEmail" value="<?php echo $email ?>" required/>
+                                <input id="txtEmail" type="eamil" name="txtEmail" value="<?php echo $user->getUser() ?>" required/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -82,7 +77,7 @@ $tmpName = "registroUsuario.php";
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtAge" type="number" name="txtAge" value="<?php echo $edad ?>" required/>
+                                <input id="txtAge" type="number" name="txtAge" value="<?php echo $user->getAge() ?>" required/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -92,7 +87,7 @@ $tmpName = "registroUsuario.php";
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtUser" type="text"  name="txtUser" value="<?php echo $usuario ?>" required/>
+                                <input id="txtUser" type="text"  name="txtUser" value="<?php echo $user->getUser() ?>" required/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -102,7 +97,7 @@ $tmpName = "registroUsuario.php";
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input id="txtPass" type="password" name="txtPass" value="<?php echo $pass ?>" required/>
+                                <input id="txtPass" type="password" name="txtPass" value="<?php echo $user->getPassword() ?>" required/>
                                 <span class="highlight" id="a"></span>
                                 <!--label-->
                                 <span class="bar" id="a"></span>
@@ -111,7 +106,7 @@ $tmpName = "registroUsuario.php";
                                 <span class="glyphicon glyphicon-eye-open pull-right" id="eye"></span>
                             </div>
                             <div class="group">
-                                <input id="txtConfPass" type="password" name="txtConfPass" value="<?php echo $pass ?>" required/>
+                                <input id="txtConfPass" type="password" name="txtConfPass" value="<?php echo $user->getPassword() ?>" required/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -120,7 +115,7 @@ $tmpName = "registroUsuario.php";
                                 <span class="glyphicon glyphicon-eye-open pull-right" id="eye"></span>
                             </div>
                         </div>
-                        <input type="text" id="txtId" name="txtId" value="<? echo  htmlentities($id); ?>"/>
+                        <input type="text" id="txtId" name="txtId" value="<? echo  htmlentities($user->getId_user()); ?>"/>
                         <input type="text" id="pageName" name="pageName" value="<? echo htmlentities($siteName); ?>"/>
                         <div class="form-group">
                             <?php
@@ -130,8 +125,8 @@ $tmpName = "registroUsuario.php";
                             <button type="button" class="center-block" onclick="getLocation()">Cargar mi ubicación</button>
                             <br>
                             <div id="map"></div>
-                            <input id="txtLatitud" name="txtLatitud" value="<?php echo $latitud ?>"></input>
-                            <input id="txtLongitud" name = "txtLongitud" value=" <?php echo $longitud ?>"></input>
+                            <input id="txtLatitud" name="txtLatitud" value="<?php echo $user->getLatitud() ?>"></input>
+                            <input id="txtLongitud" name = "txtLongitud" value=" <?php echo $user->getLongitud()?>"></input>
                         </div>
                         <div class="control-group">
                             <h1 class="components">

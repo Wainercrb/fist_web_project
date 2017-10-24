@@ -45,15 +45,14 @@ function initMap(a, b) {
         map: map
     });
 }
-if('<?php echo $_GET["edit"]; ?>' === 'true'){
+
+if('<?php echo $_SESSION["EDIT"]; ?>' === "TRUE"){
     window.onload=function() {
         cargarDbMapa();
-        $("#image").val($("#blah").val());
-        $('#image').files[0] = '<?php echo base64_encode($foto)?>';
-    }
-    var ltt =  parseFloat('<?php echo $latitud; ?>');
-    var lgg =  parseFloat('<?php echo $longitud; ?>');
-    function cargarDbMapa() {
+        }    
+        var ltt =  parseFloat('<?php echo $user->getLatitud(); ?>');
+        var lgg =  parseFloat('<?php echo $user->getLongitud(); ?>');
+        function cargarDbMapa() {
         var myLatLng = {lat: ltt, lng: lgg };
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 14,
