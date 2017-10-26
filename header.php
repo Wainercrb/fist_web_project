@@ -4,7 +4,7 @@
     $email = "email@gmail.com";
     $name = "Nombre completo";
     $typeUser = "";
-        if(!isset($_SESSION))
+        if(session_status() == PHP_SESSION_ACTIVE)
         {
         session_start();
         $id = $_SESSION["ID"];
@@ -47,7 +47,7 @@
 <a class="navbar-brand" href="index.html"><img src="img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
 </div>
 <!-- Collect the nav links, forms, and other content for toggling -->
-<div class="navbar-collapse style= collapse in" id="bs-megadropdown-tabs" style="padding-left: 0px;">
+<div class="navbar-collapse style=collapse in" id="bs-megadropdown-tabs" style="padding-left: 0px;">
 <form class="navbar-form navbar-left" role="search" height="10px" action="php/header.php" name="insert"   method="post" enctype="multipart/form-data">
 <div class="form-group div-search ">
     <div class="input-group input-group-lg input-group-full search">

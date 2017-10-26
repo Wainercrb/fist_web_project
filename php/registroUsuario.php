@@ -1,5 +1,5 @@
 <?php
-    include "/opt/lampp/htdocs/bl/fist_web_project/clases/usuario.php";
+    include "clases/usuario.php";
     $user = new user();
     if(isset($_SESSION))
     {
