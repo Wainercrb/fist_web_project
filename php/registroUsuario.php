@@ -1,5 +1,5 @@
 <?php
-    include "clases/usuario.php";
+    include "/xampp/htdocs/shop/shop/clases/usuario.php";
     $user = new user();
     if(isset($_SESSION))
     {
@@ -35,7 +35,7 @@ if(!empty($_POST)){
         $user->setLongitud($_REQUEST['txtLongitud']);
         if (isset($_SESSION) || $_SESSION["ID"] <= 0)
         {
-            $user->editUser($_SESSION["ID"]);
+            $user->saveUser();
         }else
         {
             if($_SESSION["ID"] > 0)
@@ -47,7 +47,8 @@ if(!empty($_POST)){
             {
              print "<script>alert(\"Error. Este usuario y contraseña ya estan registrados :_(\");window.location='../registroUsuario.php';</script>";
             }
-            $user->saveUser();
+            $user->editUser($_SESSION["ID"]);
+           
         }
     }
 }

@@ -565,7 +565,7 @@
                                         </div>
                                     </div>
                                     <a href="detail.html" class="invisible">
-                                        <img src="img/moda-producto9.jpg" alt="" class="img-responsive">
+                                        <img src="/shop/img/moda-producto9.jpg" alt="" class="img-responsive">
                                     </a>
                                     <!--Div contiene la infamción del prodcto-->
                                     <div class="text">

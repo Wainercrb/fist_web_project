@@ -21,18 +21,18 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <button type="submit" class="btn btn-primary center-block btn-login-facebook" id="btn-login-facebook">
-                            <a href="/RegistroPersonal.html"><img src="img/facebook%20(2).png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64"></a>
+                                <a href="/RegistroPersonal.html"><img src="img/facebook%20(2).png" onmouseover="this.width = 70;this.height = 70;" onmouseout="this.width = 64;this.height = 64;" width="64" height="64"></a>
                             </button>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
-                            <button type="submit" class=" btn btn-primary center-block btn-ingresar-google" id="btn-ingresar-google"> <a href="/RegistroEmpresa.html" ><img src="img/google-plus%20(1).png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64"></a>
+                            <button type="submit" class=" btn btn-primary center-block btn-ingresar-google" id="btn-ingresar-google"> <a href="/RegistroEmpresa.html" ><img src="img/google-plus%20(1).png" onmouseover="this.width = 70;this.height = 70;" onmouseout="this.width = 64;this.height = 64;" width="64" height="64"></a>
                             </button>
                         </div>
                     </div>
                     <legend><center><h2><b id="title-form">Paso a paso</b></h2></center></legend><br>
                     <form role="form" action="php/registroUsuario.php" name="registroUsuario"  id="prospects_form" method="post" enctype="multipart/form-data">
                         <div class="group center-block">
-                            <img id="blah" name="blah" class="center-block" src="data:image/jpeg;base64,<?php echo base64_encode($user->getPicture());?>"  alt="" />
+                            <img id="blah" name="blah" class="center-block" src="data:image/jpeg;base64,<?php echo base64_encode($user->getPicture()); ?>"  alt="" />
                             <input type="file" name="image" id="image" accept="image/*" onchange="readURL(this);">
                         </div>
                         <div class="form-group center-block" id="midiv">
@@ -120,18 +120,24 @@
                         <div class="form-group">
                             <?php
                             include "/php/map.php";
+                            if (isset($_SESSION['EDIT'])) {
+                                if ($_SESSION["EDIT"] === "TRUE") {
+                                    include "/php/mapPosition.php";
+                                }
+                            }
                             ?>
+
                             <br>
                             <button type="button" class="center-block" onclick="getLocation()">Cargar mi ubicación</button>
                             <br>
                             <div id="map"></div>
                             <input id="txtLatitud" name="txtLatitud" value="<?php echo $user->getLatitud() ?>"></input>
-                            <input id="txtLongitud" name = "txtLongitud" value=" <?php echo $user->getLongitud()?>"></input>
+                            <input id="txtLongitud" name = "txtLongitud" value=" <?php echo $user->getLongitud() ?>"></input>
                         </div>
                         <div class="control-group">
                             <h1 class="components">
-                            <button id="btnGuardar" type="submit" name="btnGuardar" class=" btn btn-primary center-block">
-                            </button>
+                                <button id="btnGuardar" type="submit" name="btnGuardar" class=" btn btn-primary center-block">
+                                </button>
                             </h1>
                         </div>
                     </form>
@@ -139,11 +145,11 @@
             </div>
         </div>
         <?php include "footer.php" ?>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/registroUsuario.js"></script>
         <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQFJdLinZ94oC6GJD3s_IuxhBJuPRgtjM&callback">
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQFJdLinZ94oC6GJD3s_IuxhBJuPRgtjM&callback">
         </script>
     </body>
 </html>

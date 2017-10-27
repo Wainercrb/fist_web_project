@@ -13,6 +13,9 @@ if (session_status() == PHP_SESSION_ACTIVE) {
     $typeUser = $_SESSION["TYPEUSER"];
 }
 ?>
+<script>
+    alert('<?php echo$id; ?>')
+</script>
 <div id="top">
     <div class="container">
         <div class="col-md-6 offer" data-animate="fadeInDown">
