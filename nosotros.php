@@ -39,7 +39,7 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html"><img src="img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
+    <a class="navbar-brand" href="index.html"><img src="img/logoPrincipal.jpg" width="50px" height="50px"></a>
 </div>
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="navbar-collapse style= collapse in" id="bs-megadropdown-tabs" style="padding-left: 0px;">
@@ -790,7 +790,7 @@
         <!--well boostrap: esta clase asigna un borde a un backgraund a un contenedor-->
         <h2>Acerca de mí</h2>
         <div class="well ">
-            <img src="img/logo%20-%20copia.jpg" class="img-responsive">
+            <img src="img/logoPrincipal.jpg" class="img-responsive">
         </div>
         <p>Nombre completo: Wainer Rodriguez Bonilla <br>
             Escule secundaria: C.T.P Los Chiles.<br>

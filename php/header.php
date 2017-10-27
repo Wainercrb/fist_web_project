@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['btnLogin'])) {
                 $user->setEmail($_REQUEST['txtUser']);
                 $user->setPassword($_REQUEST['txtPass']);
                 if ($user->loadUser()) {
-//                    print "<script>alert(\"*****Bienvenido*******\");window.location='../registroUsuario.php';</script>";
+                    print "<script>alert(\"*****Bienvenido*******\");window.location='../index.php';</script>";
                 }
                 include "/xampp/htdocs/shop/shop/clases/store.php";
                 $shop = new store();
@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['btnLogin'])) {
                 $shop->setEmail($_REQUEST['txtUser']);
                 $shop->setPassword($_REQUEST['txtPass']);
                 if ($shop->loadShop()) {
-//                    print "<script>alert(\"*****Bienvenido*******\");window.location='../registroUsuario.php';</script>";
+                    print "<script>alert(\"*****Bienvenido*******\");window.location='../index.php';</script>";
                 }
-//                print"<script>alert(\"Usuario incorrecto, verifique sus datos.\");window.location='../registroUsuario.php';</script>";
+                print"<script>alert(\"No se encontro ninguana considencia. Verifique sus datos\");window.location='../index.php';</script>";
             }
         }
     }

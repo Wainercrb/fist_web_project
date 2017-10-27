@@ -35,7 +35,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="img/logo%20-%20copia.jpg" width="50px" height="50px"></a>
+            <a class="navbar-brand" href="#"><img src="img/logoPrincipal.jpg" width="50px" height="50px"></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse style= collapse in" id="bs-megadropdown-tabs" style="padding-left: 0px;">

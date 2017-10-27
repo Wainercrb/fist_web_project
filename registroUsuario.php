@@ -119,7 +119,7 @@
                         <input type="text" id="pageName" name="pageName" value="<? echo htmlentities($siteName); ?>"/>
                         <div class="form-group">
                             <?php
-                            include "php/map.php";
+                            include "/php/map.php";
                             ?>
                             <br>
                             <button type="button" class="center-block" onclick="getLocation()">Cargar mi ubicación</button>
