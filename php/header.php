@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['someAction'])) {
-    echo "wainer";
+  
 }
 
 function func() {
@@ -15,23 +15,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['btnLogin'])) {
     if (!empty($_POST)) {
         if (isset($_POST["txtUser"]) && isset($_POST["txtPass"])) {
             if ($_POST["txtUser"] != "" && $_POST["txtPass"] != "") {
-                include "/xampp/htdocs/shop/shop/clases/usuario.php";
+                include "../clases/usuario.php";
                 $user = new user();
                 $user->setUser($_REQUEST['txtUser']);
                 $user->setEmail($_REQUEST['txtUser']);
                 $user->setPassword($_REQUEST['txtPass']);
                 if ($user->loadUser()) {
-                    print "<script>alert(\"*****Bienvenido*******\");window.location='../index.php';</script>";
+                    print "<script>alert(\"*****Bienvenido, tipo usuario*******\");window.location='../registroUsuario.php';</script>";
+                    return;
                 }
-                include "/xampp/htdocs/shop/shop/clases/store.php";
+                include "../clases/store.php";
                 $shop = new store();
                 $shop->setUser($_REQUEST['txtUser']);
-                $shop->setEmail($_REQUEST['txtUser']);
+                $shop->setEmil($_REQUEST['txtUser']);
                 $shop->setPassword($_REQUEST['txtPass']);
                 if ($shop->loadShop()) {
-                    print "<script>alert(\"*****Bienvenido*******\");window.location='../index.php';</script>";
+                    print "<script>alert(\"*****Bienvenido, tipo tienda*******\");window.location='../index.php';</script>";
+                    return;
                 }
-                print"<script>alert(\"No se encontro ninguana considencia. Verifique sus datos\");window.location='../index.php';</script>";
+                print"<script>alert(\"No se encontro ninguana considencia ;(. Verifique sus datos\");window.location='../index.php';</script>";
             }
         }
     }

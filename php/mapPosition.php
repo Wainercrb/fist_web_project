@@ -2,8 +2,8 @@
     window.onload = function () {
         cargarDbMapa();
     }
-    var ltt = parseFloat('<?php echo $user->getLatitud(); ?>');
-    var lgg = parseFloat('<?php echo $user->getLongitud(); ?>');
+    var ltt = parseFloat('<?php echo $tpLatitud; ?>');
+    var lgg = parseFloat('<?php echo $tpLongitud; ?>');
     function cargarDbMapa() {
         var myLatLng = {lat: ltt, lng: lgg};
         var map = new google.maps.Map(document.getElementById('map'), {

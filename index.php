@@ -119,7 +119,7 @@
                                         <div class="flipper">
                                             <div class="front">
                                                 <a href="detail.html">
-                                                    <img src="img/tecnologia-producto2.png" alt="" class="img-responsive">
+                                                    <img src="img/tecnologia-producto3.png" alt="" class="img-responsive">
                                                 </a>
                                             </div>
                                             <div class="back">
@@ -240,7 +240,7 @@
                                     <!--Div de la infomación del producto-->
                                     <div class="text">
                                         <h3><a href="detail.html">Smarth Whatch</a></h3>
-                                        <p class="price">₡13,500.00</p>
+                                        <p class="price">₡13,500.00</>
                                     </div>
                                     <!-- /finaliza el div de la información -->
                                     <!--div de la etiqueta del nuevo -->
@@ -1270,7 +1270,7 @@
 <?php include "footer.php" ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/jquery-1.11.min.js"></script>
 <script src="js/jquery.cookie.js"></script>
 <script src="js/waypoints.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>

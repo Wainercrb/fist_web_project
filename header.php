@@ -4,8 +4,8 @@ $picture = "";
 $email = "email@gmail.com";
 $name = "Nombre completo";
 $typeUser = "";
-if (session_status() == PHP_SESSION_ACTIVE) {
-    session_start();
+session_start();
+if ($_SESSION != NULL) {
     $id = $_SESSION["ID"];
     $picture = $_SESSION["PICTURE"];
     $email = $_SESSION["EMAIL"];
@@ -13,9 +13,6 @@ if (session_status() == PHP_SESSION_ACTIVE) {
     $typeUser = $_SESSION["TYPEUSER"];
 }
 ?>
-<script>
-    alert('<?php echo$id; ?>')
-</script>
 <div id="top">
     <div class="container">
         <div class="col-md-6 offer" data-animate="fadeInDown">
@@ -50,7 +47,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse "style=collapse" id="bs-megadropdown-tabs" style="padding-left: 0px;">
-             <form class="navbar-form navbar-left" role="search" height="10px" action="php/header.php" name="insert"   method="post" enctype="multipart/form-data">
+            <form class="navbar-form navbar-left" role="search" height="10px" action="php/header.php" name="insert"   method="post" enctype="multipart/form-data">
                 <div class="form-group div-search ">
                     <div class="input-group input-group-lg input-group-full search">
                         <input type="text" class="form-control" id="btn-search" aria-label="Search" size="100">
@@ -143,8 +140,9 @@ if (session_status() == PHP_SESSION_ACTIVE) {
                                 <div class="col-lg-12 second-div text-center">
                                     Registrar como
                                     <div class="social-buttons">
-                                        <a href="/shop/shop/registroUsuario.php" class="btn btn-primary">Usuario</a>
-                                        <a href="/shop/registroEmpresa.php" class="btn btn-primary">Empresa</a>
+                                        <?php echo $id;?>
+                                        <a  onclick="logeado('<?php $id ?>')" class="btn btn-primary">Usuario</a>
+                                        <a  onclick="logeado('<?php $id ?>')" class="btn btn-primary">Empresa</a>
                                     </div>
                                     <h2 id="h2">Ingreso rápido</h2>
                                     <form class="form" role="form"  accept-charset="UTF-8" id="login-nav" action="php/header.php"  name="insert" method="post" enctype="multipart/form-data">
@@ -158,7 +156,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
                                             <div id="btnOlvidoContrasena" class="help-block text-center"><a href="">Olvido su contraseña?</a></div>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" id="btn-ingresar-navbar" class="btn btn-primary btn-block" name="btnLogin">Ingresar</button>
+                                            <button type="submit" id="btn-ingresar-navbar" class="btn btn-primary btn-block"  name="btnLogin">Ingresar</button>
                                         </div>
                                         <div class="checkbox">
                                             <label>
@@ -185,13 +183,21 @@ if (session_status() == PHP_SESSION_ACTIVE) {
     function showProfile() {
         if ('<?php echo $typeUser; ?>' == "user")
         {
-            window.location = '/bl/fist_web_project/verPerfilUsuario.php';
+            window.location = 'verPerfilUsuario.php';
             return;
         } else if ('<?php echo $typeUser; ?>' == "shop")
         {
-            window.location = '/bl/fist_web_project/verPerfilEmpresa.php';
+            window.location = 'verPerfilEmpresa.php';
             return;
+        } else {
+            alert("No puedes acceder a esta página por que no estas logeado");
         }
-        alert("No puedes acceder a esta página por que no estas logeado");
-    }
+        }
+        function logeado($id) {
+            alert('<?php $id."wainer"?>');
+        }
+    
+
+    
+
 </script>

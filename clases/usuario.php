@@ -161,9 +161,10 @@ class user {
         $sql = "UPDATE usuario SET nombre = '$this->name', apellidoUno = '$this->surnameOne', apellidoDos = '$this->surnameTwo', foto = '$data', email = '$this->email', edad = '$this->age', usuario = '$this->user', contrasenna = '$this->password', latitud = '$this->latitud', longitud = '$this->longitud' WHERE  id_usuario = '$id'";
         if ($con->query($sql)) {
             $con->close();
-            print "<script>alert(\"Bien. Su usuario se actualizo correctamente ;-)\");window.location='../index.php';</script>";
+            session_destroy();
+            print "<script>alert(\"Bien. Su usuario se actualizo correctamente ;-), vuelve a iniciar sessión para que tus datos se cargen actualizados\");window.location='../index.php';</script>";
         }
-        echo("Error description: " . mysqli_error($con));
+        die("Error description: " . mysqli_error($con));
     }
 
     public function checkUser($usu, $email) {

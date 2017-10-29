@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -12,20 +9,23 @@ session_start();
         <link rel="stylesheet" type="text/css" href="css/registroVendedor.css">
     </head>
     <body>
-        <?php include "header.php" ?>
-        <?php include "navbar.php" ?>
+        <?php
+        include "header.php";
+        include "php/registroEmpresa.php";
+        include "navbar.php";
+        ?>
         <div class="container" id="main-conteint">
             <div class="row main">
                 <div class="sub-containt">
                     <h3 align="center">Registro empresa</h3>
-                    <form role="form" action="php/registroEmpresa.php" name="registroUsuario"  id="prospects_form" method="post" enctype="multipart/form-data">
+                    <form role="form" action="/shop/php/registroEmpresa.php" name="registroUsuario"  id="prospects_form" method="post" enctype="multipart/form-data">
                         <div class="group center-block">
-                            <img id="blah" name="blah" class="center-block" src="data:image/jpeg;base64,<?php echo base64_encode($store->getPicture());?>"  alt="" />
+                            <img id="blah" name="blah" class="center-block" src="data:image/jpeg;base64,<?php echo base64_encode($store->getPicture()); ?>"  alt="" />
                             <input type="file" name="image" id="image" onchange="readURL(this);"/>
                         </div>
                         <div class="form-group">
                             <div class="group center-block">
-                                <input type="text" id="txtName" name="txtName" REQUIRED>
+                                <input type="text" id="txtName" name="txtName" value="<?php echo$store->getName(); ?>" REQUIRED>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label class="label" id="lblName">Nombre</label>
@@ -33,7 +33,7 @@ session_start();
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input type="emil" id="txtEmail" name="txtEmail" REQUIRED/>
+                                <input type="emil" id="txtEmail" name="txtEmail" value="<?php echo$store->getEmil(); ?>" REQUIRED/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -43,7 +43,7 @@ session_start();
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input type="text" id="txtTel" name="txtTel" REQUIRED/>
+                                <input type="text" id="txtTel" name="txtPhone" value="<?php echo$store->getPhone(); ?>" REQUIRED/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -53,7 +53,7 @@ session_start();
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input type="number" id="txtTr" name="txtTr" REQUIRED/>
+                                <input type="number" id="txtTr" name="txtRate" value="<?php echo$store->getRate(); ?>" REQUIRED/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -63,7 +63,7 @@ session_start();
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input type="text" id="txtUser" name="txtUser" REQUIRED/>
+                                <input type="text" id="txtUser" name="txtUser" value="<?php echo$store->getUser(); ?>" REQUIRED/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -73,7 +73,7 @@ session_start();
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input type="password" id="txtPass" name="txtPass" REQUIRED/>
+                                <input type="password" id="txtPass" name="txtPass" value="<?php echo$store->getPassword(); ?>" REQUIRED/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -84,7 +84,7 @@ session_start();
                         </div>
                         <div class="form-group">
                             <div class="group">
-                                <input type="password" id="txtConfPass" name="txtConfPass" REQUIRED/>
+                                <input type="password" id="txtConfPass" name="txtConfPass" value="<?php echo$store->getPassword(); ?>" REQUIRED/>
                                 <span class="highlight"></span>
                                 <!--label-->
                                 <span class="bar"></span>
@@ -113,66 +113,117 @@ session_start();
                         <!--div del mapa-->
                         <div class="form-group">
                             <?php
-                            include "php/map.php";
+                            include "/php/map.php";
+                            if (isset($_SESSION['EDIT'])) {
+                                $tpLatitud = $store->getLatitud();
+                                $tpLongitud = $store->getLongitud();
+                                if ($_SESSION["EDIT"] === "TRUE") {
+                                    include "/php/mapPosition.php";
+                                }
+                            }
                             ?>
+
+
+                            <br>
                             <button type="button" class="center-block" onclick="getLocation()">Cargar mi ubicación</button>
                             <br>
                             <div id="map"></div>
-                            <input id="txtLatitud" name="txtLatitud" ></input>
-                            <input id="txtLongitud" name = "txtLongitud"></input>
-                            <input id="archiveName" name = "archiveName">registroEmpresa.php</input>
+                            <input id="txtLatitud" name="txtLatitud" value="<?php echo $store->getLatitud() ?>"></input>
+                            <input id="txtLongitud" name = "txtLongitud" value=" <?php echo $store->getLongitud() ?>"></input>
                         </div>
                         <!--div de la galeria-->
-                        <div class="form-group">
-                            <div class="cols-sm-10">
-                                <div class="carousel slide media-carousel" id="media">
-                                    <div class="carousel-inner" id="media">
-                                        <div class="item  active">
-                                            <div class="row">
-                                                <div class="cols-sm-10">
-                                                    <a class="thumbnail" href="#"><img alt="" name="imgPro1" id="imgPro1" src = "img/click.jpg" width="280px" height="280px"></a>
-                                                    <input type="file" name="image1" id="image1" onchange="readURLF1(this);"/>
+                        <?php if (isset($_SESSION) && $_SESSION != NULL) {
+                            ?>    
+                            <div class="form-group">
+                                <div class="cols-sm-10">
+                                    <div class="carousel slide media-carousel" id="media">
+                                        <div class="carousel-inner" id="media">
+                                            <div class="item  active">
+                                                <div class="row">
+                                                    <div class="cols-sm-10">
+                                                        <a class="thumbnail" href="#"><img alt="" name="imgPro1" id="imgPro1" src = "data:image/jpeg;base64,<?php echo base64_encode($store->getPictureOne()); ?>" width="280px" height="280px"></a>
+                                                        <input type="file" name="image1" id="image1" onchange="readURLF1(this);"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="row">
+                                                    <div class="cols-sm-10">
+                                                        <a class="thumbnail" href="#"><img alt="" name="imgPro2" id="imgPro2" src = "data:image/jpeg;base64,<?php echo base64_encode($store->getPictureTwo()); ?>" width="280px" height="280px"></a>
+                                                        <input type="file" name="image2" id="image2" onchange="readURLF2(this);"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="row">
+                                                    <div class="cols-sm-10">
+                                                        <a class="thumbnail" href="#"><img alt="" name="imgPro3" id="imgPro3" src = "data:image/jpeg;base64,<?php echo base64_encode($store->getPictureThre()); ?>" width="280px" height="280px"></a>
+                                                        <input type="file" name="image3" id="image3" onchange="readURLF3(this);"/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="cols-sm-10">
-                                                    <a class="thumbnail" href="#"><img alt="" name="imgPro2" id="imgPro2" src = "img/click.jpg" width="280px" height="280px"></a>
-                                                    <input type="file" name="image2" id="image2" onchange="readURLF2(this);"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="cols-sm-10">
-                                                    <a class="thumbnail" href="#"><img alt="" name="imgPro3" id="imgPro3" src = "img/click.jpg" width="280px" height="280px"></a>
-                                                    <input type="file" name="image3" id="image3" onchange="readURLF3(this);"/>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
+                                        <a data-slide="next" href="#media" class="right carousel-control">›</a>
                                     </div>
-                                    <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
-                                    <a data-slide="next" href="#media" class="right carousel-control">›</a>
                                 </div>
                             </div>
-                        </div>
+                            <?php
+                        } else {
+                            ?>
+                            <div class="form-group">
+                                <div class="cols-sm-10">
+                                    <div class="carousel slide media-carousel" id="media">
+                                        <div class="carousel-inner" id="media">
+                                            <div class="item  active">
+                                                <div class="row">
+                                                    <div class="cols-sm-10">
+                                                        <a class="thumbnail" href="#"><img alt="" name="imgPro1" id="imgPro1" src = "img/click.jpg" width="280px" height="280px"></a>
+                                                        <input type="file" name="image1" id="image1" onchange="readURLF1(this);"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="row">
+                                                    <div class="cols-sm-10">
+                                                        <a class="thumbnail" href="#"><img alt="" name="imgPro2" id="imgPro2" src = "img/click.jpg" width="280px" height="280px"></a>
+                                                        <input type="file" name="image2" id="image2" onchange="readURLF2(this);"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="row">
+                                                    <div class="cols-sm-10">
+                                                        <a class="thumbnail" href="#"><img alt="" name="imgPro3" id="imgPro3" src = "img/click.jpg" width="280px" height="280px"></a>
+                                                        <input type="file" name="image3" id="image3" onchange="readURLF3(this);"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
+                                        <a data-slide="next" href="#media" class="right carousel-control">›</a>
+                                    </div>
+                                </div>
+                            </div>
+<?php }
+?>
+
                         <div class="form-group">
                             <h1 class="components">
-                            <button id="btnIngresar" type="submit" class=" btn btn-primary center-block"><img src="img/check-symbol.png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64">
-                            </button>
+                                <button id="btnIngresar" type="submit" class=" btn btn-primary center-block"><img src="img/check-symbol.png" onmouseover="this.width = 70;this.height = 70;" onmouseout="this.width = 64;this.height = 64;" width="64" height="64">
+                                </button>
                             </h1>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <?php include "footer.php";?>
+<?php include "footer.php"; ?>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/registroEmpresa.js"></script>
         <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQFJdLinZ94oC6GJD3s_IuxhBJuPRgtjM&callback">
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQFJdLinZ94oC6GJD3s_IuxhBJuPRgtjM&callback">
         </script>
     </body>
 </html>

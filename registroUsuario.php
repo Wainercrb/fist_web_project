@@ -121,6 +121,8 @@
                             <?php
                             include "/php/map.php";
                             if (isset($_SESSION['EDIT'])) {
+                                $tpLatitud = $user->getLatitud();
+                                $tpLongitud = $user->getLongitud();
                                 if ($_SESSION["EDIT"] === "TRUE") {
                                     include "/php/mapPosition.php";
                                 }
@@ -136,7 +138,8 @@
                         </div>
                         <div class="control-group">
                             <h1 class="components">
-                                <button id="btnGuardar" type="submit" name="btnGuardar" class=" btn btn-primary center-block">
+                                <button id="btnGuardar" type="submit" name="btnGuardar" class="btn btn-primary center-block">
+                                   <img src="img/check-symbol.png" onmouseover="this.width=70;this.height=70;" onmouseout="this.width=64;this.height=64;" width="64" height="64">
                                 </button>
                             </h1>
                         </div>
